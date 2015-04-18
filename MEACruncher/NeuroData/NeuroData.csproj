@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\..\External_Libraries\NHibernate 4.0.3.GA\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,9 +42,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Affiliation.cs" />
+    <Compile Include="Burst.cs" />
+    <Compile Include="Channel.cs" />
+    <Compile Include="Condition.cs" />
+    <Compile Include="Entity.cs" />
+    <Compile Include="EntityMap.cs" />
+    <Compile Include="Experimenter.cs" />
+    <Compile Include="Genotype.cs" />
+    <Compile Include="ModelOrganism.cs" />
+    <Compile Include="NervousSystemRegion.cs" />
+    <Compile Include="Organization.cs" />
+    <Compile Include="OrganizationType.cs" />
     <Compile Include="Project.cs" />
+    <Compile Include="ProjectExperimenter.cs" />
+    <Compile Include="ProjectRecording.cs" />
     <Compile Include="Recording.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="OrganizationRole.cs" />
+    <Compile Include="Spike.cs" />
+    <Compile Include="Strain.cs" />
+    <Compile Include="TissueCondition.cs" />
+    <Compile Include="TissuePreparation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
