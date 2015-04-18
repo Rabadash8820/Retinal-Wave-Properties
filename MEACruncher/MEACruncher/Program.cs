@@ -9,6 +9,10 @@ namespace MEACruncher {
         /// </summary>
         [STAThread]
         static void Main() {
+            // Establish connections with Access databases
+            DbManager.ConnectTo(DbManager.Database.MeaData, "");
+
+            // Open the main form
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

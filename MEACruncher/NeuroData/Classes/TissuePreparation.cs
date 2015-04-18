@@ -19,7 +19,7 @@ namespace Neuro {
         public virtual Strain Strain { get; set; }
         public virtual NervousSystemRegion NervousSystemRegion { get; set; }
         public virtual DateTime DatePrepared { get; set; }
-        public virtual Experimenter Preparer;
+        public virtual Experimenter Preparer { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<TissueCondition> TissueConditions {
             get { return _tissueConditions; }

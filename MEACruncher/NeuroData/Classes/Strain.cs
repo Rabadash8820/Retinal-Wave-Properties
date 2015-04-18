@@ -16,8 +16,8 @@ namespace Neuro {
         }
 
         // PROPERTIES
-        public virtual ModelOrganism Organism;
-        public virtual Genotype Genotype;
+        public virtual ModelOrganism Organism { get; set; }
+        public virtual Genotype Genotype { get; set; }
         public virtual string Description { get; set; }
         public virtual Organization Breeder { get; set; }
         public virtual string Comments { get; set; }
