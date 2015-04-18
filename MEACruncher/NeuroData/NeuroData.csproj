@@ -42,28 +42,92 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Affiliation.cs" />
-    <Compile Include="Burst.cs" />
-    <Compile Include="Channel.cs" />
-    <Compile Include="Condition.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="EntityMap.cs" />
-    <Compile Include="Experimenter.cs" />
-    <Compile Include="Genotype.cs" />
-    <Compile Include="ModelOrganism.cs" />
-    <Compile Include="NervousSystemRegion.cs" />
-    <Compile Include="Organization.cs" />
-    <Compile Include="OrganizationType.cs" />
-    <Compile Include="Project.cs" />
-    <Compile Include="ProjectExperimenter.cs" />
-    <Compile Include="ProjectRecording.cs" />
-    <Compile Include="Recording.cs" />
+    <Compile Include="Classes\Affiliation.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Burst.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Channel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Condition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Entity.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\EntityMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Experimenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Genotype.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ModelOrganism.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\NervousSystemRegion.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Organization.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\OrganizationRole.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\OrganizationType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Project.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ProjectExperimenter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\ProjectRecording.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Recording.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Spike.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\Strain.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\TissueCondition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\TissuePreparation.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="OrganizationRole.cs" />
-    <Compile Include="Spike.cs" />
-    <Compile Include="Strain.cs" />
-    <Compile Include="TissueCondition.cs" />
-    <Compile Include="TissuePreparation.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Affiliation.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Burst.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Channel.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Condition.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Experimenter.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Genotype.hbm.xml" />
+    <EmbeddedResource Include="Mappings\ModelOrganism.hbm.xml" />
+    <EmbeddedResource Include="Mappings\NervousSystemRegion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Organization.hbm.xml" />
+    <EmbeddedResource Include="Mappings\OrganizationRole.hbm.xml" />
+    <EmbeddedResource Include="Mappings\OrganizationType.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Project.hbm.xml" />
+    <EmbeddedResource Include="Mappings\ProjectExperimenter.hbm.xml" />
+    <EmbeddedResource Include="Mappings\ProjectRecording.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Recording.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Spike.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Strain.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TissueCondition.hbm.xml" />
+    <EmbeddedResource Include="Mappings\TissuePreparation.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
