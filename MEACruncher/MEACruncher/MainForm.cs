@@ -7,6 +7,14 @@ namespace MEACruncher {
         public MainForm() {
             InitializeComponent();
         }
+
+        private void ExitButton_Click(object sender, System.EventArgs e) {
+            this.Close();
+        }
+
+        private void NewButton_Click(object sender, System.EventArgs e) {
+            new NewProjectForm().Show();
+        }
     }
 
 }
