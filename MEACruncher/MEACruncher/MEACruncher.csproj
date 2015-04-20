@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>MEA_circuit.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NHibernate">
@@ -57,6 +58,18 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewExperimenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewExperimenterForm.Designer.cs">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +80,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewExperimenterForm.resx">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
@@ -107,7 +126,6 @@
     <None Include="Resources\NeuronBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MEA_circuit.ico" />
     <Content Include="Resources\Logo.gif" />
     <None Include="Resources\Logo1.gif" />
     <Content Include="Resources\MEA_circuit.ico" />

@@ -7,12 +7,11 @@ using System.Collections.Generic;
 
 namespace MEACruncher {
 
-    public static class DbManager {
-        // ABSTRACT DATA TYPES
-        public enum Database{
-            MeaData,
-        }
+    public enum Database {
+        MeaData,
+    }
 
+    public static class DbManager {
         // VARIABLES
         private static Dictionary<Database, Assembly> _assemblies;
         private static Dictionary<Database, ISessionFactory> _sessionFactories;
@@ -32,14 +31,31 @@ namespace MEACruncher {
                 throw;
             }
         }
+        public static ISession StartSessionWith(Database db) {
+            // Initialize this static class, if necessary
+            if (!_initialized)
+                initialize();
+
+            // Open a new NHibernate session with the associated database
+            try {
+                return _sessionFactories[db].OpenSession();
+            }
+            catch (KeyNotFoundException) {
+                throw;
+            }
+        }
         public static void ConnectTo(Database db, string filePath) {
+            // Initialize this static class, if necessary
+            if (!_initialized)
+                initialize();
+
             // Make sure an actual database file was provided
             if (filePath == null)
                 return;
 
-            // Initialize this static class, if necessary
-            if (!_initialized)
-                initialize();
+            // If this database was already connected to then just return
+            if (_sessionFactories.ContainsKey(db))
+                return;
 
             // Define the NHibernate configuration properties for an Access database
             Dictionary<string, string> props = new Dictionary<string, string>();

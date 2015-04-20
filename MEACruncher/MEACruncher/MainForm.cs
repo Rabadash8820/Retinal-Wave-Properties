@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace MEACruncher {
 
@@ -8,12 +9,8 @@ namespace MEACruncher {
             InitializeComponent();
         }
 
-        private void ExitButton_Click(object sender, System.EventArgs e) {
-            this.Close();
-        }
-
-        private void NewButton_Click(object sender, System.EventArgs e) {
-            new NewProjectForm().Show();
+        private void MainForm_Shown(object sender, EventArgs e) {
+            new MainMenuForm().Show();
         }
     }
 
