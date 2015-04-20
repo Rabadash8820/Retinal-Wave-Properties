@@ -30,8 +30,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\..\..\External_Libraries\NHibernate 4.0.3.GA\Required_Bins\NHibernate.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\Externals\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Externals\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.JetDriver">
+      <HintPath>..\Externals\NHibernate.JetDriver.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.JetDriver.Tests">
+      <HintPath>..\Externals\NHibernate.JetDriver.Tests.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Externals\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,7 +83,7 @@
     <Compile Include="Classes\ModelOrganism.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\NervousSystemRegion.cs">
+    <Compile Include="Classes\Tissue.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Organization.cs">
@@ -116,7 +130,7 @@
     <EmbeddedResource Include="Mappings\Experimenter.hbm.xml" />
     <EmbeddedResource Include="Mappings\Genotype.hbm.xml" />
     <EmbeddedResource Include="Mappings\ModelOrganism.hbm.xml" />
-    <EmbeddedResource Include="Mappings\NervousSystemRegion.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Tissue.hbm.xml" />
     <EmbeddedResource Include="Mappings\Organization.hbm.xml" />
     <EmbeddedResource Include="Mappings\OrganizationRole.hbm.xml" />
     <EmbeddedResource Include="Mappings\OrganizationType.hbm.xml" />
@@ -130,6 +144,10 @@
     <EmbeddedResource Include="Mappings\TissuePreparation.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

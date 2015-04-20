@@ -29,6 +29,7 @@ namespace Neuro {
 
         // FUNCTIONS
         private void Construct() {
+            _strains = new HashSet<Strain>();
             _affiliations = new HashSet<Affiliation>();
         }
         public override object Clone() {

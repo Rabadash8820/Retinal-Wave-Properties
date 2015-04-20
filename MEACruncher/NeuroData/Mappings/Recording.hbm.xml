@@ -1,1 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="Recording" table="Recordings" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="TissueCondition" column="TissueConditionId" not-null="true"/>
+      <property name="Number" column="RecordingNumber" not-null="true"/>
+    </natural-id>
+    <property name="FilePath" column="FilePath" not-null="true" />
+    <property name="MeaRows" column="MeaRows" not-null="false" />
+    <property name="MeaColumns" column="MeaColumns" not-null="false"/>
+    <property name="Comments" column="Comments" not-null="true" />
+    <set name="Channels" table="Channels" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="RecordingId" not-null="true"/>
+      </key>
+      <one-to-many class="Channel"/>
+    </set>
+    <set name="ProjectRecordings" table="ProjectRecordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="RecordingId" not-null="true"/>
+      </key>
+      <one-to-many class="ProjectRecording"/>
+    </set>
+  </class>
+</hibernate-mapping>

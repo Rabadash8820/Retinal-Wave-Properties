@@ -1,1 +1,32 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="Experimenter" table="Experimenters" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <property name="FullName" column="FullName" not-null="true" length="75"/>
+      <property name="WorkEmail" column="WorkEmail" not-null="false" length="75"/>
+      <property name="WorkPhone" column="WorkPhone" not-null="false" length="15"/>
+    </natural-id>
+    <property name="Comments" column="Comments" not-null="false"/>
+    <set name="TissuePreparations" table="TissuePreparations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="PreparerId" not-null="true"/>
+      </key>
+      <one-to-many class="TissuePreparation"/>
+    </set>
+    <set name="ProjectExperimenters" table="ProjectExperimenters" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="ExperimenterId" not-null="true"/>
+      </key>
+      <one-to-many class="ProjectExperimenter"/>
+    </set>
+    <set name="Affiliations" table="Affiliations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="ExperimenterId" not-null="true"/>
+      </key>
+      <one-to-many class="Affiliation"/>
+    </set>
+  </class>
+</hibernate-mapping>

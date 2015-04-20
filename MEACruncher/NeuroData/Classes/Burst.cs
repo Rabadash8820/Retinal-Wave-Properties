@@ -20,6 +20,7 @@ namespace Neuro {
         public virtual int Number { get; set; }
         public virtual double StartTimestamp { get; set; }
         public virtual double EndTimestamp { get; set; }
+        public virtual bool IsWaveAssociated { get; set; }
         public virtual ISet<Spike> Spikes { get; set; }
 
         // FUNCTIONS
@@ -43,6 +44,7 @@ namespace Neuro {
                 clone.Number = b.Number;
                 clone.StartTimestamp = b.StartTimestamp;
                 clone.EndTimestamp = b.EndTimestamp;
+                clone.IsWaveAssociated = b.IsWaveAssociated;
                 foreach (Spike s in b.Spikes)
                     clone.Spikes.Add(Spike.Clone(s, map));
             }
