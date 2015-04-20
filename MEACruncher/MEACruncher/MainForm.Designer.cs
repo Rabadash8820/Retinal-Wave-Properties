@@ -23,57 +23,45 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.LoadButton = new System.Windows.Forms.Button();
-            this.NewButton = new System.Windows.Forms.Button();
-            this.ExitButton = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+            this.MainPicturebox = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.MainPicturebox)).BeginInit();
             this.SuspendLayout();
             // 
-            // LoadButton
+            // MainPicturebox
             // 
-            this.LoadButton.Location = new System.Drawing.Point(79, 45);
-            this.LoadButton.Name = "LoadButton";
-            this.LoadButton.Size = new System.Drawing.Size(87, 31);
-            this.LoadButton.TabIndex = 0;
-            this.LoadButton.Text = "Load Project";
-            this.LoadButton.UseVisualStyleBackColor = true;
-            // 
-            // NewButton
-            // 
-            this.NewButton.Location = new System.Drawing.Point(79, 82);
-            this.NewButton.Name = "NewButton";
-            this.NewButton.Size = new System.Drawing.Size(87, 31);
-            this.NewButton.TabIndex = 0;
-            this.NewButton.Text = "New Project";
-            this.NewButton.UseVisualStyleBackColor = true;
-            // 
-            // ExitButton
-            // 
-            this.ExitButton.Location = new System.Drawing.Point(79, 119);
-            this.ExitButton.Name = "ExitButton";
-            this.ExitButton.Size = new System.Drawing.Size(87, 31);
-            this.ExitButton.TabIndex = 0;
-            this.ExitButton.Text = "Exit";
-            this.ExitButton.UseVisualStyleBackColor = true;
+            this.MainPicturebox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainPicturebox.Image = global::MEACruncher.Properties.Resources.NeuronBackground;
+            this.MainPicturebox.Location = new System.Drawing.Point(0, 0);
+            this.MainPicturebox.Name = "MainPicturebox";
+            this.MainPicturebox.Size = new System.Drawing.Size(944, 501);
+            this.MainPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.MainPicturebox.TabIndex = 1;
+            this.MainPicturebox.TabStop = false;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.ExitButton);
-            this.Controls.Add(this.NewButton);
-            this.Controls.Add(this.LoadButton);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(944, 501);
+            this.Controls.Add(this.MainPicturebox);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Text = "MEA Cruncher";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Shown += new System.EventHandler(this.MainForm_Shown);
+            ((System.ComponentModel.ISupportInitialize)(this.MainPicturebox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button LoadButton;
-        private System.Windows.Forms.Button NewButton;
-        private System.Windows.Forms.Button ExitButton;
+        private System.Windows.Forms.PictureBox MainPicturebox;
+
     }
 }
 

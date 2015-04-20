@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace MEACruncher {
 
@@ -6,6 +7,10 @@ namespace MEACruncher {
         // CONSTRUCTOR
         public MainForm() {
             InitializeComponent();
+        }
+
+        private void MainForm_Shown(object sender, EventArgs e) {
+            new MainMenuForm().Show();
         }
     }
 
