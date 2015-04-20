@@ -30,7 +30,7 @@
             this.CommentsTextbox = new System.Windows.Forms.TextBox();
             this.CreateButton = new System.Windows.Forms.Button();
             this.CancelCreateButton = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.DateStartedTimePicker = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // DateStartedLabel
@@ -46,6 +46,8 @@
             // TitleTextbox
             // 
             this.TitleTextbox.Location = new System.Drawing.Point(83, 9);
+            this.TitleTextbox.MaxLength = 50;
+            this.TitleTextbox.Multiline = true;
             this.TitleTextbox.Name = "TitleTextbox";
             this.TitleTextbox.Size = new System.Drawing.Size(239, 20);
             this.TitleTextbox.TabIndex = 1;
@@ -101,12 +103,12 @@
             this.CancelCreateButton.Text = "Cancel";
             this.CancelCreateButton.UseVisualStyleBackColor = true;
             // 
-            // dateTimePicker1
+            // DateStartedTimePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(83, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(239, 20);
-            this.dateTimePicker1.TabIndex = 13;
+            this.DateStartedTimePicker.Location = new System.Drawing.Point(83, 35);
+            this.DateStartedTimePicker.Name = "DateStartedTimePicker";
+            this.DateStartedTimePicker.Size = new System.Drawing.Size(239, 20);
+            this.DateStartedTimePicker.TabIndex = 13;
             // 
             // NewProjectForm
             // 
@@ -116,7 +118,7 @@
             this.Controls.Add(this.CancelCreateButton);
             this.Controls.Add(this.CreateButton);
             this.Controls.Add(this.TitleLabel);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.DateStartedTimePicker);
             this.Controls.Add(this.DateStartedLabel);
             this.Controls.Add(this.CommentsLabel);
             this.Controls.Add(this.CommentsTextbox);
@@ -124,6 +126,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "NewProjectForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "Create New Project";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -139,6 +142,6 @@
         private System.Windows.Forms.TextBox CommentsTextbox;
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button CancelCreateButton;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker DateStartedTimePicker;
     }
 }

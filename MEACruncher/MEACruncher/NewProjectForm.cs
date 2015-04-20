@@ -16,8 +16,13 @@ namespace MEACruncher {
         public NewProjectForm() {
             InitializeComponent();
 
-            //_db = DbManager.StartSessionWith(Database.MeaData);
-            //_proj = this.CreateNewProject();
+            _db = DbManager.StartSessionWith(Database.MeaData);
+
+            // Bind form controls to a new transient Project object
+            _proj = this.CreateNewProject();
+            this.TitleTextbox.DataBindings.Add("Text", _proj, "Title");
+            this.DateStartedTimePicker.DataBindings.Add("Value", _proj, "DateStarted");
+            this.CommentsTextbox.DataBindings.Add("Text", _proj, "Comments");
         }
 
         // EVENT HANDLERS

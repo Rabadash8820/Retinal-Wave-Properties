@@ -1,1 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="Strain" table="Strains" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="Organism" column="OrganismId" not-null="true"/>
+      <many-to-one name="Genotype" column="GenotypeId" not-null="true"/>
+      <many-to-one name="Breeder" column="BreederId" not-null="true"/>
+    </natural-id>
+    <property name="Description" column="Description" not-null="true" length="25"/>
+    <property name="Comments" column="Comments" not-null="false" />
+    <set name="TissuePreparations" table="TissuePreparations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="StrainId" not-null="true"/>
+      </key>
+      <one-to-many class="TissuePreparation"/>
+    </set>
+  </class>
+</hibernate-mapping>

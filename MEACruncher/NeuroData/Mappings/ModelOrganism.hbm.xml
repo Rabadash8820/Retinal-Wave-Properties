@@ -1,1 +1,19 @@
-﻿<?xml version="1.0" encoding="utf-8" ?> 
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="ModelOrganism" table="ModelOrganisms" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <property name="ScientificName" column="ScientificName" not-null="true" length="75"/>
+    </natural-id>
+    <property name="CommonName" column="CommonName" not-null="false" length="75"/>
+    <property name="Comments" column="Comments" not-null="false" />
+    <set name="Strains" table="Strains" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="OrganismId" not-null="true"/>
+      </key>
+      <one-to-many class="Strain"/>
+    </set>
+  </class>
+</hibernate-mapping>

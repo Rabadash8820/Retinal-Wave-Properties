@@ -17,7 +17,7 @@ namespace Neuro {
 
         // PROPERTIES
         public virtual Strain Strain { get; set; }
-        public virtual NervousSystemRegion NervousSystemRegion { get; set; }
+        public virtual Tissue Tissue { get; set; }
         public virtual DateTime DatePrepared { get; set; }
         public virtual Experimenter Preparer { get; set; }
         public virtual string Comments { get; set; }
@@ -51,7 +51,7 @@ namespace Neuro {
 
             // Clone any remaining object members of the object, and return the clone
             clone.Strain = map.GetEntity<Strain>(Strain.Clone(tp.Strain, map));
-            clone.NervousSystemRegion = map.GetEntity<NervousSystemRegion>(NervousSystemRegion.Clone(tp.NervousSystemRegion, map));
+            clone.Tissue = map.GetEntity<Tissue>(Tissue.Clone(tp.Tissue, map));
             clone.Preparer = map.GetEntity<Experimenter>(Experimenter.Clone(tp.Preparer, map));
             return clone;
         }
