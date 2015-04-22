@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="Burst" table="Bursts" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="Channel" column="ChannelId" not-null="true"/>
+      <property name="Number" column="BurstNumber" not-null="true"/>
+    </natural-id>
+    <property name="StartTimestamp" column="StartTimestamp" not-null="true"/>
+    <property name="EndTimestamp" column="EndTimestamp" not-null="true"/>
+    <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
+    <set name="Spikes" table="Spikes" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="BurstId" not-null="true"/>
+      </key>
+      <one-to-many class="Spike"/>
+    </set>
+  </class>
+</hibernate-mapping>

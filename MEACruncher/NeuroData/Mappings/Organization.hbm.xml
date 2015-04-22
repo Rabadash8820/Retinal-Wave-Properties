@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="NeuroData" namespace="Neuro" auto-import="false">
+  <class name="Organization" table="Organizations" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <property name="Title" column="Title" not-null="true" length="50" />
+      <many-to-one name="Type" column="TypeId" not-null="true"/>
+    </natural-id>
+    <property name="Comments" column="Comments" not-null="false" />
+    <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
+    <set name="Strains" table="Strains" lazy="true" access="nosetter.camelcase-m-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="BreederId" not-null="true"/>
+      </key>
+      <one-to-many class="Strain"/>
+    </set>
+    <set name="Affiliations" table="Affiliations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="OrganizationId" not-null="true"/>
+      </key>
+      <one-to-many class="Affiliation"/>
+    </set>
+  </class>
+</hibernate-mapping>
