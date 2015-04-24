@@ -47,8 +47,8 @@ namespace Neuro {
         }
 
 #pragma warning disable 0067
-        public event PropertyChangedEventHandler PropertyChanged;
-        public event PropertyChangingEventHandler PropertyChanging;
+        public virtual event PropertyChangedEventHandler PropertyChanged;
+        public virtual event PropertyChangingEventHandler PropertyChanging;
 #pragma warning restore 0067
 
     }

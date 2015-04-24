@@ -6,7 +6,7 @@
     </id>
     <natural-id mutable="true">
       <property name="Description" column="Description" not-null="true" length="75"/>
-      <property name="Parent" column="ParentId" not-null="false" />
+      <many-to-one name="Parent" column="ParentId" not-null="false" />
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
     <set name="TissuePreparations" table="TissuePreparations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
@@ -14,6 +14,12 @@
         <column name="TissueId" not-null="true"/>
       </key>
       <one-to-many class="TissuePreparation"/>
+    </set>
+    <set name="Children" table="Tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+      <key unique="true">
+        <column name="ParentId" not-null="true"/>
+      </key>
+      <one-to-many class="Tissue"/>
     </set>
   </class>
 </hibernate-mapping>

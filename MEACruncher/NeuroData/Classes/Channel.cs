@@ -21,6 +21,7 @@ namespace Neuro {
         public virtual string Description { get; set; }
         public virtual int Row { get; set; }
         public virtual int Column { get; set; }
+        public virtual bool IsWaveAssociated { get; set; }
         public virtual ISet<Spike> Spikes {
             get { return _spikes; }
         }

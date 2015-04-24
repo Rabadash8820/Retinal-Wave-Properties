@@ -9,8 +9,7 @@
       <many-to-one name="Type" column="TypeId" not-null="true"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
-    <set name="Strains" table="Strains" lazy="true" access="nosetter.camelcase-m-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Strains" table="Strains" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
       <key unique="true">
         <column name="BreederId" not-null="true"/>
       </key>
