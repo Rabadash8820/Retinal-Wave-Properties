@@ -10,7 +10,8 @@
       <property name="Column" column="MeaColumn" not-null="true"/>
     </natural-id>
     <property name="Description" column="Description" not-null="false" length="25"/>
-    <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
+    <property name="HasMRGC" column="HasMRGC" not-null="false"/>
+    <property name="HasSingleCell" column="HasSingleCell" not-null="false"/>
     <set name="Spikes" table="Spikes" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
       <key unique="true">
         <column name="ChannelId" not-null="true"/>
