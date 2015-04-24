@@ -10,7 +10,7 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with Access databases
-            DbManager.ConnectTo(Database.MeaData, "");
+            DbManager.ConnectTo(Database.MeaData, "neurorecordings");
 
             // Open the main form
             Application.EnableVisualStyles();

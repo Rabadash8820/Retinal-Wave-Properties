@@ -9,7 +9,6 @@ namespace MEACruncher {
 
     public enum Database {
         MeaData,
-        LocationSpecies
     }
 
     public static class DbManager {
@@ -45,13 +44,13 @@ namespace MEACruncher {
                 throw;
             }
         }
-        public static void ConnectTo(Database db, string filePath) {
+        public static void ConnectTo(Database db, string dbName) {
             // Initialize this static class, if necessary
             if (!_initialized)
                 initialize();
 
             // Make sure an actual database file was provided
-            if (filePath == null)
+            if (dbName == null)
                 return;
 
             // If this database was already connected to then just return
@@ -61,11 +60,16 @@ namespace MEACruncher {
             // Define the NHibernate configuration properties for an Access database
             Dictionary<string, string> props = new Dictionary<string, string>();
             props[NHibernate.Cfg.Environment.ConnectionProvider] = @"NHibernate.Connection.DriverConnectionProvider";
-            props[NHibernate.Cfg.Environment.Dialect] = @"NHibernate.JetDriver.JetDialect, NHibernate.JetDriver";
-            props[NHibernate.Cfg.Environment.ConnectionDriver] = @"NHibernate.JetDriver.JetDriver, NHibernate.JetDriver";
+            props[NHibernate.Cfg.Environment.Dialect] = @"NHibernate.Dialect.MySQL5Dialect";    // Note the 5
+            props[NHibernate.Cfg.Environment.ConnectionDriver] = @"NHibernate.Driver.MySqlDataDriver";
             props[NHibernate.Cfg.Environment.BatchSize] = "50";
-            props[NHibernate.Cfg.Environment.ConnectionString] = String.Format(
-                @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0}", filePath);
+            props[NHibernate.Cfg.Environment.ConnectionString] =
+                @"Server=localhost;" +
+                "Port=3306;" +
+                "Database=" + dbName + ";" +
+                "Uid=root;" +
+                "Pwd=mysqlShundra8820;" +
+                "CharSet=utf8;";
 #if DEBUG
                 props[NHibernate.Cfg.Environment.ShowSql] = @"true";
 #endif

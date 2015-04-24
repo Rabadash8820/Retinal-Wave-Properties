@@ -102,6 +102,7 @@
             this.CancelCreateButton.TabIndex = 12;
             this.CancelCreateButton.Text = "Cancel";
             this.CancelCreateButton.UseVisualStyleBackColor = true;
+            this.CancelCreateButton.Click += new System.EventHandler(this.CancelCreateButton_Click);
             // 
             // DateStartedTimePicker
             // 

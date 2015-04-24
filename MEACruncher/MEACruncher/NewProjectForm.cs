@@ -19,16 +19,13 @@ namespace MEACruncher {
             _db = DbManager.StartSessionWith(Database.MeaData);
 
             // Bind form controls to a new transient Project object
-            _proj = this.CreateNewProject();
+            _proj = defaultProject();
             this.TitleTextbox.DataBindings.Add("Text", _proj, "Title");
             this.DateStartedTimePicker.DataBindings.Add("Value", _proj, "DateStarted");
             this.CommentsTextbox.DataBindings.Add("Text", _proj, "Comments");
         }
 
         // EVENT HANDLERS
-        private void CancelCreateButton_Click(object sender, EventArgs e) {
-            this.Destruct();
-        }
         private void CreateButton_Click(object sender, EventArgs e) {
             // Validate the new Project to see if it will conflict with an existing project
             bool titleUnique = _db.QueryOver<Project>()
@@ -51,15 +48,15 @@ namespace MEACruncher {
                 _db.Save(_proj);
                 trans.Commit();
             }
-            OnProjectCreated();
-            this.Destruct();
+            onProjectCreated();
+            destruct();
         }
         private void TitleTextbox_TextChanged(object sender, EventArgs e) {
 
         }
 
         // FUNCTIONS
-        private Project CreateNewProject() {
+        private Project defaultProject() {
             // Get a list of all currently used Project titles in the database
             IList<string> titles = _db.QueryOver<Project>()
                                       .Select(p => p.Title)
@@ -79,7 +76,7 @@ namespace MEACruncher {
             };
             return proj;
         }
-        private void OnProjectCreated() {
+        private void onProjectCreated() {
             if (this.ProjectCreated != null) {
                 foreach (Delegate subscriber in this.ProjectCreated.GetInvocationList()) {
                     Control c = subscriber.Target as Control;
@@ -91,9 +88,13 @@ namespace MEACruncher {
                 }
             }
         }
-        private void Destruct() {
+        private void destruct() {
             _db.Close();
             this.Close();
+        }
+
+        private void CancelCreateButton_Click(object sender, EventArgs e) {
+            destruct();
         }
 
     }
