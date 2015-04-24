@@ -9,6 +9,7 @@ namespace MEACruncher {
 
     public enum Database {
         MeaData,
+        LocationSpecies
     }
 
     public static class DbManager {
