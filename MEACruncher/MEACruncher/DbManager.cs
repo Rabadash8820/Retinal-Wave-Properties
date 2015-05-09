@@ -31,19 +31,6 @@ namespace MEACruncher {
                 throw;
             }
         }
-        public static ISession StartSessionWith(Database db) {
-            // Initialize this static class, if necessary
-            if (!_initialized)
-                initialize();
-
-            // Open a new NHibernate session with the associated database
-            try {
-                return _sessionFactories[db].OpenSession();
-            }
-            catch (KeyNotFoundException) {
-                throw;
-            }
-        }
         public static void ConnectTo(Database db, string dbName) {
             // Initialize this static class, if necessary
             if (!_initialized)
