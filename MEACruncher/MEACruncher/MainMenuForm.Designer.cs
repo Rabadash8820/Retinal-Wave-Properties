@@ -53,8 +53,9 @@
             this.LoadProjectButton.Name = "LoadProjectButton";
             this.LoadProjectButton.Size = new System.Drawing.Size(258, 49);
             this.LoadProjectButton.TabIndex = 0;
-            this.LoadProjectButton.Text = "Load Project";
+            this.LoadProjectButton.Text = "View Projects";
             this.LoadProjectButton.UseVisualStyleBackColor = false;
+            this.LoadProjectButton.Click += new System.EventHandler(this.LoadProjectButton_Click);
             // 
             // OtherDataButton
             // 
@@ -93,6 +94,7 @@
             this.Controls.Add(this.OtherDataButton);
             this.Controls.Add(this.LoadProjectButton);
             this.Controls.Add(this.NewProjectButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainMenuForm";

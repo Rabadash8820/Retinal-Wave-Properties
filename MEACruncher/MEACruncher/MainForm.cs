@@ -10,7 +10,13 @@ namespace MEACruncher {
         }
 
         private void MainForm_Shown(object sender, EventArgs e) {
-            new MainMenuForm().Show();
+            MainMenuForm mainMenuForm = new MainMenuForm();
+            mainMenuForm.FormClosed += mainMenuForm_FormClosed;
+            mainMenuForm.Show();
+        }
+
+        void mainMenuForm_FormClosed(object sender, FormClosedEventArgs e) {
+            this.Close();
         }
     }
 

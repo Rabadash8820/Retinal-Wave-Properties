@@ -10,13 +10,13 @@ namespace MEACruncher {
         // VARIABLES / EVENTS
         private ISession _db;
         private Project _proj;
-        public event EventHandler ProjectCreated;
+        public event ProjectCreatedEventHandler ProjectCreated;
 
         // CONSTRUCTOR
         public NewProjectForm() {
             InitializeComponent();
 
-            _db = DbManager.StartSessionWith(Database.MeaData);
+            _db = DbManager.SessionFactory(Database.MeaData).OpenSession();
 
             // Bind form controls to a new transient Project object
             _proj = defaultProject();
@@ -29,13 +29,15 @@ namespace MEACruncher {
         private void CreateButton_Click(object sender, EventArgs e) {
             // Validate the new Project to see if it will conflict with an existing project
             bool titleUnique = _db.QueryOver<Project>()
-                                  .Where(p => p.Title == _proj.Title)
+                                  .Where(p =>
+                                      p.Title == _proj.Title &&
+                                      p.DateStarted.Date == _proj.DateStarted.Date)
                                   .RowCount() == 0;
 
             // If so, then show a warning to the user
             if (!titleUnique) {
                 DialogResult result = MessageBox.Show(
-                    "An existing project already has this title.  Please enter a different one.",
+                    "An existing project already has this title and start date.  Please enter different values.",
                     "",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Stop,
@@ -43,16 +45,21 @@ namespace MEACruncher {
                 return;
             }
 
-            // Otherwise, persist this new Project in the database and close the form
+            // Otherwise, persist this new Project in the database, ...
             using (ITransaction trans = _db.BeginTransaction()) {
                 _db.Save(_proj);
                 trans.Commit();
             }
             onProjectCreated();
-            destruct();
-        }
-        private void TitleTextbox_TextChanged(object sender, EventArgs e) {
 
+            // ...display a success dialog to the user, and close the form
+            MessageBox.Show("Project created successfully!",
+                            "",
+                            MessageBoxButtons.OK);
+            closeStuff();
+        }
+        private void CancelCreateButton_Click(object sender, EventArgs e) {
+            closeStuff();
         }
 
         // FUNCTIONS
@@ -76,25 +83,22 @@ namespace MEACruncher {
             };
             return proj;
         }
-        private void onProjectCreated() {
-            if (this.ProjectCreated != null) {
-                foreach (Delegate subscriber in this.ProjectCreated.GetInvocationList()) {
-                    Control c = subscriber.Target as Control;
-                    object[] args = new object[] { this, EventArgs.Empty };
-                    if (c != null && c.InvokeRequired)
-                        c.BeginInvoke(subscriber, args);
-                    else
-                        subscriber.DynamicInvoke(args);
-                }
-            }
-        }
-        private void destruct() {
+        private void closeStuff() {
             _db.Close();
             this.Close();
         }
-
-        private void CancelCreateButton_Click(object sender, EventArgs e) {
-            destruct();
+        private void onProjectCreated() {
+            if (this.ProjectCreated != null) {
+                Delegate[] subscribers = this.ProjectCreated.GetInvocationList();
+                foreach (Delegate subscriber in subscribers) {
+                    Control c = subscriber.Target as Control;
+                    ProjectCreatedEventArgs pcea = new ProjectCreatedEventArgs(_proj);
+                    if (c != null && c.InvokeRequired)
+                        c.BeginInvoke(subscriber, this, pcea);
+                    else
+                        subscriber.DynamicInvoke(this, pcea);
+                }
+            }
         }
 
     }
