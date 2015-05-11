@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro {
+namespace MeaData {
 
     public class Project : Entity {
         // VARIABLES
         private ISet<ProjectExperimenter> _projectExperimenters;
-        private ISet<ProjectRecording> _projectRecordings;
+        private ISet<ProjectPopulation> _projectPopulations;
 
         // CONSTRUCTORS
         public Project() {
@@ -23,14 +23,14 @@ namespace Neuro {
         public virtual ISet<ProjectExperimenter> ProjectExperimenters {
             get { return _projectExperimenters; }
         }
-        public virtual ISet<ProjectRecording> ProjectRecordings {
-            get { return _projectRecordings; }
+        public virtual ISet<ProjectPopulation> ProjectPopulations {
+            get { return _projectPopulations; }
         }
 
         // FUNCTIONS
         private void Construct() {
             _projectExperimenters = new HashSet<ProjectExperimenter>();
-            _projectRecordings = new HashSet<ProjectRecording>();
+            _projectPopulations = new HashSet<ProjectPopulation>();
         }
         public override object Clone() {
             return Project.Clone(this, new EntityMap());
@@ -51,8 +51,8 @@ namespace Neuro {
                 clone.Comments = p.Comments;
                 foreach (ProjectExperimenter pe in p.ProjectExperimenters)
                     clone.ProjectExperimenters.Add(ProjectExperimenter.Clone(pe, map));
-                foreach (ProjectRecording pr in p.ProjectRecordings)
-                    clone.ProjectRecordings.Add(ProjectRecording.Clone(pr, map));
+                foreach (ProjectPopulation pr in p.ProjectPopulations)
+                    clone.ProjectPopulations.Add(ProjectPopulation.Clone(pr, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro {
+namespace MeaData {
 
     public class TissuePreparation : Entity {
         // VARIABLES
-        private ISet<TissueCondition> _tissueConditions;
+        private ISet<Recording> _recordings;
 
         // CONSTRUCTORS
         public TissuePreparation() {
@@ -16,18 +16,17 @@ namespace Neuro {
         }
 
         // PROPERTIES
-        public virtual Strain Strain { get; set; }
-        public virtual Tissue Tissue { get; set; }
+        public virtual Population Population { get; set; }
         public virtual DateTime DatePrepared { get; set; }
         public virtual Experimenter Preparer { get; set; }
         public virtual string Comments { get; set; }
-        public virtual ISet<TissueCondition> TissueConditions {
-            get { return _tissueConditions; }
+        public virtual ISet<Recording> Recordings {
+            get { return _recordings; }
         }
 
         // FUNCTIONS
         private void Construct() {
-            _tissueConditions = new HashSet<TissueCondition>();
+            _recordings = new HashSet<Recording>();
         }
         public override object Clone() {
             return TissuePreparation.Clone(this, new EntityMap());
@@ -45,13 +44,12 @@ namespace Neuro {
 
                 clone.DatePrepared = tp.DatePrepared;
                 clone.Comments = tp.Comments;
-                foreach (TissueCondition tc in tp.TissueConditions)
-                    clone.TissueConditions.Add(TissueCondition.Clone(tc, map));
+                foreach (Recording r in tp.Recordings)
+                    clone.Recordings.Add(Recording.Clone(r, map));
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.Strain = map.GetEntity<Strain>(Strain.Clone(tp.Strain, map));
-            clone.Tissue = map.GetEntity<Tissue>(Tissue.Clone(tp.Tissue, map));
+            clone.Population = map.GetEntity<Population>(Population.Clone(tp.Population, map));
             clone.Preparer = map.GetEntity<Experimenter>(Experimenter.Clone(tp.Preparer, map));
             return clone;
         }

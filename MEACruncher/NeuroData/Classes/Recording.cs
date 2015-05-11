@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro {
+namespace MeaData {
 
     public class Recording : Entity {
         // VARIABLES
         private ISet<Channel> _channels;
-        private ISet<ProjectRecording> _projectRecordings;
 
         // CONSTRUCTORS
         public Recording() {
@@ -18,7 +17,7 @@ namespace Neuro {
 
         // PROPERTIES
         public virtual string FilePath { get; set; }
-        public virtual TissueCondition TissueCondition { get; set; }
+        public virtual TissuePreparation TissuePreparation { get; set; }
         public virtual int Number { get; set; }
         public virtual int MeaRows { get; set; }
         public virtual int MeaColumns { get; set; }
@@ -26,14 +25,10 @@ namespace Neuro {
         public virtual ISet<Channel> Channels {
             get { return _channels; }
         }
-        public virtual ISet<ProjectRecording> ProjectRecordings {
-            get { return _projectRecordings; }
-        }
 
         // FUNCTIONS
         private void Construct() {
             _channels = new HashSet<Channel>();
-            _projectRecordings = new HashSet<ProjectRecording>();
         }
         public override object Clone() {
             return Recording.Clone(this, new EntityMap());
@@ -56,12 +51,9 @@ namespace Neuro {
                 clone.Comments = r.Comments;
                 foreach (Channel ch in r.Channels)
                     clone.Channels.Add(Channel.Clone(ch, map));
-                foreach (ProjectRecording pr in r.ProjectRecordings)
-                    clone.ProjectRecordings.Add(ProjectRecording.Clone(pr, map));
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.TissueCondition = map.GetEntity<TissueCondition>(r.TissueCondition); 
             return clone;
         }
     }

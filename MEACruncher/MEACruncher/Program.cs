@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using MEACruncher.Properties;
 
 namespace MEACruncher {
 
@@ -10,7 +11,7 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with Access databases
-            DbManager.ConnectTo(Database.MeaData, "neurorecordings");
+            DbManager.ConnectTo(Database.MeaData, Resources.CurrentDbVersion);
 
             // Open the main form
             Application.EnableVisualStyles();

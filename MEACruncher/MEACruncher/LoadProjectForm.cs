@@ -1,5 +1,5 @@
 ﻿using NHibernate;
-using Neuro;
+using MeaData;
 using System;
 using System.Reflection;
 using System.Windows.Forms;
