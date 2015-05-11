@@ -7,14 +7,14 @@ using System.Collections.Generic;
 
 namespace MEACruncher {
 
-    public partial class LoadProjectForm : Form {
+    public partial class ViewProjectsForm : Form {
 
         // VARIABLES
         private ISession _db;
         private BindingSource _projects;
 
         // CONSTRUCTORS
-        public LoadProjectForm() {
+        public ViewProjectsForm() {
             InitializeComponent();
 
             initialize();
@@ -70,9 +70,12 @@ namespace MEACruncher {
             DateStartedColumn.DataPropertyName = "DateStarted";
             CommentsColumn.DataPropertyName = "Comments";
             ProjectsDGV.AutoGenerateColumns = false;
+            ProjectsDGV.DataBindingComplete += ProjectsDGV_DataBindingComplete;
             ProjectsDGV.DataSource = _projects;
-            foreach (DataGridViewRow row in ProjectsDGV.SelectedRows)
-                row.Selected = false;
+        }
+
+        void ProjectsDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
+            ProjectsDGV.ClearSelection();
         }
         private bool recordDeleted(Project p) {
             // Show a dialog asking the user if they really want to delete the record

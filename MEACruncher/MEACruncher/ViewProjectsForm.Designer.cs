@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher {
-    partial class LoadProjectForm {
+    partial class ViewProjectsForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,14 +25,14 @@
         private void InitializeComponent() {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.ProjectsDGV = new System.Windows.Forms.DataGridView();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.NewButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CancelEditButton = new System.Windows.Forms.Button();
+            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProjectsDGV)).BeginInit();
             this.panel1.SuspendLayout();
@@ -70,27 +70,10 @@
             this.ProjectsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ProjectsDGV.Size = new System.Drawing.Size(581, 213);
             this.ProjectsDGV.TabIndex = 0;
+            this.ProjectsDGV.TabStop = false;
             this.ProjectsDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProjectsDGV_CellFormatting);
             this.ProjectsDGV.SelectionChanged += new System.EventHandler(this.ProjectsDGV_SelectionChanged);
             this.ProjectsDGV.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ProjectsDGV_UserDeletingRow);
-            // 
-            // TitleColumn
-            // 
-            this.TitleColumn.HeaderText = "Title";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.Width = 52;
-            // 
-            // DateStartedColumn
-            // 
-            this.DateStartedColumn.HeaderText = "Date Started";
-            this.DateStartedColumn.Name = "DateStartedColumn";
-            this.DateStartedColumn.Width = 92;
-            // 
-            // CommentsColumn
-            // 
-            this.CommentsColumn.HeaderText = "Comments";
-            this.CommentsColumn.Name = "CommentsColumn";
-            this.CommentsColumn.Width = 81;
             // 
             // panel1
             // 
@@ -110,7 +93,7 @@
             this.NewButton.Location = new System.Drawing.Point(254, 3);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(75, 23);
-            this.NewButton.TabIndex = 3;
+            this.NewButton.TabIndex = 0;
             this.NewButton.Text = "New";
             this.NewButton.UseVisualStyleBackColor = true;
             this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
@@ -122,7 +105,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(416, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
-            this.DeleteButton.TabIndex = 3;
+            this.DeleteButton.TabIndex = 2;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -144,10 +127,30 @@
             this.CancelEditButton.Location = new System.Drawing.Point(497, 3);
             this.CancelEditButton.Name = "CancelEditButton";
             this.CancelEditButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelEditButton.TabIndex = 2;
+            this.CancelEditButton.TabIndex = 3;
             this.CancelEditButton.Text = "Close";
             this.CancelEditButton.UseVisualStyleBackColor = true;
             this.CancelEditButton.Click += new System.EventHandler(this.CancelEditButton_Click);
+            // 
+            // TitleColumn
+            // 
+            this.TitleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TitleColumn.HeaderText = "Title";
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.Width = 52;
+            // 
+            // DateStartedColumn
+            // 
+            this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DateStartedColumn.HeaderText = "Date Started";
+            this.DateStartedColumn.Name = "DateStartedColumn";
+            this.DateStartedColumn.Width = 92;
+            // 
+            // CommentsColumn
+            // 
+            this.CommentsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CommentsColumn.HeaderText = "Comments";
+            this.CommentsColumn.Name = "CommentsColumn";
             // 
             // LoadProjectForm
             // 
@@ -168,14 +171,14 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.DataGridView ProjectsDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button CancelEditButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button NewButton;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
 
     }
 }

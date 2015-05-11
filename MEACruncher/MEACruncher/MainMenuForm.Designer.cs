@@ -23,25 +23,11 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.NewProjectButton = new System.Windows.Forms.Button();
             this.LoadProjectButton = new System.Windows.Forms.Button();
             this.OtherDataButton = new System.Windows.Forms.Button();
             this.ExitAppButton = new System.Windows.Forms.Button();
+            this.ExperimentersButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // NewProjectButton
-            // 
-            this.NewProjectButton.AutoSize = true;
-            this.NewProjectButton.BackColor = System.Drawing.Color.CornflowerBlue;
-            this.NewProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NewProjectButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NewProjectButton.Location = new System.Drawing.Point(12, 12);
-            this.NewProjectButton.Name = "NewProjectButton";
-            this.NewProjectButton.Size = new System.Drawing.Size(258, 49);
-            this.NewProjectButton.TabIndex = 0;
-            this.NewProjectButton.Text = "Create New Project";
-            this.NewProjectButton.UseVisualStyleBackColor = false;
-            this.NewProjectButton.Click += new System.EventHandler(this.NewProjectButton_Click);
             // 
             // LoadProjectButton
             // 
@@ -49,7 +35,7 @@
             this.LoadProjectButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.LoadProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadProjectButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadProjectButton.Location = new System.Drawing.Point(12, 65);
+            this.LoadProjectButton.Location = new System.Drawing.Point(12, 12);
             this.LoadProjectButton.Name = "LoadProjectButton";
             this.LoadProjectButton.Size = new System.Drawing.Size(258, 49);
             this.LoadProjectButton.TabIndex = 0;
@@ -63,7 +49,7 @@
             this.OtherDataButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.OtherDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OtherDataButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OtherDataButton.Location = new System.Drawing.Point(12, 118);
+            this.OtherDataButton.Location = new System.Drawing.Point(12, 122);
             this.OtherDataButton.Name = "OtherDataButton";
             this.OtherDataButton.Size = new System.Drawing.Size(258, 49);
             this.OtherDataButton.TabIndex = 0;
@@ -76,7 +62,7 @@
             this.ExitAppButton.BackColor = System.Drawing.Color.CornflowerBlue;
             this.ExitAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitAppButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitAppButton.Location = new System.Drawing.Point(12, 171);
+            this.ExitAppButton.Location = new System.Drawing.Point(12, 175);
             this.ExitAppButton.Name = "ExitAppButton";
             this.ExitAppButton.Size = new System.Drawing.Size(258, 49);
             this.ExitAppButton.TabIndex = 0;
@@ -84,16 +70,29 @@
             this.ExitAppButton.UseVisualStyleBackColor = false;
             this.ExitAppButton.Click += new System.EventHandler(this.ExitAppButton_Click);
             // 
+            // ExperimentersButton
+            // 
+            this.ExperimentersButton.AutoSize = true;
+            this.ExperimentersButton.BackColor = System.Drawing.Color.CornflowerBlue;
+            this.ExperimentersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ExperimentersButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ExperimentersButton.Location = new System.Drawing.Point(12, 67);
+            this.ExperimentersButton.Name = "ExperimentersButton";
+            this.ExperimentersButton.Size = new System.Drawing.Size(261, 49);
+            this.ExperimentersButton.TabIndex = 1;
+            this.ExperimentersButton.Text = "View Experimenters";
+            this.ExperimentersButton.UseVisualStyleBackColor = false;
+            // 
             // MainMenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(279, 230);
+            this.ClientSize = new System.Drawing.Size(279, 238);
+            this.Controls.Add(this.ExperimentersButton);
             this.Controls.Add(this.ExitAppButton);
             this.Controls.Add(this.OtherDataButton);
             this.Controls.Add(this.LoadProjectButton);
-            this.Controls.Add(this.NewProjectButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -107,9 +106,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Button NewProjectButton;
         private System.Windows.Forms.Button LoadProjectButton;
         private System.Windows.Forms.Button OtherDataButton;
         private System.Windows.Forms.Button ExitAppButton;
+        private System.Windows.Forms.Button ExperimentersButton;
     }
 }
