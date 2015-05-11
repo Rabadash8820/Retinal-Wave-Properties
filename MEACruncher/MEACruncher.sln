@@ -44,6 +44,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{0977423A-E628-49BA-A026-8B6F49E2367A}"
 	ProjectSection(SolutionItems) = preProject
 		Externals\log4net.dll = Externals\log4net.dll
+		Externals\MySql.Data.dll = Externals\MySql.Data.dll
 		Externals\nhibernate-configuration.xsd = Externals\nhibernate-configuration.xsd
 		Externals\nhibernate-mapping.xsd = Externals\nhibernate-mapping.xsd
 		Externals\NHibernate.dll = Externals\NHibernate.dll
