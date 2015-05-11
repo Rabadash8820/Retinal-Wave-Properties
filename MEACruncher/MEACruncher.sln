@@ -54,6 +54,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{
 		Externals\nunit.framework.dll = Externals\nunit.framework.dll
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db_Versions", "Db_Versions", "{B57393BE-32AA-449E-9EB3-5A116F151EB5}"
+	ProjectSection(SolutionItems) = preProject
+		Db_Versions\meadata_v2.0.sql = Db_Versions\meadata_v2.0.sql
+		Db_Versions\meadata_v2_1.sql = Db_Versions\meadata_v2_1.sql
+		Db_Versions\meadata_v3_0.sql = Db_Versions\meadata_v3_0.sql
+		Db_Versions\NeuroRecordings.accdb = Db_Versions\NeuroRecordings.accdb
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
