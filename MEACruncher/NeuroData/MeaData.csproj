@@ -7,8 +7,8 @@
     <ProjectGuid>{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Neuro</RootNamespace>
-    <AssemblyName>NeuroData</AssemblyName>
+    <RootNamespace>MeaData</RootNamespace>
+    <AssemblyName>MeaData</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -59,6 +59,7 @@
     <Compile Include="Classes\Channel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\ResultType.cs" />
     <Compile Include="Classes\Condition.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -77,6 +78,7 @@
     <Compile Include="Classes\ModelOrganism.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Result.cs" />
     <Compile Include="Classes\Tissue.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -95,7 +97,7 @@
     <Compile Include="Classes\ProjectExperimenter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\ProjectRecording.cs">
+    <Compile Include="Classes\ProjectPopulation.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Recording.cs">
@@ -107,7 +109,7 @@
     <Compile Include="Classes\Strain.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\TissueCondition.cs">
+    <Compile Include="Classes\Population.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\TissuePreparation.cs">
@@ -115,7 +117,9 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\ResultType.hbm.xml" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\Affiliation.hbm.xml" />
     <EmbeddedResource Include="Mappings\Burst.hbm.xml" />
@@ -130,12 +134,15 @@
     <EmbeddedResource Include="Mappings\OrganizationType.hbm.xml" />
     <EmbeddedResource Include="Mappings\Project.hbm.xml" />
     <EmbeddedResource Include="Mappings\ProjectExperimenter.hbm.xml" />
-    <EmbeddedResource Include="Mappings\ProjectRecording.hbm.xml" />
+    <EmbeddedResource Include="Mappings\ProjectPopulation.hbm.xml" />
     <EmbeddedResource Include="Mappings\Recording.hbm.xml" />
     <EmbeddedResource Include="Mappings\Spike.hbm.xml" />
     <EmbeddedResource Include="Mappings\Strain.hbm.xml" />
-    <EmbeddedResource Include="Mappings\TissueCondition.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Population.hbm.xml" />
     <EmbeddedResource Include="Mappings\TissuePreparation.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\Result.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

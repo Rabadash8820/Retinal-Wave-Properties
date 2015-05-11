@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro {
+namespace MeaData {
 
     public class Condition : Entity {
         // VARIABLES
-        private ISet<TissueCondition> _tissueConditions;
+        private ISet<Population> _populations;
 
         // CONSTRUCTORS
         public Condition() {
@@ -17,13 +17,13 @@ namespace Neuro {
 
         // PROPERTIES
         public virtual string Description { get; set; }
-        public virtual ISet<TissueCondition> TissueConditions {
-            get { return _tissueConditions; }
+        public virtual ISet<Population> Populations {
+            get { return _populations; }
     }
 
         // FUNCTIONS
         private void Construct() {
-            _tissueConditions = new HashSet<TissueCondition>();
+            _populations = new HashSet<Population>();
         }
         public override object Clone() {
             return Condition.Clone(this, new EntityMap());
@@ -40,8 +40,8 @@ namespace Neuro {
                 map.Add(c, clone);
 
                 clone.Description = c.Description;
-                foreach (TissueCondition tc in c.TissueConditions)
-                    clone.TissueConditions.Add(TissueCondition.Clone(tc, map));
+                foreach (Population tc in c.Populations)
+                    clone.Populations.Add(Population.Clone(tc, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

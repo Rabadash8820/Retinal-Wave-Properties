@@ -1,8 +1,6 @@
-CREATE DATABASE  IF NOT EXISTS `neurorecordings` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `neurorecordings`;
 -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
--- Host: localhost    Database: neurorecordings
+-- Host: localhost    Database: meadata_v2_0
 -- ------------------------------------------------------
 -- Server version	5.6.24-log
 

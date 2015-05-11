@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 
-namespace Neuro {
+namespace MeaData {
 
     public class Entity {
         // VARIABLES

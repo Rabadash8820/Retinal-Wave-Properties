@@ -136,9 +136,9 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NeuroData\NeuroData.csproj">
+    <ProjectReference Include="..\NeuroData\MeaData.csproj">
       <Project>{b6af7cec-f339-4e94-9260-b764dd5d6fa8}</Project>
-      <Name>NeuroData</Name>
+      <Name>MeaData</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

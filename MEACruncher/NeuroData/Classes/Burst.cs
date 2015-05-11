@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Neuro {
+namespace MeaData {
 
     public class Burst : Entity {
         // VARIABLES

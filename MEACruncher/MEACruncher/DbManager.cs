@@ -1,6 +1,6 @@
 ﻿using NHibernate;
 using NHibernate.Cfg;
-using Neuro;
+using MeaData;
 using System;
 using System.Reflection;
 using System.Collections.Generic;
