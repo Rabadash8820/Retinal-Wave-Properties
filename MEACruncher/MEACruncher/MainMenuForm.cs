@@ -11,12 +11,8 @@ namespace MEACruncher {
             this.Close();
         }
 
-        private void NewProjectButton_Click(object sender, EventArgs e) {
-            new NewProjectForm().Show();
-        }
-
         private void LoadProjectButton_Click(object sender, EventArgs e) {
-            new LoadProjectForm().Show();
+            new ViewProjectsForm().Show();
         }
     }
 }
