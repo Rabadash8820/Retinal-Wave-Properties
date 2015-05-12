@@ -36,7 +36,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Nex_Analysis_Templates", "N
 		Old_Scripts\Nex_Analysis_Templates\RennaBurstAnalysis.ntp = Old_Scripts\Nex_Analysis_Templates\RennaBurstAnalysis.ntp
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{0977423A-E628-49BA-A026-8B6F49E2367A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Required Bins", "Required Bins", "{0977423A-E628-49BA-A026-8B6F49E2367A}"
 	ProjectSection(SolutionItems) = preProject
 		Externals\log4net.dll = Externals\log4net.dll
 		Externals\MySql.Data.dll = Externals\MySql.Data.dll
@@ -49,11 +49,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Externals", "Externals", "{
 		Externals\nunit.framework.dll = Externals\nunit.framework.dll
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db_Versions", "Db_Versions", "{7DAE4D56-23AC-4EFD-A858-9C1899C6297D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Db Versions", "Db Versions", "{7DAE4D56-23AC-4EFD-A858-9C1899C6297D}"
 	ProjectSection(SolutionItems) = preProject
 		Db_Versions\meadata_v2.0.sql = Db_Versions\meadata_v2.0.sql
-		Db_Versions\meadata_v2_1.sql = Db_Versions\meadata_v2_1.sql
-		Db_Versions\meadata_v3_0.sql = Db_Versions\meadata_v3_0.sql
+		Db_Versions\meadata_v2.1.sql = Db_Versions\meadata_v2.1.sql
+		Db_Versions\meadata_v3.0.sql = Db_Versions\meadata_v3.0.sql
 		Db_Versions\NeuroRecordings.accdb = Db_Versions\NeuroRecordings.accdb
 	EndProjectSection
 EndProject
