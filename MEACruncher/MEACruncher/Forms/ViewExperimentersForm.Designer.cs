@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher {
-    partial class ViewProjectsForm {
+    partial class ViewExperimentersForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -144,7 +144,6 @@
             // CloseButton
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.CloseButton.Location = new System.Drawing.Point(497, 3);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
@@ -153,15 +152,15 @@
             this.CloseButton.UseVisualStyleBackColor = true;
             this.CloseButton.Click += new System.EventHandler(this.CancelEditButton_Click);
             // 
-            // ViewProjectsForm
+            // ViewExperimentersForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseButton;
             this.ClientSize = new System.Drawing.Size(587, 254);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "ViewProjectsForm";
-            this.Text = "Projects";
+            this.Name = "ViewExperimentersForm";
+            this.Text = "Experimenters";
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ProjectsDGV)).EndInit();
             this.panel1.ResumeLayout(false);

@@ -79,17 +79,17 @@
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewExperimenterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewExperimenterForm.Designer.cs">
-      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ViewExperimentersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewExperimentersForm.Designer.cs">
+      <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
@@ -105,11 +105,11 @@
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewExperimenterForm.resx">
-      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewExperimentersForm.resx">
+      <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>

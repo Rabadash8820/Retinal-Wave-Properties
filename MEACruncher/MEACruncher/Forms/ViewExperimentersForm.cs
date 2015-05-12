@@ -6,14 +6,14 @@ using System.Collections.Generic;
 
 namespace MEACruncher {
 
-    public partial class ViewProjectsForm : Form {
+    public partial class ViewExperimentersForm : Form {
 
         // VARIABLES
         private ISession _db;
         private BindingSource _projects;
 
         // CONSTRUCTORS
-        public ViewProjectsForm() {
+        public ViewExperimentersForm() {
             InitializeComponent();
 
             initialize();

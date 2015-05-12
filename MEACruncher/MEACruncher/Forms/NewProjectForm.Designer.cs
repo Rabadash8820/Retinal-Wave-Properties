@@ -156,6 +156,7 @@
             this.AcceptButton = this.CreateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.CancelCreateButton;
             this.ClientSize = new System.Drawing.Size(335, 200);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;

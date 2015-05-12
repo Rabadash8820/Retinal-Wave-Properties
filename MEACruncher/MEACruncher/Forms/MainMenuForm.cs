@@ -12,7 +12,11 @@ namespace MEACruncher {
         }
 
         private void LoadProjectButton_Click(object sender, EventArgs e) {
-            new ViewProjectsForm().Show();
+            new ViewProjectsForm().ShowDialog();
+        }
+
+        private void ExperimentersButton_Click(object sender, EventArgs e) {
+            new ViewExperimentersForm().ShowDialog();
         }
     }
 }
