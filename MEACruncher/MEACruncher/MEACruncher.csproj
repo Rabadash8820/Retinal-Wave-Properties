@@ -32,9 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>MeaCruncher.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -70,44 +70,64 @@
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs" />
+    <Compile Include="Forms\MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\MainMenuForm.Designer.cs" />
+    <Compile Include="Forms\MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewExperimenterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewExperimenterForm.Designer.cs" />
+    <Compile Include="Forms\NewExperimenterForm.Designer.cs">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewProjectForm.Designer.cs" />
+    <Compile Include="Forms\NewProjectForm.Designer.cs">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewProjectsForm.Designer.cs" />
+    <Compile Include="Forms\ViewProjectsForm.Designer.cs">
+      <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\MainForm.resx" />
-    <EmbeddedResource Include="Forms\MainMenuForm.resx" />
-    <EmbeddedResource Include="Forms\NewExperimenterForm.resx" />
-    <EmbeddedResource Include="Forms\NewProjectForm.resx" />
-    <EmbeddedResource Include="Forms\ViewProjectsForm.resx" />
+    <EmbeddedResource Include="Forms\MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewExperimenterForm.resx">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewProjectForm.resx">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ViewProjectsForm.resx">
+      <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -124,15 +144,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\NeuronBackground.jpg" />
+    <None Include="Resource Files\NeuronBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MeaCruncher.ico" />
     <Content Include="meadata.sql">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Logo.gif" />
-    <None Include="Resources\Logo1.gif" />
-    <Content Include="Resources\MEA_circuit.ico" />
+    <Content Include="Resource Files\MeaCruncher.ico" />
+    <Content Include="Resource Files\MeaCruncher.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -52,7 +52,9 @@ namespace MEACruncher {
         void NewProjectForm_ProjectCreated(object sender, ProjectCreatedEventArgs e) {
             _projects.Add(e.Project);
         }
-
+        void ProjectsDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
+            ProjectsDGV.ClearSelection();
+        }
 
         // FUNCTIONS
         private void initialize() {
@@ -71,10 +73,6 @@ namespace MEACruncher {
             ProjectsDGV.AutoGenerateColumns = false;
             ProjectsDGV.DataBindingComplete += ProjectsDGV_DataBindingComplete;
             ProjectsDGV.DataSource = _projects;
-        }
-
-        void ProjectsDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            ProjectsDGV.ClearSelection();
         }
         private bool recordDeleted(Project p) {
             // Show a dialog asking the user if they really want to delete the record
