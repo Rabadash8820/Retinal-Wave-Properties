@@ -1,7 +1,6 @@
 ﻿using NHibernate;
 using MeaData;
 using System;
-using System.Reflection;
 using System.Windows.Forms;
 using System.Collections.Generic;
 

@@ -11,7 +11,7 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with Access databases
-            DbManager.ConnectTo(Database.MeaData, Resources.CurrentDbVersion);
+            DbManager.ConnectTo(Database.MeaData, Resources.DbName, Resources.DbScriptName);
 
             // Open the main form
             Application.EnableVisualStyles();
