@@ -61,11 +61,20 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to meadata_v3_0.
+        ///   Looks up a localized string similar to meadata.
         /// </summary>
-        internal static string CurrentDbVersion {
+        internal static string DbName {
             get {
-                return ResourceManager.GetString("CurrentDbVersion", resourceCulture);
+                return ResourceManager.GetString("DbName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to meadata.sql.
+        /// </summary>
+        internal static string DbScriptName {
+            get {
+                return ResourceManager.GetString("DbScriptName", resourceCulture);
             }
         }
         
