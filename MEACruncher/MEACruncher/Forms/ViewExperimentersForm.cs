@@ -1,16 +1,17 @@
 ﻿using NHibernate;
 using MeaData;
+using MEACruncher.Events;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher {
+namespace MEACruncher.Forms {
 
     public partial class ViewExperimentersForm : Form {
 
         // VARIABLES
         private ISession _db;
-        private BindingSource _projects;
+        private BindingSource _experimenters;
 
         // CONSTRUCTORS
         public ViewExperimentersForm() {
@@ -25,7 +26,7 @@ namespace MEACruncher {
             closeStuff();
         }
         private void ProjectsDGV_SelectionChanged(object sender, System.EventArgs e) {
-            bool rowSelected = (ProjectsDGV.SelectedRows.Count > 0);
+            bool rowSelected = (ExperimentersDGV.SelectedRows.Count > 0);
             EditButton.Enabled = rowSelected;
             DeleteButton.Enabled = rowSelected;
         }
@@ -34,45 +35,39 @@ namespace MEACruncher {
             e.Cancel = cancelDelete;
         }
         private void DeleteButton_Click(object sender, System.EventArgs e) {
-            Project p = ProjectsDGV.SelectedRows[0].DataBoundItem as Project;
+            Project p = ExperimentersDGV.SelectedRows[0].DataBoundItem as Project;
             if (recordDeleted(p))
-                _projects.Remove(p);
-        }
-        private void ProjectsDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (e.ColumnIndex != DateStartedColumn.Index)
-                return;
-            DateTime? dateTime = e.Value as DateTime?;
-            e.Value = dateTime.Value.Date;
+                _experimenters.Remove(p);
         }
         private void NewButton_Click(object sender, EventArgs e) {
             NewProjectForm npf = new NewProjectForm();
-            npf.ProjectCreated += NewProjectForm_ProjectCreated;
+            npf.EntityCreated += NewProjectForm_EntityCreated;
             npf.ShowDialog();
         }
-        void NewProjectForm_ProjectCreated(object sender, ProjectCreatedEventArgs e) {
-            _projects.Add(e.Project);
+        void NewProjectForm_EntityCreated(object sender, EntityCreatedEventArgs<Project> e) {
+            _experimenters.Add(e.Entity);
         }
         void ProjectsDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            ProjectsDGV.ClearSelection();
+            ExperimentersDGV.ClearSelection();
         }
 
         // FUNCTIONS
         private void initialize() {
             // Set private members
             _db = DbManager.SessionFactory(Database.MeaData).OpenSession();
-            _projects = new BindingSource();
-            _projects.DataSource = _db.QueryOver<Project>()
-                                      .OrderBy(p => p.Title).Asc
-                                      .OrderBy(p => p.DateStarted).Asc
-                                      .List();
+            _experimenters = new BindingSource();
+            _experimenters.DataSource = _db.QueryOver<Experimenter>()
+                                           .OrderBy(e => e.FullName).Asc
+                                           .List();
 
             // Initialize the dataGridView
-            TitleColumn.DataPropertyName = "Title";
-            DateStartedColumn.DataPropertyName = "DateStarted";
+            FullNameColumn.DataPropertyName = "FullName";
+            EmailColumn.DataPropertyName = "WorkEmail";
+            PhoneColumn.DataPropertyName = "WorkPhone";
             CommentsColumn.DataPropertyName = "Comments";
-            ProjectsDGV.AutoGenerateColumns = false;
-            ProjectsDGV.DataBindingComplete += ProjectsDGV_DataBindingComplete;
-            ProjectsDGV.DataSource = _projects;
+            ExperimentersDGV.AutoGenerateColumns = false;
+            ExperimentersDGV.DataBindingComplete += ProjectsDGV_DataBindingComplete;
+            ExperimentersDGV.DataSource = _experimenters;
         }
         private bool recordDeleted(Project p) {
             // Show a dialog asking the user if they really want to delete the record

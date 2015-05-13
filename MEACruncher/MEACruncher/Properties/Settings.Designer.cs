@@ -50,5 +50,14 @@ namespace MEACruncher.Properties {
                 return ((string)(this["mysqlDbName"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Segoe UI, 10pt")]
+        public global::System.Drawing.Font controlFont {
+            get {
+                return ((global::System.Drawing.Font)(this["controlFont"]));
+            }
+        }
     }
 }

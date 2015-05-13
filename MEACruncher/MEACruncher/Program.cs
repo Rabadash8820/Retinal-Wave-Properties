@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MEACruncher.Properties;
+using MEACruncher.Forms;
 
 namespace MEACruncher {
 

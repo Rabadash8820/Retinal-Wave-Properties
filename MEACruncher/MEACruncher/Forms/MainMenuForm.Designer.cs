@@ -1,4 +1,4 @@
-﻿namespace MEACruncher {
+﻿namespace MEACruncher.Forms {
     partial class MainMenuForm {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +39,7 @@
             this.OrganizationsButton.Location = new System.Drawing.Point(9, 120);
             this.OrganizationsButton.Name = "OrganizationsButton";
             this.OrganizationsButton.Size = new System.Drawing.Size(261, 49);
-            this.OrganizationsButton.TabIndex = 1;
+            this.OrganizationsButton.TabIndex = 2;
             this.OrganizationsButton.Text = "View Organizations";
             this.OrganizationsButton.UseVisualStyleBackColor = false;
             this.OrganizationsButton.Click += new System.EventHandler(this.ExperimentersButton_Click);
@@ -67,7 +67,7 @@
             this.ExitAppButton.Location = new System.Drawing.Point(9, 228);
             this.ExitAppButton.Name = "ExitAppButton";
             this.ExitAppButton.Size = new System.Drawing.Size(261, 49);
-            this.ExitAppButton.TabIndex = 3;
+            this.ExitAppButton.TabIndex = 4;
             this.ExitAppButton.Text = "Exit";
             this.ExitAppButton.UseVisualStyleBackColor = false;
             this.ExitAppButton.Click += new System.EventHandler(this.ExitAppButton_Click);
@@ -81,7 +81,7 @@
             this.OtherDataButton.Location = new System.Drawing.Point(9, 174);
             this.OtherDataButton.Name = "OtherDataButton";
             this.OtherDataButton.Size = new System.Drawing.Size(261, 49);
-            this.OtherDataButton.TabIndex = 2;
+            this.OtherDataButton.TabIndex = 3;
             this.OtherDataButton.Text = "View Other Data";
             this.OtherDataButton.UseVisualStyleBackColor = false;
             // 
@@ -115,6 +115,7 @@
             this.MinimizeBox = false;
             this.Name = "MainMenuForm";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Welcome to MEA Cruncher";
             this.ResumeLayout(false);

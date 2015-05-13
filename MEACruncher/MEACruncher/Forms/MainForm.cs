@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MEACruncher {
+namespace MEACruncher.Forms {
 
     public partial class MainForm : Form {
         // CONSTRUCTOR
