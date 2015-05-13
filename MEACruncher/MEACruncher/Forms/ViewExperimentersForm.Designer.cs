@@ -1,4 +1,4 @@
-﻿namespace MEACruncher {
+﻿namespace MEACruncher.Forms {
     partial class ViewExperimentersForm {
         /// <summary>
         /// Required designer variable.
@@ -25,9 +25,10 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewExperimentersForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.ProjectsDGV = new System.Windows.Forms.DataGridView();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ExperimentersDGV = new System.Windows.Forms.DataGridView();
+            this.FullNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PhoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.NewButton = new System.Windows.Forms.Button();
@@ -35,7 +36,7 @@
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsDGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExperimentersDGV)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.ProjectsDGV, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.ExperimentersDGV, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
@@ -54,41 +55,45 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(587, 254);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // ProjectsDGV
+            // ExperimentersDGV
             // 
-            this.ProjectsDGV.AllowUserToAddRows = false;
-            this.ProjectsDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.ProjectsDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ProjectsDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TitleColumn,
-            this.DateStartedColumn,
+            this.ExperimentersDGV.AllowUserToAddRows = false;
+            this.ExperimentersDGV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.ExperimentersDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ExperimentersDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FullNameColumn,
+            this.EmailColumn,
+            this.PhoneColumn,
             this.CommentsColumn});
-            this.ProjectsDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ProjectsDGV.Location = new System.Drawing.Point(3, 3);
-            this.ProjectsDGV.MultiSelect = false;
-            this.ProjectsDGV.Name = "ProjectsDGV";
-            this.ProjectsDGV.RowHeadersVisible = false;
-            this.ProjectsDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ProjectsDGV.Size = new System.Drawing.Size(581, 213);
-            this.ProjectsDGV.TabIndex = 0;
-            this.ProjectsDGV.TabStop = false;
-            this.ProjectsDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ProjectsDGV_CellFormatting);
-            this.ProjectsDGV.SelectionChanged += new System.EventHandler(this.ProjectsDGV_SelectionChanged);
-            this.ProjectsDGV.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ProjectsDGV_UserDeletingRow);
+            this.ExperimentersDGV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ExperimentersDGV.Location = new System.Drawing.Point(3, 3);
+            this.ExperimentersDGV.MultiSelect = false;
+            this.ExperimentersDGV.Name = "ExperimentersDGV";
+            this.ExperimentersDGV.RowHeadersVisible = false;
+            this.ExperimentersDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.ExperimentersDGV.Size = new System.Drawing.Size(581, 213);
+            this.ExperimentersDGV.TabIndex = 0;
+            this.ExperimentersDGV.TabStop = false;
+            this.ExperimentersDGV.SelectionChanged += new System.EventHandler(this.ProjectsDGV_SelectionChanged);
+            this.ExperimentersDGV.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.ProjectsDGV_UserDeletingRow);
             // 
-            // TitleColumn
+            // FullNameColumn
             // 
-            this.TitleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.TitleColumn.HeaderText = "Title";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.Width = 52;
+            this.FullNameColumn.HeaderText = "Full Name";
+            this.FullNameColumn.Name = "FullNameColumn";
+            this.FullNameColumn.Width = 79;
             // 
-            // DateStartedColumn
+            // EmailColumn
             // 
-            this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DateStartedColumn.HeaderText = "Date Started";
-            this.DateStartedColumn.Name = "DateStartedColumn";
-            this.DateStartedColumn.Width = 92;
+            this.EmailColumn.HeaderText = "Work Email";
+            this.EmailColumn.Name = "EmailColumn";
+            this.EmailColumn.Width = 86;
+            // 
+            // PhoneColumn
+            // 
+            this.PhoneColumn.HeaderText = "Work Phone";
+            this.PhoneColumn.Name = "PhoneColumn";
+            this.PhoneColumn.Width = 92;
             // 
             // CommentsColumn
             // 
@@ -165,7 +170,7 @@
             this.Name = "ViewExperimentersForm";
             this.Text = "Experimenters";
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ProjectsDGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ExperimentersDGV)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -174,14 +179,15 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView ProjectsDGV;
+        private System.Windows.Forms.DataGridView ExperimentersDGV;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button EditButton;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Button NewButton;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FullNameColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
 
     }

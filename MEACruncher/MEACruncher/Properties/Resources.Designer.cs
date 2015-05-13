@@ -61,6 +61,28 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An experimenter already has this name, email, and phone number.
+        ///
+        ///Please enter different values..
+        /// </summary>
+        internal static string DuplicateExperimenterError {
+            get {
+                return ResourceManager.GetString("DuplicateExperimenterError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A project with this title was already started on this date.
+        ///
+        ///Please enter different values..
+        /// </summary>
+        internal static string DuplicateProjectError {
+            get {
+                return ResourceManager.GetString("DuplicateProjectError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
         internal static System.Drawing.Icon MeaCruncherIcon {

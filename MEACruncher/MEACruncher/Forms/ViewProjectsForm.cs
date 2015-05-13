@@ -1,10 +1,11 @@
 ﻿using NHibernate;
 using MeaData;
+using MEACruncher.Events;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher {
+namespace MEACruncher.Forms {
 
     public partial class ViewProjectsForm : Form {
 
@@ -46,11 +47,11 @@ namespace MEACruncher {
         }
         private void NewButton_Click(object sender, EventArgs e) {
             NewProjectForm npf = new NewProjectForm();
-            npf.ProjectCreated += NewProjectForm_ProjectCreated;
+            npf.EntityCreated += NewProjectForm_EntityCreated;
             npf.ShowDialog();
         }
-        void NewProjectForm_ProjectCreated(object sender, ProjectCreatedEventArgs e) {
-            _projects.Add(e.Project);
+        void NewProjectForm_EntityCreated(object sender, EntityCreatedEventArgs<Project> e) {
+            _projects.Add(e.Entity);
         }
         void ProjectsDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             ProjectsDGV.ClearSelection();

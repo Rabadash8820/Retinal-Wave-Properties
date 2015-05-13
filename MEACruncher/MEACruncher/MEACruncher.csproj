@@ -89,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
-    <Compile Include="Events\ProjectCreatedEvent.cs" />
+    <Compile Include="Events\EntityCreatedEvent.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +101,18 @@
     </Compile>
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewEntityForm.Designer.cs">
+      <DependentUpon>NewEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\NewExperimenterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewExperimenterForm.Designer.cs">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
@@ -127,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewEntityForm.resx">
+      <DependentUpon>NewEntityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\NewExperimenterForm.resx">
+      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
