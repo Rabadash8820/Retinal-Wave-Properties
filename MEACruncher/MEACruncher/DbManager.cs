@@ -1,10 +1,13 @@
 ﻿using NHibernate;
-using NHibernate.Cfg;
+using NC = NHibernate.Cfg;
 using MeaData;
-using System.Windows.Forms;
+using MEACruncher.Properties;
 using System;
 using System.IO;
+using System.Text;
 using System.Reflection;
+using System.Data.Common;
+using System.Windows.Forms;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
@@ -70,25 +73,24 @@ namespace MEACruncher {
             _initialized = true;
         }
         private static void connectExistingDb(Database db, string dbName) {
+            // Create the connection string for this MySQL database
+            string connStr = Settings.Default.mysqlDbConnectionString;
+            MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
+            connStrBuilder.Database = dbName;
+
             // Define the NHibernate configuration properties for the MySQL database
             Dictionary<string, string> props = new Dictionary<string, string>();
-            props[NHibernate.Cfg.Environment.ConnectionProvider] = @"NHibernate.Connection.DriverConnectionProvider";
-            props[NHibernate.Cfg.Environment.Dialect] = @"NHibernate.Dialect.MySQL5Dialect";    // Note the 5
-            props[NHibernate.Cfg.Environment.ConnectionDriver] = @"NHibernate.Driver.MySqlDataDriver";
-            props[NHibernate.Cfg.Environment.BatchSize] = "50";
-            props[NHibernate.Cfg.Environment.ConnectionString] =
-                @"Server=localhost;" +
-                "Port=3306;" +
-                "Database=" + dbName + ";" +
-                "Uid=root;" +
-                "Pwd=mysqlShundra8820;" +
-                "CharSet=utf8;";
+            props[NC.Environment.ConnectionProvider] = @"NHibernate.Connection.DriverConnectionProvider";
+            props[NC.Environment.Dialect] = @"NHibernate.Dialect.MySQL5Dialect";    // Note the 5
+            props[NC.Environment.ConnectionDriver] = @"NHibernate.Driver.MySqlDataDriver";
+            props[NC.Environment.BatchSize] = "50";
+            props[NC.Environment.ConnectionString] = connStrBuilder.ConnectionString;
 #if DEBUG
             props[NHibernate.Cfg.Environment.ShowSql] = @"true";
 #endif
 
             // Create an NHibernate Configuration with the above properties
-            Configuration config = new Configuration();
+            NC.Configuration config = new NC.Configuration();
             config.SetProperties(props);
             config.AddAssembly(_assemblies[db]);
 
@@ -97,16 +99,12 @@ namespace MEACruncher {
             _sessionFactories.Add(db, sf);
         }
         private static void importMysqlDb(string dbName, string sqlPath) {
-            // Set the connection string for a local mySql database
-            string connectionStr =
-                @"Server=localhost;" +
-                "Port=3306;" +
-                "Uid=root;" +
-                "Pwd=mysqlShundra8820;" +
-                "CharSet=utf8;";
+            // Create the connection string for this MySQL database
+            string connStr = Settings.Default.mysqlDbConnectionString;
+            MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
             
             // Create a new database with the provided name
-            using (MySqlConnection db = new MySqlConnection(connectionStr)) {
+            using (MySqlConnection db = new MySqlConnection(connStrBuilder.ConnectionString)) {
                 db.Open();
                 MySqlCommand createQuery = new MySqlCommand(
                     "CREATE DATABASE " + dbName,
@@ -116,8 +114,8 @@ namespace MEACruncher {
             }
 
             // Import the database schema/data from the provided script
-            connectionStr += ("Database=" + dbName + ";");
-            using (MySqlConnection db = new MySqlConnection(connectionStr)) {
+            connStrBuilder.Database = dbName;
+            using (MySqlConnection db = new MySqlConnection(connStrBuilder.ConnectionString)) {
                 db.Open();
                 MySqlScript script = new MySqlScript(db, File.ReadAllText(sqlPath));
                 script.Execute();

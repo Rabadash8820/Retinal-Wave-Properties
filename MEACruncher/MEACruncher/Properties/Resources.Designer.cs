@@ -61,30 +61,33 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to meadata.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static string DbName {
+        internal static System.Drawing.Icon MeaCruncherIcon {
             get {
-                return ResourceManager.GetString("DbName", resourceCulture);
+                object obj = ResourceManager.GetObject("MeaCruncherIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to meadata.sql.
+        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+        ///--
+        ///-- Host: localhost    Database: meadata_v2_1
+        ///-- ------------------------------------------------------
+        ///-- Server version	5.6.24-log
+        ///
+        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+        ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+        ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+        ////*!40101 SET NAMES utf8 */;
+        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string DbScriptName {
+        internal static string meadata {
             get {
-                return ResourceManager.GetString("DbScriptName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap MeaCruncher {
-            get {
-                object obj = ResourceManager.GetObject("MeaCruncher", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("meadata", resourceCulture);
             }
         }
         

@@ -47,6 +47,7 @@
             this.ClientSize = new System.Drawing.Size(944, 501);
             this.Controls.Add(this.MainPicturebox);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.Text = "MEA Cruncher";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
