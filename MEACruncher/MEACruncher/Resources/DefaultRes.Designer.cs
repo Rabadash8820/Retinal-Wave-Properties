@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MEACruncher.Properties {
+namespace MEACruncher.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MEACruncher.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class DefaultRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal DefaultRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MEACruncher.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.DefaultRes", typeof(DefaultRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,52 +61,56 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Derp.
+        ///   Looks up a localized string similar to That guy from that one place..
         /// </summary>
-        internal static string DerpStr {
+        internal static string ExperimenterComments {
             get {
-                return ResourceManager.GetString("DerpStr", resourceCulture);
+                return ResourceManager.GetString("ExperimenterComments", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        ///   Looks up a localized string similar to frodo@shire.com.
         /// </summary>
-        internal static System.Drawing.Icon MeaCruncherIcon {
+        internal static string ExperimenterEmail {
             get {
-                object obj = ResourceManager.GetObject("MeaCruncherIcon", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ResourceManager.GetString("ExperimenterEmail", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
-        ///--
-        ///-- Host: localhost    Database: meadata_v2_1
-        ///-- ------------------------------------------------------
-        ///-- Server version	5.6.24-log
-        ///
-        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-        ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-        ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-        ////*!40101 SET NAMES utf8 */;
-        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        /// [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to Frodo Baggins.
         /// </summary>
-        internal static string meadata {
+        internal static string ExperimenterName {
             get {
-                return ResourceManager.GetString("meadata", resourceCulture);
+                return ResourceManager.GetString("ExperimenterName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to (111) 222-3333.
         /// </summary>
-        internal static System.Drawing.Bitmap NeuronBackground {
+        internal static string ExperimenterPhone {
             get {
-                object obj = ResourceManager.GetObject("NeuronBackground", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("ExperimenterPhone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new project for crunching some MEA data..
+        /// </summary>
+        internal static string ProjectComments {
+            get {
+                return ResourceManager.GetString("ProjectComments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Project{0}.
+        /// </summary>
+        internal static string ProjectTitle {
+            get {
+                return ResourceManager.GetString("ProjectTitle", resourceCulture);
             }
         }
     }

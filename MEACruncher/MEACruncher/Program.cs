@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using MEACruncher.Properties;
+using P = MEACruncher.Properties;
 using MEACruncher.Forms;
 
 namespace MEACruncher {
@@ -12,7 +13,7 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with Access databases
-            DbManager.ConnectTo(Database.MeaData, Settings.Default.mysqlDbName, Resources.meadata);
+            DbManager.ConnectTo(Database.MeaData, Settings.Default.mysqlDbName, P.Resources.meadata);
 
             // Open the main form
             Application.EnableVisualStyles();

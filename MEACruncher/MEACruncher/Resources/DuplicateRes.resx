@@ -117,36 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="TitleColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="DateStartedColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="CommentsColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAEAAAAAAAEAIADyAwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAEDAAAAZrw6JQAAAAZQ
-        TFRFAAAAZJXtODQ6qQAAA6dJREFUaN7tmm/u2yAMhh3KB76NI3CTcTSO1iPtAJO6GGP+BeNomqZpv4Ai
-        2uQpJa79EnABIAEeZw32gGCpxQr5AIgyYDIQZMBmwMuAy4CTAZ8BKwMhA0YGYgYOGUgZwGYNkBlyR2vA
-        FCBIgC2AlwBXACcBvgBWAkIBDLzekF7vYNtx4LlYgEMCihkAL64ANsNpiDVgKkAegQOsR/OG5hEXwFXA
-        rQFfAbsGQgXMGogVONZANUPxiBloZigeMQOmA8IKsB3gV4DrALcCfAfYFRA6wKyAYobPWfDtFUh0DThs
-        ZuDoDBFzHQCTazMD1gGwuTYzYB0Al2szQ37XA+Uz1Qy5vx4o31rNkEeEFyK3NO7qDxRIaFBu6c6bP2A9
-        L2T75PaY/AHrecEAt2byh1xpqNTayR+wnhcccOsmf8B6XvDArZ/8Aet5IQC3zQxn4OZApaAFbiO9rsAx
-        A4mBz4depBE46IPoMK8d8B6CK5Q759AbywP8T0AcAXMBwgjYC+BHwF0ANwItKFDJfpJU9gAGxfeqcoaO
-        UEYWLYnkOF+gLpR7S5afnXojoC7QqQNs9xBVjYC6QJ0asPylw8RZ45W1YZovUBfo5hxknZjnC9QFOufB
-        lk8M8wXqAvUa8kuY9CEHLb+27VwL/zXQhb/Ygw6M1qhjXpUvDXyo/Oh/X/zVv5ULo0cM/jOWwcd6b2hT
-        Z+elY1AModFHwVUf+OQcFJdu56C4DMyCoA98a3NQXM6OZuj0gfvlb7voA48sgqAPfG8JBH0A1gcQ9AFY
-        H0DQB2B9AEEfgPUBBH0A1gcQ9AFYH0DQh/WhAp2ALI5RQISveMpTnvJvlr8Q/rf0YStiWFQZHM6thHTo
-        dSXFERQxT7CfDtQJZTsl3ZrUADbT4mwKkCbWzrjrqbmNSpjcu/taPh6oDxjqI4r6kCM/Jt190AJ4HlkV
-        oAXqb64O/sACpHmDsAhq3rBZRtH7zUKMetws5chLN4tB8nN5OakuSLdL2luL4mKK9bK6M8V+YR60pX3U
-        NgfSs4vyJYASpEnaPLy7/ShvYBZgswXa4lXYRKWgULZh1Y1cdStY3UzWtqPVDW11S1zdVFe35dWNfTU1
-        oCYXtumJWwmObYqE54u0TbKoaRqvJXqCliqKWrIpKekqNeGlpszUpJuatvOgJP4CKKnD+FKSj+m1T1+q
-        CVA1haomYdU0rtcSwUFLJUctGZ2UdLaaEFdT6mpSXk3re1D+GBBA+WtBBOXPCQl2f2/4BSoW+77Q9KhN
-        AAAAAElFTkSuQmCC
-</value>
+  <data name="ExperimenterError" xml:space="preserve">
+    <value>An experimenter already has this name, email, and phone number.</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Please enter different values.</value>
+  </data>
+  <data name="ProjectError" xml:space="preserve">
+    <value>A project with this title was already started on this date.</value>
   </data>
 </root>
