@@ -27,117 +27,153 @@ namespace MEACruncher.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;")]
-        public string mysqlDbConnectionString {
+        public string MysqlDbConnectionString {
             get {
-                return ((string)(this["mysqlDbConnectionString"]));
+                return ((string)(this["MysqlDbConnectionString"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
-        public global::System.Drawing.Color buttonColor {
+        public global::System.Drawing.Color ButtonBackColor {
             get {
-                return ((global::System.Drawing.Color)(this["buttonColor"]));
+                return ((global::System.Drawing.Color)(this["ButtonBackColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("meadata")]
-        public string mysqlDbName {
+        public string MysqlDbName {
             get {
-                return ((string)(this["mysqlDbName"]));
+                return ((string)(this["MysqlDbName"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Segoe UI, 10pt")]
-        public global::System.Drawing.Font controlFont {
+        public global::System.Drawing.Font ControlFont {
             get {
-                return ((global::System.Drawing.Font)(this["controlFont"]));
+                return ((global::System.Drawing.Font)(this["ControlFont"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0, 35")]
-        public global::System.Drawing.Size containerHeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("35")]
+        public int ContainerHeight {
             get {
-                return ((global::System.Drawing.Size)(this["containerHeight"]));
+                return ((int)(this["ContainerHeight"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("302, 25")]
-        public global::System.Drawing.Size controlHeight {
+        [global::System.Configuration.DefaultSettingValueAttribute("25")]
+        public int ControlHeight {
             get {
-                return ((global::System.Drawing.Size)(this["controlHeight"]));
+                return ((int)(this["ControlHeight"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color formBackground {
+        public global::System.Drawing.Color FormBackColor {
             get {
-                return ((global::System.Drawing.Color)(this["formBackground"]));
+                return ((global::System.Drawing.Color)(this["FormBackColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
-        public global::System.Drawing.Color labelText {
+        public global::System.Drawing.Color LabelForeColor {
             get {
-                return ((global::System.Drawing.Color)(this["labelText"]));
+                return ((global::System.Drawing.Color)(this["LabelForeColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color buttonText {
+        public global::System.Drawing.Color ButtonForeColor {
             get {
-                return ((global::System.Drawing.Color)(this["buttonText"]));
+                return ((global::System.Drawing.Color)(this["ButtonForeColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
-        public global::System.Drawing.Color textboxBackground {
+        public global::System.Drawing.Color TextboxBackColor {
             get {
-                return ((global::System.Drawing.Color)(this["textboxBackground"]));
+                return ((global::System.Drawing.Color)(this["TextboxBackColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("MistyRose")]
-        public global::System.Drawing.Color textboxText {
+        public global::System.Drawing.Color TextboxForeColor {
             get {
-                return ((global::System.Drawing.Color)(this["textboxText"]));
+                return ((global::System.Drawing.Color)(this["TextboxForeColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
-        public global::System.Drawing.Color dgvCellBackground {
+        public global::System.Drawing.Color DgvHeaderBackColor {
             get {
-                return ((global::System.Drawing.Color)(this["dgvCellBackground"]));
+                return ((global::System.Drawing.Color)(this["DgvHeaderBackColor"]));
             }
         }
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Black")]
-        public global::System.Drawing.Color dgvCellText {
+        public global::System.Drawing.Color DgvHeaderForeColor {
             get {
-                return ((global::System.Drawing.Color)(this["dgvCellText"]));
+                return ((global::System.Drawing.Color)(this["DgvHeaderForeColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        public global::System.Drawing.Color DgvCellBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DgvCellBackColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MistyRose")]
+        public global::System.Drawing.Color DgvCellForeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DgvCellForeColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        public global::System.Drawing.Color DgvGridColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DgvGridColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color DgvBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["DgvBackColor"]));
             }
         }
     }

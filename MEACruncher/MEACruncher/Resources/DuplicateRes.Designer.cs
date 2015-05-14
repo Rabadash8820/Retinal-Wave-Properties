@@ -61,7 +61,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An experimenter already has this name, email, and phone number..
+        ///   Looks up a localized string similar to An experimenter named {0} has already been created with this Email and phone number..
         /// </summary>
         internal static string ExperimenterError {
             get {
@@ -79,7 +79,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A project with this title was already started on this date..
+        ///   Looks up a localized string similar to A project with the title {0} was already started on {1}..
         /// </summary>
         internal static string ProjectError {
             get {

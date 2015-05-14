@@ -74,7 +74,7 @@ namespace MEACruncher {
         }
         private static void connectExistingDb(Database db, string dbName) {
             // Create the connection string for this MySQL database
-            string connStr = Settings.Default.mysqlDbConnectionString;
+            string connStr = Settings.Default.MysqlDbConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
             connStrBuilder.Database = dbName;
 
@@ -100,7 +100,7 @@ namespace MEACruncher {
         }
         private static void importMysqlDb(string dbName, string sqlPath) {
             // Create the connection string for this MySQL database
-            string connStr = Settings.Default.mysqlDbConnectionString;
+            string connStr = Settings.Default.MysqlDbConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
             
             // Create a new database with the provided name

@@ -22,14 +22,14 @@ namespace MEACruncher.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DeleteRes {
+    internal class ValidateRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DeleteRes() {
+        internal ValidateRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MEACruncher.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.DeleteRes", typeof(DeleteRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.ValidateRes", typeof(ValidateRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,65 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0}?.
+        ///   Looks up a localized string similar to Enter a date in the format &quot;mm/dd/yyyy&quot;..
         /// </summary>
-        internal static string ExperimenterWarning {
+        internal static string Date {
             get {
-                return ResourceManager.GetString("ExperimenterWarning", resourceCulture);
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0} and all of its results?.
+        ///   Looks up a localized string similar to Enter a date between 1/1/1970 and {0}..
         /// </summary>
-        internal static string ProjectWarning {
+        internal static string DateValue {
             get {
-                return ResourceManager.GetString("ProjectWarning", resourceCulture);
+                return ResourceManager.GetString("DateValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an Email like &quot;frodo@shire.com&quot;..
+        /// </summary>
+        internal static string EmailAddress {
+            get {
+                return ResourceManager.GetString("EmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a name like &quot;Frodo Baggins&quot;..
+        /// </summary>
+        internal static string ExperimenterFullName {
+            get {
+                return ResourceManager.GetString("ExperimenterFullName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not in the correct format..
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a phone number in the format &quot;(111) 222-3333&quot;..
+        /// </summary>
+        internal static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must provide a title for this Project..
+        /// </summary>
+        internal static string ProjectTitle {
+            get {
+                return ResourceManager.GetString("ProjectTitle", resourceCulture);
             }
         }
     }

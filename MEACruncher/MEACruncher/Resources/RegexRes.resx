@@ -117,13 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ExperimenterError" xml:space="preserve">
-    <value>An experimenter named {0} has already been created with this Email and phone number.</value>
+  <data name="Date" xml:space="preserve">
+    <value>\d{1,2}\/\d{1,2}\/\d{4}</value>
+    <comment>mm/dd/yyyy</comment>
   </data>
-  <data name="Message" xml:space="preserve">
-    <value>Please enter different values.</value>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>\w+@[a-z]+\.[a-z]{3}</value>
+    <comment>(1 or more word chars) @ (1 or more letters) . (3 letters)</comment>
   </data>
-  <data name="ProjectError" xml:space="preserve">
-    <value>A project with the title {0} was already started on {1}.</value>
+  <data name="NonEmpty" xml:space="preserve">
+    <value>\S+</value>
+    <comment>At least one non-whitespace character</comment>
+  </data>
+  <data name="PersonName" xml:space="preserve">
+    <value>[A-Z][a-z]+( [A-Z][a-z]+){0,2}</value>
+    <comment>One to three space-delimited "words" (e.g., Daniel Cameron Vicarel)</comment>
+  </data>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>\(\d{3}\) \d{3}-\d{4}</value>
+    <comment>(111) 222-3333</comment>
   </data>
 </root>

@@ -11,49 +11,66 @@ namespace MEACruncher.Forms {
 
     internal partial class NewProjectForm : INewProjectForm {
         // CONSTRUCTORS
-        public NewProjectForm() : base() { }
+        public NewProjectForm() : base() {
+            InitializeComponent();
+        }
 
         // EVENT HANDLERS
+        private void NewProjectForm_Load(object sender, EventArgs e) {
+            this.initialize();
+        }
         private void CreateButton_Click(object sender, EventArgs e) {
             this.createEntity();
         }
         private void CancelCreateButton_Click(object sender, EventArgs e) {
             this.closeStuff();
         }
+        private void TitleTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            bool isValid = this.validate(
+                Resources.RegexRes.NonEmpty,
+                TitleTextbox.Text,
+                Resources.ValidateRes.ProjectTitle);
+            e.Cancel = !isValid;
+        }
 
         // OVERRIDE FUNCTIONS
-        protected override void construct() {
-            InitializeComponent();
-            base.construct();
-        }
         protected override Project defaultEntity() {
-            // Get a list of all currently used Project titles in the database
+            // Get a list of all currently used Project titles on the default Date
+            DateTime defaultDate = DateTime.Today;
             IList<string> titles = _db.QueryOver<Project>()
+                                      .Where(p => p.DateStarted == defaultDate)
                                       .Select(p => p.Title)
                                       .List<string>();
 
             // Return the first title like baseStr, baseStr_1, baseStr_2, etc. that isn't already taken
             int num = 0;
-            string title = String.Format(DefaultRes.ProjectTitle, "");
-            while (titles.Contains(title))
-                title = String.Format(DefaultRes.ProjectTitle, "_" + (++num));
+            string defaultTitle = String.Format(DefaultRes.ProjectTitle, "");
+            while (titles.Contains(defaultTitle))
+                defaultTitle = String.Format(DefaultRes.ProjectTitle, "_" + (++num));
 
             // Create/return a new Project with that title and the current date as the start date
             Project entity = new Project() {
-                Title = title,
-                DateStarted = DateTime.Now,
+                Title = defaultTitle,
+                DateStarted = defaultDate,
                 Comments = DefaultRes.ProjectComments
             };
             return entity;
         }
         protected override void buildForm() {
             base.buildForm();
-            TitleTextbox.DataBindings.Add(             "Text",  _entity, "Title");
+
+            // Add application settings
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
+            lastRow.Height = Settings.Default.ContainerHeight;
+            TitleTextbox.Height = Settings.Default.ControlHeight;
+            DateStartedDateTimePicker.Height = Settings.Default.ControlHeight;
+
+            DateStartedDateTimePicker.MaxDate = DateTime.Today;
+
+            // Add data bindings
+            TitleTextbox.DataBindings.Add("Text", _entity, "Title");
             DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
-            CommentsTextbox.DataBindings.Add(          "Text",  _entity, "Comments");
-            DateStartedDateTimePicker.MaxDate = DateTime.Now;
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
-            lastRow.Height = Settings.Default.containerHeight.Height;
+            CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
         }
         protected override bool isUnique() {
             int numEntities = _db.QueryOver<Project>()
@@ -63,9 +80,7 @@ namespace MEACruncher.Forms {
                                  .RowCount();
             return (numEntities == 0);
         }
-        protected override void persistEntity() {
-            _db.Save(_entity);
-        }
+
     }
 
 }

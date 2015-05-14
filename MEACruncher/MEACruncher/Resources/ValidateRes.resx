@@ -117,13 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ExperimenterError" xml:space="preserve">
-    <value>An experimenter named {0} has already been created with this Email and phone number.</value>
+  <data name="Date" xml:space="preserve">
+    <value>Enter a date in the format "mm/dd/yyyy".</value>
+  </data>
+  <data name="DateValue" xml:space="preserve">
+    <value>Enter a date between 1/1/1970 and {0}.</value>
+  </data>
+  <data name="EmailAddress" xml:space="preserve">
+    <value>Enter an Email like "frodo@shire.com".</value>
+  </data>
+  <data name="ExperimenterFullName" xml:space="preserve">
+    <value>Enter a name like "Frodo Baggins".</value>
   </data>
   <data name="Message" xml:space="preserve">
-    <value>Please enter different values.</value>
+    <value>{0} is not in the correct format.</value>
   </data>
-  <data name="ProjectError" xml:space="preserve">
-    <value>A project with the title {0} was already started on {1}.</value>
+  <data name="PhoneNumber" xml:space="preserve">
+    <value>Enter a phone number in the format "(111) 222-3333".</value>
+  </data>
+  <data name="ProjectTitle" xml:space="preserve">
+    <value>You must provide a title for this Project.</value>
   </data>
 </root>

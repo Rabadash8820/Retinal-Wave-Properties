@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using MeaData;
@@ -14,13 +16,13 @@ namespace MEACruncher.Forms {
         protected ISession _db;
         protected BindingSource _entities;
         private static bool _initialized = false;
-        private static Dictionary<Type, string> _deleteWarning;
+        private delegate string deletetion(E entity);
+        private static Dictionary<Type, deletetion> _deleteWarning;
 
         // CONSTRUCTORS
         public ViewEntitiesForm() {
             InitializeComponent();
-            _entities = new BindingSource();    // This needs to be called before a child's InitializeComponent() for some reason
-            construct();
+            _entities = new BindingSource();    // Apparently this needs to happen before derived classes call their InitializeComponent()
         }
 
         // EVENT HANDLERS
@@ -29,13 +31,13 @@ namespace MEACruncher.Forms {
         }
 
         // FUNCTIONS
-        protected virtual void construct() {
+        protected virtual void initialize() {
             // Initialize static members
             if (!_initialized)
                 staticInitialize();
 
             // Initialize instance members
-            //_db = DbManager.SessionFactory(Database.MeaData).OpenSession();
+            _db = DbManager.SessionFactory(Database.MeaData).OpenSession();
             _entities.DataSource = loadEntities();
 
             // Initialize form controls
@@ -43,9 +45,9 @@ namespace MEACruncher.Forms {
         }
         private void staticInitialize() {
             // Associated a duplicate Entity error with each Entity type
-            _deleteWarning = new Dictionary<Type, string>() {
-                { typeof(Project),      DeleteRes.ProjectWarning      },
-                { typeof(Experimenter), DeleteRes.ExperimenterWarning },
+            _deleteWarning = new Dictionary<Type, deletetion>() {
+                { typeof(Project),      e => String.Format(DeleteRes.ProjectWarning, (e as Project).Title) },
+                { typeof(Experimenter), e => String.Format(DeleteRes.ExperimenterWarning, (e as Experimenter).FullName) },
             };
 
             _initialized = true;
@@ -54,9 +56,56 @@ namespace MEACruncher.Forms {
         protected abstract void buildForm();
         protected abstract void formatEntities(DataGridViewCellFormattingEventArgs e);
         protected abstract void deleteDependents();
-        protected bool entityDeleted(E e) {
+        protected bool validate(string regexStr, string input, string message) {
+            // If the input returns exactly one match, then return true
+            regexStr = "^" + regexStr + "$";
+            Regex regex = new Regex(regexStr);
+            int numMatches = regex.Matches(input).Count;
+            if (numMatches == 1) return true;
+
+            // Otherwise display an error message box and return false
+            message.Insert(0, String.Format(ValidateRes.Message, input));
+            MessageBox.Show(
+                message,
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
+            return false;
+        }
+        protected bool validDate(string dateStr) {
+            // Return false if the string isn't in the right format
+            bool isValidStr = this.validate(
+                Resources.RegexRes.Date,
+                dateStr,
+                Resources.ValidateRes.Date);
+            if (!isValidStr) return false;
+
+            // If the numbers for month, day, and year are valid, then return true
+            try {
+                int[] parts = dateStr.Split('/')
+                                     .Select(p => Convert.ToInt32(p))
+                                     .ToArray();
+                new DateTime(parts[2], parts[0], parts[1]);
+                return true;
+            }
+
+            // Otherwise, show an error dialog and return false
+            catch (ArgumentOutOfRangeException) {
+                string message = String.Format(ValidateRes.DateValue, DateTime.Today);
+                MessageBox.Show(
+                    message,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                return false;
+            }
+        }
+        protected bool entityDeleted(E entity) {
             // Show a dialog asking the user if they really want to delete the record
-            DialogResult result = MessageBox.Show(_deleteWarning[typeof(E)],
+            string message = _deleteWarning[typeof(E)](entity);
+            DialogResult result = MessageBox.Show(message,
                                                   Application.ProductName,
                                                   MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Warning,
@@ -66,7 +115,7 @@ namespace MEACruncher.Forms {
 
             // Remove record associated with this DataGridViewRow from the database
             using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Delete(e);
+                _db.Delete(entity);
                 deleteDependents();
                 trans.Commit();
             }

@@ -2,6 +2,7 @@
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
+
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -10,9 +11,14 @@ namespace MEACruncher.Forms {
 
     internal partial class ViewExperimentersForm : IViewExperimentersForm {
         // CONSTRUCTORS
-        public ViewExperimentersForm() : base() { }
+        public ViewExperimentersForm() : base() {
+            InitializeComponent();
+        }
 
         // EVENT HANDLERS
+        private void ViewExperimentersForm_Load(object sender, EventArgs e) {
+            this.initialize();
+        }
         private void CancelEditButton_Click(object sender, System.EventArgs e) {
             closeStuff();
         }
@@ -44,12 +50,34 @@ namespace MEACruncher.Forms {
         private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             EntitiesDGV.ClearSelection();
         }
+        private void EntitiesDGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            // Validate the cell value based on which column it is in
+            int index = e.ColumnIndex;
+            string input = e.FormattedValue as string;
+            if (index == FullNameColumn.Index) {
+                bool isValid = this.validate(
+                    Resources.RegexRes.PersonName,
+                    input,
+                    Resources.ValidateRes.ExperimenterFullName);
+                e.Cancel = !isValid;
+            }
+            else if (index == EmailColumn.Index) {
+                bool isValid = this.validate(
+                    Resources.RegexRes.EmailAddress,
+                    input,
+                    Resources.ValidateRes.EmailAddress);
+                e.Cancel = !isValid;
+            }
+            else if (index == PhoneColumn.Index) {
+                bool isValid = this.validate(
+                    Resources.RegexRes.PhoneNumber,
+                    input,
+                    Resources.ValidateRes.PhoneNumber);
+                e.Cancel = !isValid;
+            }
+        }
 
         // FUNCTIONS
-        protected override void construct() {
-            InitializeComponent();
-            base.construct();
-        }
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
             base.formatEntities(e);
 
@@ -62,13 +90,15 @@ namespace MEACruncher.Forms {
             return entities;
         }
         protected override void buildForm() {
+            base.buildForm();
+
             // Apply application settings
-            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.textboxBackground;
-            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.textboxText;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.dgvCellBackground;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.dgvCellText;
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
-            lastRow.Height = Settings.Default.containerHeight.Height;
+            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
+            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.DgvCellForeColor;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.DgvHeaderBackColor;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.DgvHeaderForeColor;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
+            lastRow.Height = Settings.Default.ContainerHeight;
 
             // Initialize the dataGridView
             FullNameColumn.DataPropertyName = "FullName";
@@ -79,7 +109,7 @@ namespace MEACruncher.Forms {
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;
         }
-
+        
     }
 
 }
