@@ -43,7 +43,7 @@ All content under this heading is for my personal reference during the developme
 * __Control Settings__
 	* All controls, Font : ControlFont
 	* Form, BackColor : FormBackColor
-	* Labels, ForeColor : LabelTextColor
+	* Labels, ForeColor : LabelForeColor
 	* Textboxes
 		* ForeColor : TextboxForeColor
 		* BackColor : TextBoxBackColor
