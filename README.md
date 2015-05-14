@@ -39,11 +39,11 @@ All content under this heading is for my personal reference during the developme
 	* Textboxes
 		* BorderStyle : FixedSingle
 		* MaxLength same as in MySQL db
-	* DateTimePickers, MinimumValue : 1/1/1970 
+	* DateTimePickers, MinDate : 1/1/1970 
 * __Control Settings__
 	* All controls, Font : ControlFont
 	* Form, BackColor : FormBackColor
-	* Labels, ForeColor : LabelTextColor
+	* Labels, ForeColor : LabelForeColor
 	* Textboxes
 		* ForeColor : TextboxForeColor
 		* BackColor : TextBoxBackColor
@@ -100,7 +100,7 @@ All content under this heading is for my personal reference during the developme
 			* MultiSelect : False
 			* SelectionMode : FullRowSelect
 		* BorderStyle : None
-		* DateTimePickers, MinimumValue : 1/1/1970 
+		* DateTimePickers, MinDate : 1/1/1970 
 * __Control Settings__
 	* All controls, Font : ControlFont
 	* Form, BackColor : FormBackColor
