@@ -61,20 +61,11 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Derp.
-        /// </summary>
-        internal static string DerpStr {
-            get {
-                return ResourceManager.GetString("DerpStr", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon MeaCruncherIcon {
+        internal static System.Drawing.Icon MeaCruncher {
             get {
-                object obj = ResourceManager.GetObject("MeaCruncherIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("MeaCruncher", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
