@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEACruncher", "MEACruncher\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaData", "NeuroData\MeaData.csproj", "{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{CF59B937-AED5-43F7-B2FF-169556A9D109}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,21 +11,43 @@ using System.Windows.Forms;
 namespace MEACruncher.Forms {
     internal partial class NewExperimenterForm : INewExperimenterForm {
         // CONSTRUCTORS
-        public NewExperimenterForm() : base() { }
+        public NewExperimenterForm() : base() {
+            InitializeComponent();
+        }
 
         // EVENT HANDLERS
+        private void NewExperimenterForm_Load(object sender, EventArgs e) {
+            this.initialize();
+        }
         private void CreateButton_Click(object sender, EventArgs e) {
             this.createEntity();
         }
         private void CancelCreateButton_Click(object sender, EventArgs e) {
             this.closeStuff();
         }
+        private void FullNameTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            bool isValid = this.validate(
+                RegexRes.PersonName,
+                FullNameTextbox.Text,
+                ValidateRes.ExperimenterFullName);
+            e.Cancel = !isValid;
+        }
+        private void EmailTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            bool isValid = this.validate(
+                RegexRes.EmailAddress,
+                FullNameTextbox.Text,
+                ValidateRes.EmailAddress);
+            e.Cancel = !isValid;
+        }
+        private void PhoneTextbox_Validating(object sender, System.ComponentModel.CancelEventArgs e) {
+            bool isValid = this.validate(
+                RegexRes.PhoneNumber,
+                FullNameTextbox.Text,
+                ValidateRes.PhoneNumber);
+            e.Cancel = !isValid;
+        }
 
         // OVERRIDE FUNCTIONS
-        protected override void construct() {
-            InitializeComponent();
-            base.construct();
-        }
         protected override Experimenter defaultEntity() {
             // Create/return a new Project with that title and the current date as the start date
             Experimenter entity = new Experimenter() {
@@ -37,12 +59,17 @@ namespace MEACruncher.Forms {
             return entity;
         }
         protected override void buildForm() {
+            base.buildForm();
+
             // Add application settings
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
-            lastRow.Height = Settings.Default.containerHeight.Height;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
+            lastRow.Height = Settings.Default.ContainerHeight;
+            FullNameTextbox.Height = Settings.Default.ControlHeight;
+            EmailTextbox.Height = Settings.Default.ControlHeight;
+            PhoneTextbox.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add(   "Text", _entity, "FullName");
+            FullNameTextbox.DataBindings.Add(   "Text", _entity, "FullName");
             EmailTextbox.DataBindings.Add(   "Text", _entity, "WorkEmail");
             PhoneTextbox.DataBindings.Add(   "Text", _entity, "WorkPhone");
             CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");

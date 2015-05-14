@@ -2,7 +2,7 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MEACruncher.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="mysqlDbConnectionString" Type="(Connection string)" Scope="Application">
+    <Setting Name="MysqlDbConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
   &lt;ConnectionString&gt;Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;&lt;/ConnectionString&gt;
@@ -10,40 +10,52 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;</Value>
     </Setting>
-    <Setting Name="buttonColor" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="ButtonBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">CornflowerBlue</Value>
     </Setting>
-    <Setting Name="mysqlDbName" Type="System.String" Scope="Application">
+    <Setting Name="MysqlDbName" Type="System.String" Scope="Application">
       <Value Profile="(Default)">meadata</Value>
     </Setting>
-    <Setting Name="controlFont" Type="System.Drawing.Font" Scope="Application">
+    <Setting Name="ControlFont" Type="System.Drawing.Font" Scope="Application">
       <Value Profile="(Default)">Segoe UI, 10pt</Value>
     </Setting>
-    <Setting Name="containerHeight" Type="System.Drawing.Size" Scope="Application">
-      <Value Profile="(Default)">0, 35</Value>
+    <Setting Name="ContainerHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">35</Value>
     </Setting>
-    <Setting Name="controlHeight" Type="System.Drawing.Size" Scope="Application">
-      <Value Profile="(Default)">302, 25</Value>
+    <Setting Name="ControlHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">25</Value>
     </Setting>
-    <Setting Name="formBackground" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="FormBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">Black</Value>
     </Setting>
-    <Setting Name="labelText" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="LabelForeColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">CornflowerBlue</Value>
     </Setting>
-    <Setting Name="buttonText" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="ButtonForeColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">Black</Value>
     </Setting>
-    <Setting Name="textboxBackground" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="TextboxBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">DimGray</Value>
     </Setting>
-    <Setting Name="textboxText" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="TextboxForeColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">MistyRose</Value>
     </Setting>
-    <Setting Name="dgvCellBackground" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="DgvHeaderBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">CornflowerBlue</Value>
     </Setting>
-    <Setting Name="dgvCellText" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="DgvHeaderForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="DgvCellBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">DimGray</Value>
+    </Setting>
+    <Setting Name="DgvCellForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">MistyRose</Value>
+    </Setting>
+    <Setting Name="DgvGridColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">DimGray</Value>
+    </Setting>
+    <Setting Name="DgvBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">Black</Value>
     </Setting>
   </Settings>

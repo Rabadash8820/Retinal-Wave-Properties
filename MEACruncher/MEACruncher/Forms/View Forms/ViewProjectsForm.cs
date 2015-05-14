@@ -3,6 +3,7 @@ using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
 using System;
+using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -10,9 +11,14 @@ namespace MEACruncher.Forms {
 
     internal partial class ViewProjectsForm : IViewProjectsForm {
         // CONSTRUCTORS
-        public ViewProjectsForm() : base() { }
+        public ViewProjectsForm() : base() {
+            InitializeComponent();
+        }
 
         // EVENT HANDLERS
+        private void ViewProjectsForm_Load(object sender, EventArgs e) {
+            this.initialize();
+        }
         private void CancelEditButton_Click(object sender, System.EventArgs e) {
             closeStuff();
         }
@@ -44,12 +50,24 @@ namespace MEACruncher.Forms {
         private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             EntitiesDGV.ClearSelection();
         }
+        private void EntitiesDGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
+            // Validate the cell value based on which column it is in
+            int index = e.ColumnIndex;
+            string input = e.FormattedValue as string;
+            if (index == TitleColumn.Index) {
+                bool isValid = this.validate(
+                    Resources.RegexRes.NonEmpty, 
+                    input,
+                    Resources.ValidateRes.ProjectTitle);
+                e.Cancel = !isValid;
+            }
+            else if (index == DateStartedColumn.Index) {
+                bool isValid = validDate(input);
+                e.Cancel = !isValid;
+            }
+        }
 
         // FUNCTIONS
-        protected override void construct() {
-            InitializeComponent();
-            base.construct();
-        }
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
             base.formatEntities(e);
 
@@ -57,7 +75,7 @@ namespace MEACruncher.Forms {
             if (e.ColumnIndex != DateStartedColumn.Index)
                 return;
             DateTime? dateTime = e.Value as DateTime?;
-            e.Value = dateTime.Value.Date;
+            e.Value = dateTime.Value.ToShortDateString();
         }
         protected override void deleteDependents() { }
         protected override IList<Project> loadEntities() {
@@ -68,13 +86,15 @@ namespace MEACruncher.Forms {
             return entities;
         }
         protected override void buildForm() {
+            base.buildForm();
+
             // Apply application settings
-            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.textboxBackground;
-            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.textboxText;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.dgvCellBackground;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.dgvCellText;
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
-            lastRow.Height = Settings.Default.containerHeight.Height;
+            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
+            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.DgvCellForeColor;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.DgvHeaderBackColor;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.DgvHeaderForeColor;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
+            lastRow.Height = Settings.Default.ContainerHeight;
 
             // Initialize the dataGridView
             TitleColumn.DataPropertyName       = "Title";

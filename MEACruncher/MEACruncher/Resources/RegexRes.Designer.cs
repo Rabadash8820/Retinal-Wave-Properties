@@ -22,14 +22,14 @@ namespace MEACruncher.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DeleteRes {
+    internal class RegexRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DeleteRes() {
+        internal RegexRes() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MEACruncher.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.DeleteRes", typeof(DeleteRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.RegexRes", typeof(RegexRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,47 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0}?.
+        ///   Looks up a localized string similar to \d{1,2}\/\d{1,2}\/\d{4}.
         /// </summary>
-        internal static string ExperimenterWarning {
+        internal static string Date {
             get {
-                return ResourceManager.GetString("ExperimenterWarning", resourceCulture);
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0} and all of its results?.
+        ///   Looks up a localized string similar to \w+@[a-z]+\.[a-z]{3}.
         /// </summary>
-        internal static string ProjectWarning {
+        internal static string EmailAddress {
             get {
-                return ResourceManager.GetString("ProjectWarning", resourceCulture);
+                return ResourceManager.GetString("EmailAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \S+.
+        /// </summary>
+        internal static string NonEmpty {
+            get {
+                return ResourceManager.GetString("NonEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to [A-Z][a-z]+( [A-Z][a-z]+){0,2}.
+        /// </summary>
+        internal static string PersonName {
+            get {
+                return ResourceManager.GetString("PersonName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \(\d{3}\) \d{3}-\d{4}.
+        /// </summary>
+        internal static string PhoneNumber {
+            get {
+                return ResourceManager.GetString("PhoneNumber", resourceCulture);
             }
         }
     }

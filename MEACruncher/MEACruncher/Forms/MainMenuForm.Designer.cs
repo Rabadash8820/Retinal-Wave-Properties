@@ -32,11 +32,10 @@
             // 
             // OrganizationsButton
             // 
-            this.OrganizationsButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
-            this.OrganizationsButton.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::MEACruncher.Properties.Settings.Default, "buttonColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.OrganizationsButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.OrganizationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OrganizationsButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrganizationsButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
+            this.OrganizationsButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
             this.OrganizationsButton.Location = new System.Drawing.Point(9, 120);
             this.OrganizationsButton.Name = "OrganizationsButton";
             this.OrganizationsButton.Size = new System.Drawing.Size(261, 49);
@@ -47,11 +46,10 @@
             // 
             // ExperimentersButton
             // 
-            this.ExperimentersButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
-            this.ExperimentersButton.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::MEACruncher.Properties.Settings.Default, "buttonColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ExperimentersButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.ExperimentersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExperimentersButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExperimentersButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
+            this.ExperimentersButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
             this.ExperimentersButton.Location = new System.Drawing.Point(9, 66);
             this.ExperimentersButton.Name = "ExperimentersButton";
             this.ExperimentersButton.Size = new System.Drawing.Size(261, 49);
@@ -62,11 +60,10 @@
             // 
             // ExitAppButton
             // 
-            this.ExitAppButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
-            this.ExitAppButton.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::MEACruncher.Properties.Settings.Default, "buttonColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ExitAppButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.ExitAppButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ExitAppButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExitAppButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
+            this.ExitAppButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
             this.ExitAppButton.Location = new System.Drawing.Point(9, 228);
             this.ExitAppButton.Name = "ExitAppButton";
             this.ExitAppButton.Size = new System.Drawing.Size(261, 49);
@@ -77,11 +74,10 @@
             // 
             // OtherDataButton
             // 
-            this.OtherDataButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
-            this.OtherDataButton.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::MEACruncher.Properties.Settings.Default, "buttonColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.OtherDataButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.OtherDataButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.OtherDataButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OtherDataButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
+            this.OtherDataButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
             this.OtherDataButton.Location = new System.Drawing.Point(9, 174);
             this.OtherDataButton.Name = "OtherDataButton";
             this.OtherDataButton.Size = new System.Drawing.Size(261, 49);
@@ -91,11 +87,10 @@
             // 
             // LoadProjectButton
             // 
-            this.LoadProjectButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
-            this.LoadProjectButton.DataBindings.Add(new System.Windows.Forms.Binding("BackColor", global::MEACruncher.Properties.Settings.Default, "buttonColor", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.LoadProjectButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.LoadProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadProjectButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadProjectButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
+            this.LoadProjectButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
             this.LoadProjectButton.Location = new System.Drawing.Point(9, 12);
             this.LoadProjectButton.Name = "LoadProjectButton";
             this.LoadProjectButton.Size = new System.Drawing.Size(261, 49);
@@ -108,7 +103,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = global::MEACruncher.Properties.Settings.Default.FormBackColor;
             this.ClientSize = new System.Drawing.Size(279, 289);
             this.Controls.Add(this.OrganizationsButton);
             this.Controls.Add(this.ExperimentersButton);
