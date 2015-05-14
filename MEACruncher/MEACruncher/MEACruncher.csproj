@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\MeaCruncherIcon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\MeaCruncher.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -241,11 +241,11 @@
     <None Include="Resources\meadata.sql" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MeaCruncherIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Forms\Edit Forms\" />
     <Folder Include="Properties\DataSources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeaCruncher.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
