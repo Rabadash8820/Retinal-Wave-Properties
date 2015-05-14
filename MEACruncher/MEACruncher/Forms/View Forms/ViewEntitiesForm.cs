@@ -35,7 +35,7 @@ namespace MEACruncher.Forms {
                 staticInitialize();
 
             // Initialize instance members
-            _db = DbManager.SessionFactory(Database.MeaData).OpenSession();
+            //_db = DbManager.SessionFactory(Database.MeaData).OpenSession();
             _entities.DataSource = loadEntities();
 
             // Initialize form controls

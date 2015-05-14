@@ -68,7 +68,7 @@
             MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            MainTableLayout.Size = new System.Drawing.Size(399, 219);
+            MainTableLayout.Size = new System.Drawing.Size(399, 211);
             MainTableLayout.TabIndex = 14;
             // 
             // FullNameLabel
@@ -131,7 +131,7 @@
             this.CommentsTextbox.Location = new System.Drawing.Point(94, 96);
             this.CommentsTextbox.Multiline = true;
             this.CommentsTextbox.Name = "CommentsTextbox";
-            this.CommentsTextbox.Size = new System.Drawing.Size(302, 79);
+            this.CommentsTextbox.Size = new System.Drawing.Size(302, 71);
             this.CommentsTextbox.TabIndex = 4;
             // 
             // BottomPanel
@@ -140,7 +140,7 @@
             BottomPanel.Controls.Add(this.CreateButton);
             BottomPanel.Controls.Add(this.CancelCreateButton);
             BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            BottomPanel.Location = new System.Drawing.Point(3, 181);
+            BottomPanel.Location = new System.Drawing.Point(3, 173);
             BottomPanel.Name = "BottomPanel";
             BottomPanel.Size = global::MEACruncher.Properties.Settings.Default.containerHeight;
             BottomPanel.TabIndex = 14;
@@ -223,7 +223,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.CancelCreateButton;
-            this.ClientSize = new System.Drawing.Size(399, 219);
+            this.ClientSize = new System.Drawing.Size(399, 211);
             this.Controls.Add(MainTableLayout);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

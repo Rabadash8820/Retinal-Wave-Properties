@@ -1,6 +1,7 @@
 ﻿using NHibernate;
 using MeaData;
 using MEACruncher.Events;
+using MEACruncher.Properties;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -71,6 +72,10 @@ namespace MEACruncher.Forms {
             TitleColumn.DataPropertyName       = "Title";
             DateStartedColumn.DataPropertyName = "DateStarted";
             CommentsColumn.DataPropertyName    = "Comments";
+            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.textboxBackground;
+            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.textboxText;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.dgvCellBackground;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.dgvCellText;
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;

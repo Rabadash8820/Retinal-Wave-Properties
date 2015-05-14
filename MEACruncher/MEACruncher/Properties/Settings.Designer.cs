@@ -62,7 +62,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("393, 35")]
+        [global::System.Configuration.DefaultSettingValueAttribute("537, 29")]
         public global::System.Drawing.Size containerHeight {
             get {
                 return ((global::System.Drawing.Size)(this["containerHeight"]));
@@ -71,7 +71,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("302, 25")]
+        [global::System.Configuration.DefaultSettingValueAttribute("581, 29")]
         public global::System.Drawing.Size controlHeight {
             get {
                 return ((global::System.Drawing.Size)(this["controlHeight"]));
@@ -120,6 +120,24 @@ namespace MEACruncher.Properties {
         public global::System.Drawing.Color textboxText {
             get {
                 return ((global::System.Drawing.Color)(this["textboxText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
+        public global::System.Drawing.Color dgvCellBackground {
+            get {
+                return ((global::System.Drawing.Color)(this["dgvCellBackground"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color dgvCellText {
+            get {
+                return ((global::System.Drawing.Color)(this["dgvCellText"]));
             }
         }
     }

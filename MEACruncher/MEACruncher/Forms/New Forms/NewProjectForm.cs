@@ -50,6 +50,7 @@ namespace MEACruncher.Forms {
             TitleTextbox.DataBindings.Add(             "Text",  _entity, "Title");
             DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
             CommentsTextbox.DataBindings.Add(          "Text",  _entity, "Comments");
+            DateStartedDateTimePicker.MaxDate = DateTime.Now;
         }
         protected override bool isUnique() {
             int numEntities = _db.QueryOver<Project>()

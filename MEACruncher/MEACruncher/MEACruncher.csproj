@@ -238,14 +238,14 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\meadata.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Forms\Edit Forms\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MeaCruncher.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\meadata_v3.1.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
