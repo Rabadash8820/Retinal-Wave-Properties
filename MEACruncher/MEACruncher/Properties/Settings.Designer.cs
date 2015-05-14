@@ -62,7 +62,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("537, 29")]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 35")]
         public global::System.Drawing.Size containerHeight {
             get {
                 return ((global::System.Drawing.Size)(this["containerHeight"]));
@@ -71,7 +71,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("581, 29")]
+        [global::System.Configuration.DefaultSettingValueAttribute("302, 25")]
         public global::System.Drawing.Size controlHeight {
             get {
                 return ((global::System.Drawing.Size)(this["controlHeight"]));

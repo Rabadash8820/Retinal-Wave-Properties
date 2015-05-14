@@ -1,6 +1,7 @@
 ﻿using NHibernate;
 using MeaData;
 using MEACruncher.Events;
+using MEACruncher.Properties;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -61,6 +62,14 @@ namespace MEACruncher.Forms {
             return entities;
         }
         protected override void buildForm() {
+            // Apply application settings
+            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.textboxBackground;
+            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.textboxText;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.dgvCellBackground;
+            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.dgvCellText;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
+            lastRow.Height = Settings.Default.containerHeight.Height;
+
             // Initialize the dataGridView
             FullNameColumn.DataPropertyName = "FullName";
             EmailColumn.DataPropertyName    = "WorkEmail";

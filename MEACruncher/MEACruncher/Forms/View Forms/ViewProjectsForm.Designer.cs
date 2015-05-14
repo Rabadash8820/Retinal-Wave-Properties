@@ -26,14 +26,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProjectsForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.EntitiesDGV = new System.Windows.Forms.DataGridView();
+            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.NewButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this._entities)).BeginInit();
             this.MainTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
@@ -52,7 +52,7 @@
             this.MainTableLayout.RowCount = 2;
             this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.MainTableLayout.Size = new System.Drawing.Size(543, 244);
+            this.MainTableLayout.Size = new System.Drawing.Size(655, 287);
             this.MainTableLayout.TabIndex = 1;
             // 
             // EntitiesDGV
@@ -74,12 +74,33 @@
             this.EntitiesDGV.Name = "EntitiesDGV";
             this.EntitiesDGV.RowHeadersVisible = false;
             this.EntitiesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EntitiesDGV.Size = new System.Drawing.Size(537, 203);
+            this.EntitiesDGV.Size = new System.Drawing.Size(649, 246);
             this.EntitiesDGV.TabIndex = 0;
             this.EntitiesDGV.TabStop = false;
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
             this.EntitiesDGV.SelectionChanged += new System.EventHandler(this.EntitiesDGV_SelectionChanged);
             this.EntitiesDGV.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.EntitiesDGV_UserDeletingRow);
+            // 
+            // TitleColumn
+            // 
+            this.TitleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.TitleColumn.HeaderText = "Title";
+            this.TitleColumn.MaxInputLength = 25;
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.Width = 58;
+            // 
+            // DateStartedColumn
+            // 
+            this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.DateStartedColumn.HeaderText = "Date Started";
+            this.DateStartedColumn.Name = "DateStartedColumn";
+            this.DateStartedColumn.Width = 110;
+            // 
+            // CommentsColumn
+            // 
+            this.CommentsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CommentsColumn.HeaderText = "Comments";
+            this.CommentsColumn.Name = "CommentsColumn";
             // 
             // BottomPanel
             // 
@@ -88,9 +109,9 @@
             this.BottomPanel.Controls.Add(this.EditButton);
             this.BottomPanel.Controls.Add(this.CloseButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomPanel.Location = new System.Drawing.Point(3, 212);
+            this.BottomPanel.Location = new System.Drawing.Point(3, 255);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = global::MEACruncher.Properties.Settings.Default.containerHeight;
+            this.BottomPanel.Size = new System.Drawing.Size(649, 29);
             this.BottomPanel.TabIndex = 1;
             // 
             // NewButton
@@ -101,7 +122,7 @@
             this.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.NewButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.NewButton.Location = new System.Drawing.Point(210, -1);
+            this.NewButton.Location = new System.Drawing.Point(322, -1);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(75, 31);
             this.NewButton.TabIndex = 0;
@@ -118,7 +139,7 @@
             this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.DeleteButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.DeleteButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.DeleteButton.Location = new System.Drawing.Point(372, -1);
+            this.DeleteButton.Location = new System.Drawing.Point(484, -1);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 31);
             this.DeleteButton.TabIndex = 2;
@@ -135,7 +156,7 @@
             this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.EditButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.EditButton.Location = new System.Drawing.Point(291, -1);
+            this.EditButton.Location = new System.Drawing.Point(403, -1);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 31);
             this.EditButton.TabIndex = 1;
@@ -151,7 +172,7 @@
             this.CloseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CloseButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.CloseButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.CloseButton.Location = new System.Drawing.Point(453, -1);
+            this.CloseButton.Location = new System.Drawing.Point(565, -1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 31);
             this.CloseButton.TabIndex = 3;
@@ -159,33 +180,13 @@
             this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CancelEditButton_Click);
             // 
-            // TitleColumn
-            // 
-            this.TitleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TitleColumn.HeaderText = "Title";
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.Width = 58;
-            // 
-            // DateStartedColumn
-            // 
-            this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DateStartedColumn.HeaderText = "Date Started";
-            this.DateStartedColumn.Name = "DateStartedColumn";
-            this.DateStartedColumn.Width = 110;
-            // 
-            // CommentsColumn
-            // 
-            this.CommentsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CommentsColumn.HeaderText = "Comments";
-            this.CommentsColumn.Name = "CommentsColumn";
-            // 
             // ViewProjectsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::MEACruncher.Properties.Settings.Default.formBackground;
             this.CancelButton = this.CloseButton;
-            this.ClientSize = new System.Drawing.Size(543, 244);
+            this.ClientSize = new System.Drawing.Size(655, 287);
             this.Controls.Add(this.MainTableLayout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(375, 150);
