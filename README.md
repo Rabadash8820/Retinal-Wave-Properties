@@ -65,7 +65,7 @@ All content under this heading is for my personal reference during the developme
 	* NewButton
 	* EditButton
 	* DeleteButton
-	* CloseFormButton
+	* CloseButton
 	* EntitiesDGV
 	* Property fields, e.g., TitleColumn
 * __Control Properties__
