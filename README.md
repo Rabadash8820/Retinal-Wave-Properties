@@ -13,13 +13,13 @@ All content under this heading is for my personal reference during the developme
 
 ### To-do list for New Entity Forms
 
-* Control Names
+* __Control Names__
 	* MainTableLayout
 	* BottomPanel
 	* CreateButton
 	* CancelCreateButton
 	* Property fields, e.g., TitleLabel and TitleTextbox
-* Control Properties
+* __Control Properties__
 	* MainTableLayout bottom row Absolute
 	* Form 
 		* Text : Create New [Entity]
@@ -40,7 +40,7 @@ All content under this heading is for my personal reference during the developme
 		* BorderStyle : FixedSingle
 		* MaxLength same as in MySQL db
 	* DateTimePickers, MinimumValue : 1/1/1970 
-* Control Settings
+* __Control Settings__
 	* All controls, Font : ControlFont
 	* Form, BackColor : FormBackColor
 	* Labels, ForeColor : LabelTextColor
@@ -50,7 +50,7 @@ All content under this heading is for my personal reference during the developme
 	* Buttons
 		* ForeColor : ButtonForeColor
 		* BackColor : ButtonBackColor
-* Changes in Code
+* __Changes in Code__
 	* DateTimePickers have MaximumValue = DateTime.Now
 	* MainTableLayout's bottom row, Size.Height = Settings.Default.ContainerSize.Height
 	* Textboxes
@@ -59,7 +59,7 @@ All content under this heading is for my personal reference during the developme
 
 ### To-do list for View Entitites Forms
 
-* Control Names
+* __Control Names__
 	* MainTableLayout
 	* BottomPanel
 	* NewButton
@@ -68,7 +68,7 @@ All content under this heading is for my personal reference during the developme
 	* CloseFormButton
 	* EntitiesDGV
 	* Property fields, e.g., TitleColumn
-* Control Properties
+* __Control Properties__
 	* MainTableLayout bottom row Absolute
 	* Form 
 		* Text : [Entities]
@@ -101,7 +101,7 @@ All content under this heading is for my personal reference during the developme
 			* SelectionMode : FullRowSelect
 		* BorderStyle : None
 		* DateTimePickers, MinimumValue : 1/1/1970 
-* Control Settings
+* __Control Settings__
 	* All controls, Font : ControlFont
 	* Form, BackColor : FormBackColor
 	* Buttons
@@ -110,7 +110,7 @@ All content under this heading is for my personal reference during the developme
 	* EntitiesDGV
 		* BackgroundColor : FormBackColor
 		* GridColor : TextboxBackColor
-* Changes in Code
+* __Changes in Code__
 	* MainTableLayout's bottom row, Size.Height = Settings.Default.ContainerSize.Height
 	* EntitiesDVH
 		* DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
