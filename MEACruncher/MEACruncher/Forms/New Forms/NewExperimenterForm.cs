@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
+using MEACruncher.Properties;
 using NHibernate;
 using System.Windows.Forms;
 
@@ -36,7 +37,13 @@ namespace MEACruncher.Forms {
             return entity;
         }
         protected override void buildForm() {
-            TitleTextbox.DataBindings.Add("Text", _entity, "FullName");
+            // Add application settings
+            TitleTextbox.Size = Settings.Default.controlHeight;
+
+            // Add data bindings
+            TitleTextbox.DataBindings.Add(   "Text", _entity, "FullName");
+            EmailTextbox.DataBindings.Add(   "Text", _entity, "WorkEmail");
+            PhoneTextbox.DataBindings.Add(   "Text", _entity, "WorkPhone");
             CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
         }
         protected override bool isUnique() {

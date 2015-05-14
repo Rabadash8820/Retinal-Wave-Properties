@@ -52,7 +52,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(589, 254);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(587, 254);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // EntitiesDGV
@@ -70,7 +70,7 @@
             this.EntitiesDGV.Name = "EntitiesDGV";
             this.EntitiesDGV.RowHeadersVisible = false;
             this.EntitiesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.EntitiesDGV.Size = new System.Drawing.Size(583, 213);
+            this.EntitiesDGV.Size = new System.Drawing.Size(581, 213);
             this.EntitiesDGV.TabIndex = 0;
             this.EntitiesDGV.TabStop = false;
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
@@ -106,13 +106,13 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 222);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(583, 29);
+            this.panel1.Size = new System.Drawing.Size(581, 29);
             this.panel1.TabIndex = 1;
             // 
             // NewButton
             // 
             this.NewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewButton.Location = new System.Drawing.Point(261, 3);
+            this.NewButton.Location = new System.Drawing.Point(259, 3);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(75, 23);
             this.NewButton.TabIndex = 0;
@@ -124,7 +124,7 @@
             // 
             this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DeleteButton.Enabled = false;
-            this.DeleteButton.Location = new System.Drawing.Point(423, 3);
+            this.DeleteButton.Location = new System.Drawing.Point(421, 3);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 23);
             this.DeleteButton.TabIndex = 2;
@@ -136,7 +136,7 @@
             // 
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.EditButton.Enabled = false;
-            this.EditButton.Location = new System.Drawing.Point(342, 3);
+            this.EditButton.Location = new System.Drawing.Point(340, 3);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 23);
             this.EditButton.TabIndex = 1;
@@ -147,7 +147,7 @@
             // 
             this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseButton.Location = new System.Drawing.Point(504, 3);
+            this.CloseButton.Location = new System.Drawing.Point(502, 3);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 3;
@@ -164,6 +164,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewProjectsForm";
+            this.ShowInTaskbar = false;
             this.Text = "Projects";
             ((System.ComponentModel.ISupportInitialize)(this._entities)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);

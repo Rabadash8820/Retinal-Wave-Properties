@@ -35,6 +35,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this._entities)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.panel1.SuspendLayout();
@@ -168,7 +169,9 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ViewExperimentersForm";
+            this.ShowInTaskbar = false;
             this.Text = "Experimenters";
+            ((System.ComponentModel.ISupportInitialize)(this._entities)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();
             this.panel1.ResumeLayout(false);

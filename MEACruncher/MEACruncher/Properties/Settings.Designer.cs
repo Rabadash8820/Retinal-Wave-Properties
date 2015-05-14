@@ -36,9 +36,9 @@ namespace MEACruncher.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
-        public global::System.Drawing.Color controlColor {
+        public global::System.Drawing.Color buttonColor {
             get {
-                return ((global::System.Drawing.Color)(this["controlColor"]));
+                return ((global::System.Drawing.Color)(this["buttonColor"]));
             }
         }
         
@@ -57,6 +57,69 @@ namespace MEACruncher.Properties {
         public global::System.Drawing.Font controlFont {
             get {
                 return ((global::System.Drawing.Font)(this["controlFont"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("393, 35")]
+        public global::System.Drawing.Size containerHeight {
+            get {
+                return ((global::System.Drawing.Size)(this["containerHeight"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("302, 25")]
+        public global::System.Drawing.Size controlHeight {
+            get {
+                return ((global::System.Drawing.Size)(this["controlHeight"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color formBackground {
+            get {
+                return ((global::System.Drawing.Color)(this["formBackground"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
+        public global::System.Drawing.Color labelText {
+            get {
+                return ((global::System.Drawing.Color)(this["labelText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color buttonText {
+            get {
+                return ((global::System.Drawing.Color)(this["buttonText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        public global::System.Drawing.Color textboxBackground {
+            get {
+                return ((global::System.Drawing.Color)(this["textboxBackground"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("MistyRose")]
+        public global::System.Drawing.Color textboxText {
+            get {
+                return ((global::System.Drawing.Color)(this["textboxText"]));
             }
         }
     }

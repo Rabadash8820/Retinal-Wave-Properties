@@ -112,7 +112,7 @@
     </Compile>
     <Compile Include="Forms\New Forms\NewEntityForm.Designer.cs">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Resources\DuplicateRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -123,31 +123,31 @@
     </Compile>
     <Compile Include="Forms\New Forms\NewExperimenterForm.Designer.cs">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Forms\New Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\New Forms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Forms\View Forms\ViewEntitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\View Forms\ViewEntitiesForm.Designer.cs">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Forms\View Forms\ViewExperimentersForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\View Forms\ViewExperimentersForm.Designer.cs">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Forms\View Forms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\View Forms\ViewProjectsForm.Designer.cs">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
-	</Compile>
+    </Compile>
     <Compile Include="Resources\DefaultRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -167,23 +167,23 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\New Forms\NewEntityForm.resx">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\DuplicateRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DuplicateRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\New Forms\NewExperimenterForm.resx">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\New Forms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\View Forms\ViewExperimentersForm.resx">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\View Forms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
-	</EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\DefaultRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DefaultRes.Designer.cs</LastGenOutput>
@@ -245,6 +245,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Forms\Edit Forms\" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
