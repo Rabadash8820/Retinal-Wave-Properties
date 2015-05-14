@@ -14,5 +14,9 @@ All content under this heading is for my personal reference during the developme
 ### To-do list for New Entity Forms
 
 * Control Names
+	* MainTableLayout
+	+ BottomPanel
+		* CreateButton
+		+ CancelCreateButton
 
 ### To-do list for View Entitites Forms
