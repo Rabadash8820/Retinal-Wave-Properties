@@ -73,7 +73,7 @@ namespace MEACruncher.Properties {
         /// <summary>
         ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
         ///--
-        ///-- Host: localhost    Database: meadata_v2_1
+        ///-- Host: localhost    Database: meadata
         ///-- ------------------------------------------------------
         ///-- Server version	5.6.24-log
         ///
@@ -83,7 +83,7 @@ namespace MEACruncher.Properties {
         ////*!40101 SET NAMES utf8 */;
         ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
         ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        /// [rest of string was truncated]&quot;;.
+        ////*!40 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string meadata {
             get {

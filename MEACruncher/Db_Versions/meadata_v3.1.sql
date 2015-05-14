@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
 --
--- Host: localhost    Database: meadata_v2_1
+-- Host: localhost    Database: meadata
 -- ------------------------------------------------------
 -- Server version	5.6.24-log
 
@@ -91,7 +91,7 @@ DROP TABLE IF EXISTS `channels`;
 CREATE TABLE `channels` (
   `Id` char(36) NOT NULL,
   `RecordingId` char(36) NOT NULL,
-  `Description` varchar(25) DEFAULT NULL,
+  `Description` varchar(15) DEFAULT NULL,
   `MeaRow` smallint(6) DEFAULT '0',
   `MeaColumn` smallint(6) DEFAULT '0',
   `HasMRGC` bit(1) DEFAULT NULL,
@@ -121,7 +121,7 @@ DROP TABLE IF EXISTS `conditions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `conditions` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(50) NOT NULL,
+  `Description` varchar(30) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -144,8 +144,8 @@ DROP TABLE IF EXISTS `experimenters`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `experimenters` (
   `Id` char(36) NOT NULL,
-  `FullName` varchar(75) NOT NULL,
-  `WorkEmail` varchar(75) DEFAULT NULL,
+  `FullName` varchar(30) NOT NULL,
+  `WorkEmail` varchar(25) DEFAULT NULL,
   `WorkPhone` varchar(15) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`)
@@ -170,7 +170,7 @@ DROP TABLE IF EXISTS `genotypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `genotypes` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(50) NOT NULL,
+  `Description` varchar(25) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -193,8 +193,8 @@ DROP TABLE IF EXISTS `model_organisms`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `model_organisms` (
   `Id` char(36) NOT NULL,
-  `ScientificName` varchar(75) NOT NULL,
-  `CommonName` varchar(75) DEFAULT NULL,
+  `ScientificName` varchar(35) NOT NULL,
+  `CommonName` varchar(30) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `ScientificName` (`ScientificName`)
@@ -219,7 +219,7 @@ DROP TABLE IF EXISTS `organization_roles`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organization_roles` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(50) NOT NULL,
+  `Description` varchar(25) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -242,7 +242,7 @@ DROP TABLE IF EXISTS `organization_types`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organization_types` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(50) NOT NULL,
+  `Description` varchar(25) NOT NULL,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -265,7 +265,7 @@ DROP TABLE IF EXISTS `organizations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organizations` (
   `Id` char(36) NOT NULL,
-  `Title` varchar(50) NOT NULL,
+  `Title` varchar(35) NOT NULL,
   `TypeId` char(36) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
@@ -384,7 +384,7 @@ DROP TABLE IF EXISTS `projects`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `projects` (
   `Id` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Title` varchar(50) NOT NULL,
+  `Title` varchar(25) NOT NULL,
   `DateStarted` datetime DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
@@ -398,7 +398,7 @@ CREATE TABLE `projects` (
 
 LOCK TABLES `projects` WRITE;
 /*!40000 ALTER TABLE `projects` DISABLE KEYS */;
-INSERT INTO `projects` VALUES ('af2df9fd-8803-45d7-bcb8-68f7829d4af3','Project_2','2015-05-09 04:05:23','A new project for analyzing MEA data.');
+INSERT INTO `projects` VALUES ('64b6ed0c-b6a1-4a23-8c4b-db919f12a384','Project_1','2015-05-13 01:20:13','A new project for analyzing MEA data.'),('8100ffe0-201e-4126-8449-651aefaed819','Project_3','2015-05-12 02:44:56','A new project for analyzing MEA data.'),('9fa97634-bcee-4a84-9965-d5d3067b1001','Project_4','2015-05-13 01:29:32','A new project for analyzing MEA data.'),('af2df9fd-8803-45d7-bcb8-68f7829d4af3','Project_2','2015-05-09 04:05:23','A new project for analyzing MEA data.'),('c35bf577-16a9-4b48-a2fe-0096eed72c77','Project','2015-05-12 02:19:18','A new project for analyzing MEA data.'),('d1601d20-d01e-407e-bdfe-85366ae6c8e7','Project','2015-05-13 01:26:46','A new project for analyzing MEA data.');
 /*!40000 ALTER TABLE `projects` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -441,7 +441,7 @@ DROP TABLE IF EXISTS `result_types`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `result_types` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(50) NOT NULL,
+  `Description` varchar(30) NOT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -590,9 +590,9 @@ DROP TABLE IF EXISTS `tissues`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tissues` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(255) NOT NULL,
+  `Description` varchar(35) NOT NULL,
   `ParentId` char(36) DEFAULT NULL,
-  `Comments` varchar(255) DEFAULT NULL,
+  `Comments` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `NaturalId` (`Description`,`ParentId`),
   KEY `Parent` (`ParentId`),
@@ -618,4 +618,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-11  3:23:50
+-- Dump completed on 2015-05-14  2:28:55

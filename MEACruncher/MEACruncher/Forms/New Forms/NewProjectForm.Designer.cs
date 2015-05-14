@@ -41,6 +41,7 @@
             // 
             this.TitleLabel.AutoSize = true;
             this.TitleLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.TitleLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
             this.TitleLabel.Location = new System.Drawing.Point(3, 0);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(34, 19);
@@ -51,6 +52,7 @@
             // 
             this.DateStartedLabel.AutoSize = true;
             this.DateStartedLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.DateStartedLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
             this.DateStartedLabel.Location = new System.Drawing.Point(3, 31);
             this.DateStartedLabel.Name = "DateStartedLabel";
             this.DateStartedLabel.Size = new System.Drawing.Size(86, 19);
@@ -61,6 +63,7 @@
             // 
             this.CommentsLabel.AutoSize = true;
             this.CommentsLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.CommentsLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
             this.CommentsLabel.Location = new System.Drawing.Point(3, 62);
             this.CommentsLabel.Name = "CommentsLabel";
             this.CommentsLabel.Size = new System.Drawing.Size(76, 19);
@@ -69,27 +72,43 @@
             // 
             // TitleTextbox
             // 
+            this.TitleTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.TitleTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TitleTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TitleTextbox.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.TitleTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.TitleTextbox.Location = new System.Drawing.Point(95, 3);
+            this.TitleTextbox.MaxLength = 50;
             this.TitleTextbox.Name = "TitleTextbox";
             this.TitleTextbox.Size = new System.Drawing.Size(261, 25);
             this.TitleTextbox.TabIndex = 0;
             // 
             // DateStartedDateTimePicker
             // 
+            this.DateStartedDateTimePicker.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
             this.DateStartedDateTimePicker.CalendarFont = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.DateStartedDateTimePicker.CalendarForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
+            this.DateStartedDateTimePicker.CalendarMonthBackground = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.DateStartedDateTimePicker.CalendarTitleBackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.DateStartedDateTimePicker.CalendarTitleForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
+            this.DateStartedDateTimePicker.CalendarTrailingForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.DateStartedDateTimePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DateStartedDateTimePicker.DropDownAlign = System.Windows.Forms.LeftRightAlignment.Right;
             this.DateStartedDateTimePicker.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.DateStartedDateTimePicker.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.DateStartedDateTimePicker.Location = new System.Drawing.Point(95, 34);
+            this.DateStartedDateTimePicker.MinDate = new System.DateTime(1970, 1, 1, 0, 0, 0, 0);
             this.DateStartedDateTimePicker.Name = "DateStartedDateTimePicker";
             this.DateStartedDateTimePicker.Size = new System.Drawing.Size(261, 25);
             this.DateStartedDateTimePicker.TabIndex = 1;
             // 
             // CommentsTextbox
             // 
+            this.CommentsTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.CommentsTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.CommentsTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CommentsTextbox.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.CommentsTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.CommentsTextbox.Location = new System.Drawing.Point(95, 65);
             this.CommentsTextbox.Multiline = true;
             this.CommentsTextbox.Name = "CommentsTextbox";
@@ -134,33 +153,40 @@
             // 
             this.CancelCreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelCreateButton.AutoSize = true;
+            this.CancelCreateButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
             this.CancelCreateButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelCreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.CancelCreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
             this.CancelCreateButton.Location = new System.Drawing.Point(269, 6);
             this.CancelCreateButton.Name = "CancelCreateButton";
-            this.CancelCreateButton.Size = new System.Drawing.Size(75, 29);
+            this.CancelCreateButton.Size = new System.Drawing.Size(75, 31);
             this.CancelCreateButton.TabIndex = 1;
             this.CancelCreateButton.Text = "Cancel";
-            this.CancelCreateButton.UseVisualStyleBackColor = true;
+            this.CancelCreateButton.UseVisualStyleBackColor = false;
             this.CancelCreateButton.Click += new System.EventHandler(this.CancelCreateButton_Click);
             // 
             // CreateButton
             // 
             this.CreateButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CreateButton.AutoSize = true;
+            this.CreateButton.BackColor = global::MEACruncher.Properties.Settings.Default.buttonColor;
+            this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.CreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
             this.CreateButton.Location = new System.Drawing.Point(188, 6);
             this.CreateButton.Name = "CreateButton";
-            this.CreateButton.Size = new System.Drawing.Size(75, 29);
+            this.CreateButton.Size = new System.Drawing.Size(75, 31);
             this.CreateButton.TabIndex = 0;
             this.CreateButton.Text = "Create";
-            this.CreateButton.UseVisualStyleBackColor = true;
+            this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
             // 
             // NewProjectForm
             // 
             this.AcceptButton = this.CreateButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.BackColor = global::MEACruncher.Properties.Settings.Default.formBackground;
             this.CancelButton = this.CancelCreateButton;
             this.ClientSize = new System.Drawing.Size(359, 211);
             this.Controls.Add(this.MainTableLayout);
@@ -170,6 +196,7 @@
             this.Name = "NewProjectForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Project";
             this.MainTableLayout.ResumeLayout(false);
             this.MainTableLayout.PerformLayout();
