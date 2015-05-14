@@ -10,7 +10,7 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;</Value>
     </Setting>
-    <Setting Name="controlColor" Type="System.Drawing.Color" Scope="Application">
+    <Setting Name="buttonColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">CornflowerBlue</Value>
     </Setting>
     <Setting Name="mysqlDbName" Type="System.String" Scope="Application">
@@ -18,6 +18,27 @@
     </Setting>
     <Setting Name="controlFont" Type="System.Drawing.Font" Scope="Application">
       <Value Profile="(Default)">Segoe UI, 10pt</Value>
+    </Setting>
+    <Setting Name="containerHeight" Type="System.Drawing.Size" Scope="Application">
+      <Value Profile="(Default)">393, 35</Value>
+    </Setting>
+    <Setting Name="controlHeight" Type="System.Drawing.Size" Scope="Application">
+      <Value Profile="(Default)">302, 25</Value>
+    </Setting>
+    <Setting Name="formBackground" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="labelText" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">CornflowerBlue</Value>
+    </Setting>
+    <Setting Name="buttonText" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="textboxBackground" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">DimGray</Value>
+    </Setting>
+    <Setting Name="textboxText" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">MistyRose</Value>
     </Setting>
   </Settings>
 </SettingsFile>

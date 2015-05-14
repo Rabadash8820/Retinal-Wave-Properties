@@ -12,6 +12,15 @@ namespace MEACruncher {
         /// </summary>
         [STAThread]
         static void Main() {
+#if DEBUG
+            MessageBox.Show(
+                "Make sure you uncommented lines in the NewEntity and ViewEntities base forms!",
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button1);
+#endif
+
             // Establish connections with Access databases
             DbManager.ConnectTo(Database.MeaData, Settings.Default.mysqlDbName, P.Resources.meadata);
 
