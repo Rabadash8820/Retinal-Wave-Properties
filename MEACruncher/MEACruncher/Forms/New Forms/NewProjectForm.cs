@@ -3,6 +3,7 @@ using NHibernate;
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
+using MEACruncher.Properties;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -51,6 +52,8 @@ namespace MEACruncher.Forms {
             DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
             CommentsTextbox.DataBindings.Add(          "Text",  _entity, "Comments");
             DateStartedDateTimePicker.MaxDate = DateTime.Now;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
+            lastRow.Height = Settings.Default.containerHeight.Height;
         }
         protected override bool isUnique() {
             int numEntities = _db.QueryOver<Project>()

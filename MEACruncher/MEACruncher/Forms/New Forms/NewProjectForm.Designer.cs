@@ -78,7 +78,7 @@
             this.TitleTextbox.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.TitleTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.TitleTextbox.Location = new System.Drawing.Point(95, 3);
-            this.TitleTextbox.MaxLength = 50;
+            this.TitleTextbox.MaxLength = 25;
             this.TitleTextbox.Name = "TitleTextbox";
             this.TitleTextbox.Size = new System.Drawing.Size(261, 25);
             this.TitleTextbox.TabIndex = 0;
@@ -112,7 +112,7 @@
             this.CommentsTextbox.Location = new System.Drawing.Point(95, 65);
             this.CommentsTextbox.Multiline = true;
             this.CommentsTextbox.Name = "CommentsTextbox";
-            this.CommentsTextbox.Size = new System.Drawing.Size(261, 93);
+            this.CommentsTextbox.Size = new System.Drawing.Size(261, 108);
             this.CommentsTextbox.TabIndex = 2;
             // 
             // MainTableLayout
@@ -134,7 +134,7 @@
             this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
             this.MainTableLayout.Size = new System.Drawing.Size(359, 211);
             this.MainTableLayout.TabIndex = 5;
             // 
@@ -144,9 +144,9 @@
             this.BottomPanel.Controls.Add(this.CancelCreateButton);
             this.BottomPanel.Controls.Add(this.CreateButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomPanel.Location = new System.Drawing.Point(3, 164);
+            this.BottomPanel.Location = new System.Drawing.Point(3, 179);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(353, 44);
+            this.BottomPanel.Size = new System.Drawing.Size(353, 29);
             this.BottomPanel.TabIndex = 5;
             // 
             // CancelCreateButton
@@ -158,7 +158,7 @@
             this.CancelCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelCreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.CancelCreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.CancelCreateButton.Location = new System.Drawing.Point(269, 6);
+            this.CancelCreateButton.Location = new System.Drawing.Point(269, -1);
             this.CancelCreateButton.Name = "CancelCreateButton";
             this.CancelCreateButton.Size = new System.Drawing.Size(75, 31);
             this.CancelCreateButton.TabIndex = 1;
@@ -174,7 +174,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.CreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.CreateButton.Location = new System.Drawing.Point(188, 6);
+            this.CreateButton.Location = new System.Drawing.Point(188, -1);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(75, 31);
             this.CreateButton.TabIndex = 0;

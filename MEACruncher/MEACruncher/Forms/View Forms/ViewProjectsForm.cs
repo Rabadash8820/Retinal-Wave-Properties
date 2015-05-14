@@ -68,14 +68,18 @@ namespace MEACruncher.Forms {
             return entities;
         }
         protected override void buildForm() {
-            // Initialize the dataGridView
-            TitleColumn.DataPropertyName       = "Title";
-            DateStartedColumn.DataPropertyName = "DateStarted";
-            CommentsColumn.DataPropertyName    = "Comments";
+            // Apply application settings
             EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.textboxBackground;
             EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.textboxText;
             EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.dgvCellBackground;
             EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.dgvCellText;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
+            lastRow.Height = Settings.Default.containerHeight.Height;
+
+            // Initialize the dataGridView
+            TitleColumn.DataPropertyName       = "Title";
+            DateStartedColumn.DataPropertyName = "DateStarted";
+            CommentsColumn.DataPropertyName    = "Comments";
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;

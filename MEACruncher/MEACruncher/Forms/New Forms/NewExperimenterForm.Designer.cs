@@ -23,127 +23,58 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TableLayoutPanel MainTableLayout;
-            System.Windows.Forms.Label FullNameLabel;
-            System.Windows.Forms.Label EmailLabel;
-            System.Windows.Forms.Label CommentsLabel;
-            System.Windows.Forms.Panel BottomPanel;
-            System.Windows.Forms.Label PhoneLabel;
-            this.TitleTextbox = new System.Windows.Forms.TextBox();
-            this.CommentsTextbox = new System.Windows.Forms.TextBox();
+            this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.BottomPanel = new System.Windows.Forms.Panel();
             this.CreateButton = new System.Windows.Forms.Button();
             this.CancelCreateButton = new System.Windows.Forms.Button();
+            this.FullNameLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
+            this.CommentsLabel = new System.Windows.Forms.Label();
+            this.TitleTextbox = new System.Windows.Forms.TextBox();
+            this.CommentsTextbox = new System.Windows.Forms.TextBox();
+            this.PhoneLabel = new System.Windows.Forms.Label();
             this.EmailTextbox = new System.Windows.Forms.TextBox();
             this.PhoneTextbox = new System.Windows.Forms.TextBox();
-            MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            FullNameLabel = new System.Windows.Forms.Label();
-            EmailLabel = new System.Windows.Forms.Label();
-            CommentsLabel = new System.Windows.Forms.Label();
-            BottomPanel = new System.Windows.Forms.Panel();
-            PhoneLabel = new System.Windows.Forms.Label();
-            MainTableLayout.SuspendLayout();
-            BottomPanel.SuspendLayout();
+            this.MainTableLayout.SuspendLayout();
+            this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainTableLayout
             // 
-            MainTableLayout.ColumnCount = 2;
-            MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            MainTableLayout.Controls.Add(FullNameLabel, 0, 0);
-            MainTableLayout.Controls.Add(EmailLabel, 0, 1);
-            MainTableLayout.Controls.Add(CommentsLabel, 0, 3);
-            MainTableLayout.Controls.Add(this.TitleTextbox, 1, 0);
-            MainTableLayout.Controls.Add(this.CommentsTextbox, 1, 3);
-            MainTableLayout.Controls.Add(BottomPanel, 0, 4);
-            MainTableLayout.Controls.Add(PhoneLabel, 0, 2);
-            MainTableLayout.Controls.Add(this.EmailTextbox, 1, 1);
-            MainTableLayout.Controls.Add(this.PhoneTextbox, 1, 2);
-            MainTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            MainTableLayout.Location = new System.Drawing.Point(0, 0);
-            MainTableLayout.Name = "MainTableLayout";
-            MainTableLayout.RowCount = 5;
-            MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            MainTableLayout.Size = new System.Drawing.Size(399, 211);
-            MainTableLayout.TabIndex = 14;
-            // 
-            // FullNameLabel
-            // 
-            FullNameLabel.AutoSize = true;
-            FullNameLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
-            FullNameLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
-            FullNameLabel.Location = new System.Drawing.Point(3, 3);
-            FullNameLabel.Margin = new System.Windows.Forms.Padding(3);
-            FullNameLabel.Name = "FullNameLabel";
-            FullNameLabel.Size = new System.Drawing.Size(70, 19);
-            FullNameLabel.TabIndex = 0;
-            FullNameLabel.Text = "Full Name";
-            // 
-            // EmailLabel
-            // 
-            EmailLabel.AutoSize = true;
-            EmailLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
-            EmailLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
-            EmailLabel.Location = new System.Drawing.Point(3, 34);
-            EmailLabel.Margin = new System.Windows.Forms.Padding(3);
-            EmailLabel.Name = "EmailLabel";
-            EmailLabel.Size = new System.Drawing.Size(78, 19);
-            EmailLabel.TabIndex = 2;
-            EmailLabel.Text = "Work Email";
-            // 
-            // CommentsLabel
-            // 
-            CommentsLabel.AutoSize = true;
-            CommentsLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
-            CommentsLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
-            CommentsLabel.Location = new System.Drawing.Point(3, 96);
-            CommentsLabel.Margin = new System.Windows.Forms.Padding(3);
-            CommentsLabel.Name = "CommentsLabel";
-            CommentsLabel.Size = new System.Drawing.Size(76, 19);
-            CommentsLabel.TabIndex = 4;
-            CommentsLabel.Text = "Comments";
-            // 
-            // TitleTextbox
-            // 
-            this.TitleTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
-            this.TitleTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TitleTextbox.DataBindings.Add(new System.Windows.Forms.Binding("Size", global::MEACruncher.Properties.Settings.Default, "controlHeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.TitleTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TitleTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.TitleTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
-            this.TitleTextbox.Location = new System.Drawing.Point(94, 3);
-            this.TitleTextbox.MaxLength = 50;
-            this.TitleTextbox.Name = "TitleTextbox";
-            this.TitleTextbox.Size = global::MEACruncher.Properties.Settings.Default.controlHeight;
-            this.TitleTextbox.TabIndex = 1;
-            // 
-            // CommentsTextbox
-            // 
-            this.CommentsTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
-            this.CommentsTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.CommentsTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CommentsTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.CommentsTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
-            this.CommentsTextbox.Location = new System.Drawing.Point(94, 96);
-            this.CommentsTextbox.Multiline = true;
-            this.CommentsTextbox.Name = "CommentsTextbox";
-            this.CommentsTextbox.Size = new System.Drawing.Size(302, 71);
-            this.CommentsTextbox.TabIndex = 4;
+            this.MainTableLayout.ColumnCount = 2;
+            this.MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.MainTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainTableLayout.Controls.Add(this.FullNameLabel, 0, 0);
+            this.MainTableLayout.Controls.Add(this.EmailLabel, 0, 1);
+            this.MainTableLayout.Controls.Add(this.CommentsLabel, 0, 3);
+            this.MainTableLayout.Controls.Add(this.TitleTextbox, 1, 0);
+            this.MainTableLayout.Controls.Add(this.CommentsTextbox, 1, 3);
+            this.MainTableLayout.Controls.Add(this.BottomPanel, 0, 4);
+            this.MainTableLayout.Controls.Add(this.PhoneLabel, 0, 2);
+            this.MainTableLayout.Controls.Add(this.EmailTextbox, 1, 1);
+            this.MainTableLayout.Controls.Add(this.PhoneTextbox, 1, 2);
+            this.MainTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainTableLayout.Location = new System.Drawing.Point(0, 0);
+            this.MainTableLayout.Name = "MainTableLayout";
+            this.MainTableLayout.RowCount = 5;
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
+            this.MainTableLayout.Size = new System.Drawing.Size(399, 211);
+            this.MainTableLayout.TabIndex = 14;
             // 
             // BottomPanel
             // 
-            MainTableLayout.SetColumnSpan(BottomPanel, 2);
-            BottomPanel.Controls.Add(this.CreateButton);
-            BottomPanel.Controls.Add(this.CancelCreateButton);
-            BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            BottomPanel.Location = new System.Drawing.Point(3, 173);
-            BottomPanel.Name = "BottomPanel";
-            BottomPanel.Size = global::MEACruncher.Properties.Settings.Default.containerHeight;
-            BottomPanel.TabIndex = 14;
+            this.MainTableLayout.SetColumnSpan(this.BottomPanel, 2);
+            this.BottomPanel.Controls.Add(this.CreateButton);
+            this.BottomPanel.Controls.Add(this.CancelCreateButton);
+            this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.BottomPanel.Location = new System.Drawing.Point(3, 179);
+            this.BottomPanel.Name = "BottomPanel";
+            this.BottomPanel.Size = new System.Drawing.Size(393, 29);
+            this.BottomPanel.TabIndex = 14;
             // 
             // CreateButton
             // 
@@ -153,7 +84,7 @@
             this.CreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.CreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.CreateButton.Location = new System.Drawing.Point(258, 3);
+            this.CreateButton.Location = new System.Drawing.Point(238, -1);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(65, 31);
             this.CreateButton.TabIndex = 0;
@@ -170,7 +101,7 @@
             this.CancelCreateButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CancelCreateButton.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
             this.CancelCreateButton.ForeColor = global::MEACruncher.Properties.Settings.Default.buttonText;
-            this.CancelCreateButton.Location = new System.Drawing.Point(329, 3);
+            this.CancelCreateButton.Location = new System.Drawing.Point(309, -1);
             this.CancelCreateButton.Name = "CancelCreateButton";
             this.CancelCreateButton.Size = new System.Drawing.Size(75, 31);
             this.CancelCreateButton.TabIndex = 1;
@@ -178,17 +109,80 @@
             this.CancelCreateButton.UseVisualStyleBackColor = false;
             this.CancelCreateButton.Click += new System.EventHandler(this.CancelCreateButton_Click);
             // 
+            // FullNameLabel
+            // 
+            this.FullNameLabel.AutoSize = true;
+            this.FullNameLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.FullNameLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
+            this.FullNameLabel.Location = new System.Drawing.Point(3, 3);
+            this.FullNameLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.FullNameLabel.Name = "FullNameLabel";
+            this.FullNameLabel.Size = new System.Drawing.Size(70, 19);
+            this.FullNameLabel.TabIndex = 0;
+            this.FullNameLabel.Text = "Full Name";
+            // 
+            // EmailLabel
+            // 
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.EmailLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
+            this.EmailLabel.Location = new System.Drawing.Point(3, 34);
+            this.EmailLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(78, 19);
+            this.EmailLabel.TabIndex = 2;
+            this.EmailLabel.Text = "Work Email";
+            // 
+            // CommentsLabel
+            // 
+            this.CommentsLabel.AutoSize = true;
+            this.CommentsLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.CommentsLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
+            this.CommentsLabel.Location = new System.Drawing.Point(3, 96);
+            this.CommentsLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.CommentsLabel.Name = "CommentsLabel";
+            this.CommentsLabel.Size = new System.Drawing.Size(76, 19);
+            this.CommentsLabel.TabIndex = 4;
+            this.CommentsLabel.Text = "Comments";
+            // 
+            // TitleTextbox
+            // 
+            this.TitleTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.TitleTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TitleTextbox.DataBindings.Add(new System.Windows.Forms.Binding("Size", global::MEACruncher.Properties.Settings.Default, "controlHeight", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.TitleTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.TitleTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
+            this.TitleTextbox.Location = new System.Drawing.Point(94, 3);
+            this.TitleTextbox.MaxLength = 30;
+            this.TitleTextbox.Name = "TitleTextbox";
+            this.TitleTextbox.Size = global::MEACruncher.Properties.Settings.Default.controlHeight;
+            this.TitleTextbox.TabIndex = 1;
+            // 
+            // CommentsTextbox
+            // 
+            this.CommentsTextbox.BackColor = global::MEACruncher.Properties.Settings.Default.textboxBackground;
+            this.CommentsTextbox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.CommentsTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CommentsTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.CommentsTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
+            this.CommentsTextbox.Location = new System.Drawing.Point(94, 96);
+            this.CommentsTextbox.Multiline = true;
+            this.CommentsTextbox.Name = "CommentsTextbox";
+            this.CommentsTextbox.Size = new System.Drawing.Size(302, 77);
+            this.CommentsTextbox.TabIndex = 4;
+            // 
             // PhoneLabel
             // 
-            PhoneLabel.AutoSize = true;
-            PhoneLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
-            PhoneLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
-            PhoneLabel.Location = new System.Drawing.Point(3, 65);
-            PhoneLabel.Margin = new System.Windows.Forms.Padding(3);
-            PhoneLabel.Name = "PhoneLabel";
-            PhoneLabel.Size = new System.Drawing.Size(85, 19);
-            PhoneLabel.TabIndex = 2;
-            PhoneLabel.Text = "Work Phone";
+            this.PhoneLabel.AutoSize = true;
+            this.PhoneLabel.Font = global::MEACruncher.Properties.Settings.Default.controlFont;
+            this.PhoneLabel.ForeColor = global::MEACruncher.Properties.Settings.Default.labelText;
+            this.PhoneLabel.Location = new System.Drawing.Point(3, 65);
+            this.PhoneLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.PhoneLabel.Name = "PhoneLabel";
+            this.PhoneLabel.Size = new System.Drawing.Size(85, 19);
+            this.PhoneLabel.TabIndex = 2;
+            this.PhoneLabel.Text = "Work Phone";
             // 
             // EmailTextbox
             // 
@@ -199,6 +193,7 @@
             this.EmailTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.EmailTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.EmailTextbox.Location = new System.Drawing.Point(94, 34);
+            this.EmailTextbox.MaxLength = 25;
             this.EmailTextbox.Name = "EmailTextbox";
             this.EmailTextbox.Size = global::MEACruncher.Properties.Settings.Default.controlHeight;
             this.EmailTextbox.TabIndex = 2;
@@ -212,6 +207,7 @@
             this.PhoneTextbox.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.PhoneTextbox.ForeColor = global::MEACruncher.Properties.Settings.Default.textboxText;
             this.PhoneTextbox.Location = new System.Drawing.Point(94, 65);
+            this.PhoneTextbox.MaxLength = 15;
             this.PhoneTextbox.Name = "PhoneTextbox";
             this.PhoneTextbox.Size = global::MEACruncher.Properties.Settings.Default.controlHeight;
             this.PhoneTextbox.TabIndex = 3;
@@ -224,7 +220,7 @@
             this.BackColor = System.Drawing.Color.Black;
             this.CancelButton = this.CancelCreateButton;
             this.ClientSize = new System.Drawing.Size(399, 211);
-            this.Controls.Add(MainTableLayout);
+            this.Controls.Add(this.MainTableLayout);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(415, 250);
@@ -233,10 +229,10 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Experimenter";
-            MainTableLayout.ResumeLayout(false);
-            MainTableLayout.PerformLayout();
-            BottomPanel.ResumeLayout(false);
-            BottomPanel.PerformLayout();
+            this.MainTableLayout.ResumeLayout(false);
+            this.MainTableLayout.PerformLayout();
+            this.BottomPanel.ResumeLayout(false);
+            this.BottomPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -249,5 +245,11 @@
         private System.Windows.Forms.Button CancelCreateButton;
         private System.Windows.Forms.TextBox EmailTextbox;
         private System.Windows.Forms.TextBox PhoneTextbox;
+        private System.Windows.Forms.TableLayoutPanel MainTableLayout;
+        private System.Windows.Forms.Label FullNameLabel;
+        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label CommentsLabel;
+        private System.Windows.Forms.Panel BottomPanel;
+        private System.Windows.Forms.Label PhoneLabel;
     }
 }

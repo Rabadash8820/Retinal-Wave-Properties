@@ -38,7 +38,8 @@ namespace MEACruncher.Forms {
         }
         protected override void buildForm() {
             // Add application settings
-            TitleTextbox.Size = Settings.Default.controlHeight;
+            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count];
+            lastRow.Height = Settings.Default.containerHeight.Height;
 
             // Add data bindings
             TitleTextbox.DataBindings.Add(   "Text", _entity, "FullName");
