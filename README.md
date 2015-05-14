@@ -15,8 +15,105 @@ All content under this heading is for my personal reference during the developme
 
 * Control Names
 	* MainTableLayout
-	+ BottomPanel
-		* CreateButton
-		+ CancelCreateButton
+	* BottomPanel
+	* CreateButton
+	* CancelCreateButton
+	* Property fields, e.g., TitleLabel and TitleTextbox
+* Control Properties
+	* MainTableLayout bottom row Absolute
+	* Form 
+		* Text : Create New [Entity]
+		* MinimizeBox : False
+		* MaximizeBox : False
+		* ShowIcon : False
+		* ShowInTaskbar : False
+		* AcceptButton : CreateButton
+		* CancelButton : CancelCreateButton
+		* StartPosition : CenterParent
+		* Appropriate MinimumSize (all controls and most of their content visible, comment textboxes still larger than others)
+		* Appropriate Tab Order (for labels, TabStop : False)
+	* All controls, GenerateMember : True
+	* CreateButton and CancelCreateButton
+		* AutoSize : True
+		* FlatStyle : Flat
+	* Textboxes
+		* BorderStyle : FixedSingle
+		* MaxLength same as in MySQL db
+	* DateTimePickers, MinimumValue : 1/1/1970 
+* Control Settings
+	* All controls, Font : ControlFont
+	* Form, BackColor : FormBackColor
+	* Labels, ForeColor : LabelTextColor
+	* Textboxes
+		* ForeColor : TextboxForeColor
+		* BackColor : TextBoxBackColor
+	* Buttons
+		* ForeColor : ButtonForeColor
+		* BackColor : ButtonBackColor
+* Changes in Code
+	* DateTimePickers have MaximumValue = DateTime.Now
+	* MainTableLayout's bottom row, Size.Height = Settings.Default.ContainerSize.Height
+	* Textboxes
+		* Size.Height = Settings.Default.ControlSize.Height
+		* Provide default values from Resource strings
 
 ### To-do list for View Entitites Forms
+
+* Control Names
+	* MainTableLayout
+	* BottomPanel
+	* NewButton
+	* EditButton
+	* DeleteButton
+	* CloseFormButton
+	* EntitiesDGV
+	* Property fields, e.g., TitleColumn
+* Control Properties
+	* MainTableLayout bottom row Absolute
+	* Form 
+		* Text : [Entities]
+		* MinimizeBox : False
+		* MaximizeBox : True
+		* ShowIcon : True
+		* ShowInTaskbar : False
+		* AcceptButton : None
+		* CancelButton : CancelCreateButton
+		* StartPosition : WindowsDefaultLocation
+		* Appropriate MinimumSize (all buttons and DGV columns visible, like 2.5 rows visible)
+		* Appropriate Tab Order (for DGV, TabStop : True)
+	* All controls, GenerateMember : True
+	* Buttons
+		* AutoSize : True
+		* FlatStyle : Flat
+	* EntitiesDGV
+		* Headers
+			* ColumnHeadersBorderStyle : Single
+			* ColumnHeadersHeightSizeMode : AutoSize
+			* EnableHeadersVisualStyles : False
+			* RowHeadersVisible : False
+		* Columns
+			* AutoSize : None
+			* For short columns with all content about same length, AutoSize : AllCells
+			* Last column, AutoSize : Fill
+			* MaxInputLength same as in MySQL db
+		* Selecting
+			* MultiSelect : False
+			* SelectionMode : FullRowSelect
+		* BorderStyle : None
+		* DateTimePickers, MinimumValue : 1/1/1970 
+* Control Settings
+	* All controls, Font : ControlFont
+	* Form, BackColor : FormBackColor
+	* Buttons
+		* ForeColor : ButtonForeColor
+		* BackColor : ButtonBackColor
+	* EntitiesDGV
+		* BackgroundColor : FormBackColor
+		* GridColor : TextboxBackColor
+* Changes in Code
+	* MainTableLayout's bottom row, Size.Height = Settings.Default.ContainerSize.Height
+	* EntitiesDVH
+		* DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
+        * DefaultCellStyle.ForeColor = Settings.Default.DgvCellForeColor;
+        * ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.DgvHeaderBackColor;
+        * ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.DgvHeaderForeColor;
