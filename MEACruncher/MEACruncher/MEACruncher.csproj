@@ -89,6 +89,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="Resources\DeleteRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DeleteRes.resx</DependentUpon>
+    </Compile>
     <Compile Include="Events\EntityCreatedEvent.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -102,58 +107,86 @@
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewEntityForm.cs">
+    <Compile Include="Forms\New Forms\NewEntityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewEntityForm.Designer.cs">
+    <Compile Include="Forms\New Forms\NewEntityForm.Designer.cs">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Resources\DuplicateRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DuplicateRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewExperimenterForm.cs">
+    <Compile Include="Forms\New Forms\NewExperimenterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewExperimenterForm.Designer.cs">
+    <Compile Include="Forms\New Forms\NewExperimenterForm.Designer.cs">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\NewProjectForm.cs">
+	</Compile>
+    <Compile Include="Forms\New Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewProjectForm.Designer.cs">
+    <Compile Include="Forms\New Forms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ViewExperimentersForm.cs">
+	</Compile>
+    <Compile Include="Forms\View Forms\ViewEntitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewExperimentersForm.Designer.cs">
+    <Compile Include="Forms\View Forms\ViewEntitiesForm.Designer.cs">
+      <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Forms\View Forms\ViewExperimentersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\View Forms\ViewExperimentersForm.Designer.cs">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ViewProjectsForm.cs">
+	</Compile>
+    <Compile Include="Forms\View Forms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewProjectsForm.Designer.cs">
+    <Compile Include="Forms\View Forms\ViewProjectsForm.Designer.cs">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+	</Compile>
+    <Compile Include="Resources\DefaultRes.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DefaultRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Resources\DeleteRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DeleteRes.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewEntityForm.resx">
+    <EmbeddedResource Include="Forms\New Forms\NewEntityForm.resx">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Resources\DuplicateRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DuplicateRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewExperimenterForm.resx">
+    <EmbeddedResource Include="Forms\New Forms\NewExperimenterForm.resx">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewProjectForm.resx">
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\New Forms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewExperimentersForm.resx">
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\View Forms\ViewExperimentersForm.resx">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewProjectsForm.resx">
+	</EmbeddedResource>
+    <EmbeddedResource Include="Forms\View Forms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+	</EmbeddedResource>
+    <EmbeddedResource Include="Resources\DefaultRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DefaultRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -205,10 +238,13 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\meadata.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\MeaCruncherIcon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\meadata.sql" />
+    <Folder Include="Forms\Edit Forms\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

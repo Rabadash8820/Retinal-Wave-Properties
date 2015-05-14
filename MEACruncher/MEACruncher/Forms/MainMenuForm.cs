@@ -2,7 +2,8 @@
 using System.Windows.Forms;
 
 namespace MEACruncher.Forms {
-    public partial class MainMenuForm : Form {
+
+    internal partial class MainMenuForm : Form {
         public MainMenuForm() {
             InitializeComponent();
         }
@@ -19,4 +20,5 @@ namespace MEACruncher.Forms {
             new ViewExperimentersForm().ShowDialog();
         }
     }
+
 }

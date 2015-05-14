@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace MEACruncher.Forms {
 
-    public partial class MainForm : Form {
+    internal partial class MainForm : Form {
         // CONSTRUCTOR
         public MainForm() {
             InitializeComponent();

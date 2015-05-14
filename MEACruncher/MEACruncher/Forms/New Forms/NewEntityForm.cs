@@ -2,7 +2,7 @@
 using NHibernate;
 using MeaData;
 using MEACruncher.Events;
-using MEACruncher.Properties;
+using MEACruncher.Resources;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -48,8 +48,8 @@ namespace MEACruncher.Forms {
         private static void staticInitialize() {
             // Associated a duplicate Entity error with each Entity type
             _duplicateError = new Dictionary<Type, string>(){
-                { typeof(Project),      Resources.DuplicateProjectError      },
-                { typeof(Experimenter), Resources.DuplicateExperimenterError },
+                { typeof(Project),      DuplicateRes.ProjectError      },
+                { typeof(Experimenter), DuplicateRes.ExperimenterError },
             };
 
             _initialized = true;
@@ -71,7 +71,7 @@ namespace MEACruncher.Forms {
 
             // Otherwise, persist this new Entity in the database and close the form
             using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Save(_entity);
+                persistEntity();
                 trans.Commit();
             }
             onEntityCreated();
@@ -94,27 +94,31 @@ namespace MEACruncher.Forms {
                 }
             }
         }
-        protected abstract bool isUnique();
-        protected abstract E defaultEntity();
         protected abstract void buildForm();
+        protected abstract E defaultEntity();
+        protected abstract bool isUnique();
+        protected abstract void persistEntity();
 
     }
 
     // DERIVED CLASSES (so VS designer will work)
     internal class INewProjectForm : NewEntityForm<Project> {
-        protected override bool isUnique() { return true; }
-        protected override Project defaultEntity() { return new Project(); }
         protected override void buildForm() { }
+        protected override Project defaultEntity() { return new Project(); }
+        protected override bool isUnique() { return true; }
+        protected override void persistEntity() { }
     }
     internal class INewExperimenterForm : NewEntityForm<Experimenter> {
-        protected override bool isUnique() { return true; }
-        protected override Experimenter defaultEntity() { return new Experimenter(); }
         protected override void buildForm() { }
+        protected override Experimenter defaultEntity() { return new Experimenter(); }
+        protected override bool isUnique() { return true; }
+        protected override void persistEntity() { }
     }
     internal class INewOrganizationForm : NewEntityForm<Organization> {
-        protected override bool isUnique() { return true; }
-        protected override Organization defaultEntity() { return new Organization(); }
         protected override void buildForm() { }
+        protected override Organization defaultEntity() { return new Organization(); }
+        protected override bool isUnique() { return true; }
+        protected override void persistEntity() { }
     }
 
 }

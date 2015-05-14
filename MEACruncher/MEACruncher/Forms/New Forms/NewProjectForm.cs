@@ -2,7 +2,7 @@
 using NHibernate;
 using MeaData;
 using MEACruncher.Events;
-using MEACruncher.Properties;
+using MEACruncher.Resources;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
@@ -33,30 +33,34 @@ namespace MEACruncher.Forms {
 
             // Return the first title like baseStr, baseStr_1, baseStr_2, etc. that isn't already taken
             int num = 0;
-            string title = "Project";
+            string title = String.Format(DefaultRes.ProjectTitle, "");
             while (titles.Contains(title))
-                title = String.Format("{0}_{1}", "Project", ++num);
+                title = String.Format(DefaultRes.ProjectTitle, "_" + (++num));
 
             // Create/return a new Project with that title and the current date as the start date
-            Project proj = new Project() {
+            Project entity = new Project() {
                 Title = title,
                 DateStarted = DateTime.Now,
-                Comments = "A new project for analyzing MEA data."
+                Comments = DefaultRes.ProjectComments
             };
-            return proj;
+            return entity;
         }
         protected override void buildForm() {
-            TitleTextbox.DataBindings.Add("Text", _entity, "Title");
+            base.buildForm();
+            TitleTextbox.DataBindings.Add(             "Text",  _entity, "Title");
             DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
-            CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
+            CommentsTextbox.DataBindings.Add(          "Text",  _entity, "Comments");
         }
         protected override bool isUnique() {
-            int numProjects = _db.QueryOver<Project>()
+            int numEntities = _db.QueryOver<Project>()
                                  .Where(p =>
-                                     p.Title == _entity.Title &&
+                                     p.Title            == _entity.Title &&
                                      p.DateStarted.Date == _entity.DateStarted.Date)
                                  .RowCount();
-            return (numProjects == 0);
+            return (numEntities == 0);
+        }
+        protected override void persistEntity() {
+            _db.Save(_entity);
         }
     }
 
