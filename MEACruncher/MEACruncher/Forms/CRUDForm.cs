@@ -56,22 +56,26 @@ namespace MEACruncher.Forms {
                 // Projects
                 { typeof(Project), e => {
                     Project e1 = e as Project;
-                    return _db.QueryOver<Project>()
-                              .Where(e2 =>
-                                  e2.Title == e1.Title &&
-                                  e2.DateStarted.Date == e1.DateStarted.Date)
-                              .RowCount() == 0; }
+                    int count = _db.QueryOver<Project>()
+                                   .Where(e2 =>
+                                       e2.Guid != e1.Guid &&
+                                       e2.Title == e1.Title &&
+                                       e2.DateStarted == e1.DateStarted)
+                                   .RowCount();
+                    return (count == 0); }
                 },
 
                 // Experimenters
                 { typeof(Experimenter), e => {
                     Experimenter e1 = e as Experimenter;
-                    return _db.QueryOver<Experimenter>()
-                              .Where(e2 =>
-                                  e2.FullName == e1.FullName &&
-                                  e2.WorkEmail == e1.WorkEmail &&
-                                  e2.WorkPhone == e1.WorkPhone)
-                              .RowCount() == 0; }
+                    int count = _db.QueryOver<Experimenter>()
+                                   .Where(e2 =>
+                                       e2.Guid != e1.Guid &&
+                                       e2.FullName == e1.FullName &&
+                                       e2.WorkEmail == e1.WorkEmail &&
+                                       e2.WorkPhone == e1.WorkPhone)
+                                   .RowCount();
+                    return (count == 0); }
                 },
             };
         }

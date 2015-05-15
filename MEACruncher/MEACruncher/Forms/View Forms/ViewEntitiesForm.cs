@@ -51,6 +51,12 @@ namespace MEACruncher.Forms {
             }
             return true;
         }
+        protected void updateEntity(E entity) {
+            using (ITransaction trans = _db.BeginTransaction()) {
+                _db.Update(entity);
+                trans.Commit();
+            }
+        }
     }
 
     // DERIVED CLASSES (so VS designer will work)
