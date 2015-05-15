@@ -78,7 +78,13 @@ namespace MEACruncher.Forms {
             }
         }
         private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
-
+            Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
+            bool unique = isUnique(entity);
+            e.Cancel = !unique;
+        }
+        private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
+            Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
+            this.updateEntity(entity);
         }
 
         // FUNCTIONS
@@ -113,11 +119,7 @@ namespace MEACruncher.Forms {
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;
         }
-
-        private void EntitiesDGV_RowValidating_1(object sender, DataGridViewCellCancelEventArgs e) {
-
-        }
-
+        
     }
 
 }

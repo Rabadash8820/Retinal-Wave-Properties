@@ -27,13 +27,13 @@ namespace MEACruncher.Forms {
         }
         private void EntitiesDGV_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
             Project entity = e.Row.DataBoundItem as Project;
-            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.Title, entity.DateStarted.ToShortDateString());
+            string message = String.Format(R.DeleteRes.ProjectWarning, entity.Title);
             bool cancelDelete = !entityDeleted(entity, message);
             e.Cancel = cancelDelete;
         }
         private void DeleteButton_Click(object sender, System.EventArgs e) {
             Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.Title, entity.DateStarted.ToShortDateString());
+            string message = String.Format(R.DeleteRes.ProjectWarning, entity.Title);
             if (entityDeleted(entity, message))
                 _entities.Remove(entity);
         }
@@ -66,6 +66,15 @@ namespace MEACruncher.Forms {
                 bool isValid = validDate(input);
                 e.Cancel = !isValid;
             }
+        }
+        private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
+            Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
+            bool unique = isUnique(entity);
+            e.Cancel = !unique;
+        }
+        private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
+            Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
+            this.updateEntity(entity);
         }
 
         // FUNCTIONS

@@ -40,6 +40,9 @@
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
             // 
+            // _entities
+            // 
+            // 
             // MainTableLayout
             // 
             this.MainTableLayout.ColumnCount = 1;
@@ -79,6 +82,8 @@
             this.EntitiesDGV.TabIndex = 0;
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
             this.EntitiesDGV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.EntitiesDGV_CellValidating);
+            this.EntitiesDGV.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_RowValidated);
+            this.EntitiesDGV.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EntitiesDGV_RowValidating);
             this.EntitiesDGV.SelectionChanged += new System.EventHandler(this.EntitiesDGV_SelectionChanged);
             this.EntitiesDGV.UserDeletingRow += new System.Windows.Forms.DataGridViewRowCancelEventHandler(this.EntitiesDGV_UserDeletingRow);
             // 
