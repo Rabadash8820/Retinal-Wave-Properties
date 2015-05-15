@@ -195,7 +195,6 @@
             this.Name = "ViewProjectsForm";
             this.ShowInTaskbar = false;
             this.Text = "Projects";
-            this.Load += new System.EventHandler(this.ViewProjectsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this._entities)).EndInit();
             this.MainTableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();

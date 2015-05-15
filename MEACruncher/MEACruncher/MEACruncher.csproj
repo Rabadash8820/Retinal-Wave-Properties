@@ -89,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="Forms\CRUDForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CRUDForm.Designer.cs">
+      <DependentUpon>CRUDForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources\DeleteRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -165,6 +171,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\CRUDForm.resx">
+      <DependentUpon>CRUDForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\View Forms\ViewEntitiesForm.resx">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
     </EmbeddedResource>

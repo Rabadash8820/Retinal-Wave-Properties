@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher.Forms {
-    partial class ViewEntitiesForm<E> {
+    partial class CRUDForm<E> {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,14 +25,14 @@
         private void InitializeComponent() {
             this.SuspendLayout();
             // 
-            // ViewEntitiesForm
+            // CRUDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "ViewEntitiesForm";
-            this.Text = "ViewEntitiesForm";
-            this.Load += new System.EventHandler(this.ViewEntitiesForm_Load);
+            this.Name = "CRUDForm";
+            this.Text = "CRUDForm";
+            this.Load += new System.EventHandler(this.CRUDForm_Load);
             this.ResumeLayout(false);
 
         }

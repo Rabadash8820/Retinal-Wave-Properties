@@ -16,9 +16,6 @@ namespace MEACruncher.Forms {
         }
 
         // EVENT HANDLERS
-        private void NewExperimenterForm_Load(object sender, EventArgs e) {
-            this.initialize();
-        }
         private void CreateButton_Click(object sender, EventArgs e) {
             this.createEntity();
         }
@@ -73,15 +70,6 @@ namespace MEACruncher.Forms {
             EmailTextbox.DataBindings.Add(   "Text", _entity, "WorkEmail");
             PhoneTextbox.DataBindings.Add(   "Text", _entity, "WorkPhone");
             CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
-        }
-        protected override bool isUnique() {
-            int numEntities = _db.QueryOver<Experimenter>()
-                                 .Where(e =>
-                                     e.FullName  == _entity.FullName &&
-                                     e.WorkEmail == _entity.WorkEmail &&
-                                     e.WorkPhone == _entity.WorkPhone)
-                                 .RowCount();
-            return (numEntities == 0);
         }
 
     }

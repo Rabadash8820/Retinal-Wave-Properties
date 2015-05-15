@@ -2,7 +2,7 @@
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
-
+using R = MEACruncher.Resources;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
@@ -11,14 +11,12 @@ namespace MEACruncher.Forms {
 
     internal partial class ViewExperimentersForm : IViewExperimentersForm {
         // CONSTRUCTORS
-        public ViewExperimentersForm() : base() {
+        public ViewExperimentersForm()
+            : base() {
             InitializeComponent();
         }
 
         // EVENT HANDLERS
-        private void ViewExperimentersForm_Load(object sender, EventArgs e) {
-            this.initialize();
-        }
         private void CancelEditButton_Click(object sender, System.EventArgs e) {
             closeStuff();
         }
@@ -28,12 +26,15 @@ namespace MEACruncher.Forms {
             DeleteButton.Enabled = rowSelected;
         }
         private void EntitiesDGV_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            bool cancelDelete = !entityDeleted(e.Row.DataBoundItem as Experimenter);
+            Experimenter entity = e.Row.DataBoundItem as Experimenter;
+            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.FullName);
+            bool cancelDelete = !entityDeleted(entity, message);
             e.Cancel = cancelDelete;
         }
         private void DeleteButton_Click(object sender, System.EventArgs e) {
             Experimenter entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Experimenter;
-            if (entityDeleted(entity))
+            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.FullName);
+            if (entityDeleted(entity, message))
                 _entities.Remove(entity);
         }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -76,6 +77,9 @@ namespace MEACruncher.Forms {
                 e.Cancel = !isValid;
             }
         }
+        private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
+
+        }
 
         // FUNCTIONS
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
@@ -102,14 +106,18 @@ namespace MEACruncher.Forms {
 
             // Initialize the dataGridView
             FullNameColumn.DataPropertyName = "FullName";
-            EmailColumn.DataPropertyName    = "WorkEmail";
-            PhoneColumn.DataPropertyName    = "WorkPhone";
+            EmailColumn.DataPropertyName = "WorkEmail";
+            PhoneColumn.DataPropertyName = "WorkPhone";
             CommentsColumn.DataPropertyName = "Comments";
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;
         }
-        
+
+        private void EntitiesDGV_RowValidating_1(object sender, DataGridViewCellCancelEventArgs e) {
+
+        }
+
     }
 
 }
