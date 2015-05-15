@@ -25,6 +25,9 @@ namespace MEACruncher.Forms {
         protected void NewEntityForm_EntityCreated(object sender, EntityCreatedEventArgs<E> e) {
             _entities.Add(e.Entity);
         }
+        protected void EditEntityForm_EntityUpdated(object sender, EntityUpdatedEventArgs<E> e) {
+            _db.Refresh(e.Entity);
+        }
         protected void ViewEntitiesForm_Load(object sender, EventArgs e) {
             _entities.DataSource = loadEntities();
         }

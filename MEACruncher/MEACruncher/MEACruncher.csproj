@@ -89,11 +89,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="Events\EntityUpdatedEvent.cs" />
     <Compile Include="Forms\CRUDForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CRUDForm.Designer.cs">
       <DependentUpon>CRUDForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Edit Forms\EditEntityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Edit Forms\EditEntityForm.Designer.cs">
+      <DependentUpon>EditEntityForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Edit Forms\EditProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Edit Forms\EditProjectForm.Designer.cs">
+      <DependentUpon>EditProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\DeleteRes.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,6 +186,9 @@
     </Compile>
     <EmbeddedResource Include="Forms\CRUDForm.resx">
       <DependentUpon>CRUDForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Edit Forms\EditProjectForm.resx">
+      <DependentUpon>EditProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\View Forms\ViewEntitiesForm.resx">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
@@ -268,7 +284,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\Edit Forms\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
