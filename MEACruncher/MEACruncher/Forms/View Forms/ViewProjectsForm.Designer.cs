@@ -168,6 +168,7 @@
             this.EditButton.TabIndex = 1;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // CloseButton
             // 

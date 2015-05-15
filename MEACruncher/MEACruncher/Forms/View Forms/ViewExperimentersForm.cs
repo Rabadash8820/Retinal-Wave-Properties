@@ -31,12 +31,6 @@ namespace MEACruncher.Forms {
             bool cancelDelete = !entityDeleted(entity, message);
             e.Cancel = cancelDelete;
         }
-        private void DeleteButton_Click(object sender, System.EventArgs e) {
-            Experimenter entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Experimenter;
-            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.FullName);
-            if (entityDeleted(entity, message))
-                _entities.Remove(entity);
-        }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             this.formatEntities(e);
         }
@@ -44,6 +38,17 @@ namespace MEACruncher.Forms {
             NewExperimenterForm form = new NewExperimenterForm();
             form.EntityCreated += NewEntityForm_EntityCreated;
             form.ShowDialog();
+        }
+        private void EditButton_Click(object sender, EventArgs e) {
+            //EditExperimenterForm form = new EditExperimenterForm();
+            //form.EntityUpdated += EditEntityForm_EntityUpdated;
+            //form.ShowDialog();
+        }
+        private void DeleteButton_Click(object sender, System.EventArgs e) {
+            Experimenter entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Experimenter;
+            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.FullName);
+            if (entityDeleted(entity, message))
+                _entities.Remove(entity);
         }
         private void NewProjectForm_EntityCreated(object sender, EntityCreatedEventArgs<Project> e) {
             _entities.Add(e.Entity);

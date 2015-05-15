@@ -176,5 +176,23 @@ namespace MEACruncher.Properties {
                 return ((global::System.Drawing.Color)(this["DgvBackColor"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Control")]
+        public global::System.Drawing.Color TabPageBackColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TabPageBackColor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
+        public global::System.Drawing.Color TabPageForeColor {
+            get {
+                return ((global::System.Drawing.Color)(this["TabPageForeColor"]));
+            }
+        }
     }
 }
