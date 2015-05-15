@@ -229,7 +229,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Create New Experimenter";
-            this.Load += new System.EventHandler(this.NewExperimenterForm_Load);
             this.MainTableLayout.ResumeLayout(false);
             this.MainTableLayout.PerformLayout();
             this.BottomPanel.ResumeLayout(false);

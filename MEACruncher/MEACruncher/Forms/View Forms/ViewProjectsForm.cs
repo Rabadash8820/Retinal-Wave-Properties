@@ -2,6 +2,7 @@
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
+using R = MEACruncher.Resources;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -16,9 +17,6 @@ namespace MEACruncher.Forms {
         }
 
         // EVENT HANDLERS
-        private void ViewProjectsForm_Load(object sender, EventArgs e) {
-            this.initialize();
-        }
         private void CancelEditButton_Click(object sender, System.EventArgs e) {
             closeStuff();
         }
@@ -28,12 +26,15 @@ namespace MEACruncher.Forms {
             DeleteButton.Enabled = rowSelected;
         }
         private void EntitiesDGV_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            bool cancelDelete = !entityDeleted(e.Row.DataBoundItem as Project);
+            Project entity = e.Row.DataBoundItem as Project;
+            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.Title, entity.DateStarted.ToShortDateString());
+            bool cancelDelete = !entityDeleted(entity, message);
             e.Cancel = cancelDelete;
         }
         private void DeleteButton_Click(object sender, System.EventArgs e) {
             Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            if (entityDeleted(entity))
+            string message = String.Format(R.DeleteRes.ExperimenterWarning, entity.Title, entity.DateStarted.ToShortDateString());
+            if (entityDeleted(entity, message))
                 _entities.Remove(entity);
         }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -80,9 +81,9 @@ namespace MEACruncher.Forms {
         protected override void deleteDependents() { }
         protected override IList<Project> loadEntities() {
             IList<Project> entities = _db.QueryOver<Project>()
-                                        .OrderBy(p => p.Title).Asc
-                                        .OrderBy(p => p.DateStarted).Asc
-                                        .List();
+                                         .OrderBy(p => p.Title).Asc
+                                         .OrderBy(p => p.DateStarted).Asc
+                                         .List();
             return entities;
         }
         protected override void buildForm() {

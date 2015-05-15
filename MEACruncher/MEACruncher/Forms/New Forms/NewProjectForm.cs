@@ -16,9 +16,6 @@ namespace MEACruncher.Forms {
         }
 
         // EVENT HANDLERS
-        private void NewProjectForm_Load(object sender, EventArgs e) {
-            this.initialize();
-        }
         private void CreateButton_Click(object sender, EventArgs e) {
             this.createEntity();
         }
@@ -71,14 +68,6 @@ namespace MEACruncher.Forms {
             TitleTextbox.DataBindings.Add("Text", _entity, "Title");
             DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
             CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
-        }
-        protected override bool isUnique() {
-            int numEntities = _db.QueryOver<Project>()
-                                 .Where(p =>
-                                     p.Title            == _entity.Title &&
-                                     p.DateStarted.Date == _entity.DateStarted.Date)
-                                 .RowCount();
-            return (numEntities == 0);
         }
 
     }
