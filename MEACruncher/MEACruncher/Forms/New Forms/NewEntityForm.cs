@@ -23,6 +23,10 @@ namespace MEACruncher.Forms {
         }
 
         // FUNCTIONS
+        protected override void buildForm() {
+            _entity = defaultEntity();
+        }
+        protected abstract E defaultEntity();
         protected void createEntity() {
             // Validate the new Entity to see if it will conflict with an existing record
             if (!isUnique(_entity))
@@ -49,10 +53,6 @@ namespace MEACruncher.Forms {
                 }
             }
         }
-        protected override void buildForm() {
-            _entity = defaultEntity();
-        }
-        protected abstract E defaultEntity();
     }
 
     // DERIVED CLASSES (so VS designer will work)

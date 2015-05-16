@@ -120,6 +120,7 @@
             this.UpdateButton.TabIndex = 1;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = false;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
             // 
             // MainTabControl
             // 
@@ -302,6 +303,7 @@
             this.ExperimentersDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.ExperimentersDGV.Size = new System.Drawing.Size(734, 223);
             this.ExperimentersDGV.TabIndex = 1;
+            this.ExperimentersDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ExperimentersDGV_CellFormatting);
             // 
             // FullNameColumn
             // 
@@ -366,6 +368,7 @@
             this.AddExperimenterButton.TabIndex = 0;
             this.AddExperimenterButton.Text = "Add...";
             this.AddExperimenterButton.UseVisualStyleBackColor = false;
+            this.AddExperimenterButton.Click += new System.EventHandler(this.AddExperimenterButton_Click);
             // 
             // RecordingsPage
             // 

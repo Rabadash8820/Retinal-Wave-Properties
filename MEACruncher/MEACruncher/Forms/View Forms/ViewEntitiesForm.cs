@@ -15,6 +15,9 @@ namespace MEACruncher.Forms {
         // VARIABLES
         protected BindingSource _entities;
 
+        // EVENTS
+        public event EntitiesSelectedEventHandler<E> EntitiesSelected;
+
         // CONSTRUCTORS
         public ViewEntitiesForm() : base() {
             InitializeComponent();

@@ -20,6 +20,9 @@ namespace MEACruncher.Forms {
         }
 
         // FUNCTIONS
+        protected override void buildForm() {
+            _entity = EntityStack.Pop() as E;
+        }
         protected void updateEntity() {
             // Validate the new Entity to see if it will conflict with an existing record
             if (!isUnique(_entity))
@@ -51,11 +54,11 @@ namespace MEACruncher.Forms {
     // DERIVED CLASSES (so VS designer will work)
     internal class IEditProjectForm : EditEntityForm<Project> {
         public IEditProjectForm() : base() { }
-        protected override void buildForm() { }
+        protected override void buildForm() { base.buildForm(); }
     }
     internal class IEditExperimenterForm : EditEntityForm<Experimenter> {
         public IEditExperimenterForm() : base() { }
-        protected override void buildForm() { }
+        protected override void buildForm() { base.buildForm(); }
     }
 
 }
