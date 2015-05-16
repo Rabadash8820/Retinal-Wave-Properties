@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms {
+﻿namespace MEACruncher.Forms.ViewForms {
     partial class ViewProjectsForm {
         /// <summary>
         /// Required designer variable.

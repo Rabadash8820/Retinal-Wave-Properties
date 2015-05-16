@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.NewForms {
 
     // BASE CLASS
     internal abstract partial class NewEntityForm<E> : CRUDForm<E> where E : Entity {
@@ -26,7 +26,7 @@ namespace MEACruncher.Forms {
         protected override void buildForm() {
             _entity = defaultEntity();
         }
-        protected abstract E defaultEntity();
+        protected virtual E defaultEntity() { return default(E); }
         protected void createEntity() {
             // Validate the new Entity to see if it will conflict with an existing record
             if (!isUnique(_entity))
@@ -58,18 +58,12 @@ namespace MEACruncher.Forms {
     // DERIVED CLASSES (so VS designer will work)
     internal class INewProjectForm : NewEntityForm<Project> {
         public INewProjectForm() : base() { }
-        protected override void buildForm() { base.buildForm(); }
-        protected override Project defaultEntity() { return new Project(); }
     }
     internal class INewExperimenterForm : NewEntityForm<Experimenter> {
         public INewExperimenterForm() : base() { }
-        protected override void buildForm() { base.buildForm(); }
-        protected override Experimenter defaultEntity() { return new Experimenter(); }
     }
     internal class INewOrganizationForm : NewEntityForm<Organization> {
         public INewOrganizationForm() : base() { }
-        protected override void buildForm() { base.buildForm(); }
-        protected override Organization defaultEntity() { return new Organization(); }
     }
 
 }

@@ -3,11 +3,12 @@ using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
 using R = MEACruncher.Resources;
+using MEACruncher.Forms.NewForms;
 using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.ViewForms {
 
     internal partial class ViewExperimentersForm : IViewExperimentersForm {
         // CONSTRUCTORS
@@ -122,6 +123,10 @@ namespace MEACruncher.Forms {
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = _entities;
+        }
+        protected override void refresh() {
+            base.refresh();
+            EntitiesDGV.Refresh();
         }
         
     }

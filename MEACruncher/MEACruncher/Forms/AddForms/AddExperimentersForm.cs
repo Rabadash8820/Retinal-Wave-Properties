@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using MEACruncher.Properties;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.AddForms {
 
     internal partial class AddExperimentersForm : IAddExperimentersForm {
         // CONSTRUCTORS

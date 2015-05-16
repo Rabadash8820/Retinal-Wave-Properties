@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms {
+﻿namespace MEACruncher.Forms.AddForms {
     partial class AddExperimentersForm {
         /// <summary>
         /// Required designer variable.

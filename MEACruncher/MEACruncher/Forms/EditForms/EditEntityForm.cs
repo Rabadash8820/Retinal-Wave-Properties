@@ -4,7 +4,7 @@ using NHibernate;
 using MEACruncher.Events;
 using System.Windows.Forms;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.EditForms {
 
     // BASE CLASS
     public abstract partial class EditEntityForm<E> : CRUDForm<E> where E : Entity {
@@ -54,11 +54,9 @@ namespace MEACruncher.Forms {
     // DERIVED CLASSES (so VS designer will work)
     internal class IEditProjectForm : EditEntityForm<Project> {
         public IEditProjectForm() : base() { }
-        protected override void buildForm() { base.buildForm(); }
     }
     internal class IEditExperimenterForm : EditEntityForm<Experimenter> {
         public IEditExperimenterForm() : base() { }
-        protected override void buildForm() { base.buildForm(); }
     }
 
 }

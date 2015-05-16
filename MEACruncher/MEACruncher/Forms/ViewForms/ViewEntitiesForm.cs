@@ -8,15 +8,12 @@ using MEACruncher.Events;
 using MEACruncher.Resources;
 using NHibernate;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.ViewForms {
 
     // BASE CLASS
     internal abstract partial class ViewEntitiesForm<E> : CRUDForm<E> where E : Entity  {
         // VARIABLES
         protected BindingSource _entities;
-
-        // EVENTS
-        public event EntitiesSelectedEventHandler<E> EntitiesSelected;
 
         // CONSTRUCTORS
         public ViewEntitiesForm() : base() {
@@ -29,16 +26,19 @@ namespace MEACruncher.Forms {
             _entities.Add(e.Entity);
         }
         protected void EditEntityForm_EntityUpdated(object sender, EntityUpdatedEventArgs<E> e) {
-            _db.Refresh(e.Entity);
+            this.refresh();
+        }
+        protected void AddEntitiesForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs<E> e) {
+            this.addEntities();
         }
         protected void ViewEntitiesForm_Load(object sender, EventArgs e) {
             _entities.DataSource = loadEntities();
         }
 
         // FUNCTIONS
-        protected abstract IList<E> loadEntities();
-        protected abstract void formatEntities(DataGridViewCellFormattingEventArgs e);
-        protected abstract void deleteDependents();
+        protected virtual IList<E> loadEntities() { return new List<E>(); }
+        protected virtual void formatEntities(DataGridViewCellFormattingEventArgs e) { }
+        protected virtual void deleteDependents() { }
         protected bool entityDeleted(E entity, string message) {
             // Show a dialog asking the user if they really want to delete the record
             DialogResult result = MessageBox.Show(message,
@@ -63,29 +63,23 @@ namespace MEACruncher.Forms {
                 trans.Commit();
             }
         }
+        protected virtual void addEntities() { }
+        protected override void closeStuff() {
+            base.closeStuff();
+            _db.Close();
+        }
+        protected virtual void refresh() { }
     }
 
     // DERIVED CLASSES (so VS designer will work)
     internal class IViewProjectsForm : ViewEntitiesForm<Project> {
         public IViewProjectsForm() : base() { }
-        protected override void deleteDependents() { }
-        protected override IList<Project> loadEntities() { return new List<Project>(); }
-        protected override void buildForm() { }
-        protected override void formatEntities(DataGridViewCellFormattingEventArgs e) { }
     }
     internal class IViewExperimentersForm : ViewEntitiesForm<Experimenter> {
         public IViewExperimentersForm() : base() { }
-        protected override void deleteDependents() { }
-        protected override IList<Experimenter> loadEntities() { return new List<Experimenter>(); }
-        protected override void buildForm() { }
-        protected override void formatEntities(DataGridViewCellFormattingEventArgs e) { }
     }
     internal class IViewOrganizationsForm : ViewEntitiesForm<Organization> {
         public IViewOrganizationsForm() : base() { }
-        protected override void deleteDependents() { }
-        protected override IList<Organization> loadEntities() { return new List<Organization>(); }
-        protected override void buildForm() { }
-        protected override void formatEntities(DataGridViewCellFormattingEventArgs e) { }
     }
 
 }
