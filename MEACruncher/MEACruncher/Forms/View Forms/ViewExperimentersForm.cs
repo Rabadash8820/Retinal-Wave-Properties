@@ -11,8 +11,7 @@ namespace MEACruncher.Forms {
 
     internal partial class ViewExperimentersForm : IViewExperimentersForm {
         // CONSTRUCTORS
-        public ViewExperimentersForm()
-            : base() {
+        public ViewExperimentersForm() : base() {
             InitializeComponent();
         }
 

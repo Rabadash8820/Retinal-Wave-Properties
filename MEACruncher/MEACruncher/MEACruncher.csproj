@@ -89,7 +89,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbManager.cs" />
+    <Compile Include="EntityStack.cs" />
+    <Compile Include="Events\EntitiesSelectedEvent.cs" />
     <Compile Include="Events\EntityUpdatedEvent.cs" />
+    <Compile Include="Forms\Add Forms\AddEntitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add Forms\AddEntitiesForm.Designer.cs">
+      <DependentUpon>AddEntitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Add Forms\AddExperimentersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Add Forms\AddExperimentersForm.Designer.cs">
+      <DependentUpon>AddExperimentersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CRUDForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,6 +198,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Add Forms\AddExperimentersForm.resx">
+      <DependentUpon>AddExperimentersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUDForm.resx">
       <DependentUpon>CRUDForm.cs</DependentUpon>
     </EmbeddedResource>
