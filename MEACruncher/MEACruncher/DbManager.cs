@@ -1,4 +1,6 @@
 ﻿using NHibernate;
+using NHibernate.Event;
+using NHibernate.Event.Default;
 using NC = NHibernate.Cfg;
 using MeaData;
 using MEACruncher.Properties;
@@ -8,71 +10,96 @@ using System.Text;
 using System.Reflection;
 using System.Data.Common;
 using System.Windows.Forms;
+using System.Collections;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
 namespace MEACruncher {
 
-    public enum Database {
-        MeaData,
-    }
-
-    public static class DbManager {
+    public class DbManager {
         // VARIABLES
-        private static Dictionary<Database, Assembly> _assemblies;
-        private static Dictionary<Database, ISessionFactory> _sessionFactories;
-        private static bool _initialized;
+        private Assembly _assembly;
+        private Stack<object> _stack;
+        private ISessionFactory _sf;
+        private ISession _sess;
 
-        // INTERFACE FUNCTIONS
-        public static ISessionFactory SessionFactory(Database db) {
-            // Initialize this static class, if necessary
-            if (!_initialized)
-                initialize();
+        // CONSTRUCTORS
+        public DbManager(Assembly a) {
+            _assembly = a;
+            _stack = new Stack<object>();
+        }
 
-            // Try to get the SessionFactory associated with this database enum
-            try {
-                return _sessionFactories[db];
+        // EVENT LISTENERS
+        private class DeleteListener : IDeleteEventListener {
+            public void OnDelete(DeleteEvent e) {
+                int derp;
             }
-            catch (KeyNotFoundException) {
-                throw;
+            public void OnDelete(DeleteEvent e, ISet<object> transientEntities) {
+                int derp;
             }
         }
-        public static void ConnectTo(Database db, string dbName, string sqlPath) {
-            // Initialize this static class, if necessary
-            if (!_initialized)
-                initialize();
+        private class RefreshListener : IRefreshEventListener {
+            public void OnRefresh(RefreshEvent e) {
+                int derp;
+            }
+            public void OnRefresh(RefreshEvent e, IDictionary refreshedAlready) {
+                int derp;
+            }
+        }
+        private class CollectionListener : IInitializeCollectionEventListener {
+            public void OnInitializeCollection(InitializeCollectionEvent e) {
+                int derp;
+            }
+        }
 
+        // METHODS
+        public void Configure(string dbName, string sqlPath) {
             // Make sure an actual database name and SQL script file were provided
             if (dbName == null || sqlPath == null)
                 return;
 
             // If this database is already connected, then just return
-            bool alreadyConnected = _sessionFactories.ContainsKey(db);
+            bool alreadyConnected = (_sf != null);
             if (alreadyConnected)
                 return;
 
             // If not, then make the NHibernate connection, first importing the provided SQL file if necessary
             try {
-                connectExistingDb(db, dbName);
+                connectExistingDb(dbName);
             }
             catch (MySqlException) {
-                importMysqlDb(dbName, sqlPath);
-                connectExistingDb(db, dbName);
+                importMySqlDb(dbName, sqlPath);
+                connectExistingDb(dbName);
             }
+        }
+        public ISession Session {
+            get {
+                if (_sess != null)
+                    return _sess;
+
+                if (_sf != null)
+                    return _sess = _sf.OpenSession();
+
+                throw new NullReferenceException("SessionFactory has been defined.");
+            }
+        }
+        public void Push(object obj) {
+            // Push the object onto this database's stack if...
+            if (obj == null ||                                      // The object is non-null
+                _assembly != obj.GetType().Assembly ||    // This database deals with persistence objects of this type
+                _stack.Contains(obj))                               // It's not already in the database
+                return;
+            _stack.Push(obj);
+        }
+        public object Pop() {
+            // Pop the next object off this database's stack if...
+            if (_stack.Count == 0)    // The stack is non-empty
+                return null;
+            return _stack.Pop();
         }
 
         // HELPER FUNCTIONS
-        private static void initialize(){
-            // Associate Database enums with their respective Assemblies
-            _sessionFactories = new Dictionary<Database, ISessionFactory>();
-            _assemblies = new Dictionary<Database, Assembly>(){
-                { Database.MeaData, typeof(Project).Assembly },
-            };
-
-            // Set the initialized flag to true
-            _initialized = true;
-        }
-        private static void connectExistingDb(Database db, string dbName) {
+        private void connectExistingDb(string dbName) {
             // Create the connection string for this MySQL database
             string connStr = Settings.Default.MysqlDbConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
@@ -89,20 +116,30 @@ namespace MEACruncher {
             props[NHibernate.Cfg.Environment.ShowSql] = @"true";
 #endif
 
+            // Define event listeners
+            IPostLoadEventListener[] loadListeners = new IPostLoadEventListener[] { new PostLoadListener(), new DefaultPostLoadEventListener() };
+            IDeleteEventListener[] deleteListeners = new IDeleteEventListener[] { new DeleteListener(), new DefaultDeleteEventListener() };
+            IRefreshEventListener[] refreshListeners = new IRefreshEventListener[] { new RefreshListener(), new DefaultRefreshEventListener() };
+            IInitializeCollectionEventListener[] collectionListeners = new IInitializeCollectionEventListener[] { new CollectionListener(), new DefaultInitializeCollectionEventListener() };
+            IReplicateEventListener[] replicateListeners = new IReplicateEventListener[] { new ReplicateListener(), new DefaultReplicateEventListener() };
+
             // Create an NHibernate Configuration with the above properties
             NC.Configuration config = new NC.Configuration();
+            config.EventListeners.DeleteEventListeners = deleteListeners;
+            config.EventListeners.RefreshEventListeners = refreshListeners;
+            config.EventListeners.InitializeCollectionEventListeners = collectionListeners;
+            config.EventListeners.ReplicateEventListeners = replicateListeners;
             config.SetProperties(props);
-            config.AddAssembly(_assemblies[db]);
+            config.AddAssembly(this._assembly);
 
-            // Create a SessionFactory with this Configuration and store it in the private Dictionary
-            ISessionFactory sf = config.BuildSessionFactory();
-            _sessionFactories.Add(db, sf);
+            // Create a SessionFactory with this Configuration
+            _sf = config.BuildSessionFactory();
         }
-        private static void importMysqlDb(string dbName, string sqlPath) {
+        private void importMySqlDb(string dbName, string sqlPath) {
             // Create the connection string for this MySQL database
             string connStr = Settings.Default.MysqlDbConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
-            
+
             // Create a new database with the provided name
             using (MySqlConnection db = new MySqlConnection(connStrBuilder.ConnectionString)) {
                 db.Open();
@@ -121,7 +158,6 @@ namespace MEACruncher {
                 script.Execute();
             }
         }
-
 
     }
 

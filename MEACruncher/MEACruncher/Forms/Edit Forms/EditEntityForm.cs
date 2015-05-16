@@ -41,7 +41,7 @@ namespace MEACruncher.Forms {
                 Delegate[] subscribers = this.EntityUpdated.GetInvocationList();
                 foreach (Delegate subscriber in subscribers) {
                     Control c = subscriber.Target as Control;
-                    EntityCreatedEventArgs<E> args = new EntityCreatedEventArgs<E>(_entity);
+                    EntityUpdatedEventArgs<E> args = new EntityUpdatedEventArgs<E>(_entity);
                     if (c != null && c.InvokeRequired)
                         c.BeginInvoke(subscriber, this, args);
                     else

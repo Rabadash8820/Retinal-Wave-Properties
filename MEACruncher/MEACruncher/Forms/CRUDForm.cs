@@ -49,7 +49,7 @@ namespace MEACruncher.Forms {
         }
         private void instanceInit() {
             // Open an NHibernate session with the database
-            _db = DbManager.SessionFactory(Database.MeaData).OpenSession();
+            _db = Program.MeaDataDb.Session;
 
             // For each Entity type, associate a method to determine if it is duplicating an Entity already in the database
             _uniqueness = new Dictionary<Type, uniqueness>() {
