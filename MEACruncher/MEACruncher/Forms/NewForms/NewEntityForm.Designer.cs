@@ -1,5 +1,5 @@
-﻿namespace MEACruncher.Forms {
-    partial class AddEntitiesForm<E> {
+﻿namespace MEACruncher.Forms.NewForms {
+    partial class NewEntityForm<E> {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,11 +23,23 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // NewEntityForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "AddEntitiesForm";
+            this.ClientSize = new System.Drawing.Size(540, 340);
+            this.Name = "NewEntityForm";
+            this.Text = "NewEntityForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+
+
+
     }
 }

@@ -8,7 +8,7 @@ using MEACruncher.Properties;
 using NHibernate;
 using System.Windows.Forms;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.NewForms {
     internal partial class NewExperimenterForm : INewExperimenterForm {
         // CONSTRUCTORS
         public NewExperimenterForm() : base() {

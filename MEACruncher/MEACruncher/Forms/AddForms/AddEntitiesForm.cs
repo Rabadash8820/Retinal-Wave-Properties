@@ -4,7 +4,7 @@ using MEACruncher.Events;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.AddForms {
 
     // BASE CLASS
     internal abstract partial class AddEntitiesForm<E> : CRUDForm<E> where E : Entity {
@@ -20,8 +20,8 @@ namespace MEACruncher.Forms {
         }
 
         // FUNCTIONS
-        protected abstract IList<E> loadEntities();
-        protected abstract void formatEntities(DataGridViewCellFormattingEventArgs e);
+        protected virtual IList<E> loadEntities() { return new List<E>(); }
+        protected virtual void formatEntities(DataGridViewCellFormattingEventArgs e) { }
         protected void addEntities() {
             onEntitiesSelected();
             closeStuff();
@@ -39,16 +39,12 @@ namespace MEACruncher.Forms {
                 }
             }
         }
-        protected abstract IList<E> selectedEntities();
+        protected virtual IList<E> selectedEntities() { return new List<E>(); }
     }
 
     // DERIVED CLASSES (so VS designer will work)
     internal class IAddExperimentersForm : AddEntitiesForm<Experimenter> {
         public IAddExperimentersForm() : base() { }
-        protected override IList<Experimenter> loadEntities() { return new List<Experimenter>(); }
-        protected override void buildForm() { }
-        protected override void formatEntities(DataGridViewCellFormattingEventArgs e) { }
-        protected override IList<Experimenter> selectedEntities() { return new List<Experimenter>(); }
     }
 
 }

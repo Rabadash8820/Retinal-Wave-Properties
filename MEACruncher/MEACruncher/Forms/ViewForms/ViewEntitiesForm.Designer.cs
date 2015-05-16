@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms {
+﻿namespace MEACruncher.Forms.ViewForms {
     partial class ViewEntitiesForm<E> {
         /// <summary>
         /// Required designer variable.

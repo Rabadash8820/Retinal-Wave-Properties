@@ -1,5 +1,5 @@
-﻿namespace MEACruncher.Forms {
-    partial class EditEntityForm<E> {
+﻿namespace MEACruncher.Forms.AddForms {
+    partial class AddEntitiesForm<E> {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "EditEntityForm";
+            this.Text = "AddEntitiesForm";
         }
 
         #endregion

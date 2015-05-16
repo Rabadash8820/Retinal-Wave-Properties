@@ -5,9 +5,10 @@ using System.Linq;
 using MEACruncher.Events;
 using System.Windows.Forms;
 using MEACruncher.Properties;
+using MEACruncher.Forms.AddForms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.EditForms {
 
     internal partial class EditProjectForm : IEditProjectForm {
         // CONSTRUCTORS

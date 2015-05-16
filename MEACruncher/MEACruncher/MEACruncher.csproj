@@ -93,16 +93,16 @@
     <Compile Include="EntityStack.cs" />
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
     <Compile Include="Events\EntityUpdatedEvent.cs" />
-    <Compile Include="Forms\Add Forms\AddEntitiesForm.cs">
+    <Compile Include="Forms\AddForms\AddEntitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add Forms\AddEntitiesForm.Designer.cs">
+    <Compile Include="Forms\AddForms\AddEntitiesForm.Designer.cs">
       <DependentUpon>AddEntitiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Add Forms\AddExperimentersForm.cs">
+    <Compile Include="Forms\AddForms\AddExperimentersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Add Forms\AddExperimentersForm.Designer.cs">
+    <Compile Include="Forms\AddForms\AddExperimentersForm.Designer.cs">
       <DependentUpon>AddExperimentersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CRUDForm.cs">
@@ -111,16 +111,16 @@
     <Compile Include="Forms\CRUDForm.Designer.cs">
       <DependentUpon>CRUDForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Edit Forms\EditEntityForm.cs">
+    <Compile Include="Forms\EditForms\EditEntityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Edit Forms\EditEntityForm.Designer.cs">
+    <Compile Include="Forms\EditForms\EditEntityForm.Designer.cs">
       <DependentUpon>EditEntityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Edit Forms\EditProjectForm.cs">
+    <Compile Include="Forms\EditForms\EditProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Edit Forms\EditProjectForm.Designer.cs">
+    <Compile Include="Forms\EditForms\EditProjectForm.Designer.cs">
       <DependentUpon>EditProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\DeleteRes.Designer.cs">
@@ -141,10 +141,10 @@
     <Compile Include="Forms\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\New Forms\NewEntityForm.cs">
+    <Compile Include="Forms\NewForms\NewEntityForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\New Forms\NewEntityForm.Designer.cs">
+    <Compile Include="Forms\NewForms\NewEntityForm.Designer.cs">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\DuplicateRes.Designer.cs">
@@ -152,34 +152,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DuplicateRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\New Forms\NewExperimenterForm.cs">
+    <Compile Include="Forms\NewForms\NewExperimenterForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\New Forms\NewExperimenterForm.Designer.cs">
+    <Compile Include="Forms\NewForms\NewExperimenterForm.Designer.cs">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\New Forms\NewProjectForm.cs">
+    <Compile Include="Forms\NewForms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\New Forms\NewProjectForm.Designer.cs">
+    <Compile Include="Forms\NewForms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewEntitiesForm.cs">
+    <Compile Include="Forms\ViewForms\ViewEntitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewEntitiesForm.Designer.cs">
+    <Compile Include="Forms\ViewForms\ViewEntitiesForm.Designer.cs">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewExperimentersForm.cs">
+    <Compile Include="Forms\ViewForms\ViewExperimentersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewExperimentersForm.Designer.cs">
+    <Compile Include="Forms\ViewForms\ViewExperimentersForm.Designer.cs">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewProjectsForm.cs">
+    <Compile Include="Forms\ViewForms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\View Forms\ViewProjectsForm.Designer.cs">
+    <Compile Include="Forms\ViewForms\ViewProjectsForm.Designer.cs">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Resources\DefaultRes.Designer.cs">
@@ -199,16 +199,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\Add Forms\AddExperimentersForm.resx">
+    <EmbeddedResource Include="Forms\AddForms\AddExperimentersForm.resx">
       <DependentUpon>AddExperimentersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUDForm.resx">
       <DependentUpon>CRUDForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Edit Forms\EditProjectForm.resx">
+    <EmbeddedResource Include="Forms\EditForms\EditProjectForm.resx">
       <DependentUpon>EditProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\View Forms\ViewEntitiesForm.resx">
+    <EmbeddedResource Include="Forms\ViewForms\ViewEntitiesForm.resx">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\DeleteRes.resx">
@@ -221,23 +221,23 @@
     <EmbeddedResource Include="Forms\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\New Forms\NewEntityForm.resx">
+    <EmbeddedResource Include="Forms\NewForms\NewEntityForm.resx">
       <DependentUpon>NewEntityForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\DuplicateRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DuplicateRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\New Forms\NewExperimenterForm.resx">
+    <EmbeddedResource Include="Forms\NewForms\NewExperimenterForm.resx">
       <DependentUpon>NewExperimenterForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\New Forms\NewProjectForm.resx">
+    <EmbeddedResource Include="Forms\NewForms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\View Forms\ViewExperimentersForm.resx">
+    <EmbeddedResource Include="Forms\ViewForms\ViewExperimentersForm.resx">
       <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\View Forms\ViewProjectsForm.resx">
+    <EmbeddedResource Include="Forms\ViewForms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\DefaultRes.resx">

@@ -7,7 +7,7 @@ using MEACruncher.Properties;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms {
+namespace MEACruncher.Forms.NewForms {
 
     internal partial class NewProjectForm : INewProjectForm {
         // CONSTRUCTORS

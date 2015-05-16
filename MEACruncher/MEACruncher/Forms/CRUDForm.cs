@@ -79,7 +79,7 @@ namespace MEACruncher.Forms {
                 },
             };
         }
-        protected abstract void buildForm();
+        protected virtual void buildForm() { }
         protected bool validate(string regexStr, string input, string message) {
             // If the input returns exactly one match, then return true
             regexStr = "^" + regexStr + "$";
@@ -140,8 +140,7 @@ namespace MEACruncher.Forms {
             }
             return unique;
         }
-        protected void closeStuff() {
-            _db.Close();
+        protected virtual void closeStuff() {
             this.Close();
         }
 
