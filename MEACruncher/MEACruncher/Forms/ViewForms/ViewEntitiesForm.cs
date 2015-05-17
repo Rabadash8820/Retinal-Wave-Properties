@@ -26,7 +26,7 @@ namespace MEACruncher.Forms.ViewForms {
             _entities.Add(e.Entity);
         }
         protected void EditEntityForm_EntityUpdated(object sender, EntityUpdatedEventArgs<E> e) {
-            this.refresh();
+            //this.refresh();
         }
         protected void AddEntitiesForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs<E> e) {
             this.addEntities();

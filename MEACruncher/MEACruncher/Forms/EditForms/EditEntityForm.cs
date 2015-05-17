@@ -21,7 +21,7 @@ namespace MEACruncher.Forms.EditForms {
 
         // FUNCTIONS
         protected override void buildForm() {
-            _entity = EntityStack.Pop() as E;
+            _entity = Program.MeaDataDb.Recall() as E;
         }
         protected void updateEntity() {
             // Validate the new Entity to see if it will conflict with an existing record

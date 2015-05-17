@@ -55,7 +55,8 @@ namespace MEACruncher.Forms.EditForms {
             }
         }
         private void UpdateButton_Click(object sender, EventArgs e) {
-            this.updateEntity();
+            //this.updateEntity();
+            this.Close();
         }
 
         // FUNCTIONS
