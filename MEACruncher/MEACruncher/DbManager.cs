@@ -21,7 +21,6 @@ namespace MEACruncher {
         // VARIABLES
         private Assembly _assembly;
         private Stack<object> _stack;
-        private ISet<object> _loadedSet;
         private ISessionFactory _sf;
         private ISession _sess;
 
@@ -37,10 +36,6 @@ namespace MEACruncher {
                 _manager = dm;
             }
             public void OnPostLoad(PostLoadEvent e) {
-                _manager._loadedSet.Add(e.Entity);
-#if DEBUG
-                _manager.printLog();
-#endif
             }
         }
         private class DeleteListener : IDeleteEventListener {
@@ -49,28 +44,18 @@ namespace MEACruncher {
                 _manager = dm;
             }
             public void OnDelete(DeleteEvent e) {
-                _manager._loadedSet.Remove(e.Entity);
-#if DEBUG
-                _manager.printLog();
-#endif
             }
             public void OnDelete(DeleteEvent e, ISet<object> transientEntities) {
-#if DEBUG
-                _manager.printLog();
-#endif
             }
         }
         private class SaveUpdateListener : ISaveOrUpdateEventListener {
             private DbManager _manager;
+            private static int derp = 0;
             public SaveUpdateListener(DbManager dm) {
                 _manager = dm;
             }
             public void OnSaveOrUpdate(SaveOrUpdateEvent e) {
-                _manager._loadedSet.Add(e.Entity);
-                _manager.Session.Refresh(e.Entity); 
-#if DEBUG
-                _manager.printLog();
-#endif              
+
             }
         }
 
@@ -107,27 +92,16 @@ namespace MEACruncher {
         }
         public void Remember(object obj) {
             if (obj == null) return;
-            _loadedSet.Add(obj);
-        }
-        public void Push(object obj) {
-            // Push the object onto this database's stack if...
-            if (obj == null ||                            // The object is non-null
-                _assembly != obj.GetType().Assembly ||    // This database deals with persistence objects of this type
-                _stack.Contains(obj))                     // It's not already in the database
-                return;
             _stack.Push(obj);
         }
-        public object Pop() {
-            // Pop the next object off this database's stack if...
-            if (_stack.Count == 0)    // The stack is non-empty
-                return null;
+        public object Recall() {
+            if (_stack.Count == 0) return null;
             return _stack.Pop();
         }
 
         // HELPER FUNCTIONS
         private void initialize(Assembly a) {
             _assembly = a;
-            _loadedSet = new HashSet<object>();
             _stack = new Stack<object>();
         }
         private void connectExistingDb(string dbName) {
@@ -149,9 +123,9 @@ namespace MEACruncher {
 
             // Create an NHibernate Configuration with the above properties
             NC.Configuration config = new NC.Configuration();
-            config.EventListeners.PostLoadEventListeners = new IPostLoadEventListener[] { new LoadListener(this), new DefaultPostLoadEventListener() };
-            config.EventListeners.DeleteEventListeners = new IDeleteEventListener[] { new DeleteListener(this), new DefaultDeleteEventListener() };
-            config.EventListeners.SaveOrUpdateEventListeners = new ISaveOrUpdateEventListener[] { new SaveUpdateListener(this), new DefaultSaveOrUpdateEventListener() };
+            //config.EventListeners.PostLoadEventListeners = new IPostLoadEventListener[] { new LoadListener(this), new DefaultPostLoadEventListener() };
+            //config.EventListeners.DeleteEventListeners = new IDeleteEventListener[] { new DeleteListener(this), new DefaultDeleteEventListener() };
+            //config.EventListeners.SaveOrUpdateEventListeners = new ISaveOrUpdateEventListener[] { new SaveUpdateListener(this), new DefaultSaveOrUpdateEventListener() };
             config.SetProperties(props);
             config.AddAssembly(this._assembly);
 
@@ -180,11 +154,6 @@ namespace MEACruncher {
                 MySqlScript script = new MySqlScript(db, File.ReadAllText(sqlPath));
                 script.Execute();
             }
-        }
-        private void printLog() {
-            //Console.Clear();
-            foreach (object obj in _loadedSet)
-                Console.WriteLine(obj.ToString());
         }
 
     }

@@ -144,7 +144,6 @@ namespace MEACruncher.Forms {
             this.Close();
         }
 
-
     }
 
 }

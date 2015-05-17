@@ -40,7 +40,8 @@ namespace MEACruncher.Forms.ViewForms {
         }
         private void EditButton_Click(object sender, EventArgs e) {
             Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            EntityStack.Push(entity);
+            Program.MeaDataDb.Remember(entity);
+            //EntitiesDGV.DataBindings.Clear();
             EditProjectForm form = new EditProjectForm();
             form.EntityUpdated += EditEntityForm_EntityUpdated;
             form.ShowDialog();

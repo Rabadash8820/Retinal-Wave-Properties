@@ -122,12 +122,13 @@
             // 
             // NewButton
             // 
+            this.NewButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.NewButton.AutoSize = true;
             this.NewButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
             this.NewButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.NewButton.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
             this.NewButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.NewButton.Location = new System.Drawing.Point(9, -1);
+            this.NewButton.Location = new System.Drawing.Point(177, -1);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(75, 31);
             this.NewButton.TabIndex = 0;
