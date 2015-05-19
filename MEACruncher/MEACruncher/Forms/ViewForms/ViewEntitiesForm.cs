@@ -34,6 +34,13 @@ namespace MEACruncher.Forms.ViewForms {
             base.buildForm();
             this.BoundEntities.DataSource = loadEntities();
         }
+        protected void autofit(DataGridViewColumn column) {
+            // Make the column wide enough to show all cell content, but let the user resize it still
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            int autoWidth = column.Width;
+            column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            column.Width = autoWidth;
+        }
         protected virtual IList<E> loadEntities() { return new List<E>(); }
         protected virtual void formatEntities(DataGridViewCellFormattingEventArgs e) { }
         protected virtual void deleteDependents() { }
