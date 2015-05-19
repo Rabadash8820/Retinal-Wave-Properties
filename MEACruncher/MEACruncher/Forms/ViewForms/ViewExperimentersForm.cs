@@ -56,6 +56,9 @@ namespace MEACruncher.Forms.ViewForms {
         private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             EntitiesDGV.ClearSelection();
         }
+        private void EntitiesDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            EntitiesDGV.BeginEdit(true);
+        }
         private void EntitiesDGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
             // Validate the cell value based on which column it is in
             int index = e.ColumnIndex;
@@ -85,7 +88,11 @@ namespace MEACruncher.Forms.ViewForms {
         private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
             Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
             bool unique = isUnique(entity);
-            e.Cancel = !unique;
+            if (!unique) {
+                e.Cancel = true;
+                EntitiesDGV.CurrentCell = EntitiesDGV.Rows[e.RowIndex].Cells[FullNameColumn.Index];
+                EntitiesDGV.BeginEdit(true);
+            }
         }
         private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
             Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
@@ -115,7 +122,7 @@ namespace MEACruncher.Forms.ViewForms {
             RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
             lastRow.Height = Settings.Default.ContainerHeight;
 
-            // Initialize the dataGridView
+            // Create data bindings
             FullNameColumn.DataPropertyName = "FullName";
             EmailColumn.DataPropertyName = "WorkEmail";
             PhoneColumn.DataPropertyName = "WorkPhone";
@@ -123,6 +130,11 @@ namespace MEACruncher.Forms.ViewForms {
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = this.BoundEntities;
+
+            // Resize dataGridView columns
+            foreach (DataGridViewColumn column in EntitiesDGV.Columns)
+                autofit(column);
+            CommentsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
         }
         protected override void refreshStuff() {
             base.refreshStuff();

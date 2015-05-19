@@ -34,14 +34,10 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.BoundEntities)).BeginInit();
             this.MainTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // _entities
-            // 
             // 
             // MainTableLayout
             // 
@@ -76,10 +72,10 @@
             this.EntitiesDGV.Location = new System.Drawing.Point(3, 3);
             this.EntitiesDGV.MultiSelect = false;
             this.EntitiesDGV.Name = "EntitiesDGV";
-            this.EntitiesDGV.RowHeadersVisible = false;
-            this.EntitiesDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.EntitiesDGV.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.EntitiesDGV.Size = new System.Drawing.Size(504, 195);
             this.EntitiesDGV.TabIndex = 0;
+            this.EntitiesDGV.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_CellDoubleClick);
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
             this.EntitiesDGV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.EntitiesDGV_CellValidating);
             this.EntitiesDGV.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_RowValidated);
@@ -201,7 +197,6 @@
             this.Name = "ViewProjectsForm";
             this.ShowInTaskbar = false;
             this.Text = "Projects";
-            ((System.ComponentModel.ISupportInitialize)(this.BoundEntities)).EndInit();
             this.MainTableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();
             this.BottomPanel.ResumeLayout(false);

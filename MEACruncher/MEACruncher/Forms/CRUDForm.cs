@@ -58,26 +58,29 @@ namespace MEACruncher.Forms {
                 Resources.ValidateRes.Date);
             if (!isValidStr) return false;
 
-            // If the numbers for month, day, and year are valid, then return true
+            // Check that the numbers for month, day, and year are valid and are not after the current date
+            bool isValidDate = false;
             try {
                 int[] parts = dateStr.Split('/')
                                      .Select(p => Convert.ToInt32(p))
                                      .ToArray();
-                new DateTime(parts[2], parts[0], parts[1]);
-                return true;
+                DateTime dt = new DateTime(parts[2], parts[0], parts[1]);
+                if (dt <= DateTime.Today)
+                    isValidDate = true;
             }
+            catch (ArgumentOutOfRangeException) { }
 
-            // Otherwise, show an error dialog and return false
-            catch (ArgumentOutOfRangeException) {
-                string message = String.Format(ValidateRes.DateValue, DateTime.Today);
-                MessageBox.Show(
-                    message,
-                    Application.ProductName,
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1);
-                return false;
-            }
+            // If any above condition fails, show an error dialog and return false, otherwise return true
+            if (isValidDate)
+                return true;
+            string message = String.Format(ValidateRes.DateValue, DateTime.Today.ToShortDateString());
+            MessageBox.Show(
+                message,
+                Application.ProductName,
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error,
+                MessageBoxDefaultButton.Button1);
+            return false;
         }
         protected bool isUnique(E entity) {
             // If this Entity is not unique, show an error message
