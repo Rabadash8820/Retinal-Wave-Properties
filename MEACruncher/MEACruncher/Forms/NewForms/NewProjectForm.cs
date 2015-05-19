@@ -65,9 +65,9 @@ namespace MEACruncher.Forms.NewForms {
             DateStartedDateTimePicker.MaxDate = DateTime.Today;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", _entity, "Title");
-            DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
-            CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, "Title");
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, "DateStarted");
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, "Comments");
         }
 
     }

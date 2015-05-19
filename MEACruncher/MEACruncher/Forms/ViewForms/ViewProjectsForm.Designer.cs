@@ -34,7 +34,7 @@
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this._entities)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoundEntities)).BeginInit();
             this.MainTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -201,7 +201,7 @@
             this.Name = "ViewProjectsForm";
             this.ShowInTaskbar = false;
             this.Text = "Projects";
-            ((System.ComponentModel.ISupportInitialize)(this._entities)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BoundEntities)).EndInit();
             this.MainTableLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();
             this.BottomPanel.ResumeLayout(false);

@@ -40,8 +40,7 @@ namespace MEACruncher.Forms.ViewForms {
         }
         private void EditButton_Click(object sender, EventArgs e) {
             Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            Program.MeaDataDb.Remember(entity);
-            //EntitiesDGV.DataBindings.Clear();
+            EntityManager.Remember(entity);
             EditProjectForm form = new EditProjectForm();
             form.EntityUpdated += EditEntityForm_EntityUpdated;
             form.ShowDialog();
@@ -50,13 +49,13 @@ namespace MEACruncher.Forms.ViewForms {
             Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
             string message = String.Format(R.DeleteRes.ProjectWarning, entity.Title);
             if (entityDeleted(entity, message))
-                _entities.Remove(entity);
+                this.BoundEntities.Remove(entity);
         }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             this.formatEntities(e);
         }
         private void NewProjectForm_EntityCreated(object sender, EntityCreatedEventArgs<Project> e) {
-            _entities.Add(e.Entity);
+            this.BoundEntities.Add(e.Entity);
         }
         private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
             EntitiesDGV.ClearSelection();
@@ -123,10 +122,10 @@ namespace MEACruncher.Forms.ViewForms {
             CommentsColumn.DataPropertyName    = "Comments";
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
-            EntitiesDGV.DataSource = _entities;
+            EntitiesDGV.DataSource = this.BoundEntities;
         }
-        protected override void refresh() {
-            base.refresh();
+        protected override void refreshStuff() {
+            base.refreshStuff();
             EntitiesDGV.Refresh();
         }
 

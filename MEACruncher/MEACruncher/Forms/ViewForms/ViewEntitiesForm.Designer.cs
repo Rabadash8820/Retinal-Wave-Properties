@@ -32,7 +32,6 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "ViewEntitiesForm";
             this.Text = "ViewEntitiesForm";
-            this.Load += new System.EventHandler(this.ViewEntitiesForm_Load);
             this.ResumeLayout(false);
 
         }

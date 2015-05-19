@@ -17,46 +17,15 @@ using MySql.Data.MySqlClient;
 
 namespace MEACruncher {
 
-    public class DbManager {
+    public class DbWrapper {
         // VARIABLES
         private Assembly _assembly;
-        private Stack<object> _stack;
         private ISessionFactory _sf;
         private ISession _sess;
 
         // CONSTRUCTORS
-        public DbManager(Assembly a) {
+        public DbWrapper(Assembly a) {
             this.initialize(a);
-        }
-
-        // NHIBERNATE EVENT LISTENERS
-        private class LoadListener : IPostLoadEventListener {
-            private DbManager _manager;
-            public LoadListener(DbManager dm) {
-                _manager = dm;
-            }
-            public void OnPostLoad(PostLoadEvent e) {
-            }
-        }
-        private class DeleteListener : IDeleteEventListener {
-            private DbManager _manager;
-            public DeleteListener(DbManager dm) {
-                _manager = dm;
-            }
-            public void OnDelete(DeleteEvent e) {
-            }
-            public void OnDelete(DeleteEvent e, ISet<object> transientEntities) {
-            }
-        }
-        private class SaveUpdateListener : ISaveOrUpdateEventListener {
-            private DbManager _manager;
-            private static int derp = 0;
-            public SaveUpdateListener(DbManager dm) {
-                _manager = dm;
-            }
-            public void OnSaveOrUpdate(SaveOrUpdateEvent e) {
-
-            }
         }
 
         // METHODS
@@ -90,19 +59,10 @@ namespace MEACruncher {
                 throw new NullReferenceException("SessionFactory has been defined.");
             }
         }
-        public void Remember(object obj) {
-            if (obj == null) return;
-            _stack.Push(obj);
-        }
-        public object Recall() {
-            if (_stack.Count == 0) return null;
-            return _stack.Pop();
-        }
 
         // HELPER FUNCTIONS
         private void initialize(Assembly a) {
             _assembly = a;
-            _stack = new Stack<object>();
         }
         private void connectExistingDb(string dbName) {
             // Create the connection string for this MySQL database
@@ -123,9 +83,6 @@ namespace MEACruncher {
 
             // Create an NHibernate Configuration with the above properties
             NC.Configuration config = new NC.Configuration();
-            //config.EventListeners.PostLoadEventListeners = new IPostLoadEventListener[] { new LoadListener(this), new DefaultPostLoadEventListener() };
-            //config.EventListeners.DeleteEventListeners = new IDeleteEventListener[] { new DeleteListener(this), new DefaultDeleteEventListener() };
-            //config.EventListeners.SaveOrUpdateEventListeners = new ISaveOrUpdateEventListener[] { new SaveUpdateListener(this), new DefaultSaveOrUpdateEventListener() };
             config.SetProperties(props);
             config.AddAssembly(this._assembly);
 

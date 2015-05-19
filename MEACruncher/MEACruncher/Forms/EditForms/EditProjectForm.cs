@@ -12,7 +12,7 @@ namespace MEACruncher.Forms.EditForms {
 
     internal partial class EditProjectForm : IEditProjectForm {
         // CONSTRUCTORS
-        public EditProjectForm() {
+        public EditProjectForm() : base() {
             InitializeComponent();
         }
 
@@ -24,12 +24,13 @@ namespace MEACruncher.Forms.EditForms {
         }
         protected void AddExperimentersForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs<Experimenter> e) {
             // Create a list of default many-to-many objects
+            Project p = this.BoundEntity.DataSource as Project;
             IList<ProjectExperimenter> projExps = e.Entities.Select(entity =>
                 new ProjectExperimenter() {
-                    Project = _entity,
+                    Project = p,
                     Experimenter = entity,
                     IsManager = false,
-                    StartDate = _entity.DateStarted,
+                    StartDate = p.DateStarted,
                     EndDate = default(DateTime)
                 })
                 .ToList();
@@ -55,8 +56,8 @@ namespace MEACruncher.Forms.EditForms {
             }
         }
         private void UpdateButton_Click(object sender, EventArgs e) {
-            //this.updateEntity();
-            this.Close();
+            this.updateEntity();
+            this.closeStuff();
         }
 
         // FUNCTIONS
@@ -72,9 +73,9 @@ namespace MEACruncher.Forms.EditForms {
             DateStartedDateTimePicker.MaxDate = DateTime.Today;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", _entity, "Title");
-            DateStartedDateTimePicker.DataBindings.Add("Value", _entity, "DateStarted");
-            CommentsTextbox.DataBindings.Add("Text", _entity, "Comments");
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, "Title");
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, "DateStarted");
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, "Comments");
         }
     }
 
