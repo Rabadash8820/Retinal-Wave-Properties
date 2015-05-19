@@ -12,30 +12,28 @@ namespace MEACruncher.Forms.ViewForms {
 
     // BASE CLASS
     internal abstract partial class ViewEntitiesForm<E> : CRUDForm<E> where E : Entity  {
-        // VARIABLES
-        protected BindingSource _entities;
-
         // CONSTRUCTORS
         public ViewEntitiesForm() : base() {
             InitializeComponent();
-            _entities = new BindingSource();    // Apparently this needs to happen before derived classes call their InitializeComponent()
+            this.BoundEntities = new BindingSource();    // Apparently this needs to happen before derived classes call their InitializeComponent()
         }
+
+        // PROPERTIES
+        protected BindingSource BoundEntities { get; set; }
 
         // EVENT HANDLERS
         protected void NewEntityForm_EntityCreated(object sender, EntityCreatedEventArgs<E> e) {
-            _entities.Add(e.Entity);
+            this.BoundEntities.Add(e.Entity);
         }
         protected void EditEntityForm_EntityUpdated(object sender, EntityUpdatedEventArgs<E> e) {
-            //this.refresh();
-        }
-        protected void AddEntitiesForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs<E> e) {
-            this.addEntities();
-        }
-        protected void ViewEntitiesForm_Load(object sender, EventArgs e) {
-            _entities.DataSource = loadEntities();
+            this.refreshStuff();
         }
 
         // FUNCTIONS
+        protected override void buildForm() {
+            base.buildForm();
+            this.BoundEntities.DataSource = loadEntities();
+        }
         protected virtual IList<E> loadEntities() { return new List<E>(); }
         protected virtual void formatEntities(DataGridViewCellFormattingEventArgs e) { }
         protected virtual void deleteDependents() { }
@@ -58,17 +56,19 @@ namespace MEACruncher.Forms.ViewForms {
             return true;
         }
         protected void updateEntity(E entity) {
+            // Called whenever data is updated by a ViewForm's DataGridView
             using (ITransaction trans = _db.BeginTransaction()) {
                 _db.Update(entity);
                 trans.Commit();
             }
         }
-        protected virtual void addEntities() { }
         protected override void closeStuff() {
             base.closeStuff();
             _db.Close();
         }
-        protected virtual void refresh() { }
+        protected virtual void refreshStuff() {
+            // Called whenever data was updated on a different Form
+        }
     }
 
     // DERIVED CLASSES (so VS designer will work)

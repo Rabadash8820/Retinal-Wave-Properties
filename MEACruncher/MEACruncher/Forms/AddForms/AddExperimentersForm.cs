@@ -48,7 +48,7 @@ namespace MEACruncher.Forms.AddForms {
             CommentsColumn.DataPropertyName = "Comments";
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
-            EntitiesDGV.DataSource = _entities;
+            EntitiesDGV.DataSource = this.BoundEntities;
         }
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
             base.formatEntities(e);

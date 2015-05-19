@@ -12,11 +12,6 @@ namespace MEACruncher.Forms {
     public abstract partial class CRUDForm<E> : Form where E : Entity {
         // VARIABLES
         protected ISession _db;
-        private static bool _initialized = false;
-        private delegate string duplication(E entity);
-        private delegate bool uniqueness(E entity);
-        private static Dictionary<Type, duplication> _duplicateError;
-        private Dictionary<Type, uniqueness> _uniqueness;
 
         // CONSTRUCTORS
         public CRUDForm() {
@@ -25,59 +20,17 @@ namespace MEACruncher.Forms {
 
         // EVENT HANDLERS
         private void CRUDForm_Load(object sender, EventArgs e) {
-            this.initialize();
-        }
-
-        // FUNCTIONS
-        protected void initialize() {
-            // Initialize static and instance members
-            if (!_initialized)
-                staticInit();
-            instanceInit();
+            // Initialize members
+            initialize();
 
             // Initialize form controls
             buildForm();
         }
-        private static void staticInit() {
-            // Associated error messages with each Entity type
-            _duplicateError = new Dictionary<Type, duplication>(){
-                { typeof(Project),      e => String.Format(DuplicateRes.ProjectError, (e as Project).Title, (e as Project).DateStarted.ToShortDateString()) },
-                { typeof(Experimenter), e => String.Format(DuplicateRes.ExperimenterError, (e as Experimenter).FullName) },
-            };
 
-            _initialized = true;
-        }
-        private void instanceInit() {
+        // FUNCTIONS
+        private void initialize() {
             // Open an NHibernate session with the database
             _db = Program.MeaDataDb.Session;
-
-            // For each Entity type, associate a method to determine if it is duplicating an Entity already in the database
-            _uniqueness = new Dictionary<Type, uniqueness>() {
-                // Projects
-                { typeof(Project), e => {
-                    Project e1 = e as Project;
-                    int count = _db.QueryOver<Project>()
-                                   .Where(e2 =>
-                                       e2.Guid != e1.Guid &&
-                                       e2.Title == e1.Title &&
-                                       e2.DateStarted == e1.DateStarted)
-                                   .RowCount();
-                    return (count == 0); }
-                },
-
-                // Experimenters
-                { typeof(Experimenter), e => {
-                    Experimenter e1 = e as Experimenter;
-                    int count = _db.QueryOver<Experimenter>()
-                                   .Where(e2 =>
-                                       e2.Guid != e1.Guid &&
-                                       e2.FullName == e1.FullName &&
-                                       e2.WorkEmail == e1.WorkEmail &&
-                                       e2.WorkPhone == e1.WorkPhone)
-                                   .RowCount();
-                    return (count == 0); }
-                },
-            };
         }
         protected virtual void buildForm() { }
         protected bool validate(string regexStr, string input, string message) {
@@ -128,9 +81,9 @@ namespace MEACruncher.Forms {
         }
         protected bool isUnique(E entity) {
             // If this Entity is not unique, show an error message
-            bool unique = _uniqueness[typeof(E)](entity);
+            bool unique = EntityManager.IsUnique(entity);
             if (!unique) {
-                string message = _duplicateError[typeof(E)](entity) + "\n\n" + DuplicateRes.Message;
+                string message = EntityManager.DuplicateError(entity);
                 MessageBox.Show(
                     message,
                     Application.ProductName,

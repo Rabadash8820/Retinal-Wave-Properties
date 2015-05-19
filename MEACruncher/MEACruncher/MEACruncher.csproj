@@ -89,7 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DbManager.cs" />
+    <Compile Include="DbWrapper.cs" />
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
     <Compile Include="Events\EntityUpdatedEvent.cs" />
     <Compile Include="Forms\AddForms\AddEntitiesForm.cs">
@@ -122,6 +122,7 @@
     <Compile Include="Forms\EditForms\EditProjectForm.Designer.cs">
       <DependentUpon>EditProjectForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntityManager.cs" />
     <Compile Include="Resources\DeleteRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

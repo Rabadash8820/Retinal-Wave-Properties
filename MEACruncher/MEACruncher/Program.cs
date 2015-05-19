@@ -7,7 +7,7 @@ using MEACruncher.Forms;
 namespace MEACruncher {
 
     static class Program {
-        public static DbManager MeaDataDb;
+        public static DbWrapper MeaDataDb;
 
         /// <summary>
         /// The main entry point for the application.
@@ -15,7 +15,7 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with MySQL databases
-            MeaDataDb = new DbManager(typeof(Entity).Assembly);
+            MeaDataDb = new DbWrapper(typeof(Entity).Assembly);
             MeaDataDb.Configure(P.Settings.Default.MysqlDbName, P.Resources.meadata);
 
             // Open the main form
