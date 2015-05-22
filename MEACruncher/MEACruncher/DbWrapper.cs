@@ -19,8 +19,21 @@ using MySql.Data.MySqlClient;
 namespace MEACruncher {
 
     public class IncorrectDbVersionException : DbException {
+        // CONSTRUCTORS
         public IncorrectDbVersionException() : base() { }
         public IncorrectDbVersionException(string message, Exception innerException) : base(message, innerException) { }
+        public IncorrectDbVersionException(string message, string thisVersion, string requiredVersion) : base(message) {
+            ThisVersion = thisVersion;
+            RequiredVersion = requiredVersion;
+        }
+        public IncorrectDbVersionException(string message, string thisVersion, string requiredVersion, Exception innerException) : base(message, innerException) {
+            ThisVersion = thisVersion;
+            RequiredVersion = requiredVersion;
+        }
+
+        // PROPERTIES
+        public string ThisVersion { get; protected set; }
+        public string RequiredVersion { get; protected set; }
     }
 
     public class DbWrapper {
@@ -33,13 +46,13 @@ namespace MEACruncher {
         public DbWrapper(Assembly a) {
             this.initialize(a);
         }
-        public DbWrapper(Assembly a, string dbName, string importSql) {
+        public DbWrapper(Assembly a, string dbName, string version, string importSql) {
             this.initialize(a);
-            this.Configure(dbName, importSql);
+            this.Configure(dbName, version, importSql);
         }
 
         // METHODS
-        public void Configure(string dbName, string importSql) {
+        public void Configure(string dbName, string version, string importSql) {
             // Make sure an actual database name and SQL script file were provided
             if (dbName == null || importSql == null)
                 return;
@@ -51,15 +64,15 @@ namespace MEACruncher {
 
             // If not, then make the NHibernate connection, first importing the provided SQL file if necessary
             try {
-                connectExistingDb(dbName);
+                connectExistingDb(dbName, version);
             }
             catch (MySqlException) {
                 importMySqlDb(dbName, importSql);
-                connectExistingDb(dbName);
+                connectExistingDb(dbName, version);
             }
             catch (IncorrectDbVersionException) {
                 updateExistingDb(dbName, importSql);
-                connectExistingDb(dbName);
+                connectExistingDb(dbName, version);
             }
         }
         public ISession Session {
@@ -78,7 +91,7 @@ namespace MEACruncher {
         private void initialize(Assembly a) {
             _assembly = a;
         }
-        private void connectExistingDb(string dbName) {
+        private void connectExistingDb(string dbName, string version) {
             // Create the connection string for this MySQL database
             string connStr = P.Resources.MySqlConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
@@ -106,17 +119,19 @@ namespace MEACruncher {
             // If this existing MeaData database is not of the correct version, then throw an exception
             try {
                 using (ISession sess = _sf.OpenSession()) {
-                    int count = sess.QueryOver<DbVersion>()
-                                    .Where(v => v.Version == P.Resources.MeaDataDbVersion)
-                                    .RowCount();
-                    if (count != 1)
-                        throw new IncorrectDbVersionException();
+                    DbVersion v = sess.QueryOver<DbVersion>().SingleOrDefault();
+                    if (v.Version != version) {
+                        IncorrectDbVersionException odve = new IncorrectDbVersionException(
+                            String.Format("The database's version should be {0} but is {1}", version, v.Version), v.Version, version);
+                        throw odve;
+                    }
                 }
             }
 
             // If the db doesnt even have a version table, then also throw an exception
             catch (GenericADOException e) {
-                IncorrectDbVersionException odve = new IncorrectDbVersionException("", e);
+                IncorrectDbVersionException odve = new IncorrectDbVersionException(
+                    String.Format("The database's version should be {0} but could not be determined", version), "", version, e);
                 throw odve;
             }
         }

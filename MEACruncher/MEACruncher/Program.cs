@@ -18,6 +18,7 @@ namespace MEACruncher {
             MeaDataDb = new DbWrapper(
                 typeof(Entity).Assembly,
                 P.Resources.MeaDataDbName,
+                P.Resources.MeaDataDbVersion,
                 P.Resources.MeaDataSql);
 
             // Open the main form
