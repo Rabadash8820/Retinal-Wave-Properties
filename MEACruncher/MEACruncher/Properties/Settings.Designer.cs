@@ -25,29 +25,10 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;")]
-        public string MysqlDbConnectionString {
-            get {
-                return ((string)(this["MysqlDbConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("CornflowerBlue")]
         public global::System.Drawing.Color ButtonBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["ButtonBackColor"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("meadata")]
-        public string MysqlDbName {
-            get {
-                return ((string)(this["MysqlDbName"]));
             }
         }
         
