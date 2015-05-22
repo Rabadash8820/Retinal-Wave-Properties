@@ -15,8 +15,10 @@ namespace MEACruncher {
         [STAThread]
         static void Main() {
             // Establish connections with MySQL databases
-            MeaDataDb = new DbWrapper(typeof(Entity).Assembly);
-            MeaDataDb.Configure(P.Settings.Default.MysqlDbName, P.Resources.meadata);
+            MeaDataDb = new DbWrapper(
+                typeof(Entity).Assembly,
+                P.Resources.MeaDataDbName,
+                P.Resources.MeaDataSql);
 
             // Open the main form
             Application.EnableVisualStyles();

@@ -20,6 +20,8 @@ namespace MeaData {
         public virtual Tissue Tissue { get; set; }
         public virtual Condition Condition { get; set; }
         public virtual Strain Strain { get; set; }
+        public virtual double Age { get; set; }
+        public virtual AgeUnit AgeUnit { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<TissuePreparation> TissuePreparations {
             get { return _tissuePreparations; }
@@ -47,6 +49,7 @@ namespace MeaData {
                 clone = Activator.CreateInstance(p.GetType()) as Population;
                 map.Add(p, clone);
 
+                clone.Age = p.Age;
                 clone.Comments = p.Comments;
                 foreach (TissuePreparation tp in p.TissuePreparations)
                     clone.TissuePreparations.Add(TissuePreparation.Clone(tp, map));
@@ -58,6 +61,7 @@ namespace MeaData {
             clone.Tissue = map.GetEntity<Tissue>(p.Tissue);
             clone.Condition = map.GetEntity<Condition>(p.Condition);
             clone.Strain = map.GetEntity<Strain>(p.Strain);
+            clone.AgeUnit = map.GetEntity<AgeUnit>(p.AgeUnit);
             return clone;
         }
     }

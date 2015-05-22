@@ -71,7 +71,27 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+        ///   Looks up a localized string similar to meadata.
+        /// </summary>
+        internal static string MeaDataDbName {
+            get {
+                return ResourceManager.GetString("MeaDataDbName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3.3.
+        /// </summary>
+        internal static string MeaDataDbVersion {
+            get {
+                return ResourceManager.GetString("MeaDataDbVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- ********** DATABASE STRUCTURE ********** 
+        /// 
+        ///-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
         ///--
         ///-- Host: localhost    Database: meadata
         ///-- ------------------------------------------------------
@@ -81,13 +101,20 @@ namespace MEACruncher.Properties {
         ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
         ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
         ////*!40101 SET NAMES utf8 */;
-        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        ////*!40 [rest of string was truncated]&quot;;.
+        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZON [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string meadata {
+        internal static string MeaDataSql {
             get {
-                return ResourceManager.GetString("meadata", resourceCulture);
+                return ResourceManager.GetString("MeaDataSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;.
+        /// </summary>
+        internal static string MySqlConnectionString {
+            get {
+                return ResourceManager.GetString("MySqlConnectionString", resourceCulture);
             }
         }
         
