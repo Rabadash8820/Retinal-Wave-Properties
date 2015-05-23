@@ -23,9 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProjectForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.RedoButton = new System.Windows.Forms.Button();
+            this.UndoButton = new System.Windows.Forms.Button();
             this.CancelEditButton = new System.Windows.Forms.Button();
             this.UpdateButton = new System.Windows.Forms.Button();
             this.MainTabControl = new System.Windows.Forms.TabControl();
@@ -52,6 +55,7 @@
             this.RecordingsTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.RecordingsDGV = new System.Windows.Forms.DataGridView();
             this.AddRecordingButton = new System.Windows.Forms.Button();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.MainTabControl.SuspendLayout();
@@ -82,6 +86,8 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.RedoButton);
+            this.BottomPanel.Controls.Add(this.UndoButton);
             this.BottomPanel.Controls.Add(this.CancelEditButton);
             this.BottomPanel.Controls.Add(this.UpdateButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -89,6 +95,34 @@
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(794, 29);
             this.BottomPanel.TabIndex = 0;
+            // 
+            // RedoButton
+            // 
+            this.RedoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.BackgroundImage")));
+            this.RedoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RedoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RedoButton.ForeColor = System.Drawing.Color.Black;
+            this.RedoButton.Location = new System.Drawing.Point(34, 2);
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.Size = new System.Drawing.Size(25, 25);
+            this.RedoButton.TabIndex = 1;
+            this.RedoButton.UseVisualStyleBackColor = true;
+            this.RedoButton.EnabledChanged += new System.EventHandler(this.RedoButton_EnabledChanged);
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.BackgroundImage")));
+            this.UndoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.UndoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UndoButton.ForeColor = System.Drawing.Color.Black;
+            this.UndoButton.Location = new System.Drawing.Point(3, 2);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(25, 25);
+            this.UndoButton.TabIndex = 0;
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.EnabledChanged += new System.EventHandler(this.UndoButton_EnabledChanged);
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // CancelEditButton
             // 
@@ -102,7 +136,7 @@
             this.CancelEditButton.Location = new System.Drawing.Point(709, -1);
             this.CancelEditButton.Name = "CancelEditButton";
             this.CancelEditButton.Size = new System.Drawing.Size(75, 31);
-            this.CancelEditButton.TabIndex = 1;
+            this.CancelEditButton.TabIndex = 3;
             this.CancelEditButton.Text = "Cancel";
             this.CancelEditButton.UseVisualStyleBackColor = false;
             // 
@@ -117,7 +151,7 @@
             this.UpdateButton.Location = new System.Drawing.Point(628, -1);
             this.UpdateButton.Name = "UpdateButton";
             this.UpdateButton.Size = new System.Drawing.Size(75, 31);
-            this.UpdateButton.TabIndex = 1;
+            this.UpdateButton.TabIndex = 2;
             this.UpdateButton.Text = "Update";
             this.UpdateButton.UseVisualStyleBackColor = false;
             this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
@@ -258,7 +292,7 @@
             this.ExperimentersPage.Location = new System.Drawing.Point(4, 26);
             this.ExperimentersPage.Name = "ExperimentersPage";
             this.ExperimentersPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ExperimentersPage.Size = new System.Drawing.Size(746, 270);
+            this.ExperimentersPage.Size = new System.Drawing.Size(786, 308);
             this.ExperimentersPage.TabIndex = 1;
             this.ExperimentersPage.Text = "Experimenters";
             // 
@@ -274,7 +308,7 @@
             this.ExperimentersTableLayout.RowCount = 2;
             this.ExperimentersTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ExperimentersTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.ExperimentersTableLayout.Size = new System.Drawing.Size(740, 264);
+            this.ExperimentersTableLayout.Size = new System.Drawing.Size(780, 302);
             this.ExperimentersTableLayout.TabIndex = 0;
             // 
             // ExperimentersDGV
@@ -301,8 +335,8 @@
             this.ExperimentersDGV.Name = "ExperimentersDGV";
             this.ExperimentersDGV.RowHeadersVisible = false;
             this.ExperimentersDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ExperimentersDGV.Size = new System.Drawing.Size(734, 223);
-            this.ExperimentersDGV.TabIndex = 1;
+            this.ExperimentersDGV.Size = new System.Drawing.Size(774, 261);
+            this.ExperimentersDGV.TabIndex = 0;
             this.ExperimentersDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ExperimentersDGV_CellFormatting);
             // 
             // FullNameColumn
@@ -362,10 +396,10 @@
             this.AddExperimenterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddExperimenterButton.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
             this.AddExperimenterButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.AddExperimenterButton.Location = new System.Drawing.Point(3, 232);
+            this.AddExperimenterButton.Location = new System.Drawing.Point(3, 270);
             this.AddExperimenterButton.Name = "AddExperimenterButton";
             this.AddExperimenterButton.Size = new System.Drawing.Size(75, 29);
-            this.AddExperimenterButton.TabIndex = 0;
+            this.AddExperimenterButton.TabIndex = 1;
             this.AddExperimenterButton.Text = "Add...";
             this.AddExperimenterButton.UseVisualStyleBackColor = false;
             this.AddExperimenterButton.Click += new System.EventHandler(this.AddExperimenterButton_Click);
@@ -379,7 +413,7 @@
             this.RecordingsPage.Location = new System.Drawing.Point(4, 26);
             this.RecordingsPage.Name = "RecordingsPage";
             this.RecordingsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RecordingsPage.Size = new System.Drawing.Size(746, 270);
+            this.RecordingsPage.Size = new System.Drawing.Size(786, 308);
             this.RecordingsPage.TabIndex = 2;
             this.RecordingsPage.Text = "Recordings";
             // 
@@ -395,7 +429,7 @@
             this.RecordingsTableLayout.RowCount = 2;
             this.RecordingsTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.RecordingsTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.RecordingsTableLayout.Size = new System.Drawing.Size(740, 264);
+            this.RecordingsTableLayout.Size = new System.Drawing.Size(780, 302);
             this.RecordingsTableLayout.TabIndex = 0;
             // 
             // RecordingsDGV
@@ -407,8 +441,8 @@
             this.RecordingsDGV.GridColor = global::MEACruncher.Properties.Settings.Default.DgvGridColor;
             this.RecordingsDGV.Location = new System.Drawing.Point(3, 3);
             this.RecordingsDGV.Name = "RecordingsDGV";
-            this.RecordingsDGV.Size = new System.Drawing.Size(734, 223);
-            this.RecordingsDGV.TabIndex = 1;
+            this.RecordingsDGV.Size = new System.Drawing.Size(774, 261);
+            this.RecordingsDGV.TabIndex = 0;
             // 
             // AddRecordingButton
             // 
@@ -417,10 +451,10 @@
             this.AddRecordingButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddRecordingButton.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
             this.AddRecordingButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.AddRecordingButton.Location = new System.Drawing.Point(3, 232);
+            this.AddRecordingButton.Location = new System.Drawing.Point(3, 270);
             this.AddRecordingButton.Name = "AddRecordingButton";
             this.AddRecordingButton.Size = new System.Drawing.Size(75, 29);
-            this.AddRecordingButton.TabIndex = 0;
+            this.AddRecordingButton.TabIndex = 1;
             this.AddRecordingButton.Text = "Add...";
             this.AddRecordingButton.UseVisualStyleBackColor = false;
             // 
@@ -486,5 +520,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn EndDateColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
+        private System.Windows.Forms.Button RedoButton;
+        private System.Windows.Forms.Button UndoButton;
+        private System.Windows.Forms.ToolTip MainToolTip;
     }
 }

@@ -54,10 +54,20 @@ namespace MEACruncher {
             get { return _redoStack.Count != 0; }
         }
         public string TopUndoMessage {
-            get { return _undoStack.Peek().Message; }
+            get {
+                if (_undoStack.Count != 0)
+                    return _undoStack.Peek().Message;
+                else
+                    return "Cannot undo.";
+            }
         }
         public string TopRedoMessage {
-            get { return _redoStack.Peek().Message; }
+            get {
+                if (_redoStack.Count != 0)
+                    return _redoStack.Peek().Message;
+                else
+                    return "Cannot redo.";
+            }
         }
 
         // METHODS

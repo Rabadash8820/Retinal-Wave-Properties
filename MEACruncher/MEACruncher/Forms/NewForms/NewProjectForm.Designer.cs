@@ -23,6 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProjectForm));
             this.TitleLabel = new System.Windows.Forms.Label();
             this.DateStartedLabel = new System.Windows.Forms.Label();
             this.CommentsLabel = new System.Windows.Forms.Label();
@@ -31,8 +33,11 @@
             this.CommentsTextbox = new System.Windows.Forms.TextBox();
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.RedoButton = new System.Windows.Forms.Button();
+            this.UndoButton = new System.Windows.Forms.Button();
             this.CancelCreateButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -142,6 +147,8 @@
             // BottomPanel
             // 
             this.MainTableLayout.SetColumnSpan(this.BottomPanel, 2);
+            this.BottomPanel.Controls.Add(this.RedoButton);
+            this.BottomPanel.Controls.Add(this.UndoButton);
             this.BottomPanel.Controls.Add(this.CancelCreateButton);
             this.BottomPanel.Controls.Add(this.CreateButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -149,6 +156,34 @@
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(353, 29);
             this.BottomPanel.TabIndex = 5;
+            // 
+            // RedoButton
+            // 
+            this.RedoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.BackgroundImage")));
+            this.RedoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RedoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RedoButton.ForeColor = System.Drawing.Color.Black;
+            this.RedoButton.Location = new System.Drawing.Point(34, 2);
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.Size = new System.Drawing.Size(25, 25);
+            this.RedoButton.TabIndex = 1;
+            this.RedoButton.UseVisualStyleBackColor = true;
+            this.RedoButton.EnabledChanged += new System.EventHandler(this.RedoButton_EnabledChanged);
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.BackgroundImage")));
+            this.UndoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.UndoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UndoButton.ForeColor = System.Drawing.Color.Black;
+            this.UndoButton.Location = new System.Drawing.Point(3, 2);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(25, 25);
+            this.UndoButton.TabIndex = 0;
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.EnabledChanged += new System.EventHandler(this.UndoButton_EnabledChanged);
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // CancelCreateButton
             // 
@@ -162,7 +197,7 @@
             this.CancelCreateButton.Location = new System.Drawing.Point(269, -1);
             this.CancelCreateButton.Name = "CancelCreateButton";
             this.CancelCreateButton.Size = new System.Drawing.Size(75, 31);
-            this.CancelCreateButton.TabIndex = 1;
+            this.CancelCreateButton.TabIndex = 3;
             this.CancelCreateButton.Text = "Cancel";
             this.CancelCreateButton.UseVisualStyleBackColor = false;
             this.CancelCreateButton.Click += new System.EventHandler(this.CancelCreateButton_Click);
@@ -178,7 +213,7 @@
             this.CreateButton.Location = new System.Drawing.Point(188, -1);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(75, 31);
-            this.CreateButton.TabIndex = 0;
+            this.CreateButton.TabIndex = 2;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
@@ -219,6 +254,9 @@
         private System.Windows.Forms.Panel BottomPanel;
         private System.Windows.Forms.Button CancelCreateButton;
         private System.Windows.Forms.Button CreateButton;
+        private System.Windows.Forms.Button RedoButton;
+        private System.Windows.Forms.Button UndoButton;
+        private System.Windows.Forms.ToolTip MainToolTip;
 
 
     }

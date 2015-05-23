@@ -129,6 +129,11 @@
       <DependentUpon>EditProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EntityManager.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\DeleteRes.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -268,11 +273,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -312,10 +312,16 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\meadata_v3.3.sql" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\MeaCruncher.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\meadata_v3.3.sql" />
+    <None Include="Resources\redoSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undoSmall.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

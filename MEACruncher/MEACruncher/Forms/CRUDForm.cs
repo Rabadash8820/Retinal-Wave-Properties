@@ -36,15 +36,15 @@ namespace MEACruncher.Forms {
             MementoManager = new MementoManager();
         }
         protected virtual void buildForm() { }
-        protected bool validate(string regexStr, string input, string message) {
+        protected bool validText(string regex, string text, string message) {
             // If the input returns exactly one match, then return true
-            regexStr = "^" + regexStr + "$";
-            Regex regex = new Regex(regexStr);
-            int numMatches = regex.Matches(input).Count;
+            regex = "^" + regex + "$";
+            Regex regexObj = new Regex(regex);
+            int numMatches = regexObj.Matches(text).Count;
             if (numMatches == 1) return true;
 
             // Otherwise display an error message box and return false
-            message.Insert(0, String.Format(ValidateRes.Message, input));
+            message.Insert(0, String.Format(ValidateRes.Message, text));
             MessageBox.Show(
                 message,
                 Application.ProductName,
@@ -55,7 +55,7 @@ namespace MEACruncher.Forms {
         }
         protected bool validDate(string dateStr) {
             // Return false if the string isn't in the right format
-            bool isValidStr = this.validate(
+            bool isValidStr = this.validText(
                 Resources.RegexRes.Date,
                 dateStr,
                 Resources.ValidateRes.Date);
