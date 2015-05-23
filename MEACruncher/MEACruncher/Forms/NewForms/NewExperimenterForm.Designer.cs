@@ -23,6 +23,8 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewExperimenterForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FullNameLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -30,11 +32,14 @@
             this.FullNameTextbox = new System.Windows.Forms.TextBox();
             this.CommentsTextbox = new System.Windows.Forms.TextBox();
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.RedoButton = new System.Windows.Forms.Button();
+            this.UndoButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
             this.CancelCreateButton = new System.Windows.Forms.Button();
             this.PhoneLabel = new System.Windows.Forms.Label();
             this.EmailTextbox = new System.Windows.Forms.TextBox();
             this.PhoneTextbox = new System.Windows.Forms.TextBox();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -112,7 +117,7 @@
             this.FullNameTextbox.MaxLength = 30;
             this.FullNameTextbox.Name = "FullNameTextbox";
             this.FullNameTextbox.Size = new System.Drawing.Size(302, 25);
-            this.FullNameTextbox.TabIndex = 1;
+            this.FullNameTextbox.TabIndex = 0;
             this.FullNameTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.FullNameTextbox_Validating);
             // 
             // CommentsTextbox
@@ -126,11 +131,13 @@
             this.CommentsTextbox.Multiline = true;
             this.CommentsTextbox.Name = "CommentsTextbox";
             this.CommentsTextbox.Size = new System.Drawing.Size(302, 77);
-            this.CommentsTextbox.TabIndex = 4;
+            this.CommentsTextbox.TabIndex = 3;
             // 
             // BottomPanel
             // 
             this.MainTableLayout.SetColumnSpan(this.BottomPanel, 2);
+            this.BottomPanel.Controls.Add(this.RedoButton);
+            this.BottomPanel.Controls.Add(this.UndoButton);
             this.BottomPanel.Controls.Add(this.CreateButton);
             this.BottomPanel.Controls.Add(this.CancelCreateButton);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -138,6 +145,34 @@
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(393, 29);
             this.BottomPanel.TabIndex = 14;
+            // 
+            // RedoButton
+            // 
+            this.RedoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.BackgroundImage")));
+            this.RedoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RedoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RedoButton.ForeColor = System.Drawing.Color.Black;
+            this.RedoButton.Location = new System.Drawing.Point(34, 2);
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.Size = new System.Drawing.Size(25, 25);
+            this.RedoButton.TabIndex = 1;
+            this.RedoButton.UseVisualStyleBackColor = true;
+            this.RedoButton.EnabledChanged += new System.EventHandler(this.RedoButton_EnabledChanged);
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.BackgroundImage")));
+            this.UndoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.UndoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UndoButton.ForeColor = System.Drawing.Color.Black;
+            this.UndoButton.Location = new System.Drawing.Point(3, 2);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(25, 25);
+            this.UndoButton.TabIndex = 0;
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.EnabledChanged += new System.EventHandler(this.UndoButton_EnabledChanged);
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // CreateButton
             // 
@@ -150,7 +185,7 @@
             this.CreateButton.Location = new System.Drawing.Point(238, -1);
             this.CreateButton.Name = "CreateButton";
             this.CreateButton.Size = new System.Drawing.Size(65, 31);
-            this.CreateButton.TabIndex = 0;
+            this.CreateButton.TabIndex = 2;
             this.CreateButton.Text = "Create";
             this.CreateButton.UseVisualStyleBackColor = false;
             this.CreateButton.Click += new System.EventHandler(this.CreateButton_Click);
@@ -167,7 +202,7 @@
             this.CancelCreateButton.Location = new System.Drawing.Point(309, -1);
             this.CancelCreateButton.Name = "CancelCreateButton";
             this.CancelCreateButton.Size = new System.Drawing.Size(75, 31);
-            this.CancelCreateButton.TabIndex = 1;
+            this.CancelCreateButton.TabIndex = 3;
             this.CancelCreateButton.Text = "Cancel";
             this.CancelCreateButton.UseVisualStyleBackColor = false;
             this.CancelCreateButton.Click += new System.EventHandler(this.CancelCreateButton_Click);
@@ -195,7 +230,7 @@
             this.EmailTextbox.MaxLength = 25;
             this.EmailTextbox.Name = "EmailTextbox";
             this.EmailTextbox.Size = new System.Drawing.Size(302, 25);
-            this.EmailTextbox.TabIndex = 2;
+            this.EmailTextbox.TabIndex = 1;
             this.EmailTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.EmailTextbox_Validating);
             // 
             // PhoneTextbox
@@ -209,7 +244,7 @@
             this.PhoneTextbox.MaxLength = 15;
             this.PhoneTextbox.Name = "PhoneTextbox";
             this.PhoneTextbox.Size = new System.Drawing.Size(302, 25);
-            this.PhoneTextbox.TabIndex = 3;
+            this.PhoneTextbox.TabIndex = 2;
             this.PhoneTextbox.Validating += new System.ComponentModel.CancelEventHandler(this.PhoneTextbox_Validating);
             // 
             // NewExperimenterForm
@@ -251,5 +286,8 @@
         private System.Windows.Forms.Label CommentsLabel;
         private System.Windows.Forms.Panel BottomPanel;
         private System.Windows.Forms.Label PhoneLabel;
+        private System.Windows.Forms.Button RedoButton;
+        private System.Windows.Forms.Button UndoButton;
+        private System.Windows.Forms.ToolTip MainToolTip;
     }
 }

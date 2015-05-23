@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProjectsForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.EntitiesDGV = new System.Windows.Forms.DataGridView();
@@ -30,10 +31,13 @@
             this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BottomPanel = new System.Windows.Forms.Panel();
+            this.RedoButton = new System.Windows.Forms.Button();
+            this.UndoButton = new System.Windows.Forms.Button();
             this.NewButton = new System.Windows.Forms.Button();
             this.DeleteButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
             this.CloseButton = new System.Windows.Forms.Button();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -106,6 +110,8 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.RedoButton);
+            this.BottomPanel.Controls.Add(this.UndoButton);
             this.BottomPanel.Controls.Add(this.NewButton);
             this.BottomPanel.Controls.Add(this.DeleteButton);
             this.BottomPanel.Controls.Add(this.EditButton);
@@ -115,6 +121,34 @@
             this.BottomPanel.Name = "BottomPanel";
             this.BottomPanel.Size = new System.Drawing.Size(504, 29);
             this.BottomPanel.TabIndex = 1;
+            // 
+            // RedoButton
+            // 
+            this.RedoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RedoButton.BackgroundImage")));
+            this.RedoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.RedoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.RedoButton.ForeColor = System.Drawing.Color.Black;
+            this.RedoButton.Location = new System.Drawing.Point(34, 2);
+            this.RedoButton.Name = "RedoButton";
+            this.RedoButton.Size = new System.Drawing.Size(25, 25);
+            this.RedoButton.TabIndex = 1;
+            this.RedoButton.UseVisualStyleBackColor = true;
+            this.RedoButton.EnabledChanged += new System.EventHandler(this.RedoButton_EnabledChanged);
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
+            // 
+            // UndoButton
+            // 
+            this.UndoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UndoButton.BackgroundImage")));
+            this.UndoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.UndoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UndoButton.ForeColor = System.Drawing.Color.Black;
+            this.UndoButton.Location = new System.Drawing.Point(3, 2);
+            this.UndoButton.Name = "UndoButton";
+            this.UndoButton.Size = new System.Drawing.Size(25, 25);
+            this.UndoButton.TabIndex = 0;
+            this.UndoButton.UseVisualStyleBackColor = true;
+            this.UndoButton.EnabledChanged += new System.EventHandler(this.UndoButton_EnabledChanged);
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // NewButton
             // 
@@ -127,7 +161,7 @@
             this.NewButton.Location = new System.Drawing.Point(177, -1);
             this.NewButton.Name = "NewButton";
             this.NewButton.Size = new System.Drawing.Size(75, 31);
-            this.NewButton.TabIndex = 0;
+            this.NewButton.TabIndex = 2;
             this.NewButton.Text = "New";
             this.NewButton.UseVisualStyleBackColor = false;
             this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
@@ -144,7 +178,7 @@
             this.DeleteButton.Location = new System.Drawing.Point(339, -1);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(75, 31);
-            this.DeleteButton.TabIndex = 2;
+            this.DeleteButton.TabIndex = 4;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
@@ -161,7 +195,7 @@
             this.EditButton.Location = new System.Drawing.Point(258, -1);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(75, 31);
-            this.EditButton.TabIndex = 1;
+            this.EditButton.TabIndex = 3;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
@@ -178,7 +212,7 @@
             this.CloseButton.Location = new System.Drawing.Point(420, -1);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 31);
-            this.CloseButton.TabIndex = 3;
+            this.CloseButton.TabIndex = 5;
             this.CloseButton.Text = "Close";
             this.CloseButton.UseVisualStyleBackColor = false;
             this.CloseButton.Click += new System.EventHandler(this.CancelEditButton_Click);
@@ -217,6 +251,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
+        private System.Windows.Forms.Button RedoButton;
+        private System.Windows.Forms.Button UndoButton;
+        private System.Windows.Forms.ToolTip MainToolTip;
 
     }
 }

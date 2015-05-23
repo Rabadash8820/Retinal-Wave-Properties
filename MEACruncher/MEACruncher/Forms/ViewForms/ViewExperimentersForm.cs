@@ -64,21 +64,21 @@ namespace MEACruncher.Forms.ViewForms {
             int index = e.ColumnIndex;
             string input = e.FormattedValue as string;
             if (index == FullNameColumn.Index) {
-                bool isValid = this.validate(
+                bool isValid = this.validText(
                     Resources.RegexRes.PersonName,
                     input,
                     Resources.ValidateRes.ExperimenterFullName);
                 e.Cancel = !isValid;
             }
             else if (index == EmailColumn.Index) {
-                bool isValid = this.validate(
+                bool isValid = this.validText(
                     Resources.RegexRes.EmailAddress,
                     input,
                     Resources.ValidateRes.EmailAddress);
                 e.Cancel = !isValid;
             }
             else if (index == PhoneColumn.Index) {
-                bool isValid = this.validate(
+                bool isValid = this.validText(
                     Resources.RegexRes.PhoneNumber,
                     input,
                     Resources.ValidateRes.PhoneNumber);
@@ -97,6 +97,20 @@ namespace MEACruncher.Forms.ViewForms {
         private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
             Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
             this.updateEntity(entity);
+        }
+        private void UndoButton_Click(object sender, EventArgs e) {
+            this.MementoManager.Undo();
+            this.manageUndoRedo();
+        }
+        private void RedoButton_Click(object sender, EventArgs e) {
+            this.MementoManager.Redo();
+            this.manageUndoRedo();
+        }
+        private void UndoButton_EnabledChanged(object sender, EventArgs e) {
+
+        }
+        private void RedoButton_EnabledChanged(object sender, EventArgs e) {
+
         }
 
         // FUNCTIONS
@@ -135,6 +149,18 @@ namespace MEACruncher.Forms.ViewForms {
             foreach (DataGridViewColumn column in EntitiesDGV.Columns)
                 autofit(column);
             CommentsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            // Remaining formats...
+            this.manageUndoRedo();
+        }
+        protected override void manageUndoRedo() {
+            base.manageUndoRedo();
+
+            // Enable/disable the undo/redo buttons and set their tooltip text accordingly
+            UndoButton.Enabled = this.MementoManager.CanUndo;
+            RedoButton.Enabled = this.MementoManager.CanRedo;
+            MainToolTip.SetToolTip(UndoButton, this.MementoManager.TopUndoMessage);
+            MainToolTip.SetToolTip(RedoButton, this.MementoManager.TopRedoMessage);
         }
         protected override void refreshStuff() {
             base.refreshStuff();
