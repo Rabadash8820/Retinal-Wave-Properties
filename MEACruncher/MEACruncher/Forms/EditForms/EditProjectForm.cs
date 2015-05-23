@@ -5,6 +5,7 @@ using System.Linq;
 using MEACruncher.Events;
 using System.Windows.Forms;
 using MEACruncher.Properties;
+using System.Linq.Expressions;
 using MEACruncher.Forms.AddForms;
 using System.Collections.Generic;
 
@@ -73,9 +74,9 @@ namespace MEACruncher.Forms.EditForms {
             DateStartedDateTimePicker.MaxDate = DateTime.Today;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, "Title");
-            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, "DateStarted");
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, "Comments");
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Title));
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName(e => e.DateStarted));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
         }
     }
 

@@ -34,8 +34,8 @@ namespace MEACruncher.Forms.EditForms {
             if (!isUnique(e)) return;
 
             // If not, persist this new Entity in the database and close the form
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Update(e);
+            using (ITransaction trans = Session.BeginTransaction()) {
+                Session.Update(e);
                 trans.Commit();
             }
             onEntityUpdated();

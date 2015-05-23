@@ -55,8 +55,8 @@ namespace MEACruncher.Forms.ViewForms {
                 return false;
 
             // Remove record associated with this DataGridViewRow from the database
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Delete(entity);
+            using (ITransaction trans = Session.BeginTransaction()) {
+                Session.Delete(entity);
                 deleteDependents();
                 trans.Commit();
             }
@@ -64,14 +64,14 @@ namespace MEACruncher.Forms.ViewForms {
         }
         protected void updateEntity(E entity) {
             // Called whenever data is updated by a ViewForm's DataGridView
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Update(entity);
+            using (ITransaction trans = Session.BeginTransaction()) {
+                Session.Update(entity);
                 trans.Commit();
             }
         }
         protected override void closeStuff() {
             base.closeStuff();
-            _db.Close();
+            Session.Close();
         }
         protected virtual void refreshStuff() {
             // Called whenever data was updated on a different Form

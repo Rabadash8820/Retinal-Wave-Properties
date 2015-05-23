@@ -4,6 +4,7 @@ using NHibernate;
 using System.Linq;
 using System.Windows.Forms;
 using MEACruncher.Resources;
+using System.Linq.Expressions;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
@@ -11,7 +12,8 @@ namespace MEACruncher.Forms {
 
     public abstract partial class CRUDForm<E> : Form where E : Entity {
         // VARIABLES
-        protected ISession _db;
+        protected ISession Session { get; private set; }
+        protected MementoManager MementoManager { get; private set; }
 
         // CONSTRUCTORS
         public CRUDForm() {
@@ -30,7 +32,8 @@ namespace MEACruncher.Forms {
         // FUNCTIONS
         private void initialize() {
             // Open an NHibernate session with the database
-            _db = Program.MeaDataDb.Session;
+            Session = Program.MeaDataDb.Session;
+            MementoManager = new MementoManager();
         }
         protected virtual void buildForm() { }
         protected bool validate(string regexStr, string input, string message) {
@@ -81,6 +84,11 @@ namespace MEACruncher.Forms {
                 MessageBoxIcon.Error,
                 MessageBoxDefaultButton.Button1);
             return false;
+        }
+        protected virtual void manageUndoRedo() { }
+        protected string propertyName<PropertyType>(Expression<Func<E, PropertyType>> expression) {
+            MemberExpression property = (expression.Body as MemberExpression);
+            return property.Member.Name;
         }
         protected bool isUnique(E entity) {
             // If this Entity is not unique, show an error message
