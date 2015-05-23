@@ -25,7 +25,7 @@ namespace MEACruncher.Forms.AddForms {
 
         // FUNCTIONS
         protected override IList<Experimenter> loadEntities() {
-            IList<Experimenter> entities = _db.QueryOver<Experimenter>()
+            IList<Experimenter> entities = Session.QueryOver<Experimenter>()
                                               .OrderBy(e => e.FullName).Asc
                                               .List();
             return entities;
@@ -42,10 +42,10 @@ namespace MEACruncher.Forms.AddForms {
             lastRow.Height = Settings.Default.ContainerHeight;
 
             // Initialize the dataGridView
-            FullNameColumn.DataPropertyName = "FullName";
-            EmailColumn.DataPropertyName = "WorkEmail";
-            PhoneColumn.DataPropertyName = "WorkPhone";
-            CommentsColumn.DataPropertyName = "Comments";
+            FullNameColumn.DataPropertyName = propertyName(e => e.FullName);
+            EmailColumn.DataPropertyName = propertyName(e => e.WorkEmail);
+            PhoneColumn.DataPropertyName = propertyName(e => e.WorkPhone);
+            CommentsColumn.DataPropertyName = propertyName(e => e.Comments);
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = this.BoundEntities;

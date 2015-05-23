@@ -34,7 +34,7 @@ namespace MEACruncher.Forms.NewForms {
         protected override Project defaultEntity() {
             // Get a list of all currently used Project titles on the default Date
             DateTime defaultDate = DateTime.Today;
-            IList<string> titles = _db.QueryOver<Project>()
+            IList<string> titles = Session.QueryOver<Project>()
                                       .Where(p => p.DateStarted == defaultDate)
                                       .Select(p => p.Title)
                                       .List<string>();
@@ -65,9 +65,9 @@ namespace MEACruncher.Forms.NewForms {
             DateStartedDateTimePicker.MaxDate = DateTime.Today;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, "Title");
-            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, "DateStarted");
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, "Comments");
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Title));
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName(e => e.DateStarted));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
         }
 
     }

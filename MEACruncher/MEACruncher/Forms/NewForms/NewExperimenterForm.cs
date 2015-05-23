@@ -66,10 +66,10 @@ namespace MEACruncher.Forms.NewForms {
             PhoneTextbox.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            FullNameTextbox.DataBindings.Add(   "Text", this.BoundEntity, "FullName");
-            EmailTextbox.DataBindings.Add("Text", this.BoundEntity, "WorkEmail");
-            PhoneTextbox.DataBindings.Add("Text", this.BoundEntity, "WorkPhone");
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, "Comments");
+            FullNameTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.FullName));
+            EmailTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.WorkEmail));
+            PhoneTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.WorkPhone));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
         }
 
     }

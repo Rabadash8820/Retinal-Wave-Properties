@@ -106,7 +106,7 @@ namespace MEACruncher.Forms.ViewForms {
         }
         protected override void deleteDependents() { }
         protected override IList<Project> loadEntities() {
-            IList<Project> entities = _db.QueryOver<Project>()
+            IList<Project> entities = Session.QueryOver<Project>()
                                          .OrderBy(p => p.Title).Asc
                                          .OrderBy(p => p.DateStarted).Asc
                                          .List();
@@ -124,9 +124,9 @@ namespace MEACruncher.Forms.ViewForms {
             lastRow.Height = Settings.Default.ContainerHeight;
 
             // Create data bindings
-            TitleColumn.DataPropertyName       = "Title";
-            DateStartedColumn.DataPropertyName = "DateStarted";
-            CommentsColumn.DataPropertyName    = "Comments";
+            TitleColumn.DataPropertyName = propertyName(e => e.Title);
+            DateStartedColumn.DataPropertyName = propertyName(e => e.DateStarted);
+            CommentsColumn.DataPropertyName = propertyName(e => e.Comments);
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
             EntitiesDGV.DataSource = this.BoundEntities;

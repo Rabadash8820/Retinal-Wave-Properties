@@ -94,6 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MementoManager.cs" />
     <Compile Include="DbWrapper.cs" />
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
     <Compile Include="Events\EntityUpdatedEvent.cs" />
