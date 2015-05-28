@@ -10,13 +10,13 @@
       <many-to-one name="Strain" column="StrainId" not-null="false"/>
       <property name="Comments" column="Comments" not-null="false"/>
     </natural-id>
-    <set name="ProjectPopulations" table="project_populations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="ProjectPopulations" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="PopulationId" not-null="true"/>
       </key>
       <one-to-many class="ProjectPopulation"/>
     </set>
-    <set name="TissuePreparations" table="tissue_preparations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="TissuePreparations" table="tissue_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="PopulationId" not-null="true"/>
       </key>

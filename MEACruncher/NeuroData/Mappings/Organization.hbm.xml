@@ -9,13 +9,13 @@
       <many-to-one name="Type" column="TypeId" not-null="true"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="Strains" table="Strains" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Strains" table="Strains" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="BreederId" not-null="true"/>
       </key>
       <one-to-many class="Strain"/>
     </set>
-    <set name="Affiliations" table="Affiliations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Affiliations" table="Affiliations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="OrganizationId" not-null="true"/>
       </key>

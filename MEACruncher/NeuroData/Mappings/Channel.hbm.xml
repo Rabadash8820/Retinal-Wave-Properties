@@ -12,13 +12,13 @@
     <property name="Description" column="Description" not-null="false" length="25"/>
     <property name="HasMRGC" column="HasMRGC" not-null="false"/>
     <property name="HasSingleCell" column="HasSingleCell" not-null="false"/>
-    <set name="Spikes" table="Spikes" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Spikes" table="Spikes" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ChannelId" not-null="true"/>
       </key>
       <one-to-many class="Spike"/>
     </set>
-    <set name="Bursts" table="Bursts" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Bursts" table="Bursts" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ChannelId" not-null="true"/>
       </key>

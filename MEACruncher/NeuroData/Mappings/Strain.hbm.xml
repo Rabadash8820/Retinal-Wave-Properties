@@ -11,7 +11,7 @@
     </natural-id>
     <property name="Description" column="Description" not-null="true" length="25"/>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="TissuePreparations" table="TissuePreparations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="TissuePreparations" table="TissuePreparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="StrainId" not-null="true"/>
       </key>
