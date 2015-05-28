@@ -8,7 +8,7 @@
       <property name="Description" column="Description" not-null="true" length="50"/>
       <property name="Comments" column="Description" not-null="false"/>
     </natural-id>
-    <set name="Results" table="results" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Results" table="results" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ResultTypeId" not-null="true"/>
       </key>

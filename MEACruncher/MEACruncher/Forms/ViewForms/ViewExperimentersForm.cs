@@ -87,6 +87,8 @@ namespace MEACruncher.Forms.ViewForms {
         }
         private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
             Experimenter entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Experimenter;
+
+            // If the row's associated Entity isn't unique then activate the last-edited cell for the user to fix
             bool unique = isUnique(entity);
             if (!unique) {
                 e.Cancel = true;

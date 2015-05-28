@@ -8,8 +8,8 @@ SET destPath="C:\Dan_Programming\DefaultCollection\Retinal Wave Properties\MEACr
 
 REM Get the name of the SQL file to export to from the user
 ECHO.
-ECHO Enter the name of the file to which the exported schema's SQL will be stored
-ECHO You don't need to provide an extension
+ECHO Enter the name of the file to which the exported schema's SQL will be stored.
+ECHO You don't need to provide an extension.
 SET /p sqlFileName=">"
 
 REM Navigate to where the mysqldump executable is stored

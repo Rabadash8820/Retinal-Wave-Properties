@@ -11,7 +11,7 @@
     <property name="StartTimestamp" column="StartTimestamp" not-null="true"/>
     <property name="EndTimestamp" column="EndTimestamp" not-null="true"/>
     <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
-    <set name="Spikes" table="Spikes" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Spikes" table="Spikes" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="BurstId" not-null="true"/>
       </key>

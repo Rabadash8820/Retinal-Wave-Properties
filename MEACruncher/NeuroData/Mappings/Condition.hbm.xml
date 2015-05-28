@@ -7,7 +7,7 @@
     <natural-id mutable="true">
       <property name="Description" column="Description" not-null="true" length="50"/>
     </natural-id>
-    <set name="Populations" table="Populations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Populations" table="Populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ConditionId" not-null="true"/>
       </key>

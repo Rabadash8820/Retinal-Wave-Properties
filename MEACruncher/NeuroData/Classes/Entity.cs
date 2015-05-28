@@ -1,9 +1,10 @@
 ﻿using System;
 using System.ComponentModel;
+using PropertyChanged;
 
 namespace MeaData {
 
-    public class Entity {
+    public class Entity : ICloneable, INotifyPropertyChanging, INotifyPropertyChanged {
         // VARIABLES
         private int? _hash;
 
@@ -14,6 +15,7 @@ namespace MeaData {
         }
 
         // PROPERTIES
+        [DoNotNotify]
         public virtual Guid Guid { get; protected set; }
         [Browsable(false)]
         public virtual bool IsTransient{

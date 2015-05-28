@@ -9,13 +9,13 @@
       <property name="DateStarted" column="DateStarted" not-null="true"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="ProjectExperimenters" table="ProjectExperimenters" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="ProjectExperimenters" table="ProjectExperimenters" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ProjectId" not-null="true"/>
       </key>
       <one-to-many class="ProjectExperimenter"/>
     </set>
-    <set name="ProjectPopulations" table="ProjectPopulations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="ProjectPopulations" table="ProjectPopulations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="ProjectId" not-null="true"/>
       </key>

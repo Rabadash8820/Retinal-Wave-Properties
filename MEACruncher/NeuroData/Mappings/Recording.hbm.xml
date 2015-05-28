@@ -12,7 +12,7 @@
     <property name="MeaRows" column="MeaRows" not-null="false" />
     <property name="MeaColumns" column="MeaColumns" not-null="false"/>
     <property name="Comments" column="Comments" not-null="true" />
-    <set name="Channels" table="Channels" lazy="true" access="nosetter.camelcase-underscore" inverse="true" batch-size="10" cascade="save-update">
+    <set name="Channels" table="Channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="RecordingId" not-null="true"/>
       </key>
