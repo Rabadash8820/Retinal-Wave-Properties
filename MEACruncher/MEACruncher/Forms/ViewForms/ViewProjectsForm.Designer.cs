@@ -23,12 +23,43 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProjectsForm));
+            this.guidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TitleColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateStartedColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SuspendLayout();
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(460, -1);
+            // 
+            // CloseButton
+            // 
+            this.CloseButton.Location = new System.Drawing.Point(541, -1);
+            // 
+            // RedoButton
+            // 
+            this.MainToolTip.SetToolTip(this.RedoButton, "Cannot redo.");
+            // 
+            // UndoButton
+            // 
+            this.MainToolTip.SetToolTip(this.UndoButton, "Cannot undo.");
+            // 
+            // NewButton
+            // 
+            this.NewButton.Location = new System.Drawing.Point(298, -1);
+            // 
+            // EditButton
+            // 
+            this.EditButton.Location = new System.Drawing.Point(379, -1);
+            // 
+            // guidDataGridViewTextBoxColumn
+            // 
+            this.guidDataGridViewTextBoxColumn.DataPropertyName = "Guid";
+            this.guidDataGridViewTextBoxColumn.HeaderText = "Guid";
+            this.guidDataGridViewTextBoxColumn.Name = "guidDataGridViewTextBoxColumn";
+            this.guidDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // TitleColumn
             // 
@@ -43,7 +74,6 @@
             this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.DateStartedColumn.HeaderText = "Date Started";
             this.DateStartedColumn.Name = "DateStartedColumn";
-            this.DateStartedColumn.Width = 110;
             // 
             // CommentsColumn
             // 
@@ -56,9 +86,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::MEACruncher.Properties.Settings.Default.FormBackColor;
-            this.ClientSize = new System.Drawing.Size(510, 236);
+            this.ClientSize = new System.Drawing.Size(625, 281);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(375, 150);
             this.Name = "ViewProjectsForm";
             this.ShowInTaskbar = false;
@@ -72,6 +101,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn guidDataGridViewTextBoxColumn;
 
     }
 }

@@ -19,8 +19,8 @@ namespace MEACruncher.Forms.ViewForms {
         // FUNCTIONS
         protected override IList<Entity> loadEntities() {
             IList<Entity> entities = Session.QueryOver<Experimenter>()
-                                              .OrderBy(e => e.FullName).Asc
-                                              .List<Entity>();
+                                            .OrderBy(e => e.FullName).Asc
+                                            .List<Entity>();
             return entities;
         }
         protected override void buildForm() {
