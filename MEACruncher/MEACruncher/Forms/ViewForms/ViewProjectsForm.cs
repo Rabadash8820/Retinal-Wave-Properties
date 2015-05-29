@@ -12,103 +12,35 @@ using System.Collections.Generic;
 
 namespace MEACruncher.Forms.ViewForms {
 
-    internal partial class ViewProjectsForm : IViewProjectsForm {
+    internal partial class ViewProjectsForm : ViewEntitiesForm {
         // CONSTRUCTORS
         public ViewProjectsForm() : base() {
             InitializeComponent();
         }
 
-        // EVENT HANDLERS
-        private void CancelEditButton_Click(object sender, System.EventArgs e) {
-            closeStuff();
-        }
-        private void EntitiesDGV_SelectionChanged(object sender, System.EventArgs e) {
-            bool rowSelected = (EntitiesDGV.SelectedRows.Count > 0);
-            EditButton.Enabled = rowSelected;
-            DeleteButton.Enabled = rowSelected;
-        }
-        private void EntitiesDGV_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
-            Project entity = e.Row.DataBoundItem as Project;
-            string message = String.Format(R.DeleteRes.ProjectWarning, entity.Title);
-            bool cancelDelete = !entityDeleted(entity, message);
-            e.Cancel = cancelDelete;
-        }
-        private void NewButton_Click(object sender, EventArgs e) {
-            NewProjectForm form = new NewProjectForm();
-            form.EntityCreated += NewEntityForm_EntityCreated;
-            form.ShowDialog();
-        }
-        private void EditButton_Click(object sender, EventArgs e) {
-            Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            EntityManager.Remember(entity);
-            EditProjectForm form = new EditProjectForm();
-            form.EntityUpdated += EditEntityForm_EntityUpdated;
-            form.ShowDialog();
-        }
-        private void DeleteButton_Click(object sender, System.EventArgs e) {
-            Project entity = EntitiesDGV.SelectedRows[0].DataBoundItem as Project;
-            string message = String.Format(R.DeleteRes.ProjectWarning, entity.Title);
-            if (entityDeleted(entity, message))
-                this.BoundEntities.Remove(entity);
-        }
-        private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            this.formatEntities(e);
-        }
-        private void NewProjectForm_EntityCreated(object sender, EntityCreatedEventArgs<Project> e) {
-            this.BoundEntities.Add(e.Entity);
-        }
-        private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            EntitiesDGV.ClearSelection();
-        }
-        private void EntitiesDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            EntitiesDGV.BeginEdit(true);
-        }
-        private void EntitiesDGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
-            // Validate the cell value based on which column it is in
-            int index = e.ColumnIndex;
-            string input = e.FormattedValue as string;
-            if (index == TitleColumn.Index) {
-                bool isValid = this.validText(
-                    Resources.RegexRes.NonEmpty, 
-                    input,
-                    Resources.ValidateRes.ProjectTitle);
-                e.Cancel = !isValid;
-            }
-            else if (index == DateStartedColumn.Index) {
-                bool isValid = validDate(input);
-                e.Cancel = !isValid;
-            }
-        }
-        private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
-            Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
-            bool unique = isUnique(entity);
-            if (!unique) {
-                e.Cancel = true;
-                EntitiesDGV.CurrentCell = EntitiesDGV.Rows[e.RowIndex].Cells[TitleColumn.Index];
-                EntitiesDGV.BeginEdit(true);
-            }
-
-        }
-        private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
-            Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
-            this.updateEntity(entity);
-        }
-        private void UndoButton_Click(object sender, EventArgs e) {
-            this.MementoManager.Undo();
-            this.manageUndoRedo();
-        }
-        private void RedoButton_Click(object sender, EventArgs e) {
-            this.MementoManager.Redo();
-            this.manageUndoRedo();
-        }
-        private void UndoButton_EnabledChanged(object sender, EventArgs e) {
-
-        }
-        private void RedoButton_EnabledChanged(object sender, EventArgs e) {
-
-        }
-
         // FUNCTIONS
+        protected override IList<Entity> loadEntities() {
+            IList<Entity> entities = Session.QueryOver<Project>()
+                                         .OrderBy(p => p.Title).Asc
+                                         .OrderBy(p => p.DateStarted).Asc
+                                         .List<Entity>();
+            return entities;
+        }
+        protected override void buildForm() {
+            base.buildForm();
+
+            // Resize dataGridView columns
+            foreach (DataGridViewColumn column in EntitiesDGV.Columns)
+                autofit(column);
+            CommentsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        protected override void createDataBindings() {
+            base.createDataBindings();
+
+            TitleColumn.DataPropertyName = propertyName((Project e) => e.Title);
+            DateStartedColumn.DataPropertyName = propertyName((Project e) => e.DateStarted);
+            CommentsColumn.DataPropertyName = propertyName((Project e) => e.Comments);
+        }
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
             base.formatEntities(e);
 
@@ -118,54 +50,23 @@ namespace MEACruncher.Forms.ViewForms {
             DateTime? dateTime = e.Value as DateTime?;
             e.Value = dateTime.Value.ToShortDateString();
         }
+        protected override bool isCellValid(int index, string input) {
+            if (index == TitleColumn.Index) {
+                bool isValid = this.validText(
+                    Resources.RegexRes.NonEmpty,
+                    input,
+                    Resources.ValidateRes.ProjectTitle);
+                return isValid;
+            }
+            else if (index == DateStartedColumn.Index) {
+                bool isValid = validDate(input);
+                return isValid;
+            }
+
+            // Should never execute
+            return false;
+        }
         protected override void deleteDependents() { }
-        protected override IList<Project> loadEntities() {
-            IList<Project> entities = Session.QueryOver<Project>()
-                                         .OrderBy(p => p.Title).Asc
-                                         .OrderBy(p => p.DateStarted).Asc
-                                         .List();
-            return entities;
-        }
-        protected override void buildForm() {
-            base.buildForm();
-
-            // Apply application settings
-            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
-            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.DgvCellForeColor;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.DgvHeaderBackColor;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.DgvHeaderForeColor;
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
-            lastRow.Height = Settings.Default.ContainerHeight;
-
-            // Create data bindings
-            TitleColumn.DataPropertyName = propertyName(e => e.Title);
-            DateStartedColumn.DataPropertyName = propertyName(e => e.DateStarted);
-            CommentsColumn.DataPropertyName = propertyName(e => e.Comments);
-            EntitiesDGV.AutoGenerateColumns = false;
-            EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
-            EntitiesDGV.DataSource = this.BoundEntities;
-
-            // Resize dataGridView columns
-            foreach (DataGridViewColumn column in EntitiesDGV.Columns)
-                autofit(column);
-            CommentsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            // Remaining formats...
-            this.manageUndoRedo();
-        }
-        protected override void manageUndoRedo() {
-            base.manageUndoRedo();
-
-            // Enable/disable the undo/redo buttons and set their tooltip text accordingly
-            UndoButton.Enabled = this.MementoManager.CanUndo;
-            RedoButton.Enabled = this.MementoManager.CanRedo;
-            MainToolTip.SetToolTip(UndoButton, this.MementoManager.TopUndoMessage);
-            MainToolTip.SetToolTip(RedoButton, this.MementoManager.TopRedoMessage);
-        }
-        protected override void refreshStuff() {
-            base.refreshStuff();
-            EntitiesDGV.Refresh();
-        }
 
     }
 

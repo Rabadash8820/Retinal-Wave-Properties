@@ -1,15 +1,17 @@
-﻿using System;
-using NHibernate;
-using MeaData;
+﻿using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
 using MEACruncher.Properties;
+
+using NHibernate;
+
+using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace MEACruncher.Forms.NewForms {
 
-    internal partial class NewProjectForm : INewProjectForm {
+    internal partial class NewProjectForm : NewEntityForm {
         // CONSTRUCTORS
         public NewProjectForm() : base() {
             InitializeComponent();
@@ -45,7 +47,7 @@ namespace MEACruncher.Forms.NewForms {
         }
 
         // OVERRIDE FUNCTIONS
-        protected override Project defaultEntity() {
+        protected override Entity defaultEntity() {
             // Get a list of all currently used Project titles on the default Date
             DateTime defaultDate = DateTime.Today;
             IList<string> titles = Session.QueryOver<Project>()
@@ -77,9 +79,9 @@ namespace MEACruncher.Forms.NewForms {
             DateStartedDateTimePicker.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Title));
-            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName(e => e.DateStarted));
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Title));
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName((Project e) => e.DateStarted));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Comments));
 
             // Remaining formats...
             DateStartedDateTimePicker.MaxDate = DateTime.Today;

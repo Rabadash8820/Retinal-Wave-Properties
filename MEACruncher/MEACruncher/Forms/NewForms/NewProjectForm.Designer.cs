@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewProjectForm));
             this.TitleLabel = new System.Windows.Forms.Label();
             this.DateStartedLabel = new System.Windows.Forms.Label();
@@ -37,7 +36,6 @@
             this.UndoButton = new System.Windows.Forms.Button();
             this.CancelCreateButton = new System.Windows.Forms.Button();
             this.CreateButton = new System.Windows.Forms.Button();
-            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -221,7 +219,6 @@
             // NewProjectForm
             // 
             this.AcceptButton = this.CreateButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.BackColor = global::MEACruncher.Properties.Settings.Default.FormBackColor;
             this.CancelButton = this.CancelCreateButton;
             this.ClientSize = new System.Drawing.Size(359, 211);
@@ -256,7 +253,6 @@
         private System.Windows.Forms.Button CreateButton;
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
-        private System.Windows.Forms.ToolTip MainToolTip;
 
 
     }

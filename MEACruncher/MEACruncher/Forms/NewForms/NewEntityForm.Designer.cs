@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher.Forms.NewForms {
-    partial class NewEntityForm<E> {
+    partial class NewEntityForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

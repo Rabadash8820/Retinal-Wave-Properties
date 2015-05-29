@@ -1,15 +1,17 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using MeaData;
+﻿using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
 using MEACruncher.Properties;
+
 using NHibernate;
+
+using System;
+using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace MEACruncher.Forms.NewForms {
-    internal partial class NewExperimenterForm : INewExperimenterForm {
+    internal partial class NewExperimenterForm : NewEntityForm {
         // CONSTRUCTORS
         public NewExperimenterForm() : base() {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace MEACruncher.Forms.NewForms {
         }
 
         // OVERRIDE FUNCTIONS
-        protected override Experimenter defaultEntity() {
+        protected override Entity defaultEntity() {
             // Create/return a new Project with that title and the current date as the start date
             Experimenter entity = new Experimenter() {
                 FullName  = DefaultRes.ExperimenterName,
@@ -80,10 +82,10 @@ namespace MEACruncher.Forms.NewForms {
             PhoneTextbox.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            FullNameTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.FullName));
-            EmailTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.WorkEmail));
-            PhoneTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.WorkPhone));
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
+            FullNameTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Experimenter e) => e.FullName));
+            EmailTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Experimenter e) => e.WorkEmail));
+            PhoneTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Experimenter e) => e.WorkPhone));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Experimenter e) => e.Comments));
 
             // Remaining formats...
             this.manageUndoRedo();

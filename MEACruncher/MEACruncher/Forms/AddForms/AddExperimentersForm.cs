@@ -1,60 +1,47 @@
-﻿using System;
-using MeaData;
-using System.Windows.Forms;
+﻿using MeaData;
 using MEACruncher.Properties;
+
+using System;
+using System.Linq;
+using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace MEACruncher.Forms.AddForms {
 
-    internal partial class AddExperimentersForm : IAddExperimentersForm {
+    internal partial class AddExperimentersForm : AddEntitiesForm {
         // CONSTRUCTORS
         public AddExperimentersForm() {
             InitializeComponent();
         }
 
-        // EVENT HANDLERS
-        private void AddButton_Click(object sender, EventArgs e) {
-            this.addEntities();
-        }
-        private void CancelAddButton_Click(object sender, EventArgs e) {
-            this.closeStuff();
-        }
-        private void EntitiesDGV_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e) {
-            EntitiesDGV.ClearSelection();
-        }
-
         // FUNCTIONS
-        protected override IList<Experimenter> loadEntities() {
-            IList<Experimenter> entities = Session.QueryOver<Experimenter>()
-                                              .OrderBy(e => e.FullName).Asc
-                                              .List();
+        protected override IList<Entity> loadEntities() {
+            IList<Entity> entities = Session.QueryOver<Experimenter>()
+                                            .OrderBy(e => e.FullName).Asc
+                                            .List<Entity>();
             return entities;
         }
         protected override void buildForm() {
             base.buildForm();
 
-            // Apply application settings
-            EntitiesDGV.DefaultCellStyle.BackColor = Settings.Default.DgvCellBackColor;
-            EntitiesDGV.DefaultCellStyle.ForeColor = Settings.Default.DgvCellForeColor;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.BackColor = Settings.Default.DgvHeaderBackColor;
-            EntitiesDGV.ColumnHeadersDefaultCellStyle.ForeColor = Settings.Default.DgvHeaderForeColor;
-            RowStyle lastRow = MainTableLayout.RowStyles[MainTableLayout.RowStyles.Count - 1];
-            lastRow.Height = Settings.Default.ContainerHeight;
+            // Autofit columns but keep them resizable
+            foreach (DataGridViewColumn column in EntitiesDGV.Columns)
+                autofit(column);
+            CommentsColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+        }
+        protected override void createDataBindings() {
+            base.createDataBindings();
 
-            // Initialize the dataGridView
-            FullNameColumn.DataPropertyName = propertyName(e => e.FullName);
-            EmailColumn.DataPropertyName = propertyName(e => e.WorkEmail);
-            PhoneColumn.DataPropertyName = propertyName(e => e.WorkPhone);
-            CommentsColumn.DataPropertyName = propertyName(e => e.Comments);
-            EntitiesDGV.AutoGenerateColumns = false;
-            EntitiesDGV.DataBindingComplete += EntitiesDGV_DataBindingComplete;
-            EntitiesDGV.DataSource = this.BoundEntities;
+            FullNameColumn.DataPropertyName = propertyName((Experimenter e) => e.FullName);
+            EmailColumn.DataPropertyName = propertyName((Experimenter e) => e.WorkEmail);
+            PhoneColumn.DataPropertyName = propertyName((Experimenter e) => e.WorkPhone);
+            CommentsColumn.DataPropertyName = propertyName((Experimenter e) => e.Comments);
         }
         protected override void formatEntities(DataGridViewCellFormattingEventArgs e) {
             base.formatEntities(e);
         }
-        protected override System.Collections.Generic.IList<Experimenter> selectedEntities() {
-            IList<Experimenter> entities = new List<Experimenter>();
+        protected override IList<Entity> selectedEntities() {
+            IList<Entity> entities = new List<Entity>();
             foreach (DataGridViewRow row in EntitiesDGV.SelectedRows)
                 entities.Add(row.DataBoundItem as Experimenter);
             return entities;

@@ -24,7 +24,7 @@
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="TextboxBackColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">DimGray</Value>
+      <Value Profile="(Default)">Indigo</Value>
     </Setting>
     <Setting Name="TextboxForeColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">MistyRose</Value>
@@ -36,13 +36,13 @@
       <Value Profile="(Default)">Black</Value>
     </Setting>
     <Setting Name="DgvCellBackColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">DimGray</Value>
+      <Value Profile="(Default)">Indigo</Value>
     </Setting>
     <Setting Name="DgvCellForeColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">MistyRose</Value>
     </Setting>
     <Setting Name="DgvGridColor" Type="System.Drawing.Color" Scope="Application">
-      <Value Profile="(Default)">DimGray</Value>
+      <Value Profile="(Default)">Indigo</Value>
     </Setting>
     <Setting Name="DgvBackColor" Type="System.Drawing.Color" Scope="Application">
       <Value Profile="(Default)">Black</Value>

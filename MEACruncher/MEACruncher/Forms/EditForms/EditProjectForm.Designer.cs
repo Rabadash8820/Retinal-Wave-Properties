@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditProjectForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.BottomPanel = new System.Windows.Forms.Panel();
@@ -55,7 +54,6 @@
             this.RecordingsTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.RecordingsDGV = new System.Windows.Forms.DataGridView();
             this.AddRecordingButton = new System.Windows.Forms.Button();
-            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.MainTabControl.SuspendLayout();
@@ -522,6 +520,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
-        private System.Windows.Forms.ToolTip MainToolTip;
     }
 }

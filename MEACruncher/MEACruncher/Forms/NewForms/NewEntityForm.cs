@@ -1,8 +1,10 @@
-﻿using System;
-using NHibernate;
-using MeaData;
+﻿using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
+
+using NHibernate;
+
+using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -10,9 +12,9 @@ using System.Text.RegularExpressions;
 namespace MEACruncher.Forms.NewForms {
 
     // BASE CLASS
-    internal abstract partial class NewEntityForm<E> : CRUDForm<E> where E : Entity {
+    internal abstract partial class NewEntityForm : CRUDForm {
         // EVENTS
-        public event EntityCreatedEventHandler<E> EntityCreated;
+        public event EntityCreatedEventHandler EntityCreated;
 
         // CONSTRUCTOR
         public NewEntityForm() : base() {
@@ -27,14 +29,14 @@ namespace MEACruncher.Forms.NewForms {
             base.buildForm();
 
             // Create a default Entity and bind to it
-            E e = defaultEntity();
+            Entity e = defaultEntity();
             this.BoundEntity = new BindingSource();
             this.BoundEntity.DataSource = e;
         }
-        protected virtual E defaultEntity() { return default(E); }
+        protected virtual Entity defaultEntity() { return default(Entity); }
         protected void createEntity() {
             // Validate the new Entity to see if it will conflict with an existing record
-            E e = this.BoundEntity.DataSource as E;
+            Entity e = this.BoundEntity.DataSource as Entity;
             if (!isUnique(e)) return;
 
             // If not, persist this new Entity in the database and close the form
@@ -52,24 +54,13 @@ namespace MEACruncher.Forms.NewForms {
             Delegate[] subscribers = this.EntityCreated.GetInvocationList();
             foreach (Delegate subscriber in subscribers) {
                 Control c = subscriber.Target as Control;
-                EntityCreatedEventArgs<E> args = new EntityCreatedEventArgs<E>(this.BoundEntity.DataSource as E);
+                EntityCreatedEventArgs args = new EntityCreatedEventArgs(this.BoundEntity.DataSource as Entity);
                 if (c != null && c.InvokeRequired)
                     c.BeginInvoke(subscriber, this, args);
                 else
                     subscriber.DynamicInvoke(this, args);
             }
         }
-    }
-
-    // DERIVED CLASSES (so VS designer will work)
-    internal class INewProjectForm : NewEntityForm<Project> {
-        public INewProjectForm() : base() { }
-    }
-    internal class INewExperimenterForm : NewEntityForm<Experimenter> {
-        public INewExperimenterForm() : base() { }
-    }
-    internal class INewOrganizationForm : NewEntityForm<Organization> {
-        public INewOrganizationForm() : base() { }
     }
 
 }

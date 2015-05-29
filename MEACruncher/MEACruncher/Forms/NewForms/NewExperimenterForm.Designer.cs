@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewExperimenterForm));
             this.MainTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.FullNameLabel = new System.Windows.Forms.Label();
@@ -39,7 +38,6 @@
             this.PhoneLabel = new System.Windows.Forms.Label();
             this.EmailTextbox = new System.Windows.Forms.TextBox();
             this.PhoneTextbox = new System.Windows.Forms.TextBox();
-            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -288,6 +286,5 @@
         private System.Windows.Forms.Label PhoneLabel;
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
-        private System.Windows.Forms.ToolTip MainToolTip;
     }
 }
