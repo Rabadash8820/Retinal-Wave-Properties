@@ -88,7 +88,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Indigo")]
         public global::System.Drawing.Color TextboxBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["TextboxBackColor"]));
@@ -124,7 +124,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Indigo")]
         public global::System.Drawing.Color DgvCellBackColor {
             get {
                 return ((global::System.Drawing.Color)(this["DgvCellBackColor"]));
@@ -142,7 +142,7 @@ namespace MEACruncher.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DimGray")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Indigo")]
         public global::System.Drawing.Color DgvGridColor {
             get {
                 return ((global::System.Drawing.Color)(this["DgvGridColor"]));

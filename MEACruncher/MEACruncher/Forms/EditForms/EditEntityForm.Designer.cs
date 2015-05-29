@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher.Forms.EditForms {
-    partial class EditEntityForm<E> {
+    partial class EditEntityForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>

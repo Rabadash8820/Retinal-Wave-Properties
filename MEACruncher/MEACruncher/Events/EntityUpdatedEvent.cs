@@ -1,13 +1,13 @@
-﻿using System;
-using MeaData;
+﻿using MeaData;
+using System;
 
 namespace MEACruncher.Events {
 
-    public delegate void EntityUpdatedEventHandler<E>(object sender, EntityUpdatedEventArgs<E> e) where E : Entity;
+    public delegate void EntityUpdatedEventHandler(object sender, EntityUpdatedEventArgs e);
 
-    public class EntityUpdatedEventArgs<E> : EventArgs where E : Entity {
-        public EntityUpdatedEventArgs(E entity) { Entity = entity; }
-        public E Entity { get; protected set; }
+    public class EntityUpdatedEventArgs : EventArgs {
+        public EntityUpdatedEventArgs(Entity entity) { Entity = entity; }
+        public Entity Entity { get; protected set; }
     }
 
 }

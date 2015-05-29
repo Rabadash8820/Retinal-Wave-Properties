@@ -1,5 +1,5 @@
 ﻿namespace MEACruncher.Forms {
-    partial class CRUDForm<E> {
+    partial class CRUDForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,13 +23,15 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            this.MainToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.SuspendLayout();
             // 
             // CRUDForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(383, 232);
             this.Name = "CRUDForm";
             this.Text = "CRUDForm";
             this.Load += new System.EventHandler(this.CRUDForm_Load);
@@ -38,5 +40,8 @@
         }
 
         #endregion
+
+        protected System.Windows.Forms.ToolTip MainToolTip;
+
     }
 }

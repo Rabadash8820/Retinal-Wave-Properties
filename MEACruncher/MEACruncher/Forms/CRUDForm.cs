@@ -1,16 +1,18 @@
 ﻿using System;
-using MeaData;
-using NHibernate;
 using System.Linq;
 using System.Windows.Forms;
-using MEACruncher.Resources;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
+using NHibernate;
+
+using MeaData;
+using MEACruncher.Resources;
+
 namespace MEACruncher.Forms {
 
-    public abstract partial class CRUDForm<E> : Form where E : Entity {
+    public abstract partial class CRUDForm : Form {
         // VARIABLES
         protected ISession Session { get; private set; }
         protected MementoManager MementoManager { get; private set; }
@@ -36,6 +38,7 @@ namespace MEACruncher.Forms {
             MementoManager = new MementoManager();
         }
         protected virtual void buildForm() { }
+        protected virtual void createDataBindings() { }
         protected bool validText(string regex, string text, string message) {
             // If the input returns exactly one match, then return true
             regex = "^" + regex + "$";
@@ -86,11 +89,11 @@ namespace MEACruncher.Forms {
             return false;
         }
         protected virtual void manageUndoRedo() { }
-        protected string propertyName<PropertyType>(Expression<Func<E, PropertyType>> expression) {
+        protected string propertyName<Class, Property>(Expression<Func<Class, Property>> expression) {
             MemberExpression property = (expression.Body as MemberExpression);
             return property.Member.Name;
         }
-        protected bool isUnique(E entity) {
+        protected bool isUnique(Entity entity) {
             // If this Entity is not unique, show an error message
             bool unique = EntityManager.IsUnique(entity);
             if (!unique) {

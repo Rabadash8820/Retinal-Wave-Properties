@@ -1,17 +1,18 @@
-﻿using System;
-using MeaData;
-using System.Data;
-using System.Linq;
+﻿using MeaData;
 using MEACruncher.Events;
-using System.Windows.Forms;
 using MEACruncher.Properties;
-using System.Linq.Expressions;
 using MEACruncher.Forms.AddForms;
+
+using System;
+using System.Linq;
+using System.Data;
+using System.Windows.Forms;
+using System.Linq.Expressions;
 using System.Collections.Generic;
 
 namespace MEACruncher.Forms.EditForms {
 
-    internal partial class EditProjectForm : IEditProjectForm {
+    internal partial class EditProjectForm : EditEntityForm {
         // CONSTRUCTORS
         public EditProjectForm() : base() {
             InitializeComponent();
@@ -23,13 +24,13 @@ namespace MEACruncher.Forms.EditForms {
             form.EntitiesSelected += AddExperimentersForm_EntitiesSelected;
             form.ShowDialog();
         }
-        protected void AddExperimentersForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs<Experimenter> e) {
+        protected void AddExperimentersForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs e) {
             // Create a list of default many-to-many objects
             Project p = this.BoundEntity.DataSource as Project;
             IList<ProjectExperimenter> projExps = e.Entities.Select(entity =>
                 new ProjectExperimenter() {
                     Project = p,
-                    Experimenter = entity,
+                    Experimenter = entity as Experimenter,
                     IsManager = false,
                     StartDate = p.DateStarted,
                     EndDate = default(DateTime)
@@ -86,9 +87,9 @@ namespace MEACruncher.Forms.EditForms {
             DateStartedDateTimePicker.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Title));
-            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName(e => e.DateStarted));
-            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName(e => e.Comments));
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Title));
+            DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName((Project e) => e.DateStarted));
+            CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Comments));
 
             // Remaining formats...
             DateStartedDateTimePicker.MaxDate = DateTime.Today;
