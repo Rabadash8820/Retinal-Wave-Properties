@@ -20,17 +20,15 @@ ECHO.
 ECHO -- ********** DATABASE STRUCTURE ********** >!destPath!/!sqlFileName!.sql
 ECHO. >>!destPath!/!sqlFileName!.sql
 ECHO Exporting database structure...
-mysqldump --user=root --password=mysqlShundra8820 --no-data --skip-comments meadata >> !destPath!/!sqlFileName!.sql
+mysqldump --defaults-extra-file=!destPath!/meadata.cnf --skip-comments --no-data meadata >> !destPath!/!sqlFileName!.sql
 
 REM Export data from specific tables	
-ECHO.
 ECHO. >>!destPath!/!sqlFileName!.sql
 ECHO -- ********** DATA FROM SPECIFIC TABLES ********** >>!destPath!/!sqlFileName!.sql
 ECHO. >>!destPath!/!sqlFileName!.sql
 ECHO Exporting data from version table...
-mysqldump --user=root --password=mysqlShundra8820 --skip-comments meadata version >> !destPath!/!sqlFileName!.sql
+mysqldump --defaults-extra-file=!destPath!/meadata.cnf --skip-comments meadata version >> !destPath!/!sqlFileName!.sql
 
-ECHO.
 ECHO Exporting complete!
 
 SET sqlFileName=
