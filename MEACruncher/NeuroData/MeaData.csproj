@@ -76,10 +76,8 @@
     </Compile>
     <Compile Include="Classes\AgeUnit.cs" />
     <Compile Include="Classes\DbVersion.cs" />
+    <Compile Include="Classes\Flag.cs" />
     <Compile Include="Classes\ResultType.cs" />
-    <Compile Include="Classes\Condition.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Classes\Entity.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -89,13 +87,11 @@
     <Compile Include="Classes\Experimenter.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\Genotype.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Classes\ModelOrganism.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Result.cs" />
+    <Compile Include="Classes\RecordingFile.cs" />
     <Compile Include="Classes\Tissue.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -112,9 +108,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\ProjectExperimenter.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Classes\ProjectPopulation.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Recording.cs">
@@ -147,13 +140,7 @@
     <EmbeddedResource Include="Mappings\Channel.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Condition.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Experimenter.hbm.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Genotype.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\ModelOrganism.hbm.xml">
@@ -174,8 +161,9 @@
     <EmbeddedResource Include="Mappings\Project.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\ProjectExperimenter.hbm.xml" />
-    <EmbeddedResource Include="Mappings\ProjectPopulation.hbm.xml" />
+    <EmbeddedResource Include="Mappings\ProjectExperimenter.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Recording.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -197,7 +185,9 @@
     <EmbeddedResource Include="Mappings\Version.hbm.xml" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\AgeUnit.hbm.xml" />
+    <EmbeddedResource Include="Mappings\AgeUnit.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -206,6 +196,10 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
+    <EmbeddedResource Include="Mappings\RecordingFile.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Flag.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

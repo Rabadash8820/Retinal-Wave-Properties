@@ -6,21 +6,16 @@
     </id>
     <natural-id mutable="true">
       <many-to-one name="Tissue" column="TissueId" not-null="false"/>
-      <many-to-one name="Condition" column="ConditionId" not-null="false"/>
       <many-to-one name="Strain" column="StrainId" not-null="false"/>
       <property name="Comments" column="Comments" not-null="false"/>
     </natural-id>
-    <set name="ProjectPopulations" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="PopulationId" not-null="true"/>
-      </key>
-      <one-to-many class="ProjectPopulation"/>
+    <set name="Projects" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+      <key unique="true" column="PopulationId" not-null="true"/>
+      <many-to-many class="Project" column="ProjectId" />
     </set>
-    <set name="TissuePreparations" table="tissue_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="PopulationId" not-null="true"/>
-      </key>
-      <one-to-many class="TissuePreparation"/>
+    <set name="TissuePreparations" table="population_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="PopulationId" not-null="true" />
+      <many-to-many class="TissuePreparation" column="TissuePreparationId" />
     </set>
   </class>
 </hibernate-mapping>

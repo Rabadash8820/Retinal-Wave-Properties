@@ -5,9 +5,9 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Description" column="Description" not-null="true" length="50" />
+      <property name="Description" column="Description" not-null="true" length="25" />
     </natural-id>
-    <set name="Organizations" table="Organizations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Organizations" table="Organizations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
       <key unique="true">
         <column name="TypeId" not-null="true"/>
       </key>

@@ -17,7 +17,7 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual string Title { get; set; }
+        public virtual string Name { get; set; }
         public virtual OrganizationType Type { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<Strain> Strains {
@@ -46,7 +46,7 @@ namespace MeaData {
                 clone = Activator.CreateInstance(o.GetType()) as Organization;
                 map.Add(o, clone);
 
-                clone.Title = o.Title;
+                clone.Name = o.Name;
                 clone.Comments = o.Comments;
                 foreach (Strain s in o.Strains)
                     clone.Strains.Add(Strain.Clone(s, map));

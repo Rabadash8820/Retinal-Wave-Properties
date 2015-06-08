@@ -21,7 +21,7 @@ namespace MEACruncher.Forms.ViewForms {
         // FUNCTIONS
         protected override IList<Entity> loadEntities() {
             IList<Entity> entities = Session.QueryOver<Project>()
-                                            .OrderBy(p => p.Title).Asc
+                                            .OrderBy(p => p.Name).Asc
                                             .OrderBy(p => p.DateStarted).Asc
                                             .List<Entity>();
             return entities;
@@ -37,7 +37,7 @@ namespace MEACruncher.Forms.ViewForms {
         protected override void createDataBindings() {
             base.createDataBindings();
 
-            TitleColumn.DataPropertyName = propertyName((Project e) => e.Title);
+            TitleColumn.DataPropertyName = propertyName((Project e) => e.Name);
             DateStartedColumn.DataPropertyName = propertyName((Project e) => e.DateStarted);
             CommentsColumn.DataPropertyName = propertyName((Project e) => e.Comments);
         }

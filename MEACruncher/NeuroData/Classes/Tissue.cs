@@ -17,7 +17,7 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual string Description { get; set; }
+        public virtual string Name { get; set; }
         public virtual Tissue Parent { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<TissuePreparation> TissuePreparations {
@@ -46,7 +46,7 @@ namespace MeaData {
                 clone = Activator.CreateInstance(t.GetType()) as Tissue;
                 map.Add(t, clone);
 
-                clone.Description = t.Description;
+                clone.Name = t.Name;
                 clone.Comments = t.Comments;
                 foreach (TissuePreparation tp in t.TissuePreparations)
                     clone.TissuePreparations.Add(TissuePreparation.Clone(tp, map));

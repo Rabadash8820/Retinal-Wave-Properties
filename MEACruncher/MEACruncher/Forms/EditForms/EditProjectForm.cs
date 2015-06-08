@@ -31,7 +31,7 @@ namespace MEACruncher.Forms.EditForms {
                 new ProjectExperimenter() {
                     Project = p,
                     Experimenter = entity as Experimenter,
-                    IsManager = false,
+                    IsPI = false,
                     StartDate = p.DateStarted,
                     EndDate = default(DateTime)
                 })
@@ -87,7 +87,7 @@ namespace MEACruncher.Forms.EditForms {
             DateStartedDateTimePicker.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Title));
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Name));
             DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName((Project e) => e.DateStarted));
             CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Comments));
 

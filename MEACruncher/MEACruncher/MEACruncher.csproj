@@ -313,9 +313,6 @@
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\meadata_v3.3.sql" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\MeaCruncher.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +320,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\undoSmall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\meadata.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
