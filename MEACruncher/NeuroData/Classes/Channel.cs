@@ -7,6 +7,7 @@ namespace MeaData {
         // VARIABLES
         private ISet<Spike> _spikes;
         private ISet<Burst> _bursts;
+        private ISet<Flag> _flags;
 
         // CONSTRUCTORS
         public Channel() {
@@ -29,11 +30,15 @@ namespace MeaData {
         public virtual ISet<Burst> Bursts {
             get { return _bursts; }
         }
+        public virtual ISet<Flag> Flags {
+            get { return _flags; }
+        }
 
         // FUNCTIONS
         private void Construct() {
             _spikes = new HashSet<Spike>();
             _bursts = new HashSet<Burst>();
+            _flags = new HashSet<Flag>();
         }
         public override object Clone() {
             return Channel.Clone(this, new EntityMap());
@@ -56,6 +61,8 @@ namespace MeaData {
                     clone.Spikes.Add(Spike.Clone(s, map));
                 foreach (Burst b in ch.Bursts)
                     clone.Bursts.Add(Burst.Clone(b, map));
+                foreach (Flag f in ch.Flags)
+                    clone.Flags.Add(Flag.Clone(f, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

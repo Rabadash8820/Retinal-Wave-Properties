@@ -5,20 +5,16 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Description" column="Description" not-null="true" length="75"/>
+      <property name="Name" column="Name" not-null="true" length="75"/>
       <many-to-one name="Parent" column="ParentId" not-null="false" />
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="TissuePreparations" table="TissuePreparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="TissueId" not-null="true"/>
-      </key>
+    <set name="TissuePreparations" table="TissuePreparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="TissueId" not-null="true"/>
       <one-to-many class="TissuePreparation"/>
     </set>
-    <set name="Children" table="Tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="ParentId" not-null="true"/>
-      </key>
+    <set name="Children" table="Tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="ParentId" not-null="true"/>
       <one-to-many class="Tissue"/>
     </set>
   </class>

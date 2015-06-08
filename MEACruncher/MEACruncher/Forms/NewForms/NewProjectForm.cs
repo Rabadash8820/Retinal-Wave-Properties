@@ -52,7 +52,7 @@ namespace MEACruncher.Forms.NewForms {
             DateTime defaultDate = DateTime.Today;
             IList<string> titles = Session.QueryOver<Project>()
                                       .Where(p => p.DateStarted == defaultDate)
-                                      .Select(p => p.Title)
+                                      .Select(p => p.Name)
                                       .List<string>();
 
             // Return the first title like baseStr, baseStr_1, baseStr_2, etc. that isn't already taken
@@ -63,7 +63,7 @@ namespace MEACruncher.Forms.NewForms {
 
             // Create/return a new Project with that title and the current date as the start date
             Project entity = new Project() {
-                Title = defaultTitle,
+                Name = defaultTitle,
                 DateStarted = defaultDate,
                 Comments = DefaultRes.ProjectComments
             };
@@ -79,7 +79,7 @@ namespace MEACruncher.Forms.NewForms {
             DateStartedDateTimePicker.Height = Settings.Default.ControlHeight;
 
             // Add data bindings
-            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Title));
+            TitleTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Name));
             DateStartedDateTimePicker.DataBindings.Add("Value", this.BoundEntity, propertyName((Project e) => e.DateStarted));
             CommentsTextbox.DataBindings.Add("Text", this.BoundEntity, propertyName((Project e) => e.Comments));
 

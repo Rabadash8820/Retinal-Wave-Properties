@@ -6,7 +6,7 @@ namespace MeaData {
     public class Project : Entity {
         // VARIABLES
         private ISet<ProjectExperimenter> _projectExperimenters;
-        private ISet<ProjectPopulation> _projectPopulations;
+        private ISet<Population> _populations;
 
         // CONSTRUCTORS
         public Project() {
@@ -17,20 +17,20 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual string Title { get; set; }
+        public virtual string Name { get; set; }
         public virtual DateTime DateStarted { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<ProjectExperimenter> ProjectExperimenters {
             get { return _projectExperimenters; }
         }
-        public virtual ISet<ProjectPopulation> ProjectPopulations {
-            get { return _projectPopulations; }
+        public virtual ISet<Population> Populations {
+            get { return _populations; }
         }
 
         // FUNCTIONS
         private void Construct() {
             _projectExperimenters = new HashSet<ProjectExperimenter>();
-            _projectPopulations = new HashSet<ProjectPopulation>();
+            _populations = new HashSet<Population>();
         }
         public override object Clone() {
             return Project.Clone(this, new EntityMap());
@@ -46,13 +46,13 @@ namespace MeaData {
                 clone = Activator.CreateInstance(p.GetType()) as Project;
                 map.Add(p, clone);
 
-                clone.Title = p.Title;
+                clone.Name = p.Name;
                 clone.DateStarted = p.DateStarted;
                 clone.Comments = p.Comments;
                 foreach (ProjectExperimenter pe in p.ProjectExperimenters)
                     clone.ProjectExperimenters.Add(ProjectExperimenter.Clone(pe, map));
-                foreach (ProjectPopulation pr in p.ProjectPopulations)
-                    clone.ProjectPopulations.Add(ProjectPopulation.Clone(pr, map));
+                foreach (Population pop in p.Populations)
+                    clone.Populations.Add(Population.Clone(pop, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

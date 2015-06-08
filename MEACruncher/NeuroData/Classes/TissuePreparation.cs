@@ -5,6 +5,7 @@ namespace MeaData {
 
     public class TissuePreparation : Entity {
         // VARIABLES
+        private ISet<Population> _populations;
         private ISet<Recording> _recordings;
 
         // CONSTRUCTORS
@@ -16,16 +17,19 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual Population Population { get; set; }
         public virtual DateTime DatePrepared { get; set; }
         public virtual Experimenter Preparer { get; set; }
         public virtual string Comments { get; set; }
+        public virtual ISet<Population> Populations {
+            get { return _populations; }
+        }
         public virtual ISet<Recording> Recordings {
             get { return _recordings; }
         }
 
         // FUNCTIONS
         private void Construct() {
+            _populations = new HashSet<Population>();
             _recordings = new HashSet<Recording>();
         }
         public override object Clone() {
@@ -46,10 +50,11 @@ namespace MeaData {
                 clone.Comments = tp.Comments;
                 foreach (Recording r in tp.Recordings)
                     clone.Recordings.Add(Recording.Clone(r, map));
+                foreach (Population p in tp.Populations)
+                    clone.Populations.Add(Population.Clone(p, map));
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.Population = map.GetEntity<Population>(Population.Clone(tp.Population, map));
             clone.Preparer = map.GetEntity<Experimenter>(Experimenter.Clone(tp.Preparer, map));
             return clone;
         }

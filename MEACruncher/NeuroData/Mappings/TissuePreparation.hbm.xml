@@ -5,16 +5,17 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Population" column="PopulationId" not-null="true" />
       <property name="DatePrepared" column="DatePrepared" not-null="false" />
       <many-to-one name="Preparer" column="PreparerId" not-null="false" />
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="Recordings" table="Recordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="TissuePreparationId" not-null="true"/>
-      </key>
+    <set name="Recordings" table="Recordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="TissuePreparationId" not-null="true"/>
       <one-to-many class="Recording"/>
+    </set>
+    <set name="Populations" table="population_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="TissuePreparationId" not-null="true" />
+      <many-to-many class="Population" column="PopulationId" />
     </set>
   </class>
 </hibernate-mapping>

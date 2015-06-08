@@ -5,7 +5,7 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Title" column="Title" not-null="true" length="50" />
+      <property name="Name" column="Name" not-null="true" length="35" />
       <many-to-one name="Type" column="TypeId" not-null="true"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
@@ -15,7 +15,7 @@
       </key>
       <one-to-many class="Strain"/>
     </set>
-    <set name="Affiliations" table="Affiliations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Affiliations" table="Affiliations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
       <key unique="true">
         <column name="OrganizationId" not-null="true"/>
       </key>

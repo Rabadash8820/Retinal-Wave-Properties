@@ -10,6 +10,6 @@
       <property name="StartDate" column="StartDate" not-null="false"/>
     </natural-id>
     <property name="EndDate" column="EndDate" not-null="false"/>
-    <property name="IsManager" column="IsManager" not-null="false" length="25"/>
+    <property name="IsPI" column="IsPI" not-null="false" />
   </class>
 </hibernate-mapping>
