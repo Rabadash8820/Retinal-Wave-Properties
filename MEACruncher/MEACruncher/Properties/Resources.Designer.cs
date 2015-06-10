@@ -80,7 +80,7 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.3.
+        ///   Looks up a localized string similar to 3.7.
         /// </summary>
         internal static string MeaDataDbVersion {
             get {
@@ -91,17 +91,15 @@ namespace MEACruncher.Properties {
         /// <summary>
         ///   Looks up a localized string similar to -- ********** DATABASE STRUCTURE ********** 
         /// 
-        ///-- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
-        ///--
-        ///-- Host: localhost    Database: meadata
-        ///-- ------------------------------------------------------
-        ///-- Server version	5.6.24-log
         ///
         ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
         ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
         ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
         ////*!40101 SET NAMES utf8 */;
-        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZON [rest of string was truncated]&quot;;.
+        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
+        ////*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+        ////*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string MeaDataSql {
             get {

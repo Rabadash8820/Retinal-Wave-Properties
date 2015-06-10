@@ -1,10 +1,5 @@
 -- ********** DATABASE STRUCTURE ********** 
  
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
---
--- Host: localhost    Database: meadata
--- ------------------------------------------------------
--- Server version	5.6.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `affiliations`
---
-
 DROP TABLE IF EXISTS `affiliations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -29,96 +19,76 @@ CREATE TABLE `affiliations` (
   `ExperimenterId` char(36) NOT NULL,
   `OrganizationId` char(36) NOT NULL,
   `RoleId` char(36) NOT NULL,
-  `StartDate` datetime DEFAULT NULL,
-  `EndDate` datetime DEFAULT NULL,
+  `StartDate` datetime DEFAULT NULL COMMENT 'Date when this person took onthis role at this organization',
+  `EndDate` datetime DEFAULT NULL COMMENT 'Date when this person finished this role at this organization (null if still active)',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`ExperimenterId`,`OrganizationId`,`RoleId`,`StartDate`),
+  UNIQUE KEY `Affiliation` (`ExperimenterId`,`OrganizationId`,`RoleId`,`StartDate`),
   KEY `ExperimenterId` (`ExperimenterId`),
   KEY `OrganizationId` (`OrganizationId`),
   KEY `Role` (`RoleId`),
-  CONSTRAINT `Experiment` FOREIGN KEY (`ExperimenterId`) REFERENCES `experimenters` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Organization` FOREIGN KEY (`OrganizationId`) REFERENCES `organizations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Role` FOREIGN KEY (`RoleId`) REFERENCES `organization_roles` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `Experimenter` FOREIGN KEY (`ExperimenterId`) REFERENCES `experimenters` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Organization` FOREIGN KEY (`OrganizationId`) REFERENCES `organizations` (`Id`) ON UPDATE CASCADE,
+  CONSTRAINT `Role` FOREIGN KEY (`RoleId`) REFERENCES `organization_roles` (`Id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `age_units`
---
-
 DROP TABLE IF EXISTS `age_units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `age_units` (
   `Id` char(36) NOT NULL,
   `Description` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `bursts`
---
-
 DROP TABLE IF EXISTS `bursts`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bursts` (
   `Id` char(36) NOT NULL,
   `ChannelId` char(36) NOT NULL,
-  `BurstNumber` smallint(6) NOT NULL DEFAULT '0',
-  `StartTimestamp` double NOT NULL DEFAULT '0',
-  `EndTimestamp` double NOT NULL DEFAULT '0',
-  `IsWaveAssociated` bit(1) DEFAULT b'0',
+  `BurstNumber` smallint(6) NOT NULL DEFAULT '0' COMMENT 'Indicates the order of bursts on a single channel.  E.g., 2 for the second burst',
+  `StartTimestamp` double NOT NULL DEFAULT '0' COMMENT 'Timestamp of the first spike in the burst',
+  `EndTimestamp` double NOT NULL DEFAULT '0' COMMENT 'Timestamp of the last spike in the burst',
+  `IsWaveAssociated` tinyint(4) DEFAULT '0' COMMENT 'Flag for whether this burst is wave-associated',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`ChannelId`,`BurstNumber`),
+  UNIQUE KEY `Burst` (`ChannelId`,`BurstNumber`),
   KEY `BurstNumber` (`BurstNumber`),
   KEY `RecordingId` (`ChannelId`),
   KEY `WaveAssociated` (`IsWaveAssociated`),
-  CONSTRAINT `BurstChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `BurstChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `channels`
---
-
+DROP TABLE IF EXISTS `channel_flags`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `channel_flags` (
+  `Id` char(36) NOT NULL,
+  `ChannelId` char(36) NOT NULL,
+  `FlagId` char(36) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `ChannelFlag` (`ChannelId`,`FlagId`),
+  KEY `ChannelId` (`ChannelId`),
+  KEY `FlagId` (`FlagId`),
+  CONSTRAINT `Channel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Flag` FOREIGN KEY (`FlagId`) REFERENCES `flags` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `channels`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `channels` (
   `Id` char(36) NOT NULL,
   `RecordingId` char(36) NOT NULL,
-  `Description` varchar(15) DEFAULT NULL,
-  `MeaRow` smallint(6) DEFAULT '0',
-  `MeaColumn` smallint(6) DEFAULT '0',
-  `HasMRGC` bit(1) DEFAULT NULL,
-  `HasSingleCell` bit(1) DEFAULT NULL,
+  `Description` varchar(15) DEFAULT NULL COMMENT 'Human-readable identifier for the channel, such as ''adch_23b''',
+  `MeaRow` smallint(6) DEFAULT '0' COMMENT 'Which row of the MEA this channel is in',
+  `MeaColumn` smallint(6) DEFAULT '0' COMMENT 'Which column of the MEA this channel is in',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`RecordingId`,`MeaRow`,`MeaColumn`),
-  KEY `RecordingId` (`RecordingId`),
-  CONSTRAINT `Recording` FOREIGN KEY (`RecordingId`) REFERENCES `recordings` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  UNIQUE KEY `Channel` (`RecordingId`,`MeaRow`,`MeaColumn`),
+  KEY `ChannelRecording` (`RecordingId`),
+  CONSTRAINT `Recording` FOREIGN KEY (`RecordingId`) REFERENCES `recordings` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `conditions`
---
-
-DROP TABLE IF EXISTS `conditions`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `conditions` (
-  `Id` char(36) NOT NULL,
-  `Description` varchar(30) NOT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `experimenters`
---
-
 DROP TABLE IF EXISTS `experimenters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -128,28 +98,20 @@ CREATE TABLE `experimenters` (
   `WorkEmail` varchar(25) DEFAULT NULL,
   `WorkPhone` varchar(15) DEFAULT NULL,
   `Comments` text,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  KEY `FullName` (`FullName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `genotypes`
---
-
-DROP TABLE IF EXISTS `genotypes`;
+DROP TABLE IF EXISTS `flags`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `genotypes` (
+CREATE TABLE `flags` (
   `Id` char(36) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `model_organisms`
---
-
 DROP TABLE IF EXISTS `model_organisms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -162,82 +124,76 @@ CREATE TABLE `model_organisms` (
   UNIQUE KEY `ScientificName` (`ScientificName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `organization_roles`
---
-
 DROP TABLE IF EXISTS `organization_roles`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organization_roles` (
   `Id` char(36) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `organization_types`
---
-
 DROP TABLE IF EXISTS `organization_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organization_types` (
   `Id` char(36) NOT NULL,
   `Description` varchar(25) NOT NULL,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `organizations`
---
-
 DROP TABLE IF EXISTS `organizations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `organizations` (
   `Id` char(36) NOT NULL,
-  `Title` varchar(35) NOT NULL,
-  `TypeId` char(36) DEFAULT NULL,
+  `Title` varchar(35) NOT NULL COMMENT 'Name of the organization',
+  `TypeId` char(36) DEFAULT NULL COMMENT 'Organization''s type (university, corporation, etc.)',
   `Comments` text,
   PRIMARY KEY (`Id`),
+  UNIQUE KEY `Organization` (`Title`,`TypeId`),
   KEY `Type` (`TypeId`),
-  CONSTRAINT `OrganizationType` FOREIGN KEY (`TypeId`) REFERENCES `organization_types` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `OrganizationType` FOREIGN KEY (`TypeId`) REFERENCES `organization_types` (`Id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `populations`
---
-
+DROP TABLE IF EXISTS `population_preparations`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `population_preparations` (
+  `Id` char(36) NOT NULL,
+  `PopulationId` char(36) NOT NULL,
+  `TissuePreparationId` char(36) NOT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `PopulationPreparation` (`PopulationId`,`TissuePreparationId`),
+  KEY `PopulationId` (`PopulationId`),
+  KEY `TissuePreparationId` (`TissuePreparationId`),
+  CONSTRAINT `Population` FOREIGN KEY (`PopulationId`) REFERENCES `populations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Preparation` FOREIGN KEY (`TissuePreparationId`) REFERENCES `tissue_preparations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `populations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `populations` (
   `Id` char(36) NOT NULL,
-  `StrainId` char(36) DEFAULT NULL,
-  `ConditionId` char(36) DEFAULT NULL,
-  `TissueId` char(36) DEFAULT NULL,
+  `StrainId` char(36) NOT NULL,
+  `TissueId` char(36) NOT NULL,
   `Age` double DEFAULT NULL COMMENT 'The age of the organism from which this preparation was made',
   `AgeUnitId` char(36) DEFAULT NULL COMMENT 'Unit for the age.  Could be embryonic days, postnatal days, years, etc.',
+  `Description` varchar(25) DEFAULT NULL COMMENT 'Describe experimental conditions of all recordings in this population (light stimulation, temperature of bath solution, wildtype vs knockout, etc)',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  KEY `Strain_idx` (`StrainId`),
-  KEY `Condition_idx` (`ConditionId`),
-  KEY `Tissue_idx` (`TissueId`),
-  CONSTRAINT `Condition` FOREIGN KEY (`ConditionId`) REFERENCES `conditions` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Strain` FOREIGN KEY (`StrainId`) REFERENCES `strains` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Tissue` FOREIGN KEY (`TissueId`) REFERENCES `tissues` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  UNIQUE KEY `Population` (`StrainId`,`TissueId`,`Description`,`Age`,`AgeUnitId`),
+  KEY `StrainId` (`StrainId`),
+  KEY `TissueId` (`TissueId`),
+  KEY `AgeUnitId` (`AgeUnitId`),
+  CONSTRAINT `AgeUnit` FOREIGN KEY (`AgeUnitId`) REFERENCES `age_units` (`Id`) ON UPDATE CASCADE,
+  CONSTRAINT `Strain` FOREIGN KEY (`StrainId`) REFERENCES `strains` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `Tissue` FOREIGN KEY (`TissueId`) REFERENCES `tissues` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `project_experimenters`
---
-
 DROP TABLE IF EXISTS `project_experimenters`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -245,21 +201,16 @@ CREATE TABLE `project_experimenters` (
   `Id` char(36) NOT NULL,
   `ProjectId` char(36) NOT NULL,
   `ExperimenterId` char(36) NOT NULL,
-  `StartDate` datetime DEFAULT NULL,
-  `EndDate` datetime DEFAULT NULL,
-  `IsManager` bit(1) NOT NULL DEFAULT b'0',
+  `StartDate` datetime DEFAULT NULL COMMENT 'Date when this person became involved with this Project',
+  `EndDate` datetime DEFAULT NULL COMMENT 'Date when this person stopped being involved with this Project (null if still involved)',
+  `IsPI` tinyint(4) DEFAULT '0' COMMENT 'Flag for whether this person is currently a principal investigator on this Project',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`ProjectId`,`ExperimenterId`,`StartDate`),
+  UNIQUE KEY `ProjectExperimenter` (`ProjectId`,`ExperimenterId`),
   KEY `ExperimenterId` (`ExperimenterId`),
-  KEY `IsManager` (`IsManager`),
+  KEY `IsPI` (`IsPI`),
   KEY `ProjectId` (`ProjectId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `project_populations`
---
-
 DROP TABLE IF EXISTS `project_populations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -267,57 +218,56 @@ CREATE TABLE `project_populations` (
   `Id` char(36) NOT NULL,
   `ProjectId` char(36) NOT NULL,
   `PopulationId` char(36) NOT NULL,
-  `IsOriginal` bit(1) NOT NULL DEFAULT b'0',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`ProjectId`,`PopulationId`),
-  KEY `IsReused` (`IsOriginal`),
-  KEY `Project` (`ProjectId`),
-  KEY `Recording` (`PopulationId`)
+  UNIQUE KEY `ProjectPopulation` (`ProjectId`,`PopulationId`),
+  KEY `ProjectId` (`ProjectId`),
+  KEY `PopulationId` (`PopulationId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `projects`
---
-
 DROP TABLE IF EXISTS `projects`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `projects` (
   `Id` char(36) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `Title` varchar(25) NOT NULL,
-  `DateStarted` datetime DEFAULT NULL,
+  `Name` varchar(25) NOT NULL COMMENT 'Name of the project',
+  `DateStarted` datetime DEFAULT NULL COMMENT 'Date when the project was started',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  KEY `NaturalId` (`Title`,`DateStarted`)
+  KEY `Project` (`Name`,`DateStarted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `recordings`
---
-
+DROP TABLE IF EXISTS `recording_files`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recording_files` (
+  `Id` char(36) NOT NULL,
+  `RecordingId` char(36) NOT NULL,
+  `FileNumber` tinyint(4) NOT NULL COMMENT 'Indicates the order of files for a single recording.  E.g., 2 for the second file',
+  `FileDir` text NOT NULL COMMENT 'The fully qualified path, filename, and extension of this file',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `File` (`RecordingId`,`FileNumber`),
+  KEY `RecordingId` (`RecordingId`),
+  CONSTRAINT `FileRecording` FOREIGN KEY (`RecordingId`) REFERENCES `recordings` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `recordings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recordings` (
   `Id` char(36) NOT NULL,
-  `FilePath` text NOT NULL,
   `TissuePreparationId` char(36) NOT NULL,
-  `RecordingNumber` smallint(6) NOT NULL DEFAULT '0',
-  `MeaRows` smallint(6) DEFAULT '8',
-  `MeaColumns` smallint(6) DEFAULT '8',
+  `RecordingNumber` tinyint(4) NOT NULL DEFAULT '0' COMMENT 'Indicates the order of recordings of a single tissue preparation.  E.g., 2 for the second recording',
+  `Duration` double DEFAULT '0' COMMENT 'The total duration of this recording, including all files.',
+  `MeaRows` int(11) DEFAULT '8' COMMENT 'Number of rows on the MEA used to make this recording',
+  `MeaColumns` int(11) DEFAULT '8' COMMENT 'Number of columns on the MEA used to make this recording',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`TissuePreparationId`,`RecordingNumber`),
-  CONSTRAINT `TissuePreparation` FOREIGN KEY (`TissuePreparationId`) REFERENCES `tissue_preparations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  UNIQUE KEY `Recording` (`TissuePreparationId`,`RecordingNumber`),
+  KEY `TissuePreparationId` (`TissuePreparationId`),
+  KEY `Duration` (`Duration`),
+  CONSTRAINT `TissuePreparation` FOREIGN KEY (`TissuePreparationId`) REFERENCES `tissue_preparations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `result_types`
---
-
 DROP TABLE IF EXISTS `result_types`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -325,45 +275,36 @@ CREATE TABLE `result_types` (
   `Id` char(36) NOT NULL,
   `Description` varchar(30) NOT NULL,
   `Comments` text,
-  PRIMARY KEY (`Id`)
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Description` (`Description`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `results`
---
-
 DROP TABLE IF EXISTS `results`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `results` (
   `Id` char(36) NOT NULL,
-  `PopulationId` char(36) NOT NULL,
+  `ChannelId` char(36) NOT NULL,
   `ResultTypeId` char(36) NOT NULL,
-  `Value` double NOT NULL,
+  `Value` double NOT NULL COMMENT 'Value of the result (kinda depends on what the result type is)',
   PRIMARY KEY (`Id`),
-  KEY `Population_idx` (`PopulationId`),
   KEY `ResultType_idx` (`ResultTypeId`),
-  CONSTRAINT `ResultPopulation` FOREIGN KEY (`PopulationId`) REFERENCES `populations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `ResultType` FOREIGN KEY (`ResultTypeId`) REFERENCES `result_types` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  KEY `Channel_idx` (`ChannelId`),
+  CONSTRAINT `ResultChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `ResultType` FOREIGN KEY (`ResultTypeId`) REFERENCES `result_types` (`Id`) ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `spikes`
---
-
 DROP TABLE IF EXISTS `spikes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `spikes` (
   `Id` char(36) NOT NULL,
   `ChannelId` char(36) NOT NULL,
-  `SpikeNumber` int(11) NOT NULL DEFAULT '0',
-  `Timestamp` double NOT NULL DEFAULT '0',
-  `BurstId` char(36) DEFAULT NULL,
+  `SpikeNumber` int(11) NOT NULL DEFAULT '0' COMMENT 'Indicates the order of spikes on a single channel.  E.g., 2 for the second spike',
+  `Timestamp` double NOT NULL DEFAULT '0' COMMENT 'Time during the recording when this spike occurred',
+  `BurstId` char(36) DEFAULT NULL COMMENT 'Id of the burst during which this spike occurred, if any',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`ChannelId`,`SpikeNumber`),
+  UNIQUE KEY `Spike` (`ChannelId`,`SpikeNumber`),
   KEY `BurstId` (`BurstId`),
   KEY `RecordingId` (`ChannelId`),
   KEY `SpikeNumber` (`SpikeNumber`),
@@ -371,76 +312,50 @@ CREATE TABLE `spikes` (
   CONSTRAINT `SpikeChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `strains`
---
-
 DROP TABLE IF EXISTS `strains`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `strains` (
   `Id` char(36) NOT NULL,
   `OrganismId` char(36) NOT NULL,
-  `GenotypeId` char(36) NOT NULL,
-  `Description` varchar(25) NOT NULL,
-  `BreederId` char(36) NOT NULL,
+  `Name` varchar(25) NOT NULL COMMENT 'Name of the strain',
+  `BreederId` char(36) DEFAULT NULL,
   `Comments` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`OrganismId`,`GenotypeId`,`BreederId`),
+  UNIQUE KEY `Strain` (`OrganismId`,`Name`),
   KEY `AcquiredFrom` (`BreederId`),
-  KEY `GenotypeId` (`GenotypeId`),
   KEY `OrganismId` (`OrganismId`),
   CONSTRAINT `Breeder` FOREIGN KEY (`BreederId`) REFERENCES `organizations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Genotype` FOREIGN KEY (`GenotypeId`) REFERENCES `genotypes` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Organism` FOREIGN KEY (`OrganismId`) REFERENCES `model_organisms` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `Organism` FOREIGN KEY (`OrganismId`) REFERENCES `model_organisms` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tissue_preparations`
---
-
 DROP TABLE IF EXISTS `tissue_preparations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tissue_preparations` (
   `Id` char(36) NOT NULL,
-  `PopulationId` char(36) NOT NULL,
   `DatePrepared` datetime DEFAULT NULL,
   `PreparerId` char(36) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
   KEY `Preparer` (`PreparerId`),
-  KEY `StrainId` (`PopulationId`),
-  CONSTRAINT `Preparer` FOREIGN KEY (`PreparerId`) REFERENCES `experimenters` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `TissuePopulation` FOREIGN KEY (`PopulationId`) REFERENCES `populations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `Preparer` FOREIGN KEY (`PreparerId`) REFERENCES `experimenters` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `tissues`
---
-
 DROP TABLE IF EXISTS `tissues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tissues` (
   `Id` char(36) NOT NULL,
-  `Description` varchar(35) NOT NULL,
-  `ParentId` char(36) DEFAULT NULL,
+  `Name` varchar(35) NOT NULL COMMENT 'Name of the tissue (as general as "brain" or as specific as dorsal lateral geniculat nucleus)',
+  `ParentId` char(36) DEFAULT NULL COMMENT 'If this tissue is part of a more general tissue',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`Description`,`ParentId`),
+  UNIQUE KEY `NaturalId` (`Name`,`ParentId`),
   KEY `Parent` (`ParentId`),
-  CONSTRAINT `Parent` FOREIGN KEY (`ParentId`) REFERENCES `tissues` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  CONSTRAINT `Parent` FOREIGN KEY (`ParentId`) REFERENCES `tissues` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Table structure for table `version`
---
-
 DROP TABLE IF EXISTS `version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -460,15 +375,9 @@ CREATE TABLE `version` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-21 16:14:09
  
 -- ********** DATA FROM SPECIFIC TABLES ********** 
  
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
---
--- Host: localhost    Database: meadata
--- ------------------------------------------------------
--- Server version	5.6.24-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -480,11 +389,6 @@ CREATE TABLE `version` (
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
---
--- Table structure for table `version`
---
-
 DROP TABLE IF EXISTS `version`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -495,13 +399,9 @@ CREATE TABLE `version` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
---
--- Dumping data for table `version`
---
-
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.3');
+INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.7');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -514,4 +414,3 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-05-21 16:14:10

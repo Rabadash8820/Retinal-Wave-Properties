@@ -8,14 +8,11 @@
       <many-to-one name="TissuePreparation" column="TissuePreparationId" not-null="true"/>
       <property name="Number" column="RecordingNumber" not-null="true"/>
     </natural-id>
-    <property name="FilePath" column="FilePath" not-null="true" />
     <property name="MeaRows" column="MeaRows" not-null="false" />
     <property name="MeaColumns" column="MeaColumns" not-null="false"/>
     <property name="Comments" column="Comments" not-null="true" />
-    <set name="Channels" table="Channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="RecordingId" not-null="true"/>
-      </key>
+    <set name="Channels" table="Channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" not-null="true"/>
       <one-to-many class="Channel"/>
     </set>
   </class>

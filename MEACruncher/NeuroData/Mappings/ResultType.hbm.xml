@@ -5,13 +5,11 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Description" column="Description" not-null="true" length="50"/>
+      <property name="Description" column="Description" not-null="true" length="30"/>
       <property name="Comments" column="Description" not-null="false"/>
     </natural-id>
-    <set name="Results" table="results" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="ResultTypeId" not-null="true"/>
-      </key>
+    <set name="Results" table="results" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="ResultTypeId" not-null="true"/>
       <one-to-many class="Result"/>
     </set>
   </class>

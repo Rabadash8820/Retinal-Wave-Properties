@@ -78,7 +78,7 @@ namespace MEACruncher {
                     Project e1 = e as Project;
                     return String.Format(
                         DuplicateRes.ProjectError,
-                        e1.Title,
+                        e1.Name,
                         e1.DateStarted.ToShortDateString()); }
                 },
                 { typeof(Experimenter), e => {
@@ -93,7 +93,7 @@ namespace MEACruncher {
             _deleteMsg = new Dictionary<Type, Func<Entity, string>>() {
                 { typeof(Project), e => {
                     Project e1 = e as Project;
-                    return String.Format(DeleteRes.ProjectWarning, e1.Title); }
+                    return String.Format(DeleteRes.ProjectWarning, e1.Name); }
                 },
                 { typeof(Experimenter), e => {
                     Experimenter e1 = e as Experimenter;
@@ -110,7 +110,7 @@ namespace MEACruncher {
                     int count = _db.QueryOver<Project>()
                                    .Where(e2 =>
                                        e2.Guid != e1.Guid &&
-                                       e2.Title == e1.Title &&
+                                       e2.Name == e1.Name &&
                                        e2.DateStarted == e1.DateStarted)
                                    .RowCount();
                     return (count == 0); }

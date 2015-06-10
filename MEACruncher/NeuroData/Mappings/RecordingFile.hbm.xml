@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="ProjectPopulation" table="project_populations" dynamic-update="true">
+  <class name="RecordingFile" table="recording_files" dynamic-update="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Project" column="ProjectId" not-null="true"/>
-      <many-to-one name="Population" column="PopulationId" not-null="true"/>
+      <many-to-one name="Recording" column="RecordingId" not-null="true"/>
+      <property name="Number" column="FileNumber" not-null="true"/>
     </natural-id>
-    <property name="IsOriginal" column="IsOriginal" not-null="false" />
+    <property name="FileDir" column="FileDir" not-null="true"/>
   </class>
 </hibernate-mapping>

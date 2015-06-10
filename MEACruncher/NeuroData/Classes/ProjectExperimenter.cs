@@ -17,7 +17,7 @@ namespace MeaData {
         public virtual Experimenter Experimenter { get; set; }
         public virtual DateTime StartDate { get; set; }
         public virtual DateTime EndDate { get; set; }
-        public virtual bool IsManager { get; set; }
+        public virtual bool IsPI { get; set; }
 
         // FUNCTIONS
         private void Construct() { }
@@ -37,7 +37,7 @@ namespace MeaData {
 
                 clone.StartDate = pe.StartDate;
                 clone.EndDate = pe.EndDate;
-                clone.IsManager = pe.IsManager;
+                clone.IsPI = pe.IsPI;
             }
 
             // Clone any remaining object members of the object, and return the clone

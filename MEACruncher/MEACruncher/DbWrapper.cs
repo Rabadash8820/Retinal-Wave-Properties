@@ -83,7 +83,7 @@ namespace MEACruncher {
                 if (_sf != null)
                     return _sess = _sf.OpenSession();
 
-                throw new NullReferenceException("SessionFactory has been defined.");
+                throw new NullReferenceException("SessionFactory has not been defined.");
             }
         }
 
@@ -91,7 +91,7 @@ namespace MEACruncher {
         private void initialize(Assembly a) {
             _assembly = a;
         }
-        private void connectExistingDb(string dbName, string version) {
+        private void connectExistingDb(string dbName, string curVersion) {
             // Create the connection string for this MySQL database
             string connStr = P.Resources.MySqlConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
@@ -120,9 +120,9 @@ namespace MEACruncher {
             try {
                 using (ISession sess = _sf.OpenSession()) {
                     DbVersion v = sess.QueryOver<DbVersion>().SingleOrDefault();
-                    if (v.Version != version) {
+                    if (v.Version != curVersion) {
                         IncorrectDbVersionException odve = new IncorrectDbVersionException(
-                            String.Format("The database's version should be {0} but is {1}", version, v.Version), v.Version, version);
+                            String.Format("The database's version should be {0} but is {1}", curVersion, v.Version), v.Version, curVersion);
                         throw odve;
                     }
                 }
@@ -131,7 +131,7 @@ namespace MEACruncher {
             // If the db doesnt even have a version table, then also throw an exception
             catch (GenericADOException e) {
                 IncorrectDbVersionException odve = new IncorrectDbVersionException(
-                    String.Format("The database's version should be {0} but could not be determined", version), "", version, e);
+                    String.Format("The database's version should be {0} but could not be determined", curVersion), "", curVersion, e);
                 throw odve;
             }
         }

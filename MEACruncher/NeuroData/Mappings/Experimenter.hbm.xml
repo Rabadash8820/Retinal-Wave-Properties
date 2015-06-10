@@ -5,8 +5,8 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="FullName" column="FullName" not-null="true" length="75"/>
-      <property name="WorkEmail" column="WorkEmail" not-null="false" length="75"/>
+      <property name="FullName" column="FullName" not-null="true" length="30"/>
+      <property name="WorkEmail" column="WorkEmail" not-null="false" length="25"/>
       <property name="WorkPhone" column="WorkPhone" not-null="false" length="15"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false"/>
@@ -22,7 +22,7 @@
       </key>
       <one-to-many class="ProjectExperimenter"/>
     </set>
-    <set name="Affiliations" table="Affiliations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Affiliations" table="Affiliations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
       <key unique="true">
         <column name="ExperimenterId" not-null="true"/>
       </key>

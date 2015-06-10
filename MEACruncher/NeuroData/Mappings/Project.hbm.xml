@@ -5,21 +5,17 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Title" column="Title" not-null="true"/>
+      <property name="Name" column="Name" not-null="true"/>
       <property name="DateStarted" column="DateStarted" not-null="true"/>
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
-    <set name="ProjectExperimenters" table="ProjectExperimenters" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="ProjectId" not-null="true"/>
-      </key>
+    <set name="ProjectExperimenters" table="ProjectExperimenters" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="PopulationId" not-null="true"/>
       <one-to-many class="ProjectExperimenter"/>
     </set>
-    <set name="ProjectPopulations" table="ProjectPopulations" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true">
-        <column name="ProjectId" not-null="true"/>
-      </key>
-      <one-to-many class="ProjectPopulation"/>
+    <set name="Populations" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+      <key unique="true" column="ProjectId" not-null="true"/>
+      <many-to-many class="Population" column="PopulationId" />
     </set>
   </class>
 </hibernate-mapping>
