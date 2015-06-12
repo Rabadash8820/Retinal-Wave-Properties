@@ -133,7 +133,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Affiliation.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Affiliation.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Burst.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
