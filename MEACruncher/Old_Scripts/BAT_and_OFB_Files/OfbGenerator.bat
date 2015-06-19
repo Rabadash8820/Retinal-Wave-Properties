@@ -17,8 +17,19 @@ IF NOT EXIST "!rootPath!" (
 
 REM Get a valid destination path from the user
 ECHO.
-ECHO Enter the fully qualified path to a directory
-ECHO where you wish to place generated OFB files.
+ECHO Enter the fully qualified name of a template OFB file
+ECHO on which the generated OFB files will be based.
+ECHO This file should not contain any Dir statements.
+SET /p templateFile=">"
+IF NOT EXIST "!templateFile!" (
+	ECHO File not found
+	PAUSE & EXIT
+)
+
+REM Get a valid destination path from the user
+ECHO.
+ECHO Finally, enter the fully qualified path to a directory
+ECHO where you wish to place the generated OFB files.
 SET /p destPath=">"
 IF NOT EXIST "!destPath!" (
 	ECHO Directory not found
@@ -44,7 +55,7 @@ FOR /d /r %%D IN (*) DO (
 		)
 		
 		REM Append lines from the template .ofb file
-		TYPE "!currPath!\WfArtifactsExport_template.ofb" >> "!destPath!\!count!_%%~nD.ofb"
+		TYPE "!templateFile!" >> "!destPath!\!count!_%%~nD.ofb"
 		
 		REM Increase the file count and show the fileName just processed on the console
 		ECHO Created !count!_%%~nD.ofb
