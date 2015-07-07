@@ -23,5 +23,7 @@ ForEachChannel TDist3d
 // Export one PLX file with continuous data, and one without
 Set SaveCont 1
 ForEachFile ExportToPlx
+Set SaveCont 0
+ForEachFile ExportToPlx
 
 Process
