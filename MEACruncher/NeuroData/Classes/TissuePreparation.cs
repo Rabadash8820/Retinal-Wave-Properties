@@ -17,8 +17,8 @@ namespace MeaData {
         }
 
         // PROPERTIES
+        public virtual string Preparer { get; set; }
         public virtual DateTime DatePrepared { get; set; }
-        public virtual Experimenter Preparer { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<Population> Populations {
             get { return _populations; }
@@ -46,6 +46,7 @@ namespace MeaData {
                 clone = Activator.CreateInstance(tp.GetType()) as TissuePreparation;
                 map.Add(tp, clone);
 
+                clone.Preparer = tp.Preparer;
                 clone.DatePrepared = tp.DatePrepared;
                 clone.Comments = tp.Comments;
                 foreach (Recording r in tp.Recordings)
@@ -55,7 +56,6 @@ namespace MeaData {
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.Preparer = map.GetEntity<Experimenter>(Experimenter.Clone(tp.Preparer, map));
             return clone;
         }
     }

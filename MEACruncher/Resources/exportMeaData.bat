@@ -3,17 +3,18 @@ CLS
 
 SETLOCAL EnableDelayedExpansion
 
-REM ***********  This shouldn't need to be declared ******************
-SET destPath="C:\Dan_Programming\DefaultCollection\MEA-Cruncher\MEACruncher\Resources"
+REM Set the path to the destination (current) directory
+SET destPath=%CD%
 
 REM Get the name of the SQL file to export to from the user
 ECHO.
 ECHO Enter the name of the file to which the exported schema's SQL will be stored.
+ECHO File will overwrite any file with the same name in this directory.
 ECHO You don't need to provide an extension.
 SET /p sqlFileName=">"
 
-REM Navigate to where the mysqldump executable is stored
-CD C:\Program Files\MySQL\MySQL Server 5.7\bin
+REM Navigate to where the mysqldump executable is stored (possibly on another drive)
+CD /d "C:\Program Files\MySQL\MySQL Server *.*\bin
 
 REM Export database structure
 ECHO.

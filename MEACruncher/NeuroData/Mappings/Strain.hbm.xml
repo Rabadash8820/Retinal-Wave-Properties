@@ -6,7 +6,7 @@
     </id>
     <natural-id mutable="true">
       <many-to-one name="Organism" column="OrganismId" not-null="true"/>
-      <many-to-one name="Breeder" column="BreederId" not-null="true"/>
+      <property name="Breeder" column="Breeder" length="35" not-null="true"/>
     </natural-id>
     <property name="Name" column="Name" not-null="true" length="25"/>
     <property name="Comments" column="Comments" not-null="false" />

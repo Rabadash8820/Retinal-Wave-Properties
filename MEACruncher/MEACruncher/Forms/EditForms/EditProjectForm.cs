@@ -19,44 +19,6 @@ namespace MEACruncher.Forms.EditForms {
         }
 
         // EVENT HANDLERS
-        private void AddExperimenterButton_Click(object sender, EventArgs e) {
-            AddExperimentersForm form = new AddExperimentersForm();
-            form.EntitiesSelected += AddExperimentersForm_EntitiesSelected;
-            form.ShowDialog();
-        }
-        protected void AddExperimentersForm_EntitiesSelected(object sender, EntitiesSelectedEventArgs e) {
-            // Create a list of default many-to-many objects
-            Project p = this.BoundEntity.DataSource as Project;
-            IList<ProjectExperimenter> projExps = e.Entities.Select(entity =>
-                new ProjectExperimenter() {
-                    Project = p,
-                    Experimenter = entity as Experimenter,
-                    IsPI = false,
-                    StartDate = p.DateStarted,
-                    EndDate = default(DateTime)
-                })
-                .ToList();
-
-            // Wrap them in a BindingSource object
-            BindingSource bs = new BindingSource();
-            bs.DataSource = projExps;
-
-            // Bind these to the appropriate DataGridView
-            FullNameColumn.DataPropertyName = "Experimenter.FullName";
-            EmailColumn.DataPropertyName = "Experimenter.WorkEmail";
-            PhoneColumn.DataPropertyName = "Experimenter.WorkPhone";
-            CommentsColumn.DataPropertyName = "Experimenter.Comments";
-            IsManagerColumn.DataPropertyName = "IsManager";
-            StartDateColumn.DataPropertyName = "StartDate";
-            EndDateColumn.DataPropertyName = "EndDate";
-        }
-        private void ExperimentersDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
-            if (e.ColumnIndex == EndDateColumn.Index) {
-                ProjectExperimenter pe = ExperimentersDGV.Rows[e.RowIndex].DataBoundItem as ProjectExperimenter;
-                if (pe.EndDate == default(DateTime))
-                    e.Value = Resources.DefaultRes.ProjectExperimenterEndDate;
-            }
-        }
         private void UpdateButton_Click(object sender, EventArgs e) {
             this.updateEntity();
             this.closeStuff();

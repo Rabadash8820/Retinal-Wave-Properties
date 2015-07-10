@@ -23,40 +23,12 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.OrganizationsButton = new System.Windows.Forms.Button();
-            this.ExperimentersButton = new System.Windows.Forms.Button();
             this.ExitAppButton = new System.Windows.Forms.Button();
             this.OtherDataButton = new System.Windows.Forms.Button();
-            this.LoadProjectButton = new System.Windows.Forms.Button();
+            this.ProjectsBtn = new System.Windows.Forms.Button();
+            this.PopulationsBtn = new System.Windows.Forms.Button();
+            this.FilesBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // OrganizationsButton
-            // 
-            this.OrganizationsButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
-            this.OrganizationsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OrganizationsButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OrganizationsButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.OrganizationsButton.Location = new System.Drawing.Point(9, 120);
-            this.OrganizationsButton.Name = "OrganizationsButton";
-            this.OrganizationsButton.Size = new System.Drawing.Size(261, 49);
-            this.OrganizationsButton.TabIndex = 2;
-            this.OrganizationsButton.Text = "View Organizations";
-            this.OrganizationsButton.UseVisualStyleBackColor = false;
-            this.OrganizationsButton.Click += new System.EventHandler(this.ExperimentersButton_Click);
-            // 
-            // ExperimentersButton
-            // 
-            this.ExperimentersButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
-            this.ExperimentersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ExperimentersButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ExperimentersButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.ExperimentersButton.Location = new System.Drawing.Point(9, 66);
-            this.ExperimentersButton.Name = "ExperimentersButton";
-            this.ExperimentersButton.Size = new System.Drawing.Size(261, 49);
-            this.ExperimentersButton.TabIndex = 1;
-            this.ExperimentersButton.Text = "View Experimenters";
-            this.ExperimentersButton.UseVisualStyleBackColor = false;
-            this.ExperimentersButton.Click += new System.EventHandler(this.ExperimentersButton_Click);
             // 
             // ExitAppButton
             // 
@@ -85,19 +57,45 @@
             this.OtherDataButton.Text = "View Other Data";
             this.OtherDataButton.UseVisualStyleBackColor = false;
             // 
-            // LoadProjectButton
+            // ProjectsBtn
             // 
-            this.LoadProjectButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
-            this.LoadProjectButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LoadProjectButton.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadProjectButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.LoadProjectButton.Location = new System.Drawing.Point(9, 12);
-            this.LoadProjectButton.Name = "LoadProjectButton";
-            this.LoadProjectButton.Size = new System.Drawing.Size(261, 49);
-            this.LoadProjectButton.TabIndex = 0;
-            this.LoadProjectButton.Text = "View Projects";
-            this.LoadProjectButton.UseVisualStyleBackColor = false;
-            this.LoadProjectButton.Click += new System.EventHandler(this.LoadProjectButton_Click);
+            this.ProjectsBtn.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
+            this.ProjectsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ProjectsBtn.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ProjectsBtn.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
+            this.ProjectsBtn.Location = new System.Drawing.Point(9, 12);
+            this.ProjectsBtn.Name = "ProjectsBtn";
+            this.ProjectsBtn.Size = new System.Drawing.Size(261, 49);
+            this.ProjectsBtn.TabIndex = 0;
+            this.ProjectsBtn.Text = "View Projects";
+            this.ProjectsBtn.UseVisualStyleBackColor = false;
+            this.ProjectsBtn.Click += new System.EventHandler(this.LoadProjectButton_Click);
+            // 
+            // PopulationsBtn
+            // 
+            this.PopulationsBtn.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
+            this.PopulationsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.PopulationsBtn.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PopulationsBtn.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
+            this.PopulationsBtn.Location = new System.Drawing.Point(9, 66);
+            this.PopulationsBtn.Name = "PopulationsBtn";
+            this.PopulationsBtn.Size = new System.Drawing.Size(261, 49);
+            this.PopulationsBtn.TabIndex = 0;
+            this.PopulationsBtn.Text = "View Populations";
+            this.PopulationsBtn.UseVisualStyleBackColor = false;
+            // 
+            // FilesBtn
+            // 
+            this.FilesBtn.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
+            this.FilesBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FilesBtn.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FilesBtn.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
+            this.FilesBtn.Location = new System.Drawing.Point(9, 120);
+            this.FilesBtn.Name = "FilesBtn";
+            this.FilesBtn.Size = new System.Drawing.Size(261, 49);
+            this.FilesBtn.TabIndex = 0;
+            this.FilesBtn.Text = "View Files";
+            this.FilesBtn.UseVisualStyleBackColor = false;
             // 
             // MainMenuForm
             // 
@@ -105,11 +103,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = global::MEACruncher.Properties.Settings.Default.FormBackColor;
             this.ClientSize = new System.Drawing.Size(279, 289);
-            this.Controls.Add(this.OrganizationsButton);
-            this.Controls.Add(this.ExperimentersButton);
             this.Controls.Add(this.ExitAppButton);
             this.Controls.Add(this.OtherDataButton);
-            this.Controls.Add(this.LoadProjectButton);
+            this.Controls.Add(this.FilesBtn);
+            this.Controls.Add(this.PopulationsBtn);
+            this.Controls.Add(this.ProjectsBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -124,10 +122,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Button LoadProjectButton;
+        private System.Windows.Forms.Button ProjectsBtn;
         private System.Windows.Forms.Button OtherDataButton;
         private System.Windows.Forms.Button ExitAppButton;
-        private System.Windows.Forms.Button ExperimentersButton;
-        private System.Windows.Forms.Button OrganizationsButton;
+        private System.Windows.Forms.Button PopulationsBtn;
+        private System.Windows.Forms.Button FilesBtn;
     }
 }

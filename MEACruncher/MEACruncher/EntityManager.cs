@@ -81,12 +81,6 @@ namespace MEACruncher {
                         e1.Name,
                         e1.DateStarted.ToShortDateString()); }
                 },
-                { typeof(Experimenter), e => {
-                    Experimenter e1 = e as Experimenter;
-                    return String.Format(
-                        DuplicateRes.ExperimenterError,
-                        e1.FullName); }
-                },
             };
         }
         private static void initDeletions() {
@@ -94,10 +88,6 @@ namespace MEACruncher {
                 { typeof(Project), e => {
                     Project e1 = e as Project;
                     return String.Format(DeleteRes.ProjectWarning, e1.Name); }
-                },
-                { typeof(Experimenter), e => {
-                    Experimenter e1 = e as Experimenter;
-                    return String.Format(DeleteRes.ExperimenterWarning, e1.FullName); }
                 },
             };
         }
@@ -115,19 +105,6 @@ namespace MEACruncher {
                                    .RowCount();
                     return (count == 0); }
                 },
-
-                // Experimenters
-                { typeof(Experimenter), e => {
-                    Experimenter e1 = e as Experimenter;
-                    int count = _db.QueryOver<Experimenter>()
-                                   .Where(e2 =>
-                                       e2.Guid != e1.Guid &&
-                                       e2.FullName == e1.FullName &&
-                                       e2.WorkEmail == e1.WorkEmail &&
-                                       e2.WorkPhone == e1.WorkPhone)
-                                   .RowCount();
-                    return (count == 0); }
-                },
             };
         }
         private static void initNewForms() {
@@ -135,11 +112,6 @@ namespace MEACruncher {
             _newForm = new Dictionary<Type, Func<NewEntityForm>>() {
                 { typeof(Project), () => {
                     NewProjectForm form = new NewProjectForm();
-                    form.ShowDialog();
-                    return form; }
-                },
-                { typeof(Experimenter), () => {
-                    NewExperimenterForm form = new NewExperimenterForm();
                     form.ShowDialog();
                     return form; }
                 },
