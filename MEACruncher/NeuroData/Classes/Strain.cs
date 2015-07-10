@@ -18,7 +18,7 @@ namespace MeaData {
         // PROPERTIES
         public virtual ModelOrganism Organism { get; set; }
         public virtual string Name { get; set; }
-        public virtual Organization Breeder { get; set; }
+        public virtual string Breeder { get; set; }
         public virtual string Comments { get; set; }
         public virtual ISet<TissuePreparation> TissuePreparations {
             get { return _tissuePreparations; }
@@ -43,6 +43,7 @@ namespace MeaData {
                 map.Add(s, clone);
                 
                 clone.Name = s.Name;
+                clone.Breeder = s.Breeder;
                 clone.Comments = s.Comments;
                 foreach (TissuePreparation tp in s.TissuePreparations)
                     clone.TissuePreparations.Add(TissuePreparation.Clone(tp, map));
@@ -50,7 +51,6 @@ namespace MeaData {
 
             // Clone any remaining object members of the object, and return the clone
             clone.Organism = map.GetEntity<ModelOrganism>(ModelOrganism.Clone(s.Organism, map));
-            clone.Breeder = map.GetEntity<Organization>(Organization.Clone(s.Breeder, map));
             return clone;
         }
     }

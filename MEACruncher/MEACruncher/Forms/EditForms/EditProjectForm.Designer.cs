@@ -39,18 +39,7 @@
             this.DateStartedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.DateStartedLabel = new System.Windows.Forms.Label();
             this.CommentsLabel = new System.Windows.Forms.Label();
-            this.ExperimentersPage = new System.Windows.Forms.TabPage();
-            this.ExperimentersTableLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.ExperimentersDGV = new System.Windows.Forms.DataGridView();
-            this.FullNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IsManagerColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.EmailColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PhoneColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EndDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AddExperimenterButton = new System.Windows.Forms.Button();
-            this.RecordingsPage = new System.Windows.Forms.TabPage();
+            this.PopulationsPage = new System.Windows.Forms.TabPage();
             this.RecordingsTableLayout = new System.Windows.Forms.TableLayoutPanel();
             this.RecordingsDGV = new System.Windows.Forms.DataGridView();
             this.AddRecordingButton = new System.Windows.Forms.Button();
@@ -59,10 +48,7 @@
             this.MainTabControl.SuspendLayout();
             this.BasicInfoPage.SuspendLayout();
             this.BasicInfoTableLayout.SuspendLayout();
-            this.ExperimentersPage.SuspendLayout();
-            this.ExperimentersTableLayout.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExperimentersDGV)).BeginInit();
-            this.RecordingsPage.SuspendLayout();
+            this.PopulationsPage.SuspendLayout();
             this.RecordingsTableLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordingsDGV)).BeginInit();
             this.SuspendLayout();
@@ -158,8 +144,7 @@
             // 
             this.MainTabControl.BackColor = global::MEACruncher.Properties.Settings.Default.TabPageBackColor;
             this.MainTabControl.Controls.Add(this.BasicInfoPage);
-            this.MainTabControl.Controls.Add(this.ExperimentersPage);
-            this.MainTabControl.Controls.Add(this.RecordingsPage);
+            this.MainTabControl.Controls.Add(this.PopulationsPage);
             this.MainTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTabControl.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
             this.MainTabControl.ForeColor = global::MEACruncher.Properties.Settings.Default.TabPageForeColor;
@@ -281,139 +266,18 @@
             this.CommentsLabel.TabIndex = 1;
             this.CommentsLabel.Text = "Comments";
             // 
-            // ExperimentersPage
+            // PopulationsPage
             // 
-            this.ExperimentersPage.BackColor = global::MEACruncher.Properties.Settings.Default.TabPageBackColor;
-            this.ExperimentersPage.Controls.Add(this.ExperimentersTableLayout);
-            this.ExperimentersPage.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
-            this.ExperimentersPage.ForeColor = global::MEACruncher.Properties.Settings.Default.TabPageForeColor;
-            this.ExperimentersPage.Location = new System.Drawing.Point(4, 26);
-            this.ExperimentersPage.Name = "ExperimentersPage";
-            this.ExperimentersPage.Padding = new System.Windows.Forms.Padding(3);
-            this.ExperimentersPage.Size = new System.Drawing.Size(786, 308);
-            this.ExperimentersPage.TabIndex = 1;
-            this.ExperimentersPage.Text = "Experimenters";
-            // 
-            // ExperimentersTableLayout
-            // 
-            this.ExperimentersTableLayout.ColumnCount = 1;
-            this.ExperimentersTableLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ExperimentersTableLayout.Controls.Add(this.ExperimentersDGV, 0, 0);
-            this.ExperimentersTableLayout.Controls.Add(this.AddExperimenterButton, 0, 1);
-            this.ExperimentersTableLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExperimentersTableLayout.Location = new System.Drawing.Point(3, 3);
-            this.ExperimentersTableLayout.Name = "ExperimentersTableLayout";
-            this.ExperimentersTableLayout.RowCount = 2;
-            this.ExperimentersTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.ExperimentersTableLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.ExperimentersTableLayout.Size = new System.Drawing.Size(780, 302);
-            this.ExperimentersTableLayout.TabIndex = 0;
-            // 
-            // ExperimentersDGV
-            // 
-            this.ExperimentersDGV.AllowUserToAddRows = false;
-            this.ExperimentersDGV.BackgroundColor = global::MEACruncher.Properties.Settings.Default.DgvBackColor;
-            this.ExperimentersDGV.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ExperimentersDGV.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.ExperimentersDGV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ExperimentersDGV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FullNameColumn,
-            this.IsManagerColumn,
-            this.EmailColumn,
-            this.PhoneColumn,
-            this.StartDateColumn,
-            this.EndDateColumn,
-            this.CommentsColumn});
-            this.ExperimentersDGV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ExperimentersDGV.EnableHeadersVisualStyles = false;
-            this.ExperimentersDGV.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
-            this.ExperimentersDGV.GridColor = global::MEACruncher.Properties.Settings.Default.DgvGridColor;
-            this.ExperimentersDGV.Location = new System.Drawing.Point(3, 3);
-            this.ExperimentersDGV.MultiSelect = false;
-            this.ExperimentersDGV.Name = "ExperimentersDGV";
-            this.ExperimentersDGV.RowHeadersVisible = false;
-            this.ExperimentersDGV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.ExperimentersDGV.Size = new System.Drawing.Size(774, 261);
-            this.ExperimentersDGV.TabIndex = 0;
-            this.ExperimentersDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.ExperimentersDGV_CellFormatting);
-            // 
-            // FullNameColumn
-            // 
-            this.FullNameColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.FullNameColumn.HeaderText = "Full Name";
-            this.FullNameColumn.MaxInputLength = 30;
-            this.FullNameColumn.Name = "FullNameColumn";
-            this.FullNameColumn.Width = 94;
-            // 
-            // IsManagerColumn
-            // 
-            this.IsManagerColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IsManagerColumn.HeaderText = "Manager?";
-            this.IsManagerColumn.Name = "IsManagerColumn";
-            this.IsManagerColumn.Width = 75;
-            // 
-            // EmailColumn
-            // 
-            this.EmailColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.EmailColumn.HeaderText = "Work Email";
-            this.EmailColumn.MaxInputLength = 25;
-            this.EmailColumn.Name = "EmailColumn";
-            this.EmailColumn.Width = 102;
-            // 
-            // PhoneColumn
-            // 
-            this.PhoneColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.PhoneColumn.HeaderText = "Work Phone";
-            this.PhoneColumn.MaxInputLength = 15;
-            this.PhoneColumn.Name = "PhoneColumn";
-            // 
-            // StartDateColumn
-            // 
-            this.StartDateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.StartDateColumn.HeaderText = "Start Date";
-            this.StartDateColumn.Name = "StartDateColumn";
-            this.StartDateColumn.Width = 87;
-            // 
-            // EndDateColumn
-            // 
-            this.EndDateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.EndDateColumn.HeaderText = "End Date";
-            this.EndDateColumn.Name = "EndDateColumn";
-            this.EndDateColumn.Width = 82;
-            // 
-            // CommentsColumn
-            // 
-            this.CommentsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CommentsColumn.HeaderText = "Comments";
-            this.CommentsColumn.Name = "CommentsColumn";
-            // 
-            // AddExperimenterButton
-            // 
-            this.AddExperimenterButton.AutoSize = true;
-            this.AddExperimenterButton.BackColor = global::MEACruncher.Properties.Settings.Default.ButtonBackColor;
-            this.AddExperimenterButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddExperimenterButton.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
-            this.AddExperimenterButton.ForeColor = global::MEACruncher.Properties.Settings.Default.ButtonForeColor;
-            this.AddExperimenterButton.Location = new System.Drawing.Point(3, 270);
-            this.AddExperimenterButton.Name = "AddExperimenterButton";
-            this.AddExperimenterButton.Size = new System.Drawing.Size(75, 29);
-            this.AddExperimenterButton.TabIndex = 1;
-            this.AddExperimenterButton.Text = "Add...";
-            this.AddExperimenterButton.UseVisualStyleBackColor = false;
-            this.AddExperimenterButton.Click += new System.EventHandler(this.AddExperimenterButton_Click);
-            // 
-            // RecordingsPage
-            // 
-            this.RecordingsPage.BackColor = global::MEACruncher.Properties.Settings.Default.TabPageBackColor;
-            this.RecordingsPage.Controls.Add(this.RecordingsTableLayout);
-            this.RecordingsPage.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
-            this.RecordingsPage.ForeColor = global::MEACruncher.Properties.Settings.Default.TabPageForeColor;
-            this.RecordingsPage.Location = new System.Drawing.Point(4, 26);
-            this.RecordingsPage.Name = "RecordingsPage";
-            this.RecordingsPage.Padding = new System.Windows.Forms.Padding(3);
-            this.RecordingsPage.Size = new System.Drawing.Size(786, 308);
-            this.RecordingsPage.TabIndex = 2;
-            this.RecordingsPage.Text = "Recordings";
+            this.PopulationsPage.BackColor = global::MEACruncher.Properties.Settings.Default.TabPageBackColor;
+            this.PopulationsPage.Controls.Add(this.RecordingsTableLayout);
+            this.PopulationsPage.Font = global::MEACruncher.Properties.Settings.Default.ControlFont;
+            this.PopulationsPage.ForeColor = global::MEACruncher.Properties.Settings.Default.TabPageForeColor;
+            this.PopulationsPage.Location = new System.Drawing.Point(4, 26);
+            this.PopulationsPage.Name = "PopulationsPage";
+            this.PopulationsPage.Padding = new System.Windows.Forms.Padding(3);
+            this.PopulationsPage.Size = new System.Drawing.Size(786, 308);
+            this.PopulationsPage.TabIndex = 2;
+            this.PopulationsPage.Text = "Recordings";
             // 
             // RecordingsTableLayout
             // 
@@ -476,11 +340,7 @@
             this.BasicInfoPage.ResumeLayout(false);
             this.BasicInfoTableLayout.ResumeLayout(false);
             this.BasicInfoTableLayout.PerformLayout();
-            this.ExperimentersPage.ResumeLayout(false);
-            this.ExperimentersTableLayout.ResumeLayout(false);
-            this.ExperimentersTableLayout.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ExperimentersDGV)).EndInit();
-            this.RecordingsPage.ResumeLayout(false);
+            this.PopulationsPage.ResumeLayout(false);
             this.RecordingsTableLayout.ResumeLayout(false);
             this.RecordingsTableLayout.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.RecordingsDGV)).EndInit();
@@ -496,8 +356,7 @@
         private System.Windows.Forms.Button UpdateButton;
         private System.Windows.Forms.TabControl MainTabControl;
         private System.Windows.Forms.TabPage BasicInfoPage;
-        private System.Windows.Forms.TabPage ExperimentersPage;
-        private System.Windows.Forms.TabPage RecordingsPage;
+        private System.Windows.Forms.TabPage PopulationsPage;
         private System.Windows.Forms.TableLayoutPanel BasicInfoTableLayout;
         private System.Windows.Forms.Label TitleLabel;
         private System.Windows.Forms.TextBox CommentsTextbox;
@@ -505,19 +364,9 @@
         private System.Windows.Forms.DateTimePicker DateStartedDateTimePicker;
         private System.Windows.Forms.Label DateStartedLabel;
         private System.Windows.Forms.Label CommentsLabel;
-        private System.Windows.Forms.TableLayoutPanel ExperimentersTableLayout;
-        private System.Windows.Forms.Button AddExperimenterButton;
         private System.Windows.Forms.TableLayoutPanel RecordingsTableLayout;
         private System.Windows.Forms.Button AddRecordingButton;
         private System.Windows.Forms.DataGridView RecordingsDGV;
-        private System.Windows.Forms.DataGridView ExperimentersDGV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FullNameColumn;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn IsManagerColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmailColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PhoneColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StartDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EndDateColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
         private System.Windows.Forms.Button RedoButton;
         private System.Windows.Forms.Button UndoButton;
     }

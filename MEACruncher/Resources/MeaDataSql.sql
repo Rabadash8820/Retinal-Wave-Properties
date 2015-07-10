@@ -11,26 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-DROP TABLE IF EXISTS `affiliations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `affiliations` (
-  `Id` char(36) NOT NULL,
-  `ExperimenterId` char(36) NOT NULL,
-  `OrganizationId` char(36) NOT NULL,
-  `RoleId` char(36) NOT NULL,
-  `StartDate` datetime DEFAULT NULL COMMENT 'Date when this person took onthis role at this organization',
-  `EndDate` datetime DEFAULT NULL COMMENT 'Date when this person finished this role at this organization (null if still active)',
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Affiliation` (`ExperimenterId`,`OrganizationId`,`RoleId`,`StartDate`),
-  KEY `ExperimenterId` (`ExperimenterId`),
-  KEY `OrganizationId` (`OrganizationId`),
-  KEY `Role` (`RoleId`),
-  CONSTRAINT `Experimenter` FOREIGN KEY (`ExperimenterId`) REFERENCES `experimenters` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Organization` FOREIGN KEY (`OrganizationId`) REFERENCES `organizations` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `Role` FOREIGN KEY (`RoleId`) REFERENCES `organization_roles` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `age_units`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -55,8 +35,7 @@ CREATE TABLE `bursts` (
   UNIQUE KEY `Burst` (`ChannelId`,`BurstNumber`),
   KEY `BurstNumber` (`BurstNumber`),
   KEY `RecordingId` (`ChannelId`),
-  KEY `WaveAssociated` (`IsWaveAssociated`),
-  CONSTRAINT `BurstChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `WaveAssociated` (`IsWaveAssociated`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `channel_flags`;
@@ -69,9 +48,7 @@ CREATE TABLE `channel_flags` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `ChannelFlag` (`ChannelId`,`FlagId`),
   KEY `ChannelId` (`ChannelId`),
-  KEY `FlagId` (`FlagId`),
-  CONSTRAINT `Channel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Flag` FOREIGN KEY (`FlagId`) REFERENCES `flags` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `FlagId` (`FlagId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `channels`;
@@ -85,21 +62,7 @@ CREATE TABLE `channels` (
   `MeaColumn` smallint(6) DEFAULT '0' COMMENT 'Which column of the MEA this channel is in',
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Channel` (`RecordingId`,`MeaRow`,`MeaColumn`),
-  KEY `ChannelRecording` (`RecordingId`),
-  CONSTRAINT `Recording` FOREIGN KEY (`RecordingId`) REFERENCES `recordings` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `experimenters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `experimenters` (
-  `Id` char(36) NOT NULL,
-  `FullName` varchar(30) NOT NULL,
-  `WorkEmail` varchar(25) DEFAULT NULL,
-  `WorkPhone` varchar(15) DEFAULT NULL,
-  `Comments` text,
-  PRIMARY KEY (`Id`),
-  KEY `FullName` (`FullName`)
+  KEY `ChannelRecording` (`RecordingId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `flags`;
@@ -124,40 +87,6 @@ CREATE TABLE `model_organisms` (
   UNIQUE KEY `ScientificName` (`ScientificName`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `organization_roles`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `organization_roles` (
-  `Id` char(36) NOT NULL,
-  `Description` varchar(25) NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Description` (`Description`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `organization_types`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `organization_types` (
-  `Id` char(36) NOT NULL,
-  `Description` varchar(25) NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Description` (`Description`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `organizations`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `organizations` (
-  `Id` char(36) NOT NULL,
-  `Title` varchar(35) NOT NULL COMMENT 'Name of the organization',
-  `TypeId` char(36) DEFAULT NULL COMMENT 'Organization''s type (university, corporation, etc.)',
-  `Comments` text,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Organization` (`Title`,`TypeId`),
-  KEY `Type` (`TypeId`),
-  CONSTRAINT `OrganizationType` FOREIGN KEY (`TypeId`) REFERENCES `organization_types` (`Id`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `population_preparations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -168,9 +97,7 @@ CREATE TABLE `population_preparations` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `PopulationPreparation` (`PopulationId`,`TissuePreparationId`),
   KEY `PopulationId` (`PopulationId`),
-  KEY `TissuePreparationId` (`TissuePreparationId`),
-  CONSTRAINT `Population` FOREIGN KEY (`PopulationId`) REFERENCES `populations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Preparation` FOREIGN KEY (`TissuePreparationId`) REFERENCES `tissue_preparations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `TissuePreparationId` (`TissuePreparationId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `populations`;
@@ -188,27 +115,7 @@ CREATE TABLE `populations` (
   UNIQUE KEY `Population` (`StrainId`,`TissueId`,`Description`,`Age`,`AgeUnitId`),
   KEY `StrainId` (`StrainId`),
   KEY `TissueId` (`TissueId`),
-  KEY `AgeUnitId` (`AgeUnitId`),
-  CONSTRAINT `AgeUnit` FOREIGN KEY (`AgeUnitId`) REFERENCES `age_units` (`Id`) ON UPDATE CASCADE,
-  CONSTRAINT `Strain` FOREIGN KEY (`StrainId`) REFERENCES `strains` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `Tissue` FOREIGN KEY (`TissueId`) REFERENCES `tissues` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-DROP TABLE IF EXISTS `project_experimenters`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `project_experimenters` (
-  `Id` char(36) NOT NULL,
-  `ProjectId` char(36) NOT NULL,
-  `ExperimenterId` char(36) NOT NULL,
-  `StartDate` datetime DEFAULT NULL COMMENT 'Date when this person became involved with this Project',
-  `EndDate` datetime DEFAULT NULL COMMENT 'Date when this person stopped being involved with this Project (null if still involved)',
-  `IsPI` tinyint(4) DEFAULT '0' COMMENT 'Flag for whether this person is currently a principal investigator on this Project',
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `ProjectExperimenter` (`ProjectId`,`ExperimenterId`),
-  KEY `ExperimenterId` (`ExperimenterId`),
-  KEY `IsPI` (`IsPI`),
-  KEY `ProjectId` (`ProjectId`)
+  KEY `AgeUnitId` (`AgeUnitId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `project_populations`;
@@ -246,8 +153,7 @@ CREATE TABLE `recording_files` (
   `FileDir` text NOT NULL COMMENT 'The fully qualified path, filename, and extension of this file',
   PRIMARY KEY (`Id`),
   UNIQUE KEY `File` (`RecordingId`,`FileNumber`),
-  KEY `RecordingId` (`RecordingId`),
-  CONSTRAINT `FileRecording` FOREIGN KEY (`RecordingId`) REFERENCES `recordings` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `RecordingId` (`RecordingId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `recordings`;
@@ -264,8 +170,7 @@ CREATE TABLE `recordings` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Recording` (`TissuePreparationId`,`RecordingNumber`),
   KEY `TissuePreparationId` (`TissuePreparationId`),
-  KEY `Duration` (`Duration`),
-  CONSTRAINT `TissuePreparation` FOREIGN KEY (`TissuePreparationId`) REFERENCES `tissue_preparations` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `Duration` (`Duration`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `result_types`;
@@ -289,9 +194,7 @@ CREATE TABLE `results` (
   `Value` double NOT NULL COMMENT 'Value of the result (kinda depends on what the result type is)',
   PRIMARY KEY (`Id`),
   KEY `ResultType_idx` (`ResultTypeId`),
-  KEY `Channel_idx` (`ChannelId`),
-  CONSTRAINT `ResultChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `ResultType` FOREIGN KEY (`ResultTypeId`) REFERENCES `result_types` (`Id`) ON UPDATE CASCADE
+  KEY `Channel_idx` (`ChannelId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `spikes`;
@@ -307,9 +210,7 @@ CREATE TABLE `spikes` (
   UNIQUE KEY `Spike` (`ChannelId`,`SpikeNumber`),
   KEY `BurstId` (`BurstId`),
   KEY `RecordingId` (`ChannelId`),
-  KEY `SpikeNumber` (`SpikeNumber`),
-  CONSTRAINT `Burst` FOREIGN KEY (`BurstId`) REFERENCES `bursts` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `SpikeChannel` FOREIGN KEY (`ChannelId`) REFERENCES `channels` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  KEY `SpikeNumber` (`SpikeNumber`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `strains`;
@@ -319,14 +220,12 @@ CREATE TABLE `strains` (
   `Id` char(36) NOT NULL,
   `OrganismId` char(36) NOT NULL,
   `Name` varchar(25) NOT NULL COMMENT 'Name of the strain',
-  `BreederId` char(36) DEFAULT NULL,
-  `Comments` varchar(255) DEFAULT NULL,
+  `Breeder` varchar(35) DEFAULT NULL,
+  `Comments` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Strain` (`OrganismId`,`Name`),
-  KEY `AcquiredFrom` (`BreederId`),
-  KEY `OrganismId` (`OrganismId`),
-  CONSTRAINT `Breeder` FOREIGN KEY (`BreederId`) REFERENCES `organizations` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE,
-  CONSTRAINT `Organism` FOREIGN KEY (`OrganismId`) REFERENCES `model_organisms` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  KEY `AcquiredFrom` (`Breeder`),
+  KEY `OrganismId` (`OrganismId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `tissue_preparations`;
@@ -334,12 +233,14 @@ DROP TABLE IF EXISTS `tissue_preparations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tissue_preparations` (
   `Id` char(36) NOT NULL,
+  `StrainId` char(36) DEFAULT NULL,
+  `TissueId` char(36) DEFAULT NULL,
   `DatePrepared` datetime DEFAULT NULL,
-  `PreparerId` char(36) DEFAULT NULL,
+  `Preparer` varchar(30) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
-  KEY `Preparer` (`PreparerId`),
-  CONSTRAINT `Preparer` FOREIGN KEY (`PreparerId`) REFERENCES `experimenters` (`Id`) ON DELETE NO ACTION ON UPDATE CASCADE
+  KEY `Strain` (`StrainId`),
+  KEY `Tissue` (`TissueId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `tissues`;
@@ -351,9 +252,7 @@ CREATE TABLE `tissues` (
   `ParentId` char(36) DEFAULT NULL COMMENT 'If this tissue is part of a more general tissue',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `NaturalId` (`Name`,`ParentId`),
-  KEY `Parent` (`ParentId`),
-  CONSTRAINT `Parent` FOREIGN KEY (`ParentId`) REFERENCES `tissues` (`Id`) ON DELETE CASCADE ON UPDATE CASCADE
+  UNIQUE KEY `NaturalId` (`Name`,`ParentId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `version`;
@@ -401,7 +300,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.7');
+INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.8');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

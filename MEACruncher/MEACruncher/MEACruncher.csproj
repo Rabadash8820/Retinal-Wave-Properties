@@ -102,12 +102,6 @@
     <Compile Include="Forms\AddForms\AddEntitiesForm.Designer.cs">
       <DependentUpon>AddEntitiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AddForms\AddExperimentersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\AddForms\AddExperimentersForm.Designer.cs">
-      <DependentUpon>AddExperimentersForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\CRUDForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,12 +155,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DuplicateRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewForms\NewExperimenterForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\NewForms\NewExperimenterForm.Designer.cs">
-      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\NewForms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,12 +166,6 @@
     </Compile>
     <Compile Include="Forms\ViewForms\ViewEntitiesForm.Designer.cs">
       <DependentUpon>ViewEntitiesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ViewForms\ViewExperimentersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ViewForms\ViewExperimentersForm.Designer.cs">
-      <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ViewForms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
@@ -211,9 +193,6 @@
     <EmbeddedResource Include="Forms\AddForms\AddEntitiesForm.resx">
       <DependentUpon>AddEntitiesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AddForms\AddExperimentersForm.resx">
-      <DependentUpon>AddExperimentersForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CRUDForm.resx">
       <DependentUpon>CRUDForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,14 +219,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DuplicateRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NewForms\NewExperimenterForm.resx">
-      <DependentUpon>NewExperimenterForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NewForms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewForms\ViewExperimentersForm.resx">
-      <DependentUpon>ViewExperimentersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewForms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
@@ -322,7 +295,7 @@
     <None Include="Resources\undoSmall.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\meadata.sql" />
+    <None Include="Resources\MeaDataSql.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

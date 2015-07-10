@@ -6,7 +6,7 @@
     </id>
     <natural-id mutable="true">
       <property name="DatePrepared" column="DatePrepared" not-null="false" />
-      <many-to-one name="Preparer" column="PreparerId" not-null="false" />
+      <property name="Preparer" column="Preparer" length="30" not-null="false" />
     </natural-id>
     <property name="Comments" column="Comments" not-null="false" />
     <set name="Recordings" table="Recordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">

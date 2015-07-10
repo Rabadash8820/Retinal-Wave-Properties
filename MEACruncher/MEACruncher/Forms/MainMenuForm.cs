@@ -16,10 +16,6 @@ namespace MEACruncher.Forms {
         private void LoadProjectButton_Click(object sender, EventArgs e) {
             new ViewProjectsForm().ShowDialog();
         }
-
-        private void ExperimentersButton_Click(object sender, EventArgs e) {
-            new ViewExperimentersForm().ShowDialog();
-        }
     }
 
 }
