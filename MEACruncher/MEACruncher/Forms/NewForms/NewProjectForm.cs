@@ -9,7 +9,7 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms.NewForms {
+namespace MEACruncher.Forms {
 
     internal partial class NewProjectForm : NewEntityForm {
         // CONSTRUCTORS

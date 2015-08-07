@@ -6,8 +6,7 @@ using NHibernate;
 
 using MeaData;
 using MEACruncher.Resources;
-using MEACruncher.Forms.NewForms;
-using MEACruncher.Forms.EditForms;
+using MEACruncher.Forms;
 
 namespace MEACruncher {
     internal static class EntityManager {

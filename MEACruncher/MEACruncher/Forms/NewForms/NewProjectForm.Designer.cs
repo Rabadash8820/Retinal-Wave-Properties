@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms.NewForms {
+﻿namespace MEACruncher.Forms {
     partial class NewProjectForm {
         /// <summary>
         /// Required designer variable.

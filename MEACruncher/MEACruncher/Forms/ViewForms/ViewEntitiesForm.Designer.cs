@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms.ViewForms {
+﻿namespace MEACruncher.Forms {
     partial class ViewEntitiesForm {
         /// <summary>
         /// Required designer variable.
@@ -81,6 +81,7 @@
             this.NewButton.TabIndex = 0;
             this.NewButton.Text = "New";
             this.NewButton.UseVisualStyleBackColor = false;
+            this.NewButton.Click += new System.EventHandler(this.NewButton_Click);
             // 
             // EditButton
             // 
@@ -97,6 +98,7 @@
             this.EditButton.TabIndex = 0;
             this.EditButton.Text = "Edit";
             this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
             // DeleteButton
             // 
@@ -113,6 +115,7 @@
             this.DeleteButton.TabIndex = 0;
             this.DeleteButton.Text = "Delete";
             this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // CloseButton
             // 
@@ -143,6 +146,7 @@
             this.RedoButton.TabIndex = 0;
             this.RedoButton.Text = "Redo";
             this.RedoButton.UseVisualStyleBackColor = false;
+            this.RedoButton.Click += new System.EventHandler(this.RedoButton_Click);
             // 
             // UndoButton
             // 
@@ -157,6 +161,7 @@
             this.UndoButton.TabIndex = 0;
             this.UndoButton.Text = "Undo";
             this.UndoButton.UseVisualStyleBackColor = false;
+            this.UndoButton.Click += new System.EventHandler(this.UndoButton_Click);
             // 
             // EntitiesDGV
             // 

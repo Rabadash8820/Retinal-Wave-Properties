@@ -20,14 +20,12 @@ namespace MEACruncher.Forms {
         // CONSTRUCTORS
         public CRUDForm() {
             InitializeComponent();
+
+            initialize();
         }
 
         // EVENT HANDLERS
         private void CRUDForm_Load(object sender, EventArgs e) {
-            // Initialize members
-            initialize();
-
-            // Initialize form controls
             buildForm();
         }
 

@@ -6,7 +6,7 @@ using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms.AddForms {
+namespace MEACruncher.Forms {
 
     internal abstract partial class AddEntitiesForm : CRUDForm {
         // EVENTS

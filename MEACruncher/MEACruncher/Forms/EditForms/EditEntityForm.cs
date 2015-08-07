@@ -4,7 +4,7 @@ using NHibernate;
 using MEACruncher.Events;
 using System.Windows.Forms;
 
-namespace MEACruncher.Forms.EditForms {
+namespace MEACruncher.Forms {
 
     // BASE CLASS
     public abstract partial class EditEntityForm : CRUDForm {

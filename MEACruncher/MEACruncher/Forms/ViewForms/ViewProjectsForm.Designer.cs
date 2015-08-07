@@ -1,4 +1,4 @@
-﻿namespace MEACruncher.Forms.ViewForms {
+﻿namespace MEACruncher.Forms {
     partial class ViewProjectsForm {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +30,6 @@
             this.CommentsColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SuspendLayout();
             // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Location = new System.Drawing.Point(460, -1);
-            // 
-            // CloseButton
-            // 
-            this.CloseButton.Location = new System.Drawing.Point(541, -1);
-            // 
             // RedoButton
             // 
             this.MainToolTip.SetToolTip(this.RedoButton, "Cannot redo.");
@@ -46,40 +38,12 @@
             // 
             this.MainToolTip.SetToolTip(this.UndoButton, "Cannot undo.");
             // 
-            // NewButton
-            // 
-            this.NewButton.Location = new System.Drawing.Point(298, -1);
-            // 
-            // EditButton
-            // 
-            this.EditButton.Location = new System.Drawing.Point(379, -1);
-            // 
             // guidDataGridViewTextBoxColumn
             // 
             this.guidDataGridViewTextBoxColumn.DataPropertyName = "Guid";
             this.guidDataGridViewTextBoxColumn.HeaderText = "Guid";
             this.guidDataGridViewTextBoxColumn.Name = "guidDataGridViewTextBoxColumn";
             this.guidDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // TitleColumn
-            // 
-            this.TitleColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.TitleColumn.HeaderText = "Title";
-            this.TitleColumn.MaxInputLength = 25;
-            this.TitleColumn.Name = "TitleColumn";
-            this.TitleColumn.Width = 58;
-            // 
-            // DateStartedColumn
-            // 
-            this.DateStartedColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.DateStartedColumn.HeaderText = "Date Started";
-            this.DateStartedColumn.Name = "DateStartedColumn";
-            // 
-            // CommentsColumn
-            // 
-            this.CommentsColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CommentsColumn.HeaderText = "Comments";
-            this.CommentsColumn.Name = "CommentsColumn";
             // 
             // ViewProjectsForm
             // 
@@ -98,9 +62,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn TitleColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DateStartedColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CommentsColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn guidDataGridViewTextBoxColumn;
 
     }
