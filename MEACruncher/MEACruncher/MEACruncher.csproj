@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\ViewForms\ViewProjectsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ViewForms\ViewProjectsForm.Designer.cs">
+      <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MementoManager.cs" />
     <Compile Include="DbWrapper.cs" />
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
@@ -142,6 +148,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
+    <EmbeddedResource Include="Forms\ViewForms\ViewProjectsForm.resx">
+      <DependentUpon>ViewProjectsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\DeleteRes.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DeleteRes.Designer.cs</LastGenOutput>
@@ -217,7 +227,6 @@
     <Folder Include="Forms\AddForms\" />
     <Folder Include="Forms\EditForms\" />
     <Folder Include="Forms\NewForms\" />
-    <Folder Include="Forms\ViewForms\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
