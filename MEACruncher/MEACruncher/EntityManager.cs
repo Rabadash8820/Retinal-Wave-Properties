@@ -6,8 +6,6 @@ using NHibernate;
 
 using MeaData;
 using MEACruncher.Resources;
-using MEACruncher.Forms.NewForms;
-using MEACruncher.Forms.EditForms;
 
 namespace MEACruncher {
     internal static class EntityManager {
@@ -21,8 +19,6 @@ namespace MEACruncher {
         private static Dictionary<Type, Func<Entity, string>> _duplicateError;
         private static Dictionary<Type, Func<Entity, string>> _deleteMsg;
         private static Dictionary<Type, Func<Entity, bool>> _uniqueness;
-        private static Dictionary<Type, Func<NewEntityForm>> _newForm;
-        private static Dictionary<Type, Func<EditEntityForm>> _editForm;
 
         // STATIC CONSTRUCTOR
         static EntityManager() {
@@ -31,8 +27,6 @@ namespace MEACruncher {
             initDuplications();
             initDeletions();
             initUniqueness();
-            initNewForms();
-            initEditForms();
         }
 
         // INTERFACE FUNCTIONS
@@ -56,18 +50,6 @@ namespace MEACruncher {
         public static bool IsUnique(Entity entity) {
             _db = Program.MeaDataDb.Session;
             return _uniqueness[entity.GetType()](entity);
-        }
-        public static NewEntityForm ShowNewForm(Entity entity) {
-            return ShowNewForm(entity.GetType());
-        }
-        public static NewEntityForm ShowNewForm(Type entityType) {
-            return _newForm[entityType]();
-        }
-        public static EditEntityForm ShowEditForm(Entity entity) {
-            return ShowEditForm(entity.GetType());
-        }
-        public static EditEntityForm ShowEditForm(Type entityType) {
-            return _editForm[entityType]();
         }
 
         // HELPER FUNCTIONS
@@ -104,26 +86,6 @@ namespace MEACruncher {
                                        e2.DateStarted == e1.DateStarted)
                                    .RowCount();
                     return (count == 0); }
-                },
-            };
-        }
-        private static void initNewForms() {
-            // For each Entity type, show a NewEntityForm and return it
-            _newForm = new Dictionary<Type, Func<NewEntityForm>>() {
-                { typeof(Project), () => {
-                    NewProjectForm form = new NewProjectForm();
-                    form.ShowDialog();
-                    return form; }
-                },
-            };
-        }
-        private static void initEditForms() {
-            // For each Entity type, show an EditEntityForm and return it
-            _editForm = new Dictionary<Type, Func<EditEntityForm>>() {
-                { typeof(Project), () => {
-                    EditProjectForm form = new EditProjectForm();
-                    form.ShowDialog();
-                    return form; }
                 },
             };
         }
