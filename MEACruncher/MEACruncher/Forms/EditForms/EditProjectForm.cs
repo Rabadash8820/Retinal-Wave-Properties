@@ -1,7 +1,7 @@
 ﻿using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
-using MEACruncher.Forms.AddForms;
+using MEACruncher.Forms;
 
 using System;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Linq.Expressions;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms.EditForms {
+namespace MEACruncher.Forms {
 
     internal partial class EditProjectForm : EditEntityForm {
         // CONSTRUCTORS

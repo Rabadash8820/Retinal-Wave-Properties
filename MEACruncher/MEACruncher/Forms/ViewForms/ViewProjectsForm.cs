@@ -2,21 +2,25 @@
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Properties;
-using MEACruncher.Forms.EditForms;
-using MEACruncher.Forms.NewForms;
+using MEACruncher.Forms;
 using R = MEACruncher.Resources;
 using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
-namespace MEACruncher.Forms.ViewForms {
+namespace MEACruncher.Forms {
 
     internal partial class ViewProjectsForm : ViewEntitiesForm {
         // CONSTRUCTORS
         public ViewProjectsForm() : base() {
             InitializeComponent();
         }
+
+        // ENCAPSULATED MEMBERS
+        private DataGridViewTextBoxColumn TitleColumn;
+        private DataGridViewTextBoxColumn DateStartedColumn;
+        private DataGridViewTextBoxColumn CommentsColumn;
 
         // FUNCTIONS
         protected override IList<Entity> loadEntities() {
@@ -28,6 +32,25 @@ namespace MEACruncher.Forms.ViewForms {
         }
         protected override void buildForm() {
             base.buildForm();
+
+            // Define DataGridViewColumns
+            this.TitleColumn.HeaderText = "Title";
+            this.TitleColumn.MaxInputLength = 25;
+            this.TitleColumn.Name = "TitleColumn";
+            this.TitleColumn.Width = 58;
+
+            this.DateStartedColumn.HeaderText = "Date Started";
+            this.DateStartedColumn.Name = "DateStartedColumn";
+
+            this.CommentsColumn.HeaderText = "Comments";
+            this.CommentsColumn.Name = "CommentsColumn";
+
+            // Add these columns to the DataGridView
+            EntitiesDGV.Columns.AddRange(new DataGridViewColumn[] {
+                TitleColumn,
+                DateStartedColumn,
+                CommentsColumn
+            });
 
             // Resize dataGridView columns
             foreach (DataGridViewColumn column in EntitiesDGV.Columns)

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using MEACruncher.Forms.ViewForms;
+using MEACruncher.Forms;
 
 namespace MEACruncher.Forms {
 

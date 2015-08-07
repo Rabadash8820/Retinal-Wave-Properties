@@ -2,7 +2,7 @@
 using MEACruncher.Events;
 using MEACruncher.Properties;
 using R = MEACruncher.Resources;
-using MEACruncher.Forms.NewForms;
+using MEACruncher.Forms;
 
 using NHibernate;
 
@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace MEACruncher.Forms.ViewForms {
+namespace MEACruncher.Forms {
 
     internal abstract partial class ViewEntitiesForm : CRUDForm  {
         // CONSTRUCTORS
@@ -151,7 +151,7 @@ namespace MEACruncher.Forms.ViewForms {
             column.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             column.Width = autoWidth;
         }
-        protected virtual IList<Entity> loadEntities() { return new List<Entity>(); }
+        protected abstract IList<Entity> loadEntities();
         protected virtual void formatEntities(DataGridViewCellFormattingEventArgs e) { }
         protected virtual void deleteDependents() { }
         protected bool entityDeleted(Entity entity, string message) {

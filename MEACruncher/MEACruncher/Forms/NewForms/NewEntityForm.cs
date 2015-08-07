@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace MEACruncher.Forms.NewForms {
+namespace MEACruncher.Forms {
 
     // BASE CLASS
     internal abstract partial class NewEntityForm : CRUDForm {
