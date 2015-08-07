@@ -61,7 +61,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \d{1,2}\/\d{1,2}\/\d{4}.
+        ///   Looks up a localized string similar to ^\d{1,2}\/\d{1,2}\/\d{4}$.
         /// </summary>
         internal static string Date {
             get {
@@ -70,7 +70,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \w+@[a-z]+\.[a-z]{3}.
+        ///   Looks up a localized string similar to ^\w+@[a-z]+\.[a-z]{3}$.
         /// </summary>
         internal static string EmailAddress {
             get {
@@ -88,7 +88,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to [A-Z][a-z]+( [A-Z][a-z]+){0,2}.
+        ///   Looks up a localized string similar to ^[A-Z][a-z]+( [A-Z][a-z]+){0,2}$.
         /// </summary>
         internal static string PersonName {
             get {
@@ -97,7 +97,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \(\d{3}\) \d{3}-\d{4}.
+        ///   Looks up a localized string similar to ^\(\d{3}\) \d{3}-\d{4}$.
         /// </summary>
         internal static string PhoneNumber {
             get {

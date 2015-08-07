@@ -70,7 +70,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter a valid date between 1/1/1970 and {0}..
+        ///   Looks up a localized string similar to Enter a valid date between {0} and {1}..
         /// </summary>
         internal static string DateValue {
             get {

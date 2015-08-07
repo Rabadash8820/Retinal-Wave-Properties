@@ -106,16 +106,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Not Entered.
-        /// </summary>
-        internal static string ProjectExperimenterEndDate {
-            get {
-                return ResourceManager.GetString("ProjectExperimenterEndDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Project{0}.
+        ///   Looks up a localized string similar to Awesome Project.
         /// </summary>
         internal static string ProjectTitle {
             get {
