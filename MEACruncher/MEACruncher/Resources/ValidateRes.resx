@@ -121,7 +121,7 @@
     <value>Enter a date in the format "mm/dd/yyyy".</value>
   </data>
   <data name="DateValue" xml:space="preserve">
-    <value>Enter a valid date between 1/1/1970 and {0}.</value>
+    <value>Enter a valid date between {0} and {1}.</value>
   </data>
   <data name="EmailAddress" xml:space="preserve">
     <value>Enter an Email like "frodo@shire.com".</value>

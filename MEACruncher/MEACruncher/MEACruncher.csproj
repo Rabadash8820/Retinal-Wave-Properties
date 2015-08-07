@@ -92,6 +92,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\NewForms\NewProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\NewForms\NewProjectForm.Designer.cs">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ViewForms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +155,9 @@
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
     <Compile Include="Util.cs" />
+    <EmbeddedResource Include="Forms\NewForms\NewProjectForm.resx">
+      <DependentUpon>NewProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ViewForms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -226,7 +235,6 @@
   <ItemGroup>
     <Folder Include="Forms\AddForms\" />
     <Folder Include="Forms\EditForms\" />
-    <Folder Include="Forms\NewForms\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>

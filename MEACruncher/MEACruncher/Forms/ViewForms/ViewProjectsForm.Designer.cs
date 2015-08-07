@@ -67,6 +67,8 @@
             this.EntitiesDGV.Name = "EntitiesDGV";
             this.EntitiesDGV.Size = new System.Drawing.Size(514, 177);
             this.EntitiesDGV.TabIndex = 0;
+            this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
+            this.EntitiesDGV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.EntitiesDGV_CellValidating);
             this.EntitiesDGV.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_RowValidated);
             this.EntitiesDGV.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EntitiesDGV_RowValidating);
             // 
@@ -109,6 +111,7 @@
             this.CloseBtn.TabIndex = 0;
             this.CloseBtn.Text = "Close";
             this.CloseBtn.UseVisualStyleBackColor = true;
+            this.CloseBtn.Click += new System.EventHandler(this.CloseBtn_Click);
             // 
             // EditBtn
             // 
@@ -119,6 +122,7 @@
             this.EditBtn.TabIndex = 0;
             this.EditBtn.Text = "Edit";
             this.EditBtn.UseVisualStyleBackColor = true;
+            this.EditBtn.Click += new System.EventHandler(this.EditBtn_Click);
             // 
             // NewBtn
             // 
@@ -129,6 +133,7 @@
             this.NewBtn.TabIndex = 0;
             this.NewBtn.Text = "New";
             this.NewBtn.UseVisualStyleBackColor = true;
+            this.NewBtn.Click += new System.EventHandler(this.NewBtn_Click);
             // 
             // RedoBtn
             // 
@@ -138,6 +143,7 @@
             this.RedoBtn.TabIndex = 0;
             this.RedoBtn.Text = "Redo";
             this.RedoBtn.UseVisualStyleBackColor = true;
+            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
             // 
             // UndoBtn
             // 
@@ -147,6 +153,7 @@
             this.UndoBtn.TabIndex = 0;
             this.UndoBtn.Text = "Undo";
             this.UndoBtn.UseVisualStyleBackColor = true;
+            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
             // 
             // ViewProjectsForm
             // 
@@ -157,8 +164,7 @@
             this.Controls.Add(this.MainTblLayout);
             this.MinimumSize = new System.Drawing.Size(450, 150);
             this.Name = "ViewProjectsForm";
-            this.Text = "ViewProjectsForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ViewProjectsForm_FormClosed);
+            this.Text = "Projects";
             this.MainTblLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();
             this.BottomPanel.ResumeLayout(false);
