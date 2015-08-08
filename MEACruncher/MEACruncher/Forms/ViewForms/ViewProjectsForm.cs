@@ -5,16 +5,24 @@ using MEACruncher.Resources;
 using NHibernate;
 
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+using System.Linq;
 using System.Windows.Forms;
+using System.ComponentModel;
+using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
     public partial class ViewProjectsForm : Form {
+        // ENCAPSULATED FIELDS
+        DataGridViewColumn _sortColumn;
+        string _sortDirection;
+        MementoManager _mementoMgr;
+        
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
+
+            _mementoMgr = new MementoManager();
 
             setDataBindings();
             loadEntities();
@@ -25,11 +33,9 @@ namespace MEACruncher.Forms {
         private void CloseBtn_Click(object sender, System.EventArgs e) {
             this.Close();
         }
-
         private void EditBtn_Click(object sender, System.EventArgs e) {
 
         }
-
         private void NewBtn_Click(object sender, System.EventArgs e) {
             NewProjectForm form = new NewProjectForm();
             form.EntityCreated += NewForm_EntityCreated;
@@ -38,13 +44,10 @@ namespace MEACruncher.Forms {
         private void UndoBtn_Click(object sender, System.EventArgs e) {
 
         }
-
         private void RedoBtn_Click(object sender, System.EventArgs e) {
 
         }
-        void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
-            loadEntities();
-        }
+
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             if (e.ColumnIndex == DateStartedCol.Index) {
                 Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
@@ -111,6 +114,24 @@ namespace MEACruncher.Forms {
             // Fire the EntityUpdated event
             this.OnEntityUpdated(entity);
         }
+        private void EntitiesDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            DataGridViewColumn column = EntitiesDGV.Columns[e.ColumnIndex];
+
+            _sortDirection = (_sortColumn == null) ? "ASC" : "DESC";
+
+            BindingSource bs = EntitiesDGV.DataSource as BindingSource;
+            IList<Project> entities = bs.DataSource as IList<Project>;
+            bs.DataSource = entities.OrderBy(p => p.GetType().GetProperty(column.DataPropertyName), new Comparer());
+               string.Format("it.{0} {1}", column.DataPropertyName, _sortDirection)).ToList();
+
+            if (_sortColumn != null) _sortColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+            column.HeaderCell.SortGlyphDirection = (_sortDirection == "ASC") ? SortOrder.Ascending : SortOrder.Descending;
+            _sortColumn = column;
+        }
+
+        void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
+            loadEntities();
+        }
 
         // HELPER FUNCTIONS
         private void setDataBindings() {
@@ -145,6 +166,7 @@ namespace MEACruncher.Forms {
                     subscriber.DynamicInvoke(this, args);
             }
         }
+
 
     }
 
