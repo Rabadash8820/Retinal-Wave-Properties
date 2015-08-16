@@ -121,8 +121,8 @@ namespace MEACruncher.Forms {
 
             BindingSource bs = EntitiesDGV.DataSource as BindingSource;
             IList<Project> entities = bs.DataSource as IList<Project>;
-            bs.DataSource = entities.OrderBy(p => p.GetType().GetProperty(column.DataPropertyName), new Comparer());
-               string.Format("it.{0} {1}", column.DataPropertyName, _sortDirection)).ToList();
+            //bs.DataSource = entities.OrderBy(p => p.GetType().GetProperty(column.DataPropertyName), new Comparer());
+            //   string.Format("it.{0} {1}", column.DataPropertyName, _sortDirection)).ToList();
 
             if (_sortColumn != null) _sortColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
             column.HeaderCell.SortGlyphDirection = (_sortDirection == "ASC") ? SortOrder.Ascending : SortOrder.Descending;
