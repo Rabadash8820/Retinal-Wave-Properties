@@ -2,10 +2,9 @@
 
 This application is intended to replace the hodge podge of Excel macros that have accumulated during my data analysis work with Dr. Jordan Renna in the University of Akron Biology Department.
 Rather than writing documentation to help he and his lab navigate all of those spreadsheets, dictating the file names and directory structures that they should use, and requring them to manually open third party softwares like
-Offline Sorter and NeuroExplorer as part of the process, I figured I would just write an application to make everything automatic and user-friendly.
+Offline Sorter and NeuroExplorer as part of the process, I figured I would just write an application to make the pipeline more automatic and user-friendly.
 
-Moreover, this project represents a sort of culmination of my understing of Visual C#, WinForms, Git source control, scrum programming, the .NET framework, NHiberate, and MySQL.  My hope is that this project will provide proof of my experience
-with these methods and technologies to future software development companies, even though my formal eduction will be more biologically oriented.
+Moreover, this project represents a sort of culmination of my understing of Visual C#, WinForms, Git source control and GitHub, the .NET framework, NHiberate, NuGet, InstallShield, and MySQL.  My hope is that this project will serve as proof of my knowledge of these technologies to future software companies, even though my formal eduction is more biologically oriented.
 
 ## Developer Notes
 
