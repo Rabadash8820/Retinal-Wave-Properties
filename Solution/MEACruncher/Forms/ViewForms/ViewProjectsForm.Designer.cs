@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewProjectsForm));
             this.MainTblLayout = new System.Windows.Forms.TableLayoutPanel();
             this.EntitiesDGV = new System.Windows.Forms.DataGridView();
             this.TitleCol = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -163,8 +164,11 @@
             this.CancelButton = this.CloseBtn;
             this.ClientSize = new System.Drawing.Size(520, 218);
             this.Controls.Add(this.MainTblLayout);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(450, 150);
             this.Name = "ViewProjectsForm";
+            this.ShowInTaskbar = false;
             this.Text = "Projects";
             this.MainTblLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();

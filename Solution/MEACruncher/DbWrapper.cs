@@ -55,11 +55,13 @@ namespace MEACruncher {
         public void Configure(string dbName, string version, string importSql) {
             // Make sure an actual database name and SQL script file were provided
             if (dbName == null || importSql == null)
-                return;
+                throw new ArgumentException("No database name provided");
+            if (importSql == null)
+                throw new ArgumentException("SQL to import the database schema was not name provided");
 
-            // If this database is already connected, then just return
-            bool alreadyConnected = (_sf != null);
-            if (alreadyConnected)
+            // If this DbWrapper is already configured, then just return            
+            bool alreadyConfigured = (_sf != null);
+            if (alreadyConfigured)
                 return;
 
             // If not, then make the NHibernate connection, first importing the provided SQL file if necessary
@@ -75,15 +77,12 @@ namespace MEACruncher {
                 connectExistingDb(dbName, version);
             }
         }
-        public ISession Session {
+        public ISessionFactory SessionFactory {
             get {
-                if (_sess != null && _sess.IsOpen)
-                    return _sess;
+                if (_sf == null)
+                    throw new NullReferenceException("SessionFactory has not been defined.");
 
-                if (_sf != null)
-                    return _sess = _sf.OpenSession();
-
-                throw new NullReferenceException("SessionFactory has not been defined.");
+                return _sf;
             }
         }
 
@@ -121,18 +120,23 @@ namespace MEACruncher {
                 using (ISession sess = _sf.OpenSession()) {
                     DbVersion v = sess.QueryOver<DbVersion>().SingleOrDefault();
                     if (v.Version != curVersion) {
-                        IncorrectDbVersionException odve = new IncorrectDbVersionException(
-                            String.Format("The database's version should be {0} but is {1}", curVersion, v.Version), v.Version, curVersion);
-                        throw odve;
+                        IncorrectDbVersionException ex = new IncorrectDbVersionException(
+                            String.Format("The database's version should be {0} but is {1}", curVersion, v.Version),
+                            v.Version,
+                            curVersion);
+                        throw ex;
                     }
                 }
             }
 
             // If the db doesnt even have a version table, then also throw an exception
             catch (GenericADOException e) {
-                IncorrectDbVersionException odve = new IncorrectDbVersionException(
-                    String.Format("The database's version should be {0} but could not be determined", curVersion), "", curVersion, e);
-                throw odve;
+                IncorrectDbVersionException ex = new IncorrectDbVersionException(
+                    String.Format("The database's version should be {0} but could not be determined", curVersion),
+                    "",
+                    curVersion,
+                    e);
+                throw ex;
             }
         }
         private void importMySqlDb(string dbName, string importSql) {

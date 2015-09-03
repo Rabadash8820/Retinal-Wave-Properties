@@ -9,7 +9,7 @@ using NHibernate;
 
 namespace MEACruncher.Forms {
 
-    public partial class NewProjectForm : Form {
+    internal partial class NewProjectForm : BaseForm {
 
         // ENCAPSULATED DATA
         private BindingSource _boundEntity;
@@ -42,10 +42,10 @@ namespace MEACruncher.Forms {
         private void CreateBtn_Click(object sender, EventArgs e) {
             // If the Entity would create a duplicate in the database, show an error pop-up and return
             Project entity = _boundEntity.DataSource as Project;
-            bool unique = EntityManager.IsUnique(entity);
+            bool unique = _entityMgr.IsUnique(entity);
             if (!unique) {
                 MessageBox.Show(
-                    EntityManager.DuplicateErrorMsg(entity),
+                    _entityMgr.DuplicateErrorMsg(entity),
                     Application.ProductName,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error,
@@ -54,11 +54,9 @@ namespace MEACruncher.Forms {
             }
 
             // Otherwise, add this new Entity to the database
-            using (ISession db = Program.MeaDataDb.Session) {
-                using (ITransaction trans = db.BeginTransaction()) {
-                    db.Save(entity);
-                    trans.Commit();
-                }
+            using (ITransaction trans = _db.BeginTransaction()) {
+                _db.Save(entity);
+                trans.Commit();
             }
 
             // Fire the EntityCreated event and close

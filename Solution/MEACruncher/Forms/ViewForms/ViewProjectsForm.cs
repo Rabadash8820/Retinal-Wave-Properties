@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
-    public partial class ViewProjectsForm : Form {
+    internal partial class ViewProjectsForm : BaseForm {
         // ENCAPSULATED FIELDS
         DataGridViewColumn _sortColumn;
         string _sortDirection;
@@ -89,9 +89,9 @@ namespace MEACruncher.Forms {
             // If the databound Entity would create a duplicate in the database,
             // then set the row's error text and cancel
             Project entity = row.DataBoundItem as Project;
-            bool unique = EntityManager.IsUnique(entity);
+            bool unique = _entityMgr.IsUnique(entity);
             if (!unique) {
-                row.ErrorText = EntityManager.DuplicateErrorMsg(entity);
+                row.ErrorText = _entityMgr.DuplicateErrorMsg(entity);
                 e.Cancel = true;
             }
         }
@@ -104,11 +104,9 @@ namespace MEACruncher.Forms {
 
             // Update this row's bound Entity in the database
             Project entity = row.DataBoundItem as Project;
-            using (ISession db = Program.MeaDataDb.Session) {
-                using (ITransaction trans = db.BeginTransaction()) {
-                    db.Update(entity);
-                    trans.Commit();
-                }
+            using (ITransaction trans = _db.BeginTransaction()) {
+                _db.Update(entity);
+                trans.Commit();
             }
 
             // Fire the EntityUpdated event
@@ -142,9 +140,7 @@ namespace MEACruncher.Forms {
         private void loadEntities() {
             // Select Entities from the database
             IList<Project> entities;
-            using (ISession db = Program.MeaDataDb.Session) {
-                entities = db.QueryOver<Project>().List();
-            }
+            entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
             BindingSource bs = new BindingSource();

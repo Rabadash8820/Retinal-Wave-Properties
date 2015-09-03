@@ -31,10 +31,10 @@
             this.DateStartedPicker = new System.Windows.Forms.DateTimePicker();
             this.CommentsTxt = new System.Windows.Forms.TextBox();
             this.BottomPanel = new System.Windows.Forms.Panel();
-            this.UndoBtn = new System.Windows.Forms.Button();
-            this.RedoBtn = new System.Windows.Forms.Button();
-            this.CancelBtn = new System.Windows.Forms.Button();
             this.CreateBtn = new System.Windows.Forms.Button();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.RedoBtn = new System.Windows.Forms.Button();
+            this.UndoBtn = new System.Windows.Forms.Button();
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -127,25 +127,16 @@
             this.BottomPanel.Size = new System.Drawing.Size(404, 29);
             this.BottomPanel.TabIndex = 4;
             // 
-            // UndoBtn
+            // CreateBtn
             // 
-            this.UndoBtn.Location = new System.Drawing.Point(3, 3);
-            this.UndoBtn.Name = "UndoBtn";
-            this.UndoBtn.Size = new System.Drawing.Size(75, 23);
-            this.UndoBtn.TabIndex = 0;
-            this.UndoBtn.Text = "Undo";
-            this.UndoBtn.UseVisualStyleBackColor = true;
-            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
-            // 
-            // RedoBtn
-            // 
-            this.RedoBtn.Location = new System.Drawing.Point(84, 3);
-            this.RedoBtn.Name = "RedoBtn";
-            this.RedoBtn.Size = new System.Drawing.Size(75, 23);
-            this.RedoBtn.TabIndex = 0;
-            this.RedoBtn.Text = "Redo";
-            this.RedoBtn.UseVisualStyleBackColor = true;
-            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
+            this.CreateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreateBtn.Location = new System.Drawing.Point(245, 3);
+            this.CreateBtn.Name = "CreateBtn";
+            this.CreateBtn.Size = new System.Drawing.Size(75, 23);
+            this.CreateBtn.TabIndex = 0;
+            this.CreateBtn.Text = "Create";
+            this.CreateBtn.UseVisualStyleBackColor = true;
+            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
             // 
             // CancelBtn
             // 
@@ -159,16 +150,25 @@
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
-            // CreateBtn
+            // RedoBtn
             // 
-            this.CreateBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.CreateBtn.Location = new System.Drawing.Point(245, 3);
-            this.CreateBtn.Name = "CreateBtn";
-            this.CreateBtn.Size = new System.Drawing.Size(75, 23);
-            this.CreateBtn.TabIndex = 0;
-            this.CreateBtn.Text = "Create";
-            this.CreateBtn.UseVisualStyleBackColor = true;
-            this.CreateBtn.Click += new System.EventHandler(this.CreateBtn_Click);
+            this.RedoBtn.Location = new System.Drawing.Point(84, 3);
+            this.RedoBtn.Name = "RedoBtn";
+            this.RedoBtn.Size = new System.Drawing.Size(75, 23);
+            this.RedoBtn.TabIndex = 0;
+            this.RedoBtn.Text = "Redo";
+            this.RedoBtn.UseVisualStyleBackColor = true;
+            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
+            // 
+            // UndoBtn
+            // 
+            this.UndoBtn.Location = new System.Drawing.Point(3, 3);
+            this.UndoBtn.Name = "UndoBtn";
+            this.UndoBtn.Size = new System.Drawing.Size(75, 23);
+            this.UndoBtn.TabIndex = 0;
+            this.UndoBtn.Text = "Undo";
+            this.UndoBtn.UseVisualStyleBackColor = true;
+            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
             // 
             // NewProjectForm
             // 
@@ -178,8 +178,11 @@
             this.CancelButton = this.CancelBtn;
             this.ClientSize = new System.Drawing.Size(410, 208);
             this.Controls.Add(this.MainTableLayout);
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(350, 175);
             this.Name = "NewProjectForm";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.Text = "Create A New Project";
             this.MainTableLayout.ResumeLayout(false);
             this.MainTableLayout.PerformLayout();

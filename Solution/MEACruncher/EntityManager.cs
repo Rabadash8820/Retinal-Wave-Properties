@@ -8,30 +8,22 @@ using MeaData;
 using MEACruncher.Resources;
 
 namespace MEACruncher {
-    internal static class EntityManager {
+    internal class EntityManager {
         // ENCAPSULATED FIELDS
-        private static Stack<Entity> _stack;
+        private ISession _db;
 
         // INTERFACE
-        static EntityManager() {
-            _stack = new Stack<Entity>();
-        }
-        public static void Remember(Entity entity) {
-            if (entity == null) return;
-            _stack.Push(entity);
-        }
-        public static Entity Recall() {
-            if (_stack.Count == 0) return null;
-            return _stack.Pop();
+        public EntityManager(ISession db) {
+            _db = db;
         }
 
         // DELETE ENTITY WARNINGS
-        public static string DeleteWarningMsg(Project entity) {
+        public string DeleteWarningMsg(Project entity) {
             return String.Format(DeleteRes.ProjectWarning, entity.Name);
         }
 
         // DUPLICATE ENTITY ERROR MESSAGES
-        public static string DuplicateErrorMsg(Project entity) {
+        public string DuplicateErrorMsg(Project entity) {
             string msg = String.Format(
                             DuplicateRes.ProjectError,
                             entity.Name,
@@ -41,16 +33,14 @@ namespace MEACruncher {
         }
 
         // TEST ENTITIES FOR UNIQUENESS
-        public static bool IsUnique(Project entity) {
-            using (ISession db = Program.MeaDataDb.Session){
-                int count = db.QueryOver<Project>()
-                              .Where(e =>
-                                e.Guid != entity.Guid &&
-                                e.Name == entity.Name &&
-                                e.DateStarted == entity.DateStarted)
-                              .RowCount();
-                return (count == 0);
-            }
+        public bool IsUnique(Project entity) {
+            int count = _db.QueryOver<Project>()
+                           .Where(e =>
+                               e.Guid != entity.Guid &&
+                               e.Name == entity.Name &&
+                               e.DateStarted == entity.DateStarted)
+                           .RowCount();
+            return (count == 0);
         }
         
     }
