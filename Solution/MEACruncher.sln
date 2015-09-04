@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MEACruncher", "MEACruncher\MEACruncher.csproj", "{6CF3287A-9453-48A6-B6C9-30180813DED2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaData", "NeuroData\MeaData.csproj", "{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControls", "CustomControls\CustomControls.csproj", "{CF59B937-AED5-43F7-B2FF-169556A9D109}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaDataTest", "MeaDataTest\MeaDataTest.csproj", "{DAA49B8A-04A9-4E49-BA9E-199967994A36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF59B937-AED5-43F7-B2FF-169556A9D109}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA49B8A-04A9-4E49-BA9E-199967994A36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA49B8A-04A9-4E49-BA9E-199967994A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA49B8A-04A9-4E49-BA9E-199967994A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA49B8A-04A9-4E49-BA9E-199967994A36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

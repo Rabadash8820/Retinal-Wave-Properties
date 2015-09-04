@@ -3,8 +3,11 @@ using NHibernate.Event;
 using NHibernate.Exceptions;
 using NHibernate.Event.Default;
 using NC = NHibernate.Cfg;
+
 using MeaData;
+using MEACruncher.Exceptions;
 using P = MEACruncher.Properties;
+
 using System;
 using System.IO;
 using System.Text;
@@ -14,27 +17,10 @@ using System.Data.Common;
 using System.Windows.Forms;
 using System.Collections;
 using System.Collections.Generic;
+
 using MySql.Data.MySqlClient;
 
 namespace MEACruncher {
-
-    public class IncorrectDbVersionException : DbException {
-        // CONSTRUCTORS
-        public IncorrectDbVersionException() : base() { }
-        public IncorrectDbVersionException(string message, Exception innerException) : base(message, innerException) { }
-        public IncorrectDbVersionException(string message, string thisVersion, string requiredVersion) : base(message) {
-            ThisVersion = thisVersion;
-            RequiredVersion = requiredVersion;
-        }
-        public IncorrectDbVersionException(string message, string thisVersion, string requiredVersion, Exception innerException) : base(message, innerException) {
-            ThisVersion = thisVersion;
-            RequiredVersion = requiredVersion;
-        }
-
-        // PROPERTIES
-        public string ThisVersion { get; protected set; }
-        public string RequiredVersion { get; protected set; }
-    }
 
     public class DbWrapper {
         // VARIABLES
@@ -76,13 +62,11 @@ namespace MEACruncher {
                 connectExistingDb(dbName, version);
             }
         }
-        public ISessionFactory SessionFactory {
-            get {
-                if (_sf == null)
-                    throw new NullReferenceException("SessionFactory has not been defined.");
+        public ISession OpenSession() {
+            if (_sf == null)
+                throw new NullReferenceException("SessionFactory has not been defined.");
 
-                return _sf;
-            }
+            return _sf.OpenSession();
         }
 
         // HELPER FUNCTIONS

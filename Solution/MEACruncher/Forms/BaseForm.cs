@@ -15,7 +15,7 @@ namespace MEACruncher.Forms {
         public BaseForm() {
             InitializeComponent();
 
-            _db = Program.MeaDataDb.SessionFactory.OpenSession();
+            _db = Program.MeaDataDb.OpenSession();
             _entityMgr = new EntityManager(_db);
             _mementoMgr = new MementoManager();
         }
