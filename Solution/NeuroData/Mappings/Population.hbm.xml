@@ -5,17 +5,17 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Tissue" column="TissueId" not-null="false"/>
-      <many-to-one name="Strain" column="StrainId" not-null="false"/>
-      <property name="Comments" column="Comments" not-null="false"/>
+      <many-to-one name="TissueType" column="TissueTypeId" />
+      <many-to-one name="Strain" column="StrainId" />
+      <property name="Comments" column="Comments" />
     </natural-id>
     <set name="Projects" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true" column="PopulationId" not-null="true"/>
+      <key unique="true" column="PopulationId" />
       <many-to-many class="Project" column="ProjectId" />
     </set>
-    <set name="TissuePreparations" table="population_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="PopulationId" not-null="true" />
-      <many-to-many class="TissuePreparation" column="TissuePreparationId" />
+    <set name="Tissues" table="population_tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Tissue" column="TissueId" />
     </set>
   </class>
 </hibernate-mapping>

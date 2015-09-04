@@ -17,7 +17,8 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual TissuePreparation TissuePreparation { get; set; }
+        public virtual Tissue Tissue { get; set; }
+        public virtual Condition Condition { get; set; }
         public virtual int Number { get; set; }
         public virtual int MeaRows { get; set; }
         public virtual int MeaColumns { get; set; }
@@ -59,6 +60,8 @@ namespace MeaData {
             }
 
             // Clone any remaining object members of the object, and return the clone
+            clone.Tissue = map.GetEntity<Tissue>(r.Tissue);
+            clone.Condition = map.GetEntity<Condition>(r.Condition);
             return clone;
         }
     }

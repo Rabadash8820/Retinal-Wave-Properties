@@ -5,7 +5,7 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Version" column="Version" not-null="true" length="15"/>
+      <property name="Version" column="Version" />
     </natural-id>
   </class>
 </hibernate-mapping>

@@ -43,16 +43,15 @@ namespace MEACruncher {
         private ISession _sess;
 
         // CONSTRUCTORS
-        public DbWrapper(Assembly a) {
-            this.initialize(a);
-        }
+        public DbWrapper() { }
         public DbWrapper(Assembly a, string dbName, string version, string importSql) {
-            this.initialize(a);
-            this.Configure(dbName, version, importSql);
+            this.Configure(a, dbName, version, importSql);
         }
 
         // METHODS
-        public void Configure(string dbName, string version, string importSql) {
+        public void Configure(Assembly a, string dbName, string version, string importSql) {
+            _assembly = a;
+
             // Make sure an actual database name and SQL script file were provided
             if (dbName == null || importSql == null)
                 throw new ArgumentException("No database name provided");
@@ -87,9 +86,6 @@ namespace MEACruncher {
         }
 
         // HELPER FUNCTIONS
-        private void initialize(Assembly a) {
-            _assembly = a;
-        }
         private void connectExistingDb(string dbName, string curVersion) {
             // Create the connection string for this MySQL database
             string connStr = P.Resources.MySqlConnectionString;
@@ -110,7 +106,7 @@ namespace MEACruncher {
             // Create an NHibernate Configuration with the above properties
             NC.Configuration config = new NC.Configuration();
             config.SetProperties(props);
-            config.AddAssembly(this._assembly);
+            config.AddAssembly(_assembly);
 
             // Create a SessionFactory with this Configuration
             _sf = config.BuildSessionFactory();

@@ -1,17 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="Project" table="projects" dynamic-update="true">
+  <class name="Condition" table="conditions" dynamic-update="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
       <property name="Name" column="Name" />
-      <property name="DateStarted" column="DateStarted" />
     </natural-id>
     <property name="Comments" column="Comments" />
-    <set name="Populations" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
-      <key unique="true" column="ProjectId" />
-      <many-to-many class="Population" column="PopulationId" />
+    <set name="Recordings" table="recordings" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="ConditionId" />
+      <many-to-many class="Recording" column="RecordingId" />
     </set>
   </class>
 </hibernate-mapping>

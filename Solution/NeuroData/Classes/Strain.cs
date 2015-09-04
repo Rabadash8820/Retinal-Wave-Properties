@@ -5,7 +5,7 @@ namespace MeaData {
 
     public class Strain : Entity {
         // VARIABLES
-        private ISet<TissuePreparation> _tissuePreparations;
+        private ISet<Tissue> _tissues;
 
         // CONSTRUCTORS
         public Strain() {
@@ -20,13 +20,13 @@ namespace MeaData {
         public virtual string Name { get; set; }
         public virtual string Breeder { get; set; }
         public virtual string Comments { get; set; }
-        public virtual ISet<TissuePreparation> TissuePreparations {
-            get { return _tissuePreparations; }
+        public virtual ISet<Tissue> Tissues {
+            get { return _tissues; }
         }
 
         // FUNCTIONS
         private void Construct() {
-            _tissuePreparations = new HashSet<TissuePreparation>();
+            _tissues = new HashSet<Tissue>();
         }
         public override object Clone() {
             return Strain.Clone(this, new EntityMap());
@@ -45,8 +45,8 @@ namespace MeaData {
                 clone.Name = s.Name;
                 clone.Breeder = s.Breeder;
                 clone.Comments = s.Comments;
-                foreach (TissuePreparation tp in s.TissuePreparations)
-                    clone.TissuePreparations.Add(TissuePreparation.Clone(tp, map));
+                foreach (Tissue tp in s.Tissues)
+                    clone.Tissues.Add(Tissue.Clone(tp, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

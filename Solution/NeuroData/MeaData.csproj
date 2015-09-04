@@ -68,11 +68,13 @@
     <Compile Include="Classes\Burst.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\Cell.cs" />
     <Compile Include="Classes\Channel.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\AgeUnit.cs" />
     <Compile Include="Classes\DbVersion.cs" />
+    <Compile Include="Classes\Condition.cs" />
     <Compile Include="Classes\Flag.cs" />
     <Compile Include="Classes\ResultType.cs" />
     <Compile Include="Classes\Entity.cs">
@@ -86,7 +88,7 @@
     </Compile>
     <Compile Include="Classes\Result.cs" />
     <Compile Include="Classes\RecordingFile.cs" />
-    <Compile Include="Classes\Tissue.cs">
+    <Compile Include="Classes\TissueType.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Classes\Project.cs">
@@ -104,7 +106,7 @@
     <Compile Include="Classes\Population.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Classes\TissuePreparation.cs">
+    <Compile Include="Classes\Tissue.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,7 +126,7 @@
     <EmbeddedResource Include="Mappings\ModelOrganism.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Tissue.hbm.xml">
+    <EmbeddedResource Include="Mappings\TissueType.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Project.hbm.xml">
@@ -133,22 +135,28 @@
     <EmbeddedResource Include="Mappings\Recording.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\Spike.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Spike.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Strain.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Population.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Mappings\TissuePreparation.hbm.xml">
+    <EmbeddedResource Include="Mappings\Tissue.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Result.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Result.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Mappings\Version.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Version.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Mappings\AgeUnit.hbm.xml">
@@ -162,7 +170,15 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <EmbeddedResource Include="Mappings\RecordingFile.hbm.xml" />
+    <EmbeddedResource Include="Mappings\Condition.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\Cell.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\RecordingFile.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Flag.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

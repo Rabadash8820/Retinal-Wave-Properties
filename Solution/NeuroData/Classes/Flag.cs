@@ -5,26 +5,25 @@ namespace MeaData {
 
     public class Flag : Entity {
         // VARIABLES
-        private ISet<Channel> _channels;
+        private ISet<Cell> _cells;
 
         // CONSTRUCTORS
         public Flag() {
             this.Construct();
         }
-        public Flag(Guid g)
-            : base(g) {
+        public Flag(Guid g) : base(g) {
             this.Construct();
         }
 
         // PROPERTIES
         public virtual string Description { get; set; }
-        public virtual ISet<Channel> Channels {
-            get { return _channels; }
+        public virtual ISet<Cell> Cells {
+            get { return _cells; }
         }
 
         // FUNCTIONS
         private void Construct() {
-            _channels = new HashSet<Channel>();
+            _cells = new HashSet<Cell>();
         }
         public override object Clone() {
             return Flag.Clone(this, new EntityMap());
@@ -41,8 +40,8 @@ namespace MeaData {
                 map.Add(f, clone);
 
                 clone.Description = f.Description;
-                foreach (Channel ch in f.Channels)
-                    clone.Channels.Add(Channel.Clone(ch, map));
+                foreach (Cell c in f.Cells)
+                    clone.Cells.Add(Cell.Clone(c, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

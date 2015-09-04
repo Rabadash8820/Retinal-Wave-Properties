@@ -5,9 +5,9 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Recording" column="RecordingId" not-null="true"/>
-      <property name="Number" column="FileNumber" not-null="true"/>
+      <many-to-one name="Recording" column="RecordingId" />
+      <property name="Number" column="FileNumber" />
     </natural-id>
-    <property name="FileDir" column="FileDir" not-null="true"/>
+    <property name="FileDir" column="FileDir" />
   </class>
 </hibernate-mapping>

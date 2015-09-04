@@ -5,17 +5,17 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <property name="Name" column="Name" not-null="true" length="75"/>
-      <many-to-one name="Parent" column="ParentId" not-null="false" />
+      <property name="DatePrepared" column="DatePrepared" />
+      <property name="Preparer" column="Preparer" />
     </natural-id>
-    <property name="Comments" column="Comments" not-null="false" />
-    <set name="TissuePreparations" table="TissuePreparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="TissueId" not-null="true"/>
-      <one-to-many class="TissuePreparation"/>
+    <property name="Comments" column="Comments" />
+    <set name="Recordings" table="Recordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="TissueId" />
+      <one-to-many class="Recording"/>
     </set>
-    <set name="Children" table="Tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="ParentId" not-null="true"/>
-      <one-to-many class="Tissue"/>
+    <set name="Populations" table="population_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="TissueId" />
+      <many-to-many class="Population" column="PopulationId" />
     </set>
   </class>
 </hibernate-mapping>

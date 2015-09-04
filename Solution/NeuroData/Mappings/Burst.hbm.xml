@@ -5,15 +5,15 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Channel" column="ChannelId" not-null="true"/>
-      <property name="Number" column="BurstNumber" not-null="true"/>
+      <many-to-one name="Cell" column="CellId" />
+      <property name="Number" column="BurstNumber" />
     </natural-id>
-    <property name="StartTimestamp" column="StartTimestamp" not-null="true"/>
-    <property name="EndTimestamp" column="EndTimestamp" not-null="true"/>
-    <property name="IsWaveAssociated" column="IsWaveAssociated" not-null="false"/>
+    <property name="StartTimestamp" column="StartTimestamp" />
+    <property name="EndTimestamp" column="EndTimestamp" />
+    <property name="IsWaveAssociated" column="IsWaveAssociated" />
     <set name="Spikes" table="Spikes" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
       <key unique="true">
-        <column name="BurstId" not-null="true"/>
+        <column name="BurstId" />
       </key>
       <one-to-many class="Spike"/>
     </set>

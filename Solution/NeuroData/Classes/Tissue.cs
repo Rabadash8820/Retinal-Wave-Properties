@@ -5,8 +5,8 @@ namespace MeaData {
 
     public class Tissue : Entity {
         // VARIABLES
-        private ISet<TissuePreparation> _tissuePreparations;
-        private ISet<Tissue> _children;
+        private ISet<Population> _populations;
+        private ISet<Recording> _recordings;
 
         // CONSTRUCTORS
         public Tissue() {
@@ -17,20 +17,24 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual string Name { get; set; }
-        public virtual Tissue Parent { get; set; }
+        public virtual Strain Strain { get; set; }
+        public virtual TissueType TissueType { get; set; }
+        public virtual double Age { get; set; }
+        public virtual AgeUnit AgeUnit { get; set; }
+        public virtual string Preparer { get; set; }
+        public virtual DateTime DatePrepared { get; set; }
         public virtual string Comments { get; set; }
-        public virtual ISet<TissuePreparation> TissuePreparations {
-            get { return _tissuePreparations; }
+        public virtual ISet<Population> Populations {
+            get { return _populations; }
         }
-        public virtual ISet<Tissue> Children {
-            get { return _children; }
+        public virtual ISet<Recording> Recordings {
+            get { return _recordings; }
         }
 
         // FUNCTIONS
         private void Construct() {
-            _tissuePreparations = new HashSet<TissuePreparation>();
-            _children = new HashSet<Tissue>();
+            _populations = new HashSet<Population>();
+            _recordings = new HashSet<Recording>();
         }
         public override object Clone() {
             return Tissue.Clone(this, new EntityMap());
@@ -46,16 +50,20 @@ namespace MeaData {
                 clone = Activator.CreateInstance(t.GetType()) as Tissue;
                 map.Add(t, clone);
 
-                clone.Name = t.Name;
+                clone.Age = t.Age;
+                clone.Preparer = t.Preparer;
+                clone.DatePrepared = t.DatePrepared;
                 clone.Comments = t.Comments;
-                foreach (TissuePreparation tp in t.TissuePreparations)
-                    clone.TissuePreparations.Add(TissuePreparation.Clone(tp, map));
-                foreach (Tissue ch in t.Children)
-                    clone.Children.Add(Tissue.Clone(ch, map));
+                foreach (Recording r in t.Recordings)
+                    clone.Recordings.Add(Recording.Clone(r, map));
+                foreach (Population p in t.Populations)
+                    clone.Populations.Add(Population.Clone(p, map));
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.Parent = map.GetEntity<Tissue>(Tissue.Clone(t.Parent, map));
+            clone.Strain = map.GetEntity<Strain>(Strain.Clone(t.Strain, map));
+            clone.TissueType = map.GetEntity<TissueType>(TissueType.Clone(t.TissueType, map));
+            clone.AgeUnit = map.GetEntity<AgeUnit>(AgeUnit.Clone(t.AgeUnit, map));
             return clone;
         }
     }

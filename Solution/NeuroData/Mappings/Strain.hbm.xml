@@ -5,16 +5,16 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Organism" column="OrganismId" not-null="true"/>
-      <property name="Breeder" column="Breeder" length="35" not-null="true"/>
+      <many-to-one name="Organism" column="OrganismId" />
+      <property name="Breeder" column="Breeder" />
     </natural-id>
-    <property name="Name" column="Name" not-null="true" length="25"/>
-    <property name="Comments" column="Comments" not-null="false" />
-    <set name="TissuePreparations" table="TissuePreparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <property name="Name" column="Name" />
+    <property name="Comments" column="Comments" />
+    <set name="Tissues" table="Tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
       <key unique="true">
-        <column name="StrainId" not-null="true"/>
+        <column name="StrainId" />
       </key>
-      <one-to-many class="TissuePreparation"/>
+      <one-to-many class="Tissue"/>
     </set>
   </class>
 </hibernate-mapping>

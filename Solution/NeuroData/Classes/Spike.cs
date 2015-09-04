@@ -13,7 +13,7 @@ namespace MeaData {
         }
 
         // PROPERTIES
-        public virtual Channel Channel { get; set; }
+        public virtual Cell Cell { get; set; }
         public virtual int Number { get; set; }
         public virtual double Timestamp { get; set; }
         public virtual Burst Burst{ get; set; }
@@ -39,7 +39,7 @@ namespace MeaData {
             }
 
             // Clone any remaining object members of the object, and return the clone
-            clone.Channel = map.GetEntity<Channel>(Channel.Clone(s.Channel, map));
+            clone.Cell = map.GetEntity<Cell>(Cell.Clone(s.Cell, map));
             clone.Burst = map.GetEntity<Burst>(Burst.Clone(s.Burst, map));
             return clone;
         }

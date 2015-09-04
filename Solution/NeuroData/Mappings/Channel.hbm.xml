@@ -5,26 +5,13 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Recording" column="RecordingId" not-null="true"/>
-      <property name="Row" column="MeaRow" not-null="true"/>
-      <property name="Column" column="MeaColumn" not-null="true"/>
+      <many-to-one name="Recording" column="RecordingId" />
+      <property name="Row" column="MeaRow" />
+      <property name="Column" column="MeaColumn" />
     </natural-id>
-    <property name="Description" column="Description" not-null="false" length="15"/>
-    <property name="HasMRGC" column="HasMRGC" not-null="false"/>
-    <property name="HasSingleCell" column="HasSingleCell" not-null="false"/>
-    <set name="Spikes" table="Spikes" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true">
-        <column name="ChannelId" not-null="true"/>
-      </key>
-      <one-to-many class="Spike"/>
-    </set>
-    <set name="Bursts" table="Bursts" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="ChannelId" not-null="true"/>
-      <one-to-many class="Burst"/>
-    </set>
-    <set name="Flags" table="channel_flags" lazy="extra" access="nosetter.camelcase-underscore" cascade="all">
-      <key unique="true" column="ChannelId" not-null="true"/>
-      <many-to-many class="Flag" column="FlagId" />
+    <set name="Cells" table="cells" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="ChannelId" />
+      <one-to-many class="Cell"/>
     </set>
   </class>
 </hibernate-mapping>

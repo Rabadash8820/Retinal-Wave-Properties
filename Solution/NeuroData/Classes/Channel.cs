@@ -5,9 +5,7 @@ namespace MeaData {
 
     public class Channel : Entity {
         // VARIABLES
-        private ISet<Spike> _spikes;
-        private ISet<Burst> _bursts;
-        private ISet<Flag> _flags;
+        private ISet<Cell> _cells;
 
         // CONSTRUCTORS
         public Channel() {
@@ -19,26 +17,15 @@ namespace MeaData {
 
         // PROPERTIES
         public virtual Recording Recording { get; set; }
-        public virtual string Description { get; set; }
         public virtual int Row { get; set; }
         public virtual int Column { get; set; }
-        public virtual bool HasMRGC { get; set; }
-        public virtual bool HasSingleCell { get; set; }
-        public virtual ISet<Spike> Spikes {
-            get { return _spikes; }
-        }
-        public virtual ISet<Burst> Bursts {
-            get { return _bursts; }
-        }
-        public virtual ISet<Flag> Flags {
-            get { return _flags; }
+        public virtual ISet<Cell> Cells {
+            get { return _cells; }
         }
 
         // FUNCTIONS
         private void Construct() {
-            _spikes = new HashSet<Spike>();
-            _bursts = new HashSet<Burst>();
-            _flags = new HashSet<Flag>();
+            _cells = new HashSet<Cell>();
         }
         public override object Clone() {
             return Channel.Clone(this, new EntityMap());
@@ -54,15 +41,10 @@ namespace MeaData {
                 clone = Activator.CreateInstance(ch.GetType()) as Channel;
                 map.Add(ch, clone);
 
-                clone.Description = ch.Description;
                 clone.Row = ch.Row;
                 clone.Column = ch.Column;
-                foreach (Spike s in ch.Spikes)
-                    clone.Spikes.Add(Spike.Clone(s, map));
-                foreach (Burst b in ch.Bursts)
-                    clone.Bursts.Add(Burst.Clone(b, map));
-                foreach (Flag f in ch.Flags)
-                    clone.Flags.Add(Flag.Clone(f, map));
+                foreach (Cell c in ch.Cells)
+                    clone.Cells.Add(Cell.Clone(c, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

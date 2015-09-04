@@ -5,14 +5,15 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="TissuePreparation" column="TissuePreparationId" not-null="true"/>
-      <property name="Number" column="RecordingNumber" not-null="true"/>
+      <many-to-one name="Tissue" column="TissueId" />
+      <many-to-one name="Condition" column="ConditionId" />
+      <property name="Number" column="RecordingNumber" />
     </natural-id>
-    <property name="MeaRows" column="MeaRows" not-null="false" />
-    <property name="MeaColumns" column="MeaColumns" not-null="false"/>
-    <property name="Comments" column="Comments" not-null="true" />
-    <set name="Channels" table="Channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="RecordingId" not-null="true"/>
+    <property name="MeaRows" column="MeaRows"  />
+    <property name="MeaColumns" column="MeaColumns" />
+    <property name="Comments" column="Comments" />
+    <set name="Channels" table="channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" />
       <one-to-many class="Channel"/>
     </set>
   </class>
