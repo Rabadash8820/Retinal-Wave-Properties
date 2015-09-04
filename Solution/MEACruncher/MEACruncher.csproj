@@ -127,7 +127,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exceptions\IncorrectDbVersionException.cs" />
     <Compile Include="Forms\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,8 +145,6 @@
     <Compile Include="Forms\ViewForms\ViewProjectsForm.Designer.cs">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MementoManager.cs" />
-    <Compile Include="DbWrapper.cs" />
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
     <Compile Include="Events\EntityUpdatedEvent.cs" />
     <Compile Include="EntityManager.cs" />
@@ -190,7 +187,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
-    <Compile Include="Util.cs" />
     <EmbeddedResource Include="Forms\NewForms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -243,12 +239,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NeuroData\MeaData.csproj">
-      <Project>{b6af7cec-f339-4e94-9260-b764dd5d6fa8}</Project>
-      <Name>MeaData</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
@@ -281,6 +271,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MeaDataSql.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MeaData\MeaData.csproj">
+      <Project>{b6af7cec-f339-4e94-9260-b764dd5d6fa8}</Project>
+      <Name>MeaData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{63dcaa52-1bcf-4036-9c93-71cee4b2d234}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

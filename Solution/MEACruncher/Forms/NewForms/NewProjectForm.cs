@@ -70,17 +70,17 @@ namespace MEACruncher.Forms {
         // HELPER FUNCTIONS
         private void setDataBindings() {
             TitleTxt.DataBindings.Add(
-                Util.GetPropertyName((TextBox c) => c.Text),
+                Util.Util.GetPropertyName((TextBox c) => c.Text),
                 _boundEntity,
-                Util.GetPropertyName((Project e) => e.Name));
+                Util.Util.GetPropertyName((Project e) => e.Name));
             DateStartedPicker.DataBindings.Add(
-                Util.GetPropertyName((DateTimePicker c) => c.Value),
+                Util.Util.GetPropertyName((DateTimePicker c) => c.Value),
                 _boundEntity,
-                Util.GetPropertyName((Project e) => e.DateStarted));
+                Util.Util.GetPropertyName((Project e) => e.DateStarted));
             CommentsTxt.DataBindings.Add(
-                Util.GetPropertyName((TextBox c) => c.Text),
+                Util.Util.GetPropertyName((TextBox c) => c.Text),
                 _boundEntity,
-                Util.GetPropertyName((Project e) => e.Comments));
+                Util.Util.GetPropertyName((Project e) => e.Comments));
         }
         private void OnEntityCreated(Project entity) {
             if (this.EntityCreated == null)

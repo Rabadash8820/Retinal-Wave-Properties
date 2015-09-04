@@ -117,22 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Date" xml:space="preserve">
-    <value>Enter a date in the format "mm/dd/yyyy".</value>
-  </data>
-  <data name="EmailAddress" xml:space="preserve">
-    <value>Enter an Email like "frodo@shire.com".</value>
-  </data>
-  <data name="ExperimenterFullName" xml:space="preserve">
-    <value>Enter a name like "Frodo Baggins".</value>
-  </data>
-  <data name="Message" xml:space="preserve">
-    <value>{0} is not in the correct format.</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Enter a phone number in the format "(111) 222-3333".</value>
-  </data>
-  <data name="ProjectTitle" xml:space="preserve">
-    <value>You must provide a title for this Project.</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MeaDataSql" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MeaDataSql.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
 </root>

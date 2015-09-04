@@ -108,15 +108,6 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;.
-        /// </summary>
-        internal static string MySqlConnectionString {
-            get {
-                return ResourceManager.GetString("MySqlConnectionString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NeuronBackground {

@@ -1,4 +1,5 @@
-﻿using MeaData;
+﻿using Util;
+using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
 
@@ -20,8 +21,6 @@ namespace MEACruncher.Forms {
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
-
-            _mementoMgr = new MementoManager();
 
             setDataBindings();
             loadEntities();
@@ -58,13 +57,13 @@ namespace MEACruncher.Forms {
             int col = e.ColumnIndex;
             DataGridViewCell cell = EntitiesDGV.Rows[e.RowIndex].Cells[col];
             if (col == TitleCol.Index) {
-                bool valid = Util.validText(RegexRes.NonEmpty, e.FormattedValue as string);
+                bool valid = Validator.Text(RegexRes.NonEmpty, e.FormattedValue as string);
                 cell.ErrorText = (valid ? "" : ValidateRes.ProjectTitle);
             }
 
             // Check that a valid start date was provided
             else if (col == DateStartedCol.Index) {
-                string validStr = Util.validDate(
+                string validStr = Validator.Date(
                     e.FormattedValue as string,
                     new DateTime(1970, 1, 1),
                     DateTime.Today);
@@ -132,9 +131,9 @@ namespace MEACruncher.Forms {
 
         // HELPER FUNCTIONS
         private void setDataBindings() {
-            TitleCol.DataPropertyName = Util.GetPropertyName((Project e) => e.Name);
-            DateStartedCol.DataPropertyName = Util.GetPropertyName((Project e) => e.DateStarted);
-            CommentsCol.DataPropertyName = Util.GetPropertyName((Project e) => e.Comments);
+            TitleCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.Name);
+            DateStartedCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.DateStarted);
+            CommentsCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.Comments);
         }
         private void loadEntities() {
             // Select Entities from the database

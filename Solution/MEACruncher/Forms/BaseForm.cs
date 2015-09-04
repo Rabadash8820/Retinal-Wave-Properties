@@ -3,6 +3,8 @@ using System.Windows.Forms;
 
 using NHibernate;
 
+using Util;
+
 namespace MEACruncher.Forms {
 
     internal partial class BaseForm : Form {

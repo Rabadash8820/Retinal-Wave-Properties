@@ -5,8 +5,8 @@ using NHibernate.Event.Default;
 using NC = NHibernate.Cfg;
 
 using MeaData;
-using MEACruncher.Exceptions;
-using P = MEACruncher.Properties;
+using Util.Exceptions;
+using Util.Properties;
 
 using System;
 using System.IO;
@@ -20,7 +20,7 @@ using System.Collections.Generic;
 
 using MySql.Data.MySqlClient;
 
-namespace MEACruncher {
+namespace Util {
 
     public class DbWrapper {
         // VARIABLES
@@ -72,7 +72,7 @@ namespace MEACruncher {
         // HELPER FUNCTIONS
         private void connectExistingDb(string dbName, string curVersion) {
             // Create the connection string for this MySQL database
-            string connStr = P.Resources.MySqlConnectionString;
+            string connStr = Resources.MySqlConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
             connStrBuilder.Database = dbName;
 
@@ -84,7 +84,7 @@ namespace MEACruncher {
             props[NC.Environment.BatchSize] = "50";
             props[NC.Environment.ConnectionString] = connStrBuilder.ConnectionString;
 #if DEBUG
-            props[NHibernate.Cfg.Environment.ShowSql] = @"true";
+            props[NC.Environment.ShowSql] = @"true";
 #endif
 
             // Create an NHibernate Configuration with the above properties
@@ -121,7 +121,7 @@ namespace MEACruncher {
         }
         private void importMySqlDb(string dbName, string importSql) {
             // Create the connection string for this MySQL database
-            string connStr = P.Resources.MySqlConnectionString;
+            string connStr = Resources.MySqlConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
 
             // Create a new database with the provided name
@@ -149,7 +149,7 @@ namespace MEACruncher {
         }
         private void updateExistingDb(string dbName, string importSql) {
             // Create the connection string for this MySQL database
-            string connStr = P.Resources.MySqlConnectionString;
+            string connStr = Resources.MySqlConnectionString;
             MySqlConnectionStringBuilder connStrBuilder = new MySqlConnectionStringBuilder(connStr);
 
             // Remove the old database with the provided name

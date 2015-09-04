@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace MEACruncher {
+namespace Util {
 
     public class Memento {
         // VARIABLES

@@ -1,33 +1,20 @@
 ﻿using System;
 using System.Linq;
-using System.Windows.Forms;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
-using MEACruncher.Resources;
+using Util.Properties;
 
-namespace MEACruncher {
+namespace Util {
 
-    static class Util {
-        /// <summary>
-        /// Get the name of a property from a property access lambda.
-        /// </summary>
-        /// <param name="propertyLambda">lambda expression of the form: '(Class c) => c.Property'</param>
-        /// <returns>The name of the property</returns>
-        public static string GetPropertyName<TModel, TProperty>(Expression<Func<TModel, TProperty>> propertyLambda) {
-            MemberExpression me = propertyLambda.Body as MemberExpression;
-            if (me == null)
-                throw new ArgumentException();
-            return me.Member.Name;
-        }
-
+    public static class Validator {
         /// <summary>
         /// Check whether a string matches a given regular expression.
         /// </summary>
         /// <param name="regex">A regular expression</param>
         /// <param name="text">The text to be matched against the regex pattern</param>
         /// <returns>True or false, depending on whether the text matched the regex pattern</returns>
-        public static bool validText(string regex, string text) {
+        public static bool Text(string regex, string text) {
             // Return whether the input has exactly one match
             Regex regexObj = new Regex(regex);
             int numMatches = regexObj.Matches(text).Count;
@@ -39,12 +26,12 @@ namespace MEACruncher {
         /// </summary>
         /// <param name="dateStr">The text to be interpreted as a DateTime</param>
         /// <returns>True or false, depending on whether the text is a valid DateTime expression</returns>
-        public static string validDate(string dateStr, DateTime earliest, DateTime latest) {
+        public static string Date(string dateStr, DateTime earliest, DateTime latest) {
             // Return false if the string isn't in the right format
-            bool isValidStr = validText(
-                Resources.RegexRes.Date,
+            bool isValidStr = Text(
+                Resources.DateRegex,
                 dateStr);
-            if (!isValidStr) return ValidateRes.Date;
+            if (!isValidStr) return Resources.EnterDateMsg;
 
             // Check that the numbers for month, day, and year are valid and are not after the current date
             bool isValidDate = false;
@@ -62,7 +49,7 @@ namespace MEACruncher {
             if (isValidDate)
                 return "";
             string message = String.Format(
-                ValidateRes.DateValue,
+                Resources.InvalidDateError,
                 earliest.ToShortDateString(),
                 latest.ToShortDateString());
             return message;

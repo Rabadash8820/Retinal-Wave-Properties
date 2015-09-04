@@ -1,15 +1,70 @@
-﻿using NHibernate;
+﻿using System;
+using System.Collections.Generic;
+
+using NHibernate;
+using NC = NHibernate.Cfg;
 using NUnit.Framework;
+using MySql.Data.MySqlClient;
+
+using MeaData;
+using MeaDataTest.Properties;
 
 namespace MeaDataTest {
 
     public class BaseTest {
 
         protected ISession _db;
+        private static ISessionFactory _sf;
 
-        public BaseTest() {            
-            _db = (new MeaDatabase()).OpenSession();
+        public BaseTest() {
+            _sf = CreateDb();
+            _db = _sf.OpenSession();
         }
+
+        public static ISessionFactory CreateDb() {
+            // Create a new database with the provided name
+            string connStr = "Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820";
+            using (MySqlConnection db = new MySqlConnection(connStr)) {
+                string sqlStr = "CREATE DATABASE meadata_test";
+                using (MySqlCommand createQuery = new MySqlCommand(sqlStr, db)) {
+                    db.Open();
+                    createQuery.ExecuteNonQuery();
+                    db.Close();
+                }
+            }
+
+            // Import the test database schema/data
+            connStr += ";Database=meadata_test";
+            using (MySqlConnection db = new MySqlConnection(connStr)) {
+                using (MySqlCommand cmd = new MySqlCommand()) {
+                    using (MySqlBackup backup = new MySqlBackup(cmd)) {
+                        cmd.Connection = db;
+                        db.Open();
+                        backup.ImportFromString(Resources.MeaDataSql);
+                        db.Close();
+                    }
+                }
+            }
+            
+            // Define the NHibernate configuration properties for the MySQL database
+            Dictionary<string, string> props = new Dictionary<string, string>();
+            props[NC.Environment.ConnectionProvider] = @"NHibernate.Connection.DriverConnectionProvider";
+            props[NC.Environment.Dialect] = @"NHibernate.Dialect.MySQL5Dialect";    // Note the 5
+            props[NC.Environment.ConnectionDriver] = @"NHibernate.Driver.MySqlDataDriver";
+            props[NC.Environment.BatchSize] = "50";
+            props[NC.Environment.ConnectionString] = connStr;
+            props[NC.Environment.ShowSql] = @"true";
+
+            // Create an NHibernate Configuration with the above properties
+            NC.Configuration config = new NC.Configuration();
+            config.SetProperties(props);
+            config.AddAssembly(typeof(Entity).Assembly);
+
+            // Create a SessionFactory with this Configuration
+            ISessionFactory sf = config.BuildSessionFactory();
+            return sf;
+        }
+
 
     }
 

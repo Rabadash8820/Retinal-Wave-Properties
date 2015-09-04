@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MEACruncher.Resources {
+namespace Util.Properties {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace MEACruncher.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ValidateRes {
+    internal class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ValidateRes() {
+        internal Resources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace MEACruncher.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.ValidateRes", typeof(ValidateRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Util.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,56 +61,38 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string DateRegex {
+            get {
+                return ResourceManager.GetString("DateRegex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter a date in the format &quot;mm/dd/yyyy&quot;..
         /// </summary>
-        internal static string Date {
+        internal static string EnterDateMsg {
             get {
-                return ResourceManager.GetString("Date", resourceCulture);
+                return ResourceManager.GetString("EnterDateMsg", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter an Email like &quot;frodo@shire.com&quot;..
+        ///   Looks up a localized string similar to Enter a valid date between {0} and {1}..
         /// </summary>
-        internal static string EmailAddress {
+        internal static string InvalidDateError {
             get {
-                return ResourceManager.GetString("EmailAddress", resourceCulture);
+                return ResourceManager.GetString("InvalidDateError", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter a name like &quot;Frodo Baggins&quot;..
+        ///   Looks up a localized string similar to Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;.
         /// </summary>
-        internal static string ExperimenterFullName {
+        internal static string MySqlConnectionString {
             get {
-                return ResourceManager.GetString("ExperimenterFullName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is not in the correct format..
-        /// </summary>
-        internal static string Message {
-            get {
-                return ResourceManager.GetString("Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a phone number in the format &quot;(111) 222-3333&quot;..
-        /// </summary>
-        internal static string PhoneNumber {
-            get {
-                return ResourceManager.GetString("PhoneNumber", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You must provide a title for this Project..
-        /// </summary>
-        internal static string ProjectTitle {
-            get {
-                return ResourceManager.GetString("ProjectTitle", resourceCulture);
+                return ResourceManager.GetString("MySqlConnectionString", resourceCulture);
             }
         }
     }

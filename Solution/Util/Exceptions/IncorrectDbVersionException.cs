@@ -2,7 +2,7 @@
 using System.Data.Common;
 using MySql.Data.MySqlClient;
 
-namespace MEACruncher.Exceptions {
+namespace Util.Exceptions {
 
     class IncorrectDbVersionException : DbException {
         // CONSTRUCTORS
