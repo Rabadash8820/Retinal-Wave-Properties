@@ -16,7 +16,6 @@ namespace MEACruncher.Forms {
         // ENCAPSULATED FIELDS
         DataGridViewColumn _sortColumn;
         string _sortDirection;
-        MementoManager _mementoMgr;
         
         // INTERFACE
         public ViewProjectsForm() {

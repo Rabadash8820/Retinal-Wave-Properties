@@ -7,6 +7,7 @@ namespace MeaData {
         // VARIABLES
         private ISet<Tissue> _tissues;
         private ISet<Project> _projects;
+        private ISet<Condition> _conditions;
 
         // CONSTRUCTORS
         public Population() {
@@ -14,6 +15,9 @@ namespace MeaData {
         }
         public Population(Guid g) : base(g) {
             this.Construct();
+        }
+        public virtual ISet<Condition> Conditions {
+            get { return _conditions; }
         }
 
         // PROPERTIES
@@ -34,6 +38,7 @@ namespace MeaData {
         private void Construct(){
             _tissues = new HashSet<Tissue>();
             _projects = new HashSet<Project>();
+            _conditions = new HashSet<Condition>();
         }
         public override object Clone() {
             return Population.Clone(this, new EntityMap());
@@ -55,6 +60,8 @@ namespace MeaData {
                     clone.Tissues.Add(Tissue.Clone(t, map));
                 foreach (Project proj in p.Projects)
                     clone.Projects.Add(Project.Clone(proj, map));
+                foreach (Condition c in p.Conditions)
+                    clone.Conditions.Add(Condition.Clone(c, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

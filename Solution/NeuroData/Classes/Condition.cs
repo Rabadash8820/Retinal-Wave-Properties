@@ -6,6 +6,7 @@ namespace MeaData {
     public class Condition : Entity {
         // VARIABLES
         private ISet<Recording> _recordings;
+        private ISet<Population> _populations;
 
         // CONSTRUCTORS
         public Condition() {
@@ -21,10 +22,14 @@ namespace MeaData {
         public virtual ISet<Recording> Recordings {
             get { return _recordings; }
         }
+        public virtual ISet<Population> Populations {
+            get { return _populations; }
+        }
 
         // FUNCTIONS
         private void Construct() {
             _recordings = new HashSet<Recording>();
+            _populations = new HashSet<Population>();
         }
         public override object Clone() {
             return Condition.Clone(this, new EntityMap());
@@ -44,6 +49,8 @@ namespace MeaData {
                 clone.Comments = c.Comments;
                 foreach (Recording r in c.Recordings)
                     clone.Recordings.Add(Recording.Clone(r, map));
+                foreach (Population p in c.Populations)
+                    clone.Populations.Add(Population.Clone(p, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

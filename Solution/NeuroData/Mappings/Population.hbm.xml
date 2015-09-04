@@ -17,5 +17,9 @@
       <key unique="true" column="PopulationId" />
       <many-to-many class="Tissue" column="TissueId" />
     </set>
+    <set name="Conditions" table="population_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" />
+      <many-to-many class="Condition" column="ConditionId" />
+    </set>
   </class>
 </hibernate-mapping>

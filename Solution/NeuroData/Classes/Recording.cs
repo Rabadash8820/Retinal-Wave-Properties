@@ -7,6 +7,7 @@ namespace MeaData {
         // VARIABLES
         private ISet<RecordingFile> _files;
         private ISet<Channel> _channels;
+        private ISet<Condition> _conditions;
 
         // CONSTRUCTORS
         public Recording() {
@@ -29,11 +30,15 @@ namespace MeaData {
         public virtual ISet<Channel> Channels {
             get { return _channels; }
         }
+        public virtual ISet<Condition> Conditions {
+            get { return _conditions; }
+        }
 
         // FUNCTIONS
         private void Construct() {
             _files = new HashSet<RecordingFile>();
             _channels = new HashSet<Channel>();
+            _conditions = new HashSet<Condition>();
         }
         public override object Clone() {
             return Recording.Clone(this, new EntityMap());
@@ -57,6 +62,8 @@ namespace MeaData {
                     clone.Files.Add(RecordingFile.Clone(rf, map));
                 foreach (Channel ch in r.Channels)
                     clone.Channels.Add(Channel.Clone(ch, map));
+                foreach (Condition c in r.Conditions)
+                    clone.Conditions.Add(Condition.Clone(c, map));
             }
 
             // Clone any remaining object members of the object, and return the clone

@@ -80,7 +80,7 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.9.
+        ///   Looks up a localized string similar to 3.10.
         /// </summary>
         internal static string MeaDataDbVersion {
             get {

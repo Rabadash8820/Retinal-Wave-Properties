@@ -104,6 +104,19 @@ CREATE TABLE `model_organisms` (
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `population_conditions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `population_conditions` (
+  `Id` char(36) NOT NULL,
+  `PopulationId` char(36) NOT NULL,
+  `ConditionId` char(36) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `PopulationCondition` (`PopulationId`,`ConditionId`),
+  KEY `Population` (`PopulationId`),
+  KEY `Condition` (`ConditionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `population_tissues`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -126,14 +139,12 @@ CREATE TABLE `populations` (
   `TissueId` char(36) DEFAULT NULL,
   `Age` double DEFAULT NULL COMMENT 'The age of the organism from which this preparation was made',
   `AgeUnitId` char(36) DEFAULT NULL COMMENT 'Unit for the age.  Could be embryonic days, postnatal days, years, etc.',
-  `ConditionId` char(36) DEFAULT NULL,
   `Comments` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Population` (`StrainId`,`TissueId`,`Age`,`AgeUnitId`),
   KEY `StrainId` (`StrainId`),
   KEY `TissueId` (`TissueId`),
-  KEY `Age` (`AgeUnitId`,`Age`),
-  KEY `Condition` (`ConditionId`)
+  KEY `Age` (`AgeUnitId`,`Age`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `project_populations`;
@@ -161,6 +172,19 @@ CREATE TABLE `projects` (
   KEY `Project` (`Name`,`DateStarted`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+DROP TABLE IF EXISTS `recording_conditions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `recording_conditions` (
+  `Id` char(36) NOT NULL,
+  `RecordingId` char(36) DEFAULT NULL,
+  `ConditionId` char(36) DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `RecordingCondition` (`RecordingId`,`ConditionId`),
+  KEY `Recording` (`RecordingId`),
+  KEY `Condition` (`ConditionId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 DROP TABLE IF EXISTS `recording_files`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
@@ -180,16 +204,14 @@ DROP TABLE IF EXISTS `recordings`;
 CREATE TABLE `recordings` (
   `Id` char(36) NOT NULL,
   `TissueId` char(36) DEFAULT NULL,
-  `ConditionId` char(36) DEFAULT NULL,
   `RecordingNumber` tinyint(4) DEFAULT '0' COMMENT 'Indicates the order of recordings of a single tissue preparation.  E.g., 2 for the second recording',
   `Duration` double DEFAULT '0' COMMENT 'The total duration of this recording, including all files.',
   `MeaRows` int(11) DEFAULT '8' COMMENT 'Number of rows on the MEA used to make this recording',
   `MeaColumns` int(11) DEFAULT '8' COMMENT 'Number of columns on the MEA used to make this recording',
   `Comments` text,
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `Recording` (`TissueId`,`ConditionId`,`RecordingNumber`),
+  UNIQUE KEY `Recording` (`TissueId`,`RecordingNumber`),
   KEY `Duration` (`Duration`),
-  KEY `Condition` (`ConditionId`),
   KEY `TissueId` (`TissueId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -323,7 +345,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.9');
+INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.10');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

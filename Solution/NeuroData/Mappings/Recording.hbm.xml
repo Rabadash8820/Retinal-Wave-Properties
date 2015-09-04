@@ -6,7 +6,6 @@
     </id>
     <natural-id mutable="true">
       <many-to-one name="Tissue" column="TissueId" />
-      <many-to-one name="Condition" column="ConditionId" />
       <property name="Number" column="RecordingNumber" />
     </natural-id>
     <property name="MeaRows" column="MeaRows"  />
@@ -15,6 +14,10 @@
     <set name="Channels" table="channels" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
       <key unique="true" column="RecordingId" />
       <one-to-many class="Channel"/>
+    </set>
+    <set name="Conditions" table="recording_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" />
+      <many-to-many class="Condition" column="ConditionId" />
     </set>
   </class>
 </hibernate-mapping>
