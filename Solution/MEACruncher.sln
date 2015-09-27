@@ -13,9 +13,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaDataTest", "MeaDataTest\MeaDataTest.csproj", "{DAA49B8A-04A9-4E49-BA9E-199967994A36}"
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "Danstaller", "Danstaller\Danstaller.isproj", "{DC366FDF-24DA-4D77-A574-CF50CF02DDF6}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6CF3287A-9453-48A6-B6C9-30180813DED2} = {6CF3287A-9453-48A6-B6C9-30180813DED2}
-	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Util", "Util\Util.csproj", "{63DCAA52-1BCF-4036-9C93-71CEE4B2D234}"
 	ProjectSection(ProjectDependencies) = postProject

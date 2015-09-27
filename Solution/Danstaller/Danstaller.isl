@@ -344,7 +344,6 @@
 		<row><td>ISO19770_SystemTag</td><td>{82BFC818-C546-4C71-8811-4E48FC60F47C}</td><td>CommonAppDataFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{0F96685D-4622-41CD-8D43-E427634FB6D8}</td><td>CommonFiles64Folder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{C211C0AC-0274-4317-AEDD-728E38D02891}</td><td>ProgramFiles64Folder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MEACruncher.Source_Files</td><td>{BF028A32-546B-43E4-88AD-72085B27D27F}</td><td>INSTALLDIR</td><td>258</td><td/><td>meacruncher.source_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>MEACruncher.exe</td><td>{2EC54C9D-0BAB-43EC-8B52-025336774C37}</td><td>INSTALLDIR</td><td>258</td><td/><td>meacruncher.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
@@ -1060,7 +1059,6 @@
 		<row><td>INSTALLDIR</td><td>ISO19770_SystemTag</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>INSTALLDIR</td><td>MEACruncher.Source_Files</td></row>
 		<row><td>INSTALLDIR</td><td>MEACruncher.exe</td></row>
 		<row><td>ProgramFiles64Folder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
@@ -1880,7 +1878,6 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>AlwaysInstall</td><td>MEACruncher.Source_Files</td></row>
 		<row><td>AlwaysInstall</td><td>MEACruncher.exe</td></row>
 	</table>
 
@@ -1897,7 +1894,6 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>meacruncher.exe</td><td>MEACruncher.exe</td><td>MEACRU~1.EXE|MEACruncher.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Dan_Programming\Programs\In_Development\MEA-Cruncher\Solution\MEACruncher\bin\x64\Release\MEACruncher.exe</td><td>1</td><td/></row>
-		<row><td>meacruncher.source_files</td><td>MEACruncher.Source_Files</td><td>MEACruncher.Source Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;MEACruncher&gt;|SourceFiles</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2044,7 +2040,6 @@
 		<row><td>ISO19770_SystemTag</td><td/><td/><td>_403A4691_A74C_4666_B18B_CB79DB052897_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D237A687_D10C_49B6_B9CA_7789DE5DCC0E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_27830E21_3580_4C84_9B78_07C2435D0022_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MEACruncher.Source_Files</td><td/><td/><td>_99E0FF08_1698_4F7B_B05C_600E7BECB87E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>MEACruncher.exe</td><td/><td/><td>_FB82E512_1E4B_4450_9795_1B61090BAFE0_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
@@ -3998,7 +3993,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{39645547-7DE1-4973-B9B5-F31D6BDDDE2A}</td></row>
 		<row><td>ISUSSignature</td><td>{6A8AFA6C-6E63-4F3B-8E46-EB3FC1F9CB11}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewAppFiles,viewLearnMore,viewProject,viewUpgradePaths,viewUpdateService,viewObjects,viewShortcuts,viewRelease,viewSystemSearch</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewISToday,viewAppFiles,viewLearnMore,viewProject,viewUpgradePaths,viewUpdateService,viewObjects,viewShortcuts,viewRelease,viewSystemSearch,viewUI,viewTextMessages,viewCustomActions</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
