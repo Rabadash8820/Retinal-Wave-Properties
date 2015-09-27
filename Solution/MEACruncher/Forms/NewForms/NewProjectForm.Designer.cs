@@ -33,8 +33,6 @@
             this.BottomPanel = new System.Windows.Forms.Panel();
             this.CreateBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
-            this.RedoBtn = new System.Windows.Forms.Button();
-            this.UndoBtn = new System.Windows.Forms.Button();
             this.MainTableLayout.SuspendLayout();
             this.BottomPanel.SuspendLayout();
             this.SuspendLayout();
@@ -119,8 +117,6 @@
             this.MainTableLayout.SetColumnSpan(this.BottomPanel, 2);
             this.BottomPanel.Controls.Add(this.CreateBtn);
             this.BottomPanel.Controls.Add(this.CancelBtn);
-            this.BottomPanel.Controls.Add(this.RedoBtn);
-            this.BottomPanel.Controls.Add(this.UndoBtn);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomPanel.Location = new System.Drawing.Point(3, 176);
             this.BottomPanel.Name = "BottomPanel";
@@ -149,26 +145,6 @@
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
-            // 
-            // RedoBtn
-            // 
-            this.RedoBtn.Location = new System.Drawing.Point(84, 3);
-            this.RedoBtn.Name = "RedoBtn";
-            this.RedoBtn.Size = new System.Drawing.Size(75, 23);
-            this.RedoBtn.TabIndex = 0;
-            this.RedoBtn.Text = "Redo";
-            this.RedoBtn.UseVisualStyleBackColor = true;
-            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
-            // 
-            // UndoBtn
-            // 
-            this.UndoBtn.Location = new System.Drawing.Point(3, 3);
-            this.UndoBtn.Name = "UndoBtn";
-            this.UndoBtn.Size = new System.Drawing.Size(75, 23);
-            this.UndoBtn.TabIndex = 0;
-            this.UndoBtn.Text = "Undo";
-            this.UndoBtn.UseVisualStyleBackColor = true;
-            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
             // 
             // NewProjectForm
             // 
@@ -203,7 +179,5 @@
         private System.Windows.Forms.Panel BottomPanel;
         private System.Windows.Forms.Button CreateBtn;
         private System.Windows.Forms.Button CancelBtn;
-        private System.Windows.Forms.Button RedoBtn;
-        private System.Windows.Forms.Button UndoBtn;
     }
 }

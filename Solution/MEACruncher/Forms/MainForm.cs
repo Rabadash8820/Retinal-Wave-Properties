@@ -7,14 +7,9 @@ using MEACruncher.Properties;
 namespace MEACruncher.Forms {
 
     internal partial class MainForm : Form {
-        // ENCAPSULATED FIELDS
-        private double _aspectRatio;
-
         // CONSTRUCTOR
         public MainForm() {
             InitializeComponent();
-
-            _aspectRatio = (double)this.Height / (double)this.Width;
         }
 
         // EVENT HANDLERS

@@ -33,8 +33,7 @@
             this.CloseBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.NewBtn = new System.Windows.Forms.Button();
-            this.RedoBtn = new System.Windows.Forms.Button();
-            this.UndoBtn = new System.Windows.Forms.Button();
+            this.DeleteBtn = new System.Windows.Forms.Button();
             this.MainTblLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -92,11 +91,10 @@
             // 
             // BottomPanel
             // 
+            this.BottomPanel.Controls.Add(this.DeleteBtn);
             this.BottomPanel.Controls.Add(this.CloseBtn);
             this.BottomPanel.Controls.Add(this.EditBtn);
             this.BottomPanel.Controls.Add(this.NewBtn);
-            this.BottomPanel.Controls.Add(this.RedoBtn);
-            this.BottomPanel.Controls.Add(this.UndoBtn);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.BottomPanel.Location = new System.Drawing.Point(3, 186);
             this.BottomPanel.Name = "BottomPanel";
@@ -117,8 +115,7 @@
             // 
             // EditBtn
             // 
-            this.EditBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditBtn.Location = new System.Drawing.Point(355, 3);
+            this.EditBtn.Location = new System.Drawing.Point(84, 3);
             this.EditBtn.Name = "EditBtn";
             this.EditBtn.Size = new System.Drawing.Size(75, 23);
             this.EditBtn.TabIndex = 0;
@@ -128,8 +125,7 @@
             // 
             // NewBtn
             // 
-            this.NewBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.NewBtn.Location = new System.Drawing.Point(274, 3);
+            this.NewBtn.Location = new System.Drawing.Point(3, 3);
             this.NewBtn.Name = "NewBtn";
             this.NewBtn.Size = new System.Drawing.Size(75, 23);
             this.NewBtn.TabIndex = 0;
@@ -137,25 +133,15 @@
             this.NewBtn.UseVisualStyleBackColor = true;
             this.NewBtn.Click += new System.EventHandler(this.NewBtn_Click);
             // 
-            // RedoBtn
+            // DeleteBtn
             // 
-            this.RedoBtn.Location = new System.Drawing.Point(90, 3);
-            this.RedoBtn.Name = "RedoBtn";
-            this.RedoBtn.Size = new System.Drawing.Size(75, 23);
-            this.RedoBtn.TabIndex = 0;
-            this.RedoBtn.Text = "Redo";
-            this.RedoBtn.UseVisualStyleBackColor = true;
-            this.RedoBtn.Click += new System.EventHandler(this.RedoBtn_Click);
-            // 
-            // UndoBtn
-            // 
-            this.UndoBtn.Location = new System.Drawing.Point(9, 3);
-            this.UndoBtn.Name = "UndoBtn";
-            this.UndoBtn.Size = new System.Drawing.Size(75, 23);
-            this.UndoBtn.TabIndex = 0;
-            this.UndoBtn.Text = "Undo";
-            this.UndoBtn.UseVisualStyleBackColor = true;
-            this.UndoBtn.Click += new System.EventHandler(this.UndoBtn_Click);
+            this.DeleteBtn.Location = new System.Drawing.Point(165, 3);
+            this.DeleteBtn.Name = "DeleteBtn";
+            this.DeleteBtn.Size = new System.Drawing.Size(75, 23);
+            this.DeleteBtn.TabIndex = 1;
+            this.DeleteBtn.Text = "Delete";
+            this.DeleteBtn.UseVisualStyleBackColor = true;
+            this.DeleteBtn.Click += new System.EventHandler(this.DeleteBtn_Click);
             // 
             // ViewProjectsForm
             // 
@@ -188,7 +174,6 @@
         private System.Windows.Forms.Button CloseBtn;
         private System.Windows.Forms.Button EditBtn;
         private System.Windows.Forms.Button NewBtn;
-        private System.Windows.Forms.Button RedoBtn;
-        private System.Windows.Forms.Button UndoBtn;
+        private System.Windows.Forms.Button DeleteBtn;
     }
 }

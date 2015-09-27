@@ -28,16 +28,19 @@ namespace MEACruncher.Forms {
         public event EntityUpdatedEventHandler EntityUpdated;
 
         // EVENT HANDLERS
-        private void CloseBtn_Click(object sender, System.EventArgs e) {
-            this.Close();
-        }
-        private void EditBtn_Click(object sender, System.EventArgs e) {
-
-        }
         private void NewBtn_Click(object sender, System.EventArgs e) {
             NewProjectForm form = new NewProjectForm();
             form.EntityCreated += NewForm_EntityCreated;
             form.ShowDialog();
+        }
+        private void EditBtn_Click(object sender, System.EventArgs e) {
+
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e) {
+
+        }
+        private void CloseBtn_Click(object sender, System.EventArgs e) {
+            this.Close();
         }
         private void UndoBtn_Click(object sender, System.EventArgs e) {
 
@@ -63,11 +66,17 @@ namespace MEACruncher.Forms {
 
             // Check that a valid start date was provided
             else if (col == DateStartedCol.Index) {
-                string validStr = Validator.Date(
-                    e.FormattedValue as string,
-                    new DateTime(1970, 1, 1),
-                    DateTime.Today);
-                cell.ErrorText = validStr;
+                string errText = "";
+                string dateStr = e.FormattedValue as string;
+                DateTime latest = DateTime.Today;
+                DateTime earliest = new DateTime(1970, 1, 1);
+                bool validDate = Validator.Date(dateStr, earliest, latest);
+                if (!validDate) {
+                    errText = String.Format(ValidateRes.InvalidDateError,
+                        earliest.ToShortDateString(),
+                        latest.ToShortDateString());
+                }
+                cell.ErrorText = errText;
             }
         }
         private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
@@ -140,8 +149,7 @@ namespace MEACruncher.Forms {
             IList<Project> entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
-            BindingSource bs = new BindingSource();
-            bs.DataSource = entities;
+            BindingSource bs = new BindingSource(entities, null) { AllowNew = true };
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataSource = bs;
         }
@@ -159,6 +167,7 @@ namespace MEACruncher.Forms {
                     subscriber.DynamicInvoke(this, args);
             }
         }
+
 
 
     }
