@@ -137,8 +137,7 @@ namespace MEACruncher.Forms {
         }
         private void loadEntities() {
             // Select Entities from the database
-            IList<Project> entities;
-            entities = _db.QueryOver<Project>().List();
+            IList<Project> entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
             BindingSource bs = new BindingSource();
