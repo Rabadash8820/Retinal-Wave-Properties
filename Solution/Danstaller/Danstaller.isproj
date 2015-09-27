@@ -29,4 +29,10 @@
 	</ItemGroup>
 	<Import Project="$(MSBuildExtensionsPath32)\InstallShield\2015Limited\InstallShield.targets"/>
 	<ItemGroup/>
+	<ItemGroup>
+		<ProjectReference Include="..\MEACruncher\MEACruncher.csproj">
+			<Name>MEACruncher</Name>
+			<Project>{6CF3287A-9453-48A6-B6C9-30180813DED2}</Project>
+		</ProjectReference>
+	</ItemGroup>
 </Project>
