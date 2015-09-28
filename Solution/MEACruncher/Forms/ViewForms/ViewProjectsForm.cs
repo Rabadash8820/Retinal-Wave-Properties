@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
-    internal partial class ViewProjectsForm : BaseForm {        
+    internal partial class ViewProjectsForm : Form {
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
@@ -35,6 +35,10 @@ namespace MEACruncher.Forms {
 
         }
         private void DeleteBtn_Click(object sender, EventArgs e) {
+            if (EntitiesDGV.SelectedRows.Count == 0)
+                return;
+
+            // If some DataGridViewRows are selected, then remove them and delete their data
             IEnumerable<Project> entities = EntitiesDGV.SelectedRows.Cast<DataGridViewRow>().Select(r => r.DataBoundItem as Project);
             DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
             foreach (Project p in entities)
