@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SortableBindingList.cs" />
     <Compile Include="Controls\CalendarColumn.cs" />
     <Compile Include="Controls\CalendarEditingControl.cs">
       <SubType>Component</SubType>

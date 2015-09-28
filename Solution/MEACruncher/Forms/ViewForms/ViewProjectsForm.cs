@@ -119,20 +119,6 @@ namespace MEACruncher.Forms {
             // Fire the EntityUpdated event
             this.OnEntityUpdated(entity);
         }
-        private void EntitiesDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-            DataGridViewColumn column = EntitiesDGV.Columns[e.ColumnIndex];
-
-            _sortDirection = (_sortColumn == null) ? "ASC" : "DESC";
-
-            BindingSource bs = EntitiesDGV.DataSource as BindingSource;
-            IList<Project> entities = bs.DataSource as IList<Project>;
-            //bs.DataSource = entities.OrderBy(p => p.GetType().GetProperty(column.DataPropertyName), new Comparer());
-            //   string.Format("it.{0} {1}", column.DataPropertyName, _sortDirection)).ToList();
-
-            if (_sortColumn != null) _sortColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
-            column.HeaderCell.SortGlyphDirection = (_sortDirection == "ASC") ? SortOrder.Ascending : SortOrder.Descending;
-            _sortColumn = column;
-        }
 
         void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
             loadEntities();
@@ -149,7 +135,13 @@ namespace MEACruncher.Forms {
             IList<Project> entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
-            BindingSource bs = new BindingSource(entities, null) { AllowNew = true };
+            SortableBindingList<Project> list = new SortableBindingList<Project>(entities) {
+                Sortable = true,
+                AllowEdit = true,
+                AllowNew = true,
+                AllowRemove = true
+            };
+            BindingSource bs = new BindingSource(list, null) { AllowNew = true };
             EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataSource = bs;
         }
@@ -168,7 +160,10 @@ namespace MEACruncher.Forms {
             }
         }
 
-
+        private void button1_Click(object sender, EventArgs e) {
+            Project p = EntitiesDGV.CurrentRow.DataBoundItem as Project;
+            p.Name = "DERP";
+        }
 
     }
 
