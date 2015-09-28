@@ -10,7 +10,8 @@ Moreover, this project represents a sort of culmination of my understing of Visu
 
 ## Latest Release - v0.1.0
 
-The latest version of MEA Cruncher will soon be available for download on my [personal webpage](http://dan-vicarel.com/).  In the meantime, you can download the source and build it yourself in Visual Studio 2013.
+The latest version of MEA Cruncher will always be available for download on my [personal webpage](http://dan-vicarel.com/).
+You can also download the source and build it yourself in (only tested in Visual Studio 2013).
 
 **Note that MEA Cruncher is currently in development.  It should be considered unstable and likely to change, significantly and frequently.**
 
