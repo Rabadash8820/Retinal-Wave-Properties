@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
-    internal partial class ViewProjectsForm : Form {
+    internal partial class ViewProjectsForm : BaseForm {
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
