@@ -13,14 +13,12 @@ using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
-    internal partial class ViewProjectsForm : BaseForm {
-        // ENCAPSULATED FIELDS
-        DataGridViewColumn _sortColumn;
-        string _sortDirection;
-        
+    internal partial class ViewProjectsForm : BaseForm {        
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
+
+            EntitiesDGV.AutoGenerateColumns = false;
 
             setDataBindings();
             loadEntities();
@@ -37,7 +35,10 @@ namespace MEACruncher.Forms {
 
         }
         private void DeleteBtn_Click(object sender, EventArgs e) {
-
+            IEnumerable<Project> entities = EntitiesDGV.SelectedRows.Cast<DataGridViewRow>().Select(r => r.DataBoundItem as Project);
+            DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
+            foreach (Project p in entities)
+                list.Remove(p);
         }
         private void CloseBtn_Click(object sender, System.EventArgs e) {
             this.Close();
@@ -119,9 +120,15 @@ namespace MEACruncher.Forms {
             // Fire the EntityUpdated event
             this.OnEntityUpdated(entity);
         }
+        private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            // Deleting rows fires this event with a Display Context for some reason...
+            if (e.Context != DataGridViewDataErrorContexts.Display)
+                e.ThrowException = true;
+        }
 
         void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
-            loadEntities();
+            DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
+            list.Add(e.Entity as Project);
         }
 
         // HELPER FUNCTIONS
@@ -135,14 +142,16 @@ namespace MEACruncher.Forms {
             IList<Project> entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
-            SortableBindingList<Project> list = new SortableBindingList<Project>(entities) {
-                Sortable = true,
-                AllowEdit = true,
-                AllowNew = true,
-                AllowRemove = true
+            DbBoundList<Project> list = new DbBoundList<Project>(_db, entities) {
+                Sortable      = true,
+                AllowEdit     = true,
+                AllowNew      = true,
+                AllowRemove   = true,
+                HandleCreates = true,
+                HandleUpdates = false,
+                HandleDeletes = true
             };
             BindingSource bs = new BindingSource(list, null) { AllowNew = true };
-            EntitiesDGV.AutoGenerateColumns = false;
             EntitiesDGV.DataSource = bs;
         }
         private void OnEntityUpdated(Project entity) {
@@ -158,11 +167,6 @@ namespace MEACruncher.Forms {
                 else
                     subscriber.DynamicInvoke(this, args);
             }
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
-            Project p = EntitiesDGV.CurrentRow.DataBoundItem as Project;
-            p.Name = "DERP";
         }
 
     }

@@ -103,9 +103,8 @@ namespace Util {
         /// </summary>
         /// <param name="index"></param>
         protected override void RemoveItem(int index) {
-            if (this.BeforeRemove != null) {
+            if (this.BeforeRemove != null)
                 BeforeRemove(this, new ListChangedEventArgs(ListChangedType.ItemDeleted, index));
-            }
 
             base.RemoveItem(index);
         }

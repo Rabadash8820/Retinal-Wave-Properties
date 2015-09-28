@@ -67,10 +67,10 @@ namespace MEACruncher.Forms {
             }
 
             // Otherwise, add this new Entity to the database
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Save(entity);
-                trans.Commit();
-            }
+            //using (ITransaction trans = _db.BeginTransaction()) {
+            //    _db.Save(entity);
+            //    trans.Commit();
+            //}
 
             // Fire the EntityCreated event and close
             this.OnEntityCreated(entity);
