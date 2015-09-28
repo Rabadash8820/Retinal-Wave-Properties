@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
+  <class name="Spike" table="spikes" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="Cell" column="CellId" />
+      <property name="Number" column="SpikeNumber" />
+    </natural-id>
+    <property name="Timestamp" column="Timestamp" />
+    <many-to-one name="Burst" column="BurstId" />
+  </class>
+</hibernate-mapping>

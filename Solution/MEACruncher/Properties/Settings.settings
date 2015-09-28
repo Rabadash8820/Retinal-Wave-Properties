@@ -1,0 +1,57 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MEACruncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ButtonBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">CornflowerBlue</Value>
+    </Setting>
+    <Setting Name="ControlFont" Type="System.Drawing.Font" Scope="Application">
+      <Value Profile="(Default)">Segoe UI, 10pt</Value>
+    </Setting>
+    <Setting Name="ContainerHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">35</Value>
+    </Setting>
+    <Setting Name="ControlHeight" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">25</Value>
+    </Setting>
+    <Setting Name="FormBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="LabelForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">CornflowerBlue</Value>
+    </Setting>
+    <Setting Name="ButtonForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="TextboxBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Indigo</Value>
+    </Setting>
+    <Setting Name="TextboxForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">MistyRose</Value>
+    </Setting>
+    <Setting Name="DgvHeaderBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">CornflowerBlue</Value>
+    </Setting>
+    <Setting Name="DgvHeaderForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="DgvCellBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Indigo</Value>
+    </Setting>
+    <Setting Name="DgvCellForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">MistyRose</Value>
+    </Setting>
+    <Setting Name="DgvGridColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Indigo</Value>
+    </Setting>
+    <Setting Name="DgvBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Black</Value>
+    </Setting>
+    <Setting Name="TabPageBackColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">Control</Value>
+    </Setting>
+    <Setting Name="TabPageForeColor" Type="System.Drawing.Color" Scope="Application">
+      <Value Profile="(Default)">CornflowerBlue</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
+  <class name="Strain" table="strains" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="Organism" column="OrganismId" />
+      <property name="Breeder" column="Breeder" />
+    </natural-id>
+    <property name="Name" column="Name" />
+    <property name="Comments" column="Comments" />
+    <set name="Tissues" table="Tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+      <key unique="true">
+        <column name="StrainId" />
+      </key>
+      <one-to-many class="Tissue"/>
+    </set>
+  </class>
+</hibernate-mapping>

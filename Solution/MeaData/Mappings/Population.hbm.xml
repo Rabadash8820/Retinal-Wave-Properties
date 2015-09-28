@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
+  <class name="Population" table="populations" dynamic-update="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="TissueType" column="TissueTypeId" />
+      <many-to-one name="Strain" column="StrainId" />
+      <property name="Comments" column="Comments" />
+    </natural-id>
+    <set name="Projects" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Project" column="ProjectId" />
+    </set>
+    <set name="Tissues" table="population_tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Tissue" column="TissueId" />
+    </set>
+    <set name="Conditions" table="population_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" />
+      <many-to-many class="Condition" column="ConditionId" />
+    </set>
+  </class>
+</hibernate-mapping>
