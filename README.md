@@ -1,5 +1,9 @@
 # MEA Cruncher
 
+<p align="center">
+  <img src="https://raw.github.com/Rabadash8820/MEA-Cruncher/master/Solution/Resources/Mea.png" alt="MEA Cruncher icon"/>
+</p>
+
 ## Overview
 
 This application is intended to replace the hodge podge of Excel macros that have accumulated during my data analysis work with Dr. Jordan Renna in the University of Akron Biology Department.
