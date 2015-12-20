@@ -51,7 +51,7 @@
             this.MainTblLayout.RowCount = 2;
             this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.MainTblLayout.Size = new System.Drawing.Size(520, 218);
+            this.MainTblLayout.Size = new System.Drawing.Size(499, 264);
             this.MainTblLayout.TabIndex = 0;
             // 
             // EntitiesDGV
@@ -65,7 +65,7 @@
             this.EntitiesDGV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EntitiesDGV.Location = new System.Drawing.Point(3, 3);
             this.EntitiesDGV.Name = "EntitiesDGV";
-            this.EntitiesDGV.Size = new System.Drawing.Size(514, 177);
+            this.EntitiesDGV.Size = new System.Drawing.Size(493, 223);
             this.EntitiesDGV.TabIndex = 0;
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
             this.EntitiesDGV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.EntitiesDGV_CellValidating);
@@ -96,9 +96,9 @@
             this.BottomPanel.Controls.Add(this.EditBtn);
             this.BottomPanel.Controls.Add(this.NewBtn);
             this.BottomPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.BottomPanel.Location = new System.Drawing.Point(3, 186);
+            this.BottomPanel.Location = new System.Drawing.Point(3, 232);
             this.BottomPanel.Name = "BottomPanel";
-            this.BottomPanel.Size = new System.Drawing.Size(514, 29);
+            this.BottomPanel.Size = new System.Drawing.Size(493, 29);
             this.BottomPanel.TabIndex = 1;
             // 
             // DeleteBtn
@@ -115,7 +115,7 @@
             // 
             this.CloseBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CloseBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CloseBtn.Location = new System.Drawing.Point(436, 3);
+            this.CloseBtn.Location = new System.Drawing.Point(415, 3);
             this.CloseBtn.Name = "CloseBtn";
             this.CloseBtn.Size = new System.Drawing.Size(75, 23);
             this.CloseBtn.TabIndex = 0;
@@ -148,7 +148,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CloseBtn;
-            this.ClientSize = new System.Drawing.Size(520, 218);
+            this.ClientSize = new System.Drawing.Size(499, 264);
             this.Controls.Add(this.MainTblLayout);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;

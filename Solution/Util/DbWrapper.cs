@@ -35,18 +35,18 @@ namespace Util {
 
         // METHODS
         public void Configure(Assembly a, string dbName, string version, string importSql) {
-            _assembly = a;
-
-            // Make sure an actual database name and SQL script file were provided
-            if (dbName == null || importSql == null)
-                throw new ArgumentException("No database name provided");
-            if (importSql == null)
-                throw new ArgumentException("SQL to import the database schema was not name provided");
-
             // If this DbWrapper is already configured, then just return            
             bool alreadyConfigured = (_sf != null);
             if (alreadyConfigured)
                 return;
+
+            _assembly = a;
+
+            // Make sure an actual database name and SQL script file were provided
+            if (dbName == null || importSql == null)
+                throw new ArgumentException("No database name provided", nameof(dbName));
+            if (importSql == null)
+                throw new ArgumentException("SQL to import the database schema was not name provided", nameof(importSql));
 
             // If not, then make the NHibernate connection, first importing the provided SQL file if necessary
             try {

@@ -8,14 +8,13 @@ using NHibernate;
 using System;
 using System.Linq;
 using System.Windows.Forms;
-using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
     internal partial class ViewProjectsForm : BaseForm {
         // INTERFACE
-        public ViewProjectsForm() {
+        public ViewProjectsForm() : base() {
             InitializeComponent();
 
             EntitiesDGV.AutoGenerateColumns = false;
@@ -26,12 +25,12 @@ namespace MEACruncher.Forms {
         public event EntityUpdatedEventHandler EntityUpdated;
 
         // EVENT HANDLERS
-        private void NewBtn_Click(object sender, System.EventArgs e) {
+        private void NewBtn_Click(object sender, EventArgs e) {
             NewProjectForm form = new NewProjectForm();
             form.EntityCreated += NewForm_EntityCreated;
             form.ShowDialog();
         }
-        private void EditBtn_Click(object sender, System.EventArgs e) {
+        private void EditBtn_Click(object sender, EventArgs e) {
 
         }
         private void DeleteBtn_Click(object sender, EventArgs e) {
@@ -44,13 +43,13 @@ namespace MEACruncher.Forms {
             foreach (Project p in entities)
                 list.Remove(p);
         }
-        private void CloseBtn_Click(object sender, System.EventArgs e) {
+        private void CloseBtn_Click(object sender, EventArgs e) {
             this.Close();
         }
-        private void UndoBtn_Click(object sender, System.EventArgs e) {
+        private void UndoBtn_Click(object sender, EventArgs e) {
 
         }
-        private void RedoBtn_Click(object sender, System.EventArgs e) {
+        private void RedoBtn_Click(object sender, EventArgs e) {
 
         }
 

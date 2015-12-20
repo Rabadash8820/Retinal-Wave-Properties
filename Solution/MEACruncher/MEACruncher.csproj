@@ -142,16 +142,16 @@
     <Compile Include="Forms\BaseForm.Designer.cs">
       <DependentUpon>BaseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NewForms\NewProjectForm.cs">
+    <Compile Include="Forms\NewProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NewForms\NewProjectForm.Designer.cs">
+    <Compile Include="Forms\NewProjectForm.Designer.cs">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ViewForms\ViewProjectsForm.cs">
+    <Compile Include="Forms\ViewProjectsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\ViewForms\ViewProjectsForm.Designer.cs">
+    <Compile Include="Forms\ViewProjectsForm.Designer.cs">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Events\EntitiesSelectedEvent.cs" />
@@ -196,10 +196,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ValidateRes.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\NewForms\NewProjectForm.resx">
+    <EmbeddedResource Include="Forms\NewProjectForm.resx">
       <DependentUpon>NewProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ViewForms\ViewProjectsForm.resx">
+    <EmbeddedResource Include="Forms\ViewProjectsForm.resx">
       <DependentUpon>ViewProjectsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\DeleteRes.resx">
@@ -265,8 +265,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Forms\AddForms\" />
-    <Folder Include="Forms\EditForms\" />
     <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
