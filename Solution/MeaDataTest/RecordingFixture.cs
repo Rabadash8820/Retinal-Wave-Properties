@@ -6,7 +6,7 @@ using MeaData;
 namespace MeaDataTest {
 
     [TestFixture]
-    public class RecordingTest : BaseTest {
+    public class RecordingFixture : BaseTestFixture {
 
         [Test]
         public void CanCrudOnRecordings() {

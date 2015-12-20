@@ -6,7 +6,7 @@ using MeaData;
 namespace MeaDataTest {
 
     [TestFixture]
-    public class TissueTypeTest : BaseTest {
+    public class TissueTypeFixture : BaseTestFixture {
 
         [Test]
         public void CanReadTissueTypes() {

@@ -11,13 +11,13 @@ using MeaDataTest.Properties;
 
 namespace MeaDataTest {
 
-    public class BaseTest {
+    public class BaseTestFixture {
         // HIDDEN FIELDS
         protected ISession _db;
         private static ISessionFactory _sf;
 
         // CONSTRUCTORS
-        public BaseTest() {
+        public BaseTestFixture() {
             _sf = BuildSessionFactory();
             _db = _sf.OpenSession();
         }
