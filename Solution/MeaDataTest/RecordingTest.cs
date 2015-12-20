@@ -1,6 +1,4 @@
-﻿using System;
-
-using NHibernate;
+﻿using NHibernate;
 using NUnit.Framework;
 
 using MeaData;

@@ -12,16 +12,21 @@ using MeaDataTest.Properties;
 namespace MeaDataTest {
 
     public class BaseTest {
-
+        // HIDDEN FIELDS
         protected ISession _db;
         private static ISessionFactory _sf;
 
+        // CONSTRUCTORS
         public BaseTest() {
-            _sf = CreateDb();
+            _sf = BuildSessionFactory();
             _db = _sf.OpenSession();
         }
 
-        public static ISessionFactory CreateDb() {
+        // INTERFACE FUNCTIONS
+        public static ISessionFactory BuildSessionFactory() {
+            bool alreadyBuilt = (_sf != null);
+            if (alreadyBuilt) return _sf;
+
             // Create a new database with the provided name
             string connStr = "Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820";
             using (MySqlConnection db = new MySqlConnection(connStr)) {
@@ -63,9 +68,7 @@ namespace MeaDataTest {
             // Create a SessionFactory with this Configuration
             ISessionFactory sf = config.BuildSessionFactory();
             return sf;
-        }
-
-
+        }        
     }
 
 }

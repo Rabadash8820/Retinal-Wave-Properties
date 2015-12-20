@@ -27,8 +27,10 @@ REM Export data from specific tables
 ECHO. >>!destPath!/!sqlFileName!.sql
 ECHO -- ********** DATA FROM SPECIFIC TABLES ********** >>!destPath!/!sqlFileName!.sql
 ECHO. >>!destPath!/!sqlFileName!.sql
-ECHO Exporting data from version table...
-mysqldump --defaults-extra-file=!destPath!/meadata.cnf --skip-comments meadata version >> !destPath!/!sqlFileName!.sql
+ECHO Exporting data from tables:
+ECHO 	version
+ECHO 	tissue_types
+mysqldump --defaults-extra-file=!destPath!/meadata.cnf --skip-comments meadata version tissue_types >> !destPath!/!sqlFileName!.sql
 
 ECHO Exporting complete!
 
