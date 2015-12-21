@@ -11,6 +11,7 @@ using MEACruncher.Events;
 namespace MEACruncher.Forms {
 
     internal partial class AddTissueTypeForm : BaseForm {
+        private static AutoCompleteStringCollection _autoStrings;
         private static TreeNode[] _nodes;
         private static bool _loaded = false;
 
@@ -22,18 +23,25 @@ namespace MEACruncher.Forms {
 
             toggleLoadControls(false);
 
-            // Set up the background worker and run it
-            LoadEntityWorker.DoWork += LoadEntityWorker_DoWork;
-            LoadEntityWorker.RunWorkerCompleted += LoadEntityWorker_RunWorkerCompleted;
+            // Asynchronously load TissueTypes and add them to the TreeView
             LoadEntityWorker.RunWorkerAsync();
         }
-
-
+        
         // EVENT HANDLERS
         private void LoadEntityWorker_DoWork(object sender, DoWorkEventArgs e) {
             loadEntities(e);
         }
         private void LoadEntityWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            // Rethrow any errors, just return if work was cancelled
+            if (e.Error != null)
+                throw e.Error;
+            if (e.Cancelled)
+                return;
+
+            // Use the names of the TissueTypes as autocomplete suggestions in the search box
+            SearchTxt.AutoCompleteCustomSource = _autoStrings;
+
+            // Update GUI
             toggleLoadControls(true);
         }
         private void TreeContextMenu_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
@@ -56,10 +64,17 @@ namespace MEACruncher.Forms {
             else
                 throw new NotImplementedException();
         }
+        private void MainTree_AfterSelect(object sender, TreeViewEventArgs e) {
+            AddBtn.Enabled = true;
+        }
         private void MainTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
             // Allow the user to change selected node by clicking either mouse button
             if (e.Button == MouseButtons.Right)
                 MainTree.SelectedNode = e.Node;
+        }
+        private void SearchTxt_Enter(object sender, EventArgs e) {
+            SearchTxt.SelectAll();
+            SearchTxt.Focus();
         }
         private void AddBtn_Click(object sender, EventArgs e) {
             // Fire the TissueTypeSelected
@@ -72,6 +87,7 @@ namespace MEACruncher.Forms {
         }
         private void CancelBtn_Click(object sender, EventArgs e) {
             LoadEntityWorker.CancelAsync();
+            Close();
         }
         private void AddTissueTypeForm_FormClosing(object sender, FormClosingEventArgs e) {
             // Don't let the static array of TreeNodes maintain references to this instance of the TreeView
@@ -79,31 +95,43 @@ namespace MEACruncher.Forms {
         }
 
         // HELPER FUNCTIONS
-        private void loadEntities(DoWorkEventArgs e) {
+        private void loadEntities(DoWorkEventArgs args) {
             if (_loaded)
                 return;
 
             // Load TissueTypes from the database
-            if (e.Cancel) return;
-            IList<TissueType> entities = _db.QueryOver<TissueType>()
-                                            .OrderBy(tt => tt.Name).Asc
-                                            .List();
+            IList<TissueType> entities = null;
+            if (!LoadEntityWorker.CancellationPending) {
+                entities = _db.QueryOver<TissueType>()
+                              .OrderBy(e => e.Name).Asc
+                              .List();
+            }
+
+            // Cache the names of the TissueTypes as autocomplete suggestions for the search box
+            if (!LoadEntityWorker.CancellationPending) {
+                _autoStrings = new AutoCompleteStringCollection();
+                _autoStrings.AddRange(entities.Select(tt => tt.Name).ToArray());
+            }
 
             // Wrap these TissueTypes in TreeNodes and add them to the TreeView
-            if (e.Cancel) return;
-            _nodes = entities.Where(tt => tt.Parent == null)
-                             .OrderBy(tt => tt.Name)
-                             .Select(tt => createNode(tt))
-                             .ToArray();
+            if (!LoadEntityWorker.CancellationPending) {
+                _nodes = entities.Where(tt => tt.Parent == null)
+                                 .OrderBy(tt => tt.Name)
+                                 .Select(tt => createNode(tt))
+                                 .ToArray();
+            }
 
-            if (e.Cancel) return;
-            _loaded = true;
+            // Determine whether loading was cancelled or successfully completed
+            if (LoadEntityWorker.CancellationPending)
+                args.Cancel = true;
+            else
+                _loaded = true;
         }
         private void toggleLoadControls(bool loaded) {
             // Enable/disable controls
             SearchTxt.Enabled = loaded;
             MainTree.Enabled = loaded;
-            AddBtn.Enabled = loaded;
+            AddBtn.Enabled = false;
 
             // Add the appropriate nodes to the TreeView
             MainTree.BeginUpdate();
@@ -113,6 +141,12 @@ namespace MEACruncher.Forms {
             else
                 MainTree.Nodes.Add(Properties.Resources.LoadingStr);
             MainTree.EndUpdate();
+
+            // Set the focused control
+            if (loaded)
+                MainTree.Focus();
+            else
+                CancelBtn.Focus();
         }
         private TreeNode createNode(TissueType tissueType) {
             // Define the node for this TissueType

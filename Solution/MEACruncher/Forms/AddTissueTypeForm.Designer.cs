@@ -24,7 +24,6 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Loading...");
             this.MainTblLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonsPnl = new System.Windows.Forms.Panel();
             this.AddBtn = new System.Windows.Forms.Button();
@@ -39,10 +38,17 @@
             this.ExpandCurrentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExpandChildrenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchTxt = new System.Windows.Forms.TextBox();
+            this.burstBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MainTblLayout.SuspendLayout();
             this.ButtonsPnl.SuspendLayout();
             this.TreeContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.burstBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // LoadEntityWorker
+            // 
+            this.LoadEntityWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
+            this.LoadEntityWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
             // 
             // MainTblLayout
             // 
@@ -79,7 +85,7 @@
             this.AddBtn.Location = new System.Drawing.Point(117, 3);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddBtn.TabIndex = 2;
+            this.AddBtn.TabIndex = 0;
             this.AddBtn.Text = "Add";
             this.AddBtn.UseVisualStyleBackColor = true;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
@@ -92,7 +98,7 @@
             this.CancelBtn.Location = new System.Drawing.Point(198, 3);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 3;
+            this.CancelBtn.TabIndex = 1;
             this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
@@ -102,14 +108,12 @@
             this.MainTree.ContextMenuStrip = this.TreeContextMenu;
             this.MainTree.Dock = System.Windows.Forms.DockStyle.Fill;
             this.MainTree.Enabled = false;
+            this.MainTree.HideSelection = false;
             this.MainTree.Location = new System.Drawing.Point(3, 27);
             this.MainTree.Name = "MainTree";
-            treeNode1.Name = "LoadNode";
-            treeNode1.Text = "Loading...";
-            this.MainTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
             this.MainTree.Size = new System.Drawing.Size(276, 213);
-            this.MainTree.TabIndex = 2;
+            this.MainTree.TabIndex = 0;
+            this.MainTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterSelect);
             this.MainTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTree_NodeMouseClick);
             // 
             // TreeContextMenu
@@ -169,13 +173,21 @@
             // 
             // SearchTxt
             // 
+            this.SearchTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.SearchTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.SearchTxt.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchTxt.Enabled = false;
             this.SearchTxt.Location = new System.Drawing.Point(3, 3);
+            this.SearchTxt.MaxLength = 45;
             this.SearchTxt.Name = "SearchTxt";
             this.SearchTxt.Size = new System.Drawing.Size(276, 20);
-            this.SearchTxt.TabIndex = 3;
+            this.SearchTxt.TabIndex = 1;
             this.SearchTxt.Text = "Search...";
+            this.SearchTxt.Enter += new System.EventHandler(this.SearchTxt_Enter);
+            // 
+            // burstBindingSource
+            // 
+            this.burstBindingSource.DataSource = typeof(MeaData.Burst);
             // 
             // AddTissueTypeForm
             // 
@@ -197,6 +209,7 @@
             this.ButtonsPnl.ResumeLayout(false);
             this.ButtonsPnl.PerformLayout();
             this.TreeContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.burstBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -216,5 +229,6 @@
         private System.Windows.Forms.ToolStripMenuItem CollapseChildrenMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExpandChildrenMenuItem;
         private System.Windows.Forms.ToolStripSeparator ExpandCollapseMenuSeparator;
+        private System.Windows.Forms.BindingSource burstBindingSource;
     }
 }
