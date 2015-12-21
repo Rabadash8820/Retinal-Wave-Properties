@@ -11,22 +11,27 @@ using MEACruncher.Events;
 namespace MEACruncher.Forms {
 
     internal partial class AddTissueTypeForm : BaseForm {
+        // HIDDEN FIELDS
         private static AutoCompleteStringCollection _autoStrings;
         private static TreeNode[] _nodes;
         private static bool _loaded = false;
+        private bool _searchFocused;
 
+        // EVENTS
         public event EventHandler<EntitySelectedEventArgs> TissueTypeSelected;
 
         // CONSTRUCTORS
         public AddTissueTypeForm() {
             InitializeComponent();
 
-            toggleLoadControls(false);
+            toggleLoadControls(false);  // Keep this before running the BackgroundWorker, to prevent races on enabling/disabling controls
 
             // Asynchronously load TissueTypes and add them to the TreeView
             LoadEntityWorker.RunWorkerAsync();
+
+            SearchTxt.GotFocus += SearchTxt_GotFocus;   // Don't know why this event cant be subscribed in the Designer...
         }
-        
+
         // EVENT HANDLERS
         private void LoadEntityWorker_DoWork(object sender, DoWorkEventArgs e) {
             loadEntities(e);
@@ -49,32 +54,53 @@ namespace MEACruncher.Forms {
 
             // Expand/collapse TreeView nodes
             if (item == CollapseAllMenuItem)
-                collapseAll();
+                MainTree.CollapseAll();
             else if (item == ExpandAllMenuItem)
-                expandAll();
+                MainTree.ExpandAll();
             else if (item == CollapseCurrentMenuItem)
-                collapseCurrent();
+                MainTree.SelectedNode.Collapse(true);
             else if (item == ExpandCurrentMenuItem)
-                expandCurrent();
+                MainTree.SelectedNode.Expand();
             else if (item == CollapseChildrenMenuItem)
-                collapseCurrent();
+                MainTree.SelectedNode.Collapse(false);
             else if (item == ExpandChildrenMenuItem)
-                expandChildren();
+                MainTree.SelectedNode.ExpandAll();
 
             else
                 throw new NotImplementedException();
         }
         private void MainTree_AfterSelect(object sender, TreeViewEventArgs e) {
-            AddBtn.Enabled = true;
+            bool nodeSelected = (MainTree.SelectedNode != null);
+            AddBtn.Enabled = nodeSelected;
         }
         private void MainTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
             // Allow the user to change selected node by clicking either mouse button
             if (e.Button == MouseButtons.Right)
                 MainTree.SelectedNode = e.Node;
         }
-        private void SearchTxt_Enter(object sender, EventArgs e) {
-            SearchTxt.SelectAll();
-            SearchTxt.Focus();
+        private void SearchTxt_Leave(object sender, EventArgs e) {
+            _searchFocused = false;
+        }
+        private void SearchTxt_GotFocus(object sender, EventArgs e) {
+            // Select all text only if the mouse isn't down.
+            // This lets tabbing to the textbox give focus.
+            if (MouseButtons == MouseButtons.None) {
+                SearchTxt.SelectAll();
+                _searchFocused = true;
+            }
+        }
+        private void SearchTxt_MouseUp(object sender, MouseEventArgs e) {
+            // Web browsers like Google Chrome select the text on mouse up.
+            // They only do it if the textbox isn't already focused,
+            // and if the user hasn't selected all text.
+            if (!_searchFocused && SearchTxt.SelectionLength == 0) {
+                _searchFocused = true;
+                SearchTxt.SelectAll();
+            }
+        }
+        private void SearchTxt_TextChanged(object sender, EventArgs e) {
+            // Refresh the TreeView with only those nodes with the search text in their name
+            
         }
         private void AddBtn_Click(object sender, EventArgs e) {
             // Fire the TissueTypeSelected
@@ -133,20 +159,24 @@ namespace MEACruncher.Forms {
             MainTree.Enabled = loaded;
             AddBtn.Enabled = false;
 
-            // Add the appropriate nodes to the TreeView
+            // Add the appropriate nodes to the TreeView and adjust it
             MainTree.BeginUpdate();
             MainTree.Nodes.Clear();
-            if (loaded)
+            if (loaded) {
                 MainTree.Nodes.AddRange(_nodes);
+                MainTree.ExpandAll();
+                MainTree.Nodes[0].EnsureVisible();
+                MainTree.SelectedNode = null;
+            }
             else
                 MainTree.Nodes.Add(Properties.Resources.LoadingStr);
             MainTree.EndUpdate();
 
             // Set the focused control
             if (loaded)
-                MainTree.Focus();
+                SearchTxt.Select();
             else
-                CancelBtn.Focus();
+                CancelBtn.Select();
         }
         private TreeNode createNode(TissueType tissueType) {
             // Define the node for this TissueType
@@ -164,28 +194,9 @@ namespace MEACruncher.Forms {
 
             return node;
         }
-        private void collapseAll() {
-            MainTree.CollapseAll();
-        }
-        private void expandAll() {
-            MainTree.ExpandAll();
-        }
-        private void collapseCurrent() {
-            MainTree.SelectedNode.Collapse(true);
-        }
-        private void expandCurrent() {
-            MainTree.SelectedNode.Expand();
-        }
-        private void collapseChildren() {
-            MainTree.SelectedNode.Collapse(false);
-        }
-        private void expandChildren() {
-            MainTree.SelectedNode.ExpandAll();
-        }
         private void OnTissueTypeSelected(EntitySelectedEventArgs args) {
             TissueTypeSelected?.Invoke(this, args);
         }
-
     }
 
 }
