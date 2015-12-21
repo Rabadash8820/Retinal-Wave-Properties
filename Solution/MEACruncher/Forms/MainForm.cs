@@ -34,6 +34,11 @@ namespace MEACruncher.Forms {
                 Settings.Default.LabelForeColor,
                 ButtonBorderStyle.Solid);
         }
+
+        private void FilesBtn_Click(object sender, EventArgs e) {
+            AddTissueTypeForm form = new AddTissueTypeForm();
+            form.ShowDialog();
+        }
     }
 
 }

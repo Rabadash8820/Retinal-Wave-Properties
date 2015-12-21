@@ -31,7 +31,7 @@ namespace MEACruncher.Forms {
             // Adjust the DateTimePicker
             DateStartedPicker.MaxDate = DateTime.Today;
         }
-        public event EntityCreatedEventHandler EntityCreated;
+        public event EventHandler<EntityCreatedEventArgs> EntityCreated;
 
         // EVENT HANDLERS
         private void UndoBtn_Click(object sender, EventArgs e) {

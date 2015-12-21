@@ -23,11 +23,27 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            this.LoadEntityWorker = new System.ComponentModel.BackgroundWorker();
+            this.SuspendLayout();
+            // 
+            // LoadEntityWorker
+            // 
+            this.LoadEntityWorker.WorkerReportsProgress = true;
+            this.LoadEntityWorker.WorkerSupportsCancellation = true;
+            // 
+            // BaseForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "BaseForm";
             this.Text = "BaseForm";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        protected System.ComponentModel.BackgroundWorker LoadEntityWorker;
     }
 }

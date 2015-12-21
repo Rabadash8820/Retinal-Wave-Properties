@@ -22,7 +22,7 @@ namespace MEACruncher.Forms {
             setDataBindings();
             loadEntities();
         }
-        public event EntityUpdatedEventHandler EntityUpdated;
+        public event EventHandler<EntityUpdatedEventArgs> EntityUpdated;
 
         // EVENT HANDLERS
         private void NewBtn_Click(object sender, EventArgs e) {

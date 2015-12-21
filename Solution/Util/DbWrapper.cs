@@ -1,7 +1,5 @@
 ﻿using NHibernate;
-using NHibernate.Event;
 using NHibernate.Exceptions;
-using NHibernate.Event.Default;
 using NC = NHibernate.Cfg;
 
 using MeaData;
@@ -9,13 +7,7 @@ using Util.Exceptions;
 using Util.Properties;
 
 using System;
-using System.IO;
-using System.Text;
-using System.Linq;
 using System.Reflection;
-using System.Data.Common;
-using System.Windows.Forms;
-using System.Collections;
 using System.Collections.Generic;
 
 using MySql.Data.MySqlClient;
@@ -30,7 +22,7 @@ namespace Util {
         // CONSTRUCTORS
         public DbWrapper() { }
         public DbWrapper(Assembly a, string dbName, string version, string importSql) {
-            this.Configure(a, dbName, version, importSql);
+            Configure(a, dbName, version, importSql);
         }
 
         // METHODS

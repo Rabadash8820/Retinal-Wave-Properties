@@ -1,6 +1,8 @@
 ﻿using NHibernate;
 using NUnit.Framework;
 
+using System.Collections.Generic;
+
 using MeaData;
 
 namespace MeaDataTest {
@@ -37,6 +39,22 @@ namespace MeaDataTest {
 
             // Select its parent
             Assert.NotNull(forebrain.Parent);
+        }
+
+        [Test]
+        public void CanGetTopLevelTissueTypes() {
+            // Select top-level TissueTypes from the database (ones with no parent)
+            IList<TissueType> entities = _db.QueryOver<TissueType>()
+                                            .Where(tt => tt.Parent == null)
+                                            .OrderBy(tt => tt.Name).Asc
+                                            .List();
+            Assert.Greater(entities.Count, 0);
+
+            // Assert that each one has children but no parents
+            foreach (TissueType tt in entities) {
+                Assert.Null(tt.Parent);
+                Assert.Greater(tt.Children.Count, 0);
+            }
         }
     }
 
