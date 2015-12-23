@@ -2,9 +2,9 @@
 
     public class Result : Entity {
         // PROPERTIES
-        public virtual Population Population { get; set; }
-        public virtual ResultType ResultType { get; set; }
-        public virtual double Value { get; set; }
+        public Population Population { get; set; }
+        public ResultType ResultType { get; set; }
+        public double Value { get; set; }
     }
 
 }

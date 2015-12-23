@@ -92,6 +92,7 @@
     <Compile Include="Classes\AgeUnit.cs" />
     <Compile Include="Classes\DbVersion.cs" />
     <Compile Include="Classes\Condition.cs" />
+    <Compile Include="Classes\DoNotVirtualizeAttribute.cs" />
     <Compile Include="Classes\Flag.cs" />
     <Compile Include="Classes\ResultType.cs" />
     <Compile Include="Classes\Entity.cs">
@@ -212,10 +213,12 @@
     <Error Condition="!Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.1.29.4\build\dotnet\Fody.targets'))" />
     <Error Condition="!Exists('..\packages\PropertyChanged.Fody.1.50.3\build\dotnet\PropertyChanged.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanged.Fody.1.50.3\build\dotnet\PropertyChanged.Fody.targets'))" />
     <Error Condition="!Exists('..\packages\PropertyChanging.Fody.1.27.1.0\build\dotnet\PropertyChanging.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\PropertyChanging.Fody.1.27.1.0\build\dotnet\PropertyChanging.Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Virtuosity.Fody.1.19.10.0\build\dotnet\Virtuosity.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Virtuosity.Fody.1.19.10.0\build\dotnet\Virtuosity.Fody.targets'))" />
   </Target>
   <Import Project="..\packages\Fody.1.29.4\build\dotnet\Fody.targets" Condition="Exists('..\packages\Fody.1.29.4\build\dotnet\Fody.targets')" />
   <Import Project="..\packages\PropertyChanged.Fody.1.50.3\build\dotnet\PropertyChanged.Fody.targets" Condition="Exists('..\packages\PropertyChanged.Fody.1.50.3\build\dotnet\PropertyChanged.Fody.targets')" />
   <Import Project="..\packages\PropertyChanging.Fody.1.27.1.0\build\dotnet\PropertyChanging.Fody.targets" Condition="Exists('..\packages\PropertyChanging.Fody.1.27.1.0\build\dotnet\PropertyChanging.Fody.targets')" />
+  <Import Project="..\packages\Virtuosity.Fody.1.19.10.0\build\dotnet\Virtuosity.Fody.targets" Condition="Exists('..\packages\Virtuosity.Fody.1.19.10.0\build\dotnet\Virtuosity.Fody.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

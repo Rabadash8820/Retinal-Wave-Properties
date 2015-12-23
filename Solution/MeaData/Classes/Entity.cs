@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
-using System.ComponentModel;
 using System.Collections.Generic;
 
 namespace MeaData {
-
-    public abstract class Entity : ICloneable, INotifyPropertyChanging, INotifyPropertyChanged {
+    
+    [PropertyChanged.ImplementPropertyChanged]
+    [PropertyChanging.ImplementPropertyChanging]
+    public abstract class Entity : ICloneable {
         // HIDDEN FIELDS
         private int? _hash;
 
-        // EVENTS
-        public virtual event PropertyChangedEventHandler PropertyChanged;
-        public virtual event PropertyChangingEventHandler PropertyChanging;
-
         // PROPERTIES
-        [PropertyChanging.DoNotNotify]  // Fody Attributes
+        [PropertyChanging.DoNotNotify]
         [PropertyChanged.DoNotNotify]
-        public virtual Guid Guid { get; protected set; }
-        [Browsable(false)]
-        public virtual bool IsTransient{
+        public Guid Guid { get; protected set; }
+        public bool IsTransient{
             get { return this.Guid.Equals(default(Guid)); }
         }
 
@@ -34,7 +30,7 @@ namespace MeaData {
             // See comments in operator== method
             return !Object.Equals(e1, e2);
         }
-        public virtual E As<E>() where E : Entity {
+        public E As<E>() where E : Entity {
             return this as E;
         }
         public override bool Equals(object obj) {
@@ -48,7 +44,7 @@ namespace MeaData {
                 _hash = this.IsTransient ? base.GetHashCode() : this.Guid.GetHashCode();
             return _hash.Value;
         }
-        public virtual object Clone() {
+        public object Clone() {
             return cloneEntity(this, new EntityMap());
         }
 

@@ -2,10 +2,10 @@
 
     public class Spike : Entity {
         // PROPERTIES
-        public virtual Cell Cell { get; set; }
-        public virtual int Number { get; set; }
-        public virtual double Timestamp { get; set; }
-        public virtual Burst Burst{ get; set; }
+        public Cell Cell { get; set; }
+        public int Number { get; set; }
+        public double Timestamp { get; set; }
+        public Burst Burst{ get; set; }
     }
 
 }

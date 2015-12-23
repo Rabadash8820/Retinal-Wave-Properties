@@ -2,9 +2,9 @@
 
     public class RecordingFile : Entity {
         // PROPERTIES
-        public virtual Recording Recording { get; set; }
-        public virtual int Number { get; set; }
-        public virtual string FileDir { get; set; }
+        public Recording Recording { get; set; }
+        public int Number { get; set; }
+        public string FileDir { get; set; }
     }
 
 }

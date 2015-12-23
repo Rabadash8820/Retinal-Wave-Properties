@@ -4,10 +4,10 @@ namespace MeaData {
 
     public class Condition : Entity {
         // PROPERTIES
-        public virtual string Name { get; set; }
-        public virtual string Comments { get; set; }
-        public virtual ICollection<Recording> Recordings { get; protected set; } = new HashSet<Recording>();
-        public virtual ICollection<Population> Populations { get; protected set; } = new HashSet<Population>();
+        public string Name { get; set; }
+        public string Comments { get; set; }
+        public ICollection<Recording> Recordings { get; protected set; } = new HashSet<Recording>();
+        public ICollection<Population> Populations { get; protected set; } = new HashSet<Population>();
     }
 
 }

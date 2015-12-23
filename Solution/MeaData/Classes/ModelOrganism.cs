@@ -4,10 +4,10 @@ namespace MeaData {
 
     public class ModelOrganism : Entity {
         // PROPERTIES
-        public virtual string ScientificName { get; set; }
-        public virtual string CommonName { get; set; }
-        public virtual string Comments { get; set; }
-        public virtual ICollection<Strain> Strains { get; protected set; } = new HashSet<Strain>();
+        public string ScientificName { get; set; }
+        public string CommonName { get; set; }
+        public string Comments { get; set; }
+        public ICollection<Strain> Strains { get; protected set; } = new HashSet<Strain>();
     }
 
 }
