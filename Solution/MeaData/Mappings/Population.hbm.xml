@@ -5,19 +5,19 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="TissueType" column="TissueTypeId" />
+      <many-to-one name="Tissue" column="TissueId" />
       <many-to-one name="Strain" column="StrainId" />
       <property name="Comments" column="Comments" />
     </natural-id>
-    <set name="Projects" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Projects" table="project_populations" lazy="extra" inverse="true" cascade="save-update">
       <key unique="true" column="PopulationId" />
       <many-to-many class="Project" column="ProjectId" />
     </set>
-    <set name="Tissues" table="population_tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Tissues" table="population_tissues" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="PopulationId" />
       <many-to-many class="Tissue" column="TissueId" />
     </set>
-    <set name="Conditions" table="population_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Conditions" table="population_conditions" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="RecordingId" />
       <many-to-many class="Condition" column="ConditionId" />
     </set>

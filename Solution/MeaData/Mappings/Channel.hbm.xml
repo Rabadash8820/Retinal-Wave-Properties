@@ -9,7 +9,7 @@
       <property name="Row" column="MeaRow" />
       <property name="Column" column="MeaColumn" />
     </natural-id>
-    <set name="Cells" table="cells" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Cells" table="cells" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="ChannelId" />
       <one-to-many class="Cell"/>
     </set>

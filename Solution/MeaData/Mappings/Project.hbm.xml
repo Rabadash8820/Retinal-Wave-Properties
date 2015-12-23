@@ -9,7 +9,7 @@
       <property name="DateStarted" column="DateStarted" />
     </natural-id>
     <property name="Comments" column="Comments" />
-    <set name="Populations" table="project_populations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Populations" table="project_populations" lazy="extra" inverse="true" cascade="save-update">
       <key unique="true" column="ProjectId" />
       <many-to-many class="Population" column="PopulationId" />
     </set>

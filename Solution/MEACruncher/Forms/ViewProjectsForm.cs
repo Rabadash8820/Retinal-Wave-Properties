@@ -129,7 +129,7 @@ namespace MEACruncher.Forms {
                 e.ThrowException = true;
         }
 
-        void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
+        private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
             DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
             list.Add(e.Entity as Project);
         }

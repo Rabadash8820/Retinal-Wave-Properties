@@ -26,7 +26,7 @@ namespace MeaData {
             if (oldEntity != null && newEntity != null)
                 _map.Add(oldEntity, newEntity);
         }
-        public bool Contains(Entity entity) {
+        public bool ContainsKey(Entity entity) {
             if (entity == null)
                 return false;
             return _map.ContainsKey(entity);

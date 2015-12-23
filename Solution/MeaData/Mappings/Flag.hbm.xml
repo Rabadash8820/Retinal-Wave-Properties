@@ -7,7 +7,7 @@
     <natural-id mutable="true">
       <property name="Description" column="Description" />
     </natural-id>
-    <set name="Cells" table="cell_flags" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Cells" table="cell_flags" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="FlagId" />
       <many-to-many class="Cell" column="CellId" />
     </set>

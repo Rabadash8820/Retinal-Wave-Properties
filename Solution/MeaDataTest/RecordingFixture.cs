@@ -45,6 +45,28 @@ namespace MeaDataTest {
             Assert.AreEqual(0, count);
         }
 
+        [Test]
+        public void CanCloneRecording() {
+            // Define the original Entity and its clone
+            Recording orig = new Recording() {
+                MeaColumns = 8,
+                MeaRows = 8,
+                Number = 1,
+                Comments = "This is a derp recording for testing."
+            };
+            Recording clone = orig.Clone() as Recording;
+
+            // Assert that the Entities have the same values but are different references
+            Assert.AreEqual(orig.MeaColumns, clone.MeaColumns);
+            Assert.AreEqual(orig.MeaRows, clone.MeaRows);
+            Assert.AreEqual(orig.Number, clone.Number);
+            Assert.AreEqual(orig.Comments, clone.Comments);
+            Assert.AreNotSame(orig, clone);
+
+            // Persist both Entities and assert that they get different Guids
+            cloneAsserts(orig, clone);
+        }
+
     }
 
 }

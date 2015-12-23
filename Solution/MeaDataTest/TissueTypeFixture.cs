@@ -19,7 +19,7 @@ namespace MeaDataTest {
 
         [Test]
         public void CanGetTissueTypeChildren() {
-            // Select the Forebrain tissue type
+            // Select the Entity
             TissueType forebrain = _db.QueryOver<TissueType>()
                                       .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
                                       .SingleOrDefault();
@@ -31,7 +31,7 @@ namespace MeaDataTest {
 
         [Test]
         public void CanGetTissueTypeParent() {
-            // Select the Forebrain tissue type
+            // Select the Entity
             TissueType forebrain = _db.QueryOver<TissueType>()
                                       .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
                                       .SingleOrDefault();
@@ -43,7 +43,7 @@ namespace MeaDataTest {
 
         [Test]
         public void CanGetTopLevelTissueTypes() {
-            // Select top-level TissueTypes from the database (ones with no parent)
+            // Select top-level Entities from the database (ones with no parent)
             IList<TissueType> entities = _db.QueryOver<TissueType>()
                                             .Where(tt => tt.Parent == null)
                                             .OrderBy(tt => tt.Name).Asc
@@ -55,6 +55,28 @@ namespace MeaDataTest {
                 Assert.Null(tt.Parent);
                 Assert.Greater(tt.Children.Count, 0);
             }
+        }
+
+        [Test]
+        public void CanCloneTissueType() {
+            // Select an Entity and clone it
+            TissueType forebrain = _db.QueryOver<TissueType>()
+                                      .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
+                                      .SingleOrDefault();
+            TissueType clone = forebrain.Clone() as TissueType;
+
+            // Assert that the Entities have the same values...
+            Assert.AreEqual(forebrain.Name, clone.Name);
+            Assert.AreEqual(forebrain.Comments, clone.Comments);
+            Assert.AreEqual(forebrain.Children.Count, clone.Children.Count);
+            Assert.NotNull(clone.Parent);
+            Assert.AreNotSame(forebrain.Parent, clone.Parent);
+
+            // ...but are different references
+            Assert.AreNotSame(forebrain, clone);
+
+            // Assert that the clone gets a different Guid when persisted
+            cloneAsserts(forebrain, clone);
         }
     }
 

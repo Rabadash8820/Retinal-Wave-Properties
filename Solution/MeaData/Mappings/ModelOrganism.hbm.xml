@@ -9,7 +9,7 @@
     </natural-id>
     <property name="CommonName" column="CommonName" />
     <property name="Comments" column="Comments" />
-    <set name="Strains" table="Strains" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Strains" table="Strains" lazy="extra" inverse="true" cascade="all">
       <key unique="true">
         <column name="OrganismId" />
       </key>

@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
+using NUnit.Framework;
 using NHibernate;
 using NC = NHibernate.Cfg;
-using NUnit.Framework;
 using MySql.Data.MySqlClient;
 
 using MeaData;
@@ -50,7 +49,7 @@ namespace MeaDataTest {
                     }
                 }
             }
-            
+
             // Define the NHibernate configuration properties for the MySQL database
             Dictionary<string, string> props = new Dictionary<string, string>();
             props[NC.Environment.ConnectionProvider] = @"NHibernate.Connection.DriverConnectionProvider";
@@ -68,7 +67,19 @@ namespace MeaDataTest {
             // Create a SessionFactory with this Configuration
             ISessionFactory sf = config.BuildSessionFactory();
             return sf;
-        }        
+        }
+
+        // HELPER FUNCTIONS
+        protected void cloneAsserts(Entity original, Entity clone) {
+            // Persist both Entities and assert that they get different Guids
+            using (ITransaction trans = _db.BeginTransaction()) {
+                _db.Save(clone);
+                Assert.AreNotEqual(original.Guid, clone.Guid);
+                _db.Delete(clone);
+
+                trans.Commit();
+            }
+        }
     }
 
 }

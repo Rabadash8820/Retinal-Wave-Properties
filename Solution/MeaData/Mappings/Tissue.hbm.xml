@@ -9,11 +9,11 @@
       <property name="Preparer" column="Preparer" />
     </natural-id>
     <property name="Comments" column="Comments" />
-    <set name="Recordings" table="Recordings" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Recordings" table="Recordings" lazy="true" inverse="true" cascade="all">
       <key unique="true" column="TissueId" />
       <one-to-many class="Recording"/>
     </set>
-    <set name="Populations" table="population_preparations" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Populations" table="population_preparations" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="TissueId" />
       <many-to-many class="Population" column="PopulationId" />
     </set>

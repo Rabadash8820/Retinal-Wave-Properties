@@ -9,11 +9,11 @@
       <many-to-one name="Parent" column="ParentId" />
     </natural-id>
     <property name="Comments" column="Comments" />
-    <set name="Tissues" table="tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Tissues" table="tissues" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="TissueTypeId" />
       <one-to-many class="Tissue"/>
     </set>
-    <set name="Children" table="tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Children" table="tissues" lazy="true" inverse="true" cascade="all">
       <key unique="true" column="ParentId" />
       <one-to-many class="TissueType"/>
     </set>

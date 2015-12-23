@@ -10,7 +10,7 @@
     </natural-id>
     <property name="Name" column="Name" />
     <property name="Comments" column="Comments" />
-    <set name="Tissues" table="Tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="save-update">
+    <set name="Tissues" table="Tissues" lazy="extra" inverse="true" cascade="save-update">
       <key unique="true">
         <column name="StrainId" />
       </key>
