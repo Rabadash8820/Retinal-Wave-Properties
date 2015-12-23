@@ -33,29 +33,27 @@ namespace Util {
         // EVENT HANDLERS
         private void SortableBindingList_ListChanged(object sender, ListChangedEventArgs e) {
             // Interact with the database depending on how the bound list was changed
-            E entity;
-            switch (e.ListChangedType) {
+            using (ITransaction trans = _db.BeginTransaction()) {
+                switch (e.ListChangedType) {
+
                     // Add newly created Entity to the database
-                case ListChangedType.ItemAdded:
-                    if (!HandleCreates)
-                        return;
-                    entity = this.Items[e.NewIndex];
-                    using (ITransaction trans = _db.BeginTransaction()) {
-                        _db.Save(entity);
-                        trans.Commit();
-                    }
-                    break;
+                    case ListChangedType.ItemAdded:
+                        if (HandleCreates) {
+                            E created = this.Items[e.NewIndex];
+                            _db.Save(created);
+                        }
+                        break;
 
                     // Update changed Entity in the database
-                case ListChangedType.ItemChanged:
-                    if (!HandleUpdates)
-                        return;
-                    entity = this.Items[e.NewIndex];
-                    using (ITransaction trans = _db.BeginTransaction()) {
-                        _db.Update(entity);
-                        trans.Commit();
-                    }
-                    break;
+                    case ListChangedType.ItemChanged:
+                        if (HandleUpdates) {
+                            E updated = this.Items[e.NewIndex];
+                            _db.Update(updated);
+                        }
+                        break;
+                }
+
+                trans.Commit();
             }
         }
         private void SortableBindingList_BeforeRemove(object sender, ListChangedEventArgs e) {
@@ -63,9 +61,9 @@ namespace Util {
                 return;
 
             // Delete the removed Entity from the database
-            E entity = this.Items[e.NewIndex];
+            E deleted = this.Items[e.NewIndex];
             using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Delete(entity);
+                _db.Delete(deleted);
                 trans.Commit();
             }
         }
