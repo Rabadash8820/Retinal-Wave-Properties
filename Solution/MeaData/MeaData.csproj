@@ -9,11 +9,12 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MeaData</RootNamespace>
     <AssemblyName>MeaData</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,7 +93,7 @@
     <Compile Include="Classes\AgeUnit.cs" />
     <Compile Include="Classes\DbVersion.cs" />
     <Compile Include="Classes\Condition.cs" />
-    <Compile Include="Classes\DoNotVirtualizeAttribute.cs" />
+    <Compile Include="DoNotVirtualizeAttribute.cs" />
     <Compile Include="Classes\Flag.cs" />
     <Compile Include="Classes\ResultType.cs" />
     <Compile Include="Classes\Entity.cs">
