@@ -5,6 +5,7 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
+      <many-to-one name="Age" column="AgeId" />
       <property name="DatePrepared" column="DatePrepared" />
       <property name="Preparer" column="Preparer" />
     </natural-id>
@@ -12,10 +13,6 @@
     <set name="Recordings" table="Recordings" lazy="true" inverse="true" cascade="all">
       <key unique="true" column="TissueId" />
       <one-to-many class="Recording"/>
-    </set>
-    <set name="Populations" table="population_preparations" lazy="extra" inverse="true" cascade="all">
-      <key unique="true" column="TissueId" />
-      <many-to-many class="Population" column="PopulationId" />
     </set>
   </class>
 </hibernate-mapping>

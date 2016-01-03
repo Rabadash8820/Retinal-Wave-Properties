@@ -12,28 +12,28 @@ namespace MeaDataTest {
 
         [Test]
         public void CanCrudOnProjects() {
-            using (ITransaction trans = _db.BeginTransaction()) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
                 // Create an Entity
                 Project entity = new Project() {
                     Name = "Test Project",
                     DateStarted = System.DateTime.Today,
                     Comments = "A test project for testing"
                 };
-                _db.Save(entity);
+                _sess.Save(entity);
 
                 // Assert that it was stored in the database
-                int count = _db.QueryOver<Project>().RowCount();
+                int count = _sess.QueryOver<Project>().RowCount();
                 Assert.AreEqual(1, count);
 
                 // Update the Entity
                 entity.Comments = "An updated comment";
-                _db.Update(entity);
+                _sess.Update(entity);
 
                 // Delete the Entity
-                _db.Delete(entity);
+                _sess.Delete(entity);
 
                 // Assert that there are no more of this Entity in the database
-                count = _db.QueryOver<Project>().RowCount();
+                count = _sess.QueryOver<Project>().RowCount();
                 Assert.AreEqual(0, count);
 
                 trans.Commit();
@@ -42,7 +42,7 @@ namespace MeaDataTest {
 
         [Test]
         public void CanGetProjectPopulations() {
-            using (ITransaction trans = _db.BeginTransaction()) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
                 // Create an Entity
                 Project entity = new Project() {
                     Name = "Test Project",
@@ -50,10 +50,10 @@ namespace MeaDataTest {
                     Comments = "A test project for testing"
                 };
                 entity.Populations.Add(new Population());
-                _db.Save(entity);
+                _sess.Save(entity);
 
                 // Assert that it has no children (but property can still be fetched)
-                int count = _db.Load<Project>(entity.Guid).Populations.Count;
+                int count = _sess.Load<Project>(entity.Guid).Populations.Count;
                 Assert.AreEqual(1, count);
 
                 trans.Commit();

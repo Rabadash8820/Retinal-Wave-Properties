@@ -2,7 +2,7 @@
 
     public class AgeUnit : Entity {
         // PROPERTIES
-        public string Description { get; set; }
+        public string Name { get; set; }
     }
 
 }

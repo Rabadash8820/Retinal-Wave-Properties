@@ -13,14 +13,14 @@ namespace MeaDataTest {
         [Test]
         public void CanReadTissueTypes() {
             // Assert that TissueTypes can be read from the database
-            int count = _db.QueryOver<TissueType>().RowCount();
+            int count = _sess.QueryOver<TissueType>().RowCount();
             Assert.Greater(count, 1);
         }
 
         [Test]
         public void CanGetTissueTypeChildren() {
             // Select the Entity
-            TissueType forebrain = _db.QueryOver<TissueType>()
+            TissueType forebrain = _sess.QueryOver<TissueType>()
                                       .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
                                       .SingleOrDefault();
             Assert.NotNull(forebrain);
@@ -32,7 +32,7 @@ namespace MeaDataTest {
         [Test]
         public void CanGetTissueTypeParent() {
             // Select the Entity
-            TissueType forebrain = _db.QueryOver<TissueType>()
+            TissueType forebrain = _sess.QueryOver<TissueType>()
                                       .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
                                       .SingleOrDefault();
             Assert.NotNull(forebrain);
@@ -44,7 +44,7 @@ namespace MeaDataTest {
         [Test]
         public void CanGetTopLevelTissueTypes() {
             // Select top-level Entities from the database (ones with no parent)
-            IList<TissueType> entities = _db.QueryOver<TissueType>()
+            IList<TissueType> entities = _sess.QueryOver<TissueType>()
                                             .Where(tt => tt.Parent == null)
                                             .OrderBy(tt => tt.Name).Asc
                                             .List();
@@ -60,7 +60,7 @@ namespace MeaDataTest {
         [Test]
         public void CanCloneTissueType() {
             // Select an Entity and clone it
-            TissueType forebrain = _db.QueryOver<TissueType>()
+            TissueType forebrain = _sess.QueryOver<TissueType>()
                                       .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
                                       .SingleOrDefault();
             TissueType clone = forebrain.Clone() as TissueType;

@@ -4,14 +4,11 @@ namespace MeaData {
 
     public class Population : Entity {
         // PROPERTIES
-        public Tissue Tissue{ get; set; }
-        public Strain Strain { get; set; }
-        public double Age { get; set; }
-        public AgeUnit AgeUnit { get; set; }
-        public Condition Condition { get; set; }
+        public string Name { get; set; }
+        public ICollection<Age> Ages { get; protected set; } = new HashSet<Age>();
+        public ICollection<Strain> Strains { get; protected set; } = new HashSet<Strain>();
         public ICollection<Condition> Conditions { get; protected set; } = new HashSet<Condition>();
-        public ICollection<Tissue> Tissues { get; protected set; } = new HashSet<Tissue>();
-        public ICollection<Project> Projects { get; protected set; } = new HashSet<Project>();
+        public ICollection<TissueType> TissueTypes { get; protected set; } = new HashSet<TissueType>();
         public string Comments { get; set; }
     }
 

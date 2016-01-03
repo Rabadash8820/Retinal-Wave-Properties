@@ -129,6 +129,10 @@
       <Project>{b6af7cec-f339-4e94-9260-b764dd5d6fa8}</Project>
       <Name>MeaData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Util\Util.csproj">
+      <Project>{63dcaa52-1bcf-4036-9c93-71cee4b2d234}</Project>
+      <Name>Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -144,7 +148,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MeaDataSql.sql" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

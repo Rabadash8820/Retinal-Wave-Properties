@@ -7,11 +7,9 @@ namespace MeaData {
         // PROPERTIES
         public Strain Strain { get; set; }
         public TissueType TissueType { get; set; }
-        public double Age { get; set; }
-        public AgeUnit AgeUnit { get; set; }
+        public Age Age { get; set; }
         public string Preparer { get; set; }
         public DateTime DatePrepared { get; set; }
-        public ICollection<Population> Populations { get; protected set; } = new HashSet<Population>();
         public ICollection<Recording> Recordings { get; protected set; } = new HashSet<Recording>();
         public string Comments { get; set; }
     }

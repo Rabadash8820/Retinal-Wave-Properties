@@ -3,8 +3,8 @@ using System.Windows.Forms;
 
 using MeaData;
 using MEACruncher.Forms;
-using P = MEACruncher.Properties;
 using Util;
+using U = Util.Properties;
 
 namespace MEACruncher {
 
@@ -19,9 +19,9 @@ namespace MEACruncher {
             // Establish connections with MySQL databases
             MeaDataDb = new DbWrapper(
                 typeof(Entity).Assembly,
-                P.Resources.MeaDataDbName,
-                P.Resources.MeaDataDbVersion,
-                P.Resources.MeaDataSql);
+                Properties.Resources.MeaDataDbName,
+                U.Resources.MeaDataDbVersion,
+                U.Resources.MeaDataSql);
 
             System.Collections.Generic.List<int> intList = new System.Collections.Generic.List<int>();
             System.ComponentModel.BindingList<int> intBindList = new System.ComponentModel.BindingList<int>(intList);

@@ -109,34 +109,6 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.10.
-        /// </summary>
-        internal static string MeaDataDbVersion {
-            get {
-                return ResourceManager.GetString("MeaDataDbVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to -- ********** DATABASE STRUCTURE ********** 
-        /// 
-        ///
-        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-        ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-        ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-        ////*!40101 SET NAMES utf8 */;
-        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        ////*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-        ////*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS [rest of string was truncated]&quot;;.
-        /// </summary>
-        internal static string MeaDataSql {
-            get {
-                return ResourceManager.GetString("MeaDataSql", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap NeuronBackground {

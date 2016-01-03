@@ -12,9 +12,5 @@
       <key unique="true" column="ConditionId" />
       <many-to-many class="Recording" column="RecordingId" />
     </set>
-    <set name="Populations" table="population_conditions" lazy="extra" inverse="true" cascade="all">
-      <key unique="true" column="ConditionId" />
-      <many-to-many class="Population" column="PopulationId" />
-    </set>
   </class>
 </hibernate-mapping>

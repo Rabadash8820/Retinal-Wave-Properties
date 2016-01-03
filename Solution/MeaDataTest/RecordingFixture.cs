@@ -12,36 +12,36 @@ namespace MeaDataTest {
         public void CanCrudOnRecordings() {
             // Create an Entity
             Recording entity;
-            using (ITransaction trans = _db.BeginTransaction()) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
                 entity = new Recording() {
                     Number = 1,
                     MeaColumns = 8,
                     MeaRows = 8,
                     Comments = "A nonexistent test recording"
                 };
-                _db.Save(entity);
+                _sess.Save(entity);
                 trans.Commit();
             }
 
             // Assert that it was stored in the database
-            int count = _db.QueryOver<Recording>().RowCount();
+            int count = _sess.QueryOver<Recording>().RowCount();
             Assert.AreEqual(1, count);
 
             // Update the Entity
-            using (ITransaction trans = _db.BeginTransaction()) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
                 entity.Comments = "An updated comment";
-                _db.Update(entity);
+                _sess.Update(entity);
                 trans.Commit();
             }
 
             // Delete the Entity
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Delete(entity);
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                _sess.Delete(entity);
                 trans.Commit();
             }
 
             // Assert that there are no more of this Entity in the database
-            count = _db.QueryOver<Recording>().RowCount();
+            count = _sess.QueryOver<Recording>().RowCount();
             Assert.AreEqual(0, count);
         }
 

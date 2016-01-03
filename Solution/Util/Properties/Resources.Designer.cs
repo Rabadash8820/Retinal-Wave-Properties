@@ -22,7 +22,7 @@ namespace Util.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Util.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Util.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Util.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Util.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^\d{1,2}([\/\\-])\d{1,2}\1\d{4}$.
         /// </summary>
-        internal static string DateRegex {
+        public static string DateRegex {
             get {
                 return ResourceManager.GetString("DateRegex", resourceCulture);
             }
@@ -72,16 +72,46 @@ namespace Util.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^\w+@[a-z]+\.[a-z]{3}$.
         /// </summary>
-        internal static string EmailRegex {
+        public static string EmailRegex {
             get {
                 return ResourceManager.GetString("EmailRegex", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 3.11.
+        /// </summary>
+        public static string MeaDataDbVersion {
+            get {
+                return ResourceManager.GetString("MeaDataDbVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
+        ///--
+        ///-- Host: localhost    Database: meadata
+        ///-- ------------------------------------------------------
+        ///-- Server version	5.7.10-log
+        ///
+        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+        ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+        ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+        ////*!40101 SET NAMES utf8 */;
+        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
+        ////*!40 [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string MeaDataSql {
+            get {
+                return ResourceManager.GetString("MeaDataSql", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;.
         /// </summary>
-        internal static string MySqlConnectionString {
+        public static string MySqlConnectionString {
             get {
                 return ResourceManager.GetString("MySqlConnectionString", resourceCulture);
             }
@@ -90,7 +120,7 @@ namespace Util.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^[A-Z][a-z]+( [A-Z][a-z]+){0,2}$.
         /// </summary>
-        internal static string NameRegex {
+        public static string NameRegex {
             get {
                 return ResourceManager.GetString("NameRegex", resourceCulture);
             }
@@ -99,7 +129,7 @@ namespace Util.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^\S+$.
         /// </summary>
-        internal static string NonEmptyRegex {
+        public static string NonEmptyRegex {
             get {
                 return ResourceManager.GetString("NonEmptyRegex", resourceCulture);
             }
@@ -108,7 +138,7 @@ namespace Util.Properties {
         /// <summary>
         ///   Looks up a localized string similar to ^\(\d{3}\) \d{3}-\d{4}$.
         /// </summary>
-        internal static string PhoneRegex {
+        public static string PhoneRegex {
             get {
                 return ResourceManager.GetString("PhoneRegex", resourceCulture);
             }

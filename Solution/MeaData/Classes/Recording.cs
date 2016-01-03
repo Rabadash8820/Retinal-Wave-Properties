@@ -5,7 +5,6 @@ namespace MeaData {
     public class Recording : Entity {
         // PROPERTIES
         public Tissue Tissue { get; set; }
-        public Condition Condition { get; set; }
         public int Number { get; set; }
         public int MeaRows { get; set; }
         public int MeaColumns { get; set; }

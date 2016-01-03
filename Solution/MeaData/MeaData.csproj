@@ -83,6 +83,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\Age.cs" />
     <Compile Include="Classes\Burst.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -183,6 +184,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DomainDiagram.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -201,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <EmbeddedResource Include="Mappings\Age.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -7,7 +7,6 @@ namespace MeaData {
         public string Name { get; set; }
         public string Comments { get; set; }
         public ICollection<Recording> Recordings { get; protected set; } = new HashSet<Recording>();
-        public ICollection<Population> Populations { get; protected set; } = new HashSet<Population>();
     }
 
 }

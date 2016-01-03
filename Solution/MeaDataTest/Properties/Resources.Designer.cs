@@ -61,21 +61,11 @@ namespace MeaDataTest.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -- ********** DATABASE STRUCTURE ********** 
-        /// 
-        ///
-        ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-        ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-        ////*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-        ////*!40101 SET NAMES utf8 */;
-        ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
-        ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        ////*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
-        ////*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to meadata_test.
         /// </summary>
-        internal static string MeaDataSql {
+        internal static string MeaDataDbName {
             get {
-                return ResourceManager.GetString("MeaDataSql", resourceCulture);
+                return ResourceManager.GetString("MeaDataDbName", resourceCulture);
             }
         }
     }

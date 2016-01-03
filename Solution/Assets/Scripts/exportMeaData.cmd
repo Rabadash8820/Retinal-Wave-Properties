@@ -289,14 +289,14 @@ EXIT /B EXIT_SUCCESS
     >"%exportPath%" (
         mysqldump ^
             --defaults-extra-file="%cnfPath%" ^
-            --databases %dbName% ^
+            --no-data ^
+            --no-create-db ^
             --ignore-table=%dbName%.tissue_types ^
             --ignore-table=%dbName%.model_organisms ^
             --ignore-table=%dbName%.age_units ^
             --ignore-table=%dbName%.result_types ^
             --ignore-table=%dbName%.version ^
-            --no-data ^
-            --add-drop-database
+            %dbName%
     )
 
     :: Export data from specific tables
@@ -304,7 +304,8 @@ EXIT /B EXIT_SUCCESS
         mysqldump ^
             --defaults-extra-file="%cnfPath%" ^
             --databases %dbName% ^
-            --tables tissue_types model_organisms age_units result_types version
+            --no-create-db ^
+            --tables tissue_types model_organisms age_units result_types version ^
     )
     
     EXIT /B %EXIT_SUCCESS%

@@ -5,21 +5,24 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Tissue" column="TissueId" />
-      <many-to-one name="Strain" column="StrainId" />
-      <property name="Comments" column="Comments" />
+      <property name="Name" column="Name" />
     </natural-id>
-    <set name="Projects" table="project_populations" lazy="extra" inverse="true" cascade="save-update">
-      <key unique="true" column="PopulationId" />
-      <many-to-many class="Project" column="ProjectId" />
+    <property name="Comments" column="Comments" />
+    <set name="Ages" table="population_ages" lazy="extra" inverse="false" cascade="save-update">
+      <key unique="true" column="AgeId" />
+      <many-to-many class="Age" column="ConditionId" />
     </set>
-    <set name="Tissues" table="population_tissues" lazy="extra" inverse="true" cascade="all">
-      <key unique="true" column="PopulationId" />
-      <many-to-many class="Tissue" column="TissueId" />
+    <set name="Strains" table="population_strains" lazy="extra" inverse="false" cascade="save-update">
+      <key unique="true" column="StrainId" />
+      <many-to-many class="Strain" column="ConditionId" />
     </set>
-    <set name="Conditions" table="population_conditions" lazy="extra" inverse="true" cascade="all">
+    <set name="Conditions" table="population_conditions" lazy="extra" inverse="false" cascade="save-update">
       <key unique="true" column="RecordingId" />
       <many-to-many class="Condition" column="ConditionId" />
+    </set>
+    <set name="TissueTypes" table="population_tissue_types" lazy="extra" inverse="false" cascade="save-update">
+      <key unique="true" column="RecordingId" />
+      <many-to-many class="TissueType" column="TissueTypeId" />
     </set>
   </class>
 </hibernate-mapping>
