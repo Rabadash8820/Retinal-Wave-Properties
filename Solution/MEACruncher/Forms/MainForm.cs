@@ -39,6 +39,10 @@ namespace MEACruncher.Forms {
             AddTissueTypeForm form = new AddTissueTypeForm();
             form.ShowDialog();
         }
+
+        private void OtherDataButton_Click(object sender, EventArgs e) {
+
+        }
     }
 
 }

@@ -94,7 +94,10 @@ IF %shouldUpdate%==1 (
     )
     DEL "!exportPath!"
     
-    REM Adjust version strings in the necessary Resource files    
+    REM Adjust version strings in the necessary Resource files
+    ECHO.
+    ECHO Don't forget to adjust Comment on the SQL file Resource in Util project!
+    ECHO Don't forget to adjust the MeaDataDbVersion string Resource in Util project!
 )
 
 :: Tear down

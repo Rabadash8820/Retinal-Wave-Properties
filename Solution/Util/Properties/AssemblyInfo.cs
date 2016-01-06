@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using System.Resources;
+using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,10 +8,10 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Util")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Adds some supporting types, controls, static functions, etc. for a solution relying on the MeaData domain.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Util")]
+[assembly: AssemblyCompany("Danware")]
+[assembly: AssemblyProduct("MeaData Utilities")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -17,7 +19,7 @@ using System.Runtime.InteropServices;
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("dcfdcc8e-ac48-4f52-9eaf-9f9987333f07")]
@@ -33,4 +35,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
+
+// Added by Dan Vicarel
+[assembly: CLSCompliant(true)]
+[assembly: NeutralResourcesLanguage("en-US")]
+

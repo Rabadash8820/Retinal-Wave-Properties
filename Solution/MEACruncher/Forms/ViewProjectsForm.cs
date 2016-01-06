@@ -1,4 +1,5 @@
 ﻿using Util;
+using static Util.Util;
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
@@ -136,9 +137,9 @@ namespace MEACruncher.Forms {
 
         // HELPER FUNCTIONS
         private void setDataBindings() {
-            TitleCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.Name);
-            DateStartedCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.DateStarted);
-            CommentsCol.DataPropertyName = Util.Util.GetPropertyName((Project e) => e.Comments);
+            TitleCol.DataPropertyName       = GetPropertyName((Project e) => e.Name);
+            DateStartedCol.DataPropertyName = GetPropertyName((Project e) => e.DateStarted);
+            CommentsCol.DataPropertyName    = GetPropertyName((Project e) => e.Comments);
         }
         private void loadEntities() {
             // Select Entities from the database

@@ -6,7 +6,7 @@ using MEACruncher.Events;
 using MEACruncher.Resources;
 
 using NHibernate;
-using Util;
+using static Util.Util;
 
 namespace MEACruncher.Forms {
 
@@ -83,17 +83,17 @@ namespace MEACruncher.Forms {
         // HELPER FUNCTIONS
         private void setDataBindings() {
             TitleTxt.DataBindings.Add(
-                Util.Util.GetPropertyName((TextBox c) => c.Text),
+                GetPropertyName((TextBox c) => c.Text),
                 _boundEntity,
-                Util.Util.GetPropertyName((Project e) => e.Name));
+                GetPropertyName((Project e) => e.Name));
             DateStartedPicker.DataBindings.Add(
-                Util.Util.GetPropertyName((DateTimePicker c) => c.Value),
+                GetPropertyName((DateTimePicker c) => c.Value),
                 _boundEntity,
-                Util.Util.GetPropertyName((Project e) => e.DateStarted));
+                GetPropertyName((Project e) => e.DateStarted));
             CommentsTxt.DataBindings.Add(
-                Util.Util.GetPropertyName((TextBox c) => c.Text),
+                GetPropertyName((TextBox c) => c.Text),
                 _boundEntity,
-                Util.Util.GetPropertyName((Project e) => e.Comments));
+                GetPropertyName((Project e) => e.Comments));
         }
         private void OnEntityCreated(Project entity) {
             if (this.EntityCreated == null)

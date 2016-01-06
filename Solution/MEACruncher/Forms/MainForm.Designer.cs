@@ -114,6 +114,7 @@
             this.OtherDataButton.TabIndex = 8;
             this.OtherDataButton.Text = "View Other Data";
             this.OtherDataButton.UseVisualStyleBackColor = false;
+            this.OtherDataButton.Click += new System.EventHandler(this.OtherDataButton_Click);
             // 
             // PopulationsBtn
             // 

@@ -6,10 +6,10 @@ namespace Util {
 
     public class Memento {
         // VARIABLES
-        protected object _originator;
-        protected string _property;
-        protected object _oldValue;
-        protected object _newValue;
+        private object _originator;
+        private string _property;
+        private object _oldValue;
+        private object _newValue;
 
         // CONSTRUCTORS
         public Memento(string message, object target, string property, object oldValue, object newValue) {

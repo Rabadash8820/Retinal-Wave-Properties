@@ -2,7 +2,6 @@
 using System.Windows.Forms;
 using System.ComponentModel;
 
-[assembly: CLSCompliantAttribute(true)]
 namespace Danware.Controls {
 
     [CLSCompliantAttribute(true)]

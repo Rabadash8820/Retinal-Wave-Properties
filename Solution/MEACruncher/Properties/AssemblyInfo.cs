@@ -11,7 +11,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Danware")]
 [assembly: AssemblyProduct("MEA Cruncher")]
-[assembly: AssemblyCopyright("Copyright © Danware 2015")]
+[assembly: AssemblyCopyright("Copyright © 2015 Danware.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
