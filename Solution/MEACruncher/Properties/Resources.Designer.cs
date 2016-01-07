@@ -129,6 +129,15 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Search....
+        /// </summary>
+        internal static string SearchStr {
+            get {
+                return ResourceManager.GetString("SearchStr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap undoSmall {

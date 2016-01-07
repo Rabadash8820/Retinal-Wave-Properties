@@ -344,7 +344,7 @@
 		<row><td>ISO19770_SystemTag</td><td>{82BFC818-C546-4C71-8811-4E48FC60F47C}</td><td>CommonAppDataFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{0F96685D-4622-41CD-8D43-E427634FB6D8}</td><td>CommonFiles64Folder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{C211C0AC-0274-4317-AEDD-728E38D02891}</td><td>ProgramFiles64Folder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MEACruncher.exe</td><td>{2EC54C9D-0BAB-43EC-8B52-025336774C37}</td><td>INSTALLDIR</td><td>258</td><td/><td>meacruncher.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MEACruncher.Primary_output</td><td>{53C4D83E-B472-43C9-9468-19DA14CF291A}</td><td>INSTALLDIR</td><td>258</td><td/><td>meacruncher.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1059,7 +1059,7 @@
 		<row><td>INSTALLDIR</td><td>ISO19770_SystemTag</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>INSTALLDIR</td><td>MEACruncher.exe</td></row>
+		<row><td>INSTALLDIR</td><td>MEACruncher.Primary_output</td></row>
 		<row><td>ProgramFiles64Folder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 	</table>
 
@@ -1878,7 +1878,7 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
-		<row><td>AlwaysInstall</td><td>MEACruncher.exe</td></row>
+		<row><td>AlwaysInstall</td><td>MEACruncher.Primary_output</td></row>
 	</table>
 
 	<table name="File">
@@ -1893,7 +1893,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>meacruncher.exe</td><td>MEACruncher.exe</td><td>MEACRU~1.EXE|MEACruncher.exe</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Dan_Programming\Programs\In_Development\MEA-Cruncher\Solution\MEACruncher\bin\x64\Release\MEACruncher.exe</td><td>1</td><td/></row>
+		<row><td>meacruncher.primary_output</td><td>MEACruncher.Primary_output</td><td>MEACruncher.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;MEACruncher&gt;|Built</td><td>3</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2040,7 +2040,7 @@
 		<row><td>ISO19770_SystemTag</td><td/><td/><td>_403A4691_A74C_4666_B18B_CB79DB052897_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_D237A687_D10C_49B6_B9CA_7789DE5DCC0E_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_27830E21_3580_4C84_9B78_07C2435D0022_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MEACruncher.exe</td><td/><td/><td>_FB82E512_1E4B_4450_9795_1B61090BAFE0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MEACruncher.Primary_output</td><td/><td/><td>_78CCE46F_872B_4AC4_AD11_25EDEAE9E74B_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2631,7 +2631,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>Dan Vicarel</td><td>0</td><td/><td>-727468543</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Dan Vicarel</td><td>0</td><td/><td>816104018</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>614719889</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>614719889</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>-727462207</td></row>
@@ -3734,8 +3734,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>614719889</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>614719889</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>614719889</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.dan-vicarel.com</td><td>0</td><td/><td>-727463519</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>Dan Vicarel</td><td>0</td><td/><td>-727462399</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.DanVicarel.com</td><td>0</td><td/><td>816104018</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>Dan Vicarel</td><td>0</td><td/><td>816104018</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>MEACruncher Danstaller Database</td><td>0</td><td/><td>-727471679</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>MEA Cruncher</td><td>0</td><td/><td>-727469599</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>This installer database contains the logic and data required to install MEA Cruncher</td><td>0</td><td/><td>-727498207</td></row>
@@ -4341,6 +4341,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>IS_SQLSERVER_SERVER</td><td/><td/></row>
 		<row><td>IS_SQLSERVER_USERNAME</td><td>sa</td><td/></row>
 		<row><td>InstallChoice</td><td>AR</td><td/></row>
+		<row><td>LAUNCHPROGRAM</td><td>1</td><td/></row>
 		<row><td>LAUNCHREADME</td><td>1</td><td/></row>
 		<row><td>Manufacturer</td><td>##COMPANY_NAME##</td><td/></row>
 		<row><td>PIDKEY</td><td/><td/></row>
@@ -4382,7 +4383,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>RestartManagerOption</td><td>CloseRestart</td><td/></row>
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
-		<row><td>SHOWLAUNCHPROGRAM</td><td>0</td><td/></row>
+		<row><td>SHOWLAUNCHPROGRAM</td><td>-1</td><td/></row>
 		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
@@ -4447,9 +4448,6 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>FileKey1</td><td>MEACruncher.exe</td><td/><td>danvic_1_dan_vicarel</td><td>2</td></row>
-		<row><td>FileKey2</td><td>MEACruncher.exe</td><td/><td>meacru_1_mea_cruncher</td><td>2</td></row>
-		<row><td>MEACruncher.exe</td><td>MEACruncher.exe</td><td/><td>meacru_1_mea_cruncher</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4535,8 +4533,6 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>MEACruncher.exe</td><td>meacru_1_mea_cruncher</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>MEACruncher.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MEACruncher.exe_3D540EB28F924B6AB3726F6611C57F9D.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>MEACruncher.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>MEACruncher.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MEACruncher.exe1_47C7A5D46476449FB9274F5F87C07917.exe</td><td>1</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

@@ -139,4 +139,7 @@
   <data name="MeaDataDbName" xml:space="preserve">
     <value>meadata</value>
   </data>
+  <data name="SearchStr" xml:space="preserve">
+    <value>Search...</value>
+  </data>
 </root>

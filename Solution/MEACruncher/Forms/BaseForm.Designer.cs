@@ -23,7 +23,10 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.LoadEntityWorker = new System.ComponentModel.BackgroundWorker();
+            this.EntityBS = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
             this.SuspendLayout();
             // 
             // LoadEntityWorker
@@ -38,6 +41,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "BaseForm";
             this.Text = "BaseForm";
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -45,5 +49,6 @@
         #endregion
 
         protected System.ComponentModel.BackgroundWorker LoadEntityWorker;
+        protected System.Windows.Forms.BindingSource EntityBS;
     }
 }

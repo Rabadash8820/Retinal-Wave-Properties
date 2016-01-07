@@ -38,6 +38,7 @@
             this.ExpandCurrentMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ExpandChildrenMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SearchTxt = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
             this.MainTblLayout.SuspendLayout();
             this.ButtonsPnl.SuspendLayout();
             this.TreeContextMenu.SuspendLayout();
@@ -47,6 +48,10 @@
             // 
             this.LoadEntityWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
             this.LoadEntityWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
+            // 
+            // EntityBS
+            // 
+            this.EntityBS.AllowNew = false;
             // 
             // MainTblLayout
             // 
@@ -180,8 +185,6 @@
             this.SearchTxt.Name = "SearchTxt";
             this.SearchTxt.Size = new System.Drawing.Size(393, 20);
             this.SearchTxt.TabIndex = 1;
-            this.SearchTxt.Text = "Search...";
-            this.SearchTxt.TextChanged += new System.EventHandler(this.SearchTxt_TextChanged);
             this.SearchTxt.Leave += new System.EventHandler(this.SearchTxt_Leave);
             this.SearchTxt.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SearchTxt_MouseUp);
             // 
@@ -201,6 +204,7 @@
             this.ShowInTaskbar = false;
             this.Text = "Add Tissue Type";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddTissueTypeForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
             this.MainTblLayout.ResumeLayout(false);
             this.MainTblLayout.PerformLayout();
             this.ButtonsPnl.ResumeLayout(false);

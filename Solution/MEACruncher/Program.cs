@@ -1,5 +1,10 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using NHibernate;
+using NHibernate.Transform;
 
 using MeaData;
 using MEACruncher.Forms;
@@ -10,6 +15,7 @@ namespace MEACruncher {
 
     static class Program {
         public static DbWrapper MeaDataDb;
+        public static IList<TissueType> TissueTypes;
 
         /// <summary>
         /// The main entry point for the application.
@@ -23,10 +29,14 @@ namespace MEACruncher {
                 U.Resources.MeaDataDbVersion,
                 U.Resources.MeaDataSql);
 
-            System.Collections.Generic.List<int> intList = new System.Collections.Generic.List<int>();
-            System.ComponentModel.BindingList<int> intBindList = new System.ComponentModel.BindingList<int>(intList);
-            BindingSource bs = new BindingSource(intList, null);
-            bool canSort = bs.SupportsSorting;
+            // Cache some data
+            using (ISession sess = MeaDataDb.OpenSession()) {
+                TissueTypes = sess.QueryOver<TissueType>()
+                                  .OrderBy(tt => tt.Name).Asc
+                                  .Fetch(tt => tt.Children).Eager
+                                  .TransformUsing(Transformers.DistinctRootEntity)
+                                  .List();
+            }
 
             // Open the main form
             Application.EnableVisualStyles();

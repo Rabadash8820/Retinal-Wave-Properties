@@ -3,8 +3,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 
 namespace Danware.Controls {
-
-    [CLSCompliantAttribute(true)]
+    
     public class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl {
         DataGridView dataGridView;
         private bool valueChanged = false;
