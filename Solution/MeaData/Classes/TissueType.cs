@@ -6,6 +6,7 @@ namespace MeaData {
         // PROPERTIES
         public string Name { get; set; }
         public TissueType Parent { get; set; }
+        public bool IsSelectable { get; set; }
         public string Comments { get; set; }
         public ICollection<Tissue> Tissues { get; protected set; } = new HashSet<Tissue>();
         public ICollection<TissueType> Children { get; protected set; } = new HashSet<TissueType>();

@@ -63,9 +63,9 @@ namespace MeaDataTest.Properties {
         /// <summary>
         ///   Looks up a localized string similar to meadata_test.
         /// </summary>
-        internal static string MeaDataDbName {
+        internal static string TestDbName {
             get {
-                return ResourceManager.GetString("MeaDataDbName", resourceCulture);
+                return ResourceManager.GetString("TestDbName", resourceCulture);
             }
         }
     }

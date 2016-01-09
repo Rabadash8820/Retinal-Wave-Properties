@@ -96,8 +96,8 @@ IF %shouldUpdate%==1 (
     
     REM Adjust version strings in the necessary Resource files
     ECHO.
-    ECHO Don't forget to adjust Comment on the SQL file Resource in Util project!
-    ECHO Don't forget to adjust the MeaDataDbVersion string Resource in Util project!
+    CALL :log "Don't forget to adjust Comment on the SQL file Resource in Util project!"
+    CALL :log "Don't forget to adjust the MeaDataDbVersion string Resource in Util project!"
 )
 
 :: Tear down
@@ -260,6 +260,7 @@ EXIT /B EXIT_SUCCESS
     ::
     :: bool versionUpdated(string& newVersionStr)
     :: -----------------------------------------------------------------
+    SETLOCAL EnableDelayedExpansion
     SET exitCode=0
     
     :: Select the old version string from the database
@@ -278,9 +279,10 @@ EXIT /B EXIT_SUCCESS
         CALL :log "Database already at version '%newVersionStr%'"
         SET exitCode=0
     )
-    
-    EXIT /B %exitCode%
 
+    REM ENDLOCAL & (
+        EXIT /B %exitCode%
+    REM )
 
 :exportTo
     ::

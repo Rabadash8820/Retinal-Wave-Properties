@@ -8,6 +8,7 @@
       <property name="Name" column="Name" />
       <many-to-one name="Parent" column="ParentId" />
     </natural-id>
+    <property name="IsSelectable" column="IsSelectable" />
     <property name="Comments" column="Comments" />
     <set name="Tissues" table="tissues" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="TissueTypeId" />

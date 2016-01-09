@@ -16,9 +16,9 @@ namespace MeaDataTest {
         public BaseTestFixture() {
             DbWrapper dbw = new DbWrapper(
                 typeof(Entity).Assembly,
-                Resources.MeaDataDbName,
+                Resources.TestDbName,
                 U.Resources.MeaDataDbVersion,
-                U.Resources.MeaDataSql);
+                U.Resources.MeaData);
             _sess = dbw.OpenSession();
         }
 

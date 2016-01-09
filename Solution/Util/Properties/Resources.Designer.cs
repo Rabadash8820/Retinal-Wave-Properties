@@ -79,15 +79,6 @@ namespace Util.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.11.
-        /// </summary>
-        public static string MeaDataDbVersion {
-            get {
-                return ResourceManager.GetString("MeaDataDbVersion", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
         ///--
         ///-- Host: localhost    Database: meadata
@@ -102,9 +93,18 @@ namespace Util.Properties {
         ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
         ////*!40 [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string MeaDataSql {
+        public static string MeaData {
             get {
-                return ResourceManager.GetString("MeaDataSql", resourceCulture);
+                return ResourceManager.GetString("MeaData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to 3.13.
+        /// </summary>
+        public static string MeaDataDbVersion {
+            get {
+                return ResourceManager.GetString("MeaDataDbVersion", resourceCulture);
             }
         }
         

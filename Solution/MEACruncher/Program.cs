@@ -27,7 +27,7 @@ namespace MEACruncher {
                 typeof(Entity).Assembly,
                 Properties.Resources.MeaDataDbName,
                 U.Resources.MeaDataDbVersion,
-                U.Resources.MeaDataSql);
+                U.Resources.MeaData);
 
             // Cache some data
             using (ISession sess = MeaDataDb.OpenSession()) {
