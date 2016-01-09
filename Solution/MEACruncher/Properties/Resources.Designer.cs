@@ -81,7 +81,16 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Loading....
+        ///   Looks up a localized string similar to This tissue type is too general to add..
+        /// </summary>
+        internal static string GeneralTissueTypeWarning {
+            get {
+                return ResourceManager.GetString("GeneralTissueTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
         internal static string LoadingStr {
             get {
@@ -119,6 +128,15 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select a tissue type to add..
+        /// </summary>
+        internal static string NoTissueTypeWarning {
+            get {
+                return ResourceManager.GetString("NoTissueTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap redoSmall {
@@ -129,7 +147,7 @@ namespace MEACruncher.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Search....
+        ///   Looks up a localized string similar to Search.
         /// </summary>
         internal static string SearchStr {
             get {

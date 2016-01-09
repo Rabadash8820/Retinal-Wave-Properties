@@ -8,6 +8,7 @@ using System.Collections.Generic;
 
 using MeaData;
 using MEACruncher.Events;
+using Mea = MEACruncher.Properties;
 
 namespace MEACruncher.Forms {
 
@@ -25,7 +26,9 @@ namespace MEACruncher.Forms {
         public AddTissueTypeForm() {
             InitializeComponent();
 
-            toggleLoadControls(false);  // Keep this before running the BackgroundWorker, to prevent races on enabling/disabling controls
+            // Keep these before running the BackgroundWorker, to prevent races on enabling/disabling controls
+            toggleLoadControls(false);
+            toggleSelectionCtrls(false);
 
             // Asynchronously add TissueTypes data to the TreeView
             LoadEntityWorker.RunWorkerAsync();
@@ -72,7 +75,10 @@ namespace MEACruncher.Forms {
                 throw new NotImplementedException();
         }
         private void MainTree_AfterSelect(object sender, TreeViewEventArgs e) {
-            toggleSelectionCtrls(true);
+            TissueType tt = e.Node.Tag as TissueType;
+            toggleSelectionCtrls(tt.IsSelectable);
+            if (!tt.IsSelectable)
+                InfoLbl.Text = Mea.Resources.GeneralTissueTypeWarning;
         }
         private void MainTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
             // Allow the user to change selected node by clicking either mouse button
@@ -85,7 +91,7 @@ namespace MEACruncher.Forms {
             // If the Textbox is now empty, reset it with a prompt string
             if (SearchTxt.Text == "") {
                 SearchTxt.TextChanged -= SearchTxt_TextChanged;
-                SearchTxt.Text = Properties.Resources.SearchStr;
+                SearchTxt.Text = $"{Mea.Resources.SearchStr}...";
                 SearchTxt.TextChanged += SearchTxt_TextChanged;
             }
         }
@@ -167,23 +173,22 @@ namespace MEACruncher.Forms {
             // Enable/disable controls
             SearchTxt.Enabled = loaded;
             MainTree.Enabled = loaded;
-            AddBtn.Enabled = false;
 
             // Add the appropriate nodes to the TreeView and adjust it
             MainTree.BeginUpdate();
             MainTree.Nodes.Clear();
             if (loaded) {
                 MainTree.Nodes.AddRange(_nodes);
-                MainTree.ExpandAll();
+                MainTree.CollapseAll();
                 MainTree.Nodes[0].EnsureVisible();
                 MainTree.SelectedNode = null;
             }
             else
-                MainTree.Nodes.Add(Properties.Resources.LoadingStr);
+                MainTree.Nodes.Add($"{Mea.Resources.LoadingStr}...");
             MainTree.EndUpdate();
 
             // Adjust the search box text
-            SearchTxt.Text = Properties.Resources.SearchStr;
+            SearchTxt.Text = $"{Mea.Resources.SearchStr}...";
 
             // Set the focused control
             if (loaded)
@@ -193,10 +198,14 @@ namespace MEACruncher.Forms {
         }
         private void toggleSelectionCtrls(bool nodeSelected) {
             AddBtn.Enabled = nodeSelected;
+            InfoLbl.Text = (nodeSelected ? "" : Mea.Resources.NoTissueTypeWarning);
         }
         private TreeNode createNode(TissueType tissueType) {
             // Define the node for this TissueType
-            TreeNode node = new TreeNode(tissueType.Name);
+            TreeNode node = new TreeNode {
+                Text = tissueType.Name,
+                Tag = tissueType
+            };
 
             // Add sub nodes for all of its child TissueTypes, sorted alphabetically
             node.Nodes.AddRange(
@@ -212,9 +221,10 @@ namespace MEACruncher.Forms {
             int length = query.Length;
             CompareInfo ci = CultureInfo.InvariantCulture.CompareInfo;
             TreeNode[] nodes = Program.TissueTypes.Where(tt =>
+                                            tt.IsSelectable &&
                                             ci.IndexOf(tt.Name, query, CompareOptions.IgnoreCase) != -1)
                                        .Select(tt =>
-                                            new TreeNode() { Text = tt.Name })
+                                            new TreeNode() { Text = tt.Name, Tag = tt })
                                        .ToArray();
             return nodes;
         }

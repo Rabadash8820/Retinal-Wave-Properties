@@ -26,6 +26,7 @@
             this.components = new System.ComponentModel.Container();
             this.MainTblLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonsPnl = new System.Windows.Forms.Panel();
+            this.InfoLbl = new System.Windows.Forms.Label();
             this.AddBtn = new System.Windows.Forms.Button();
             this.CancelBtn = new System.Windows.Forms.Button();
             this.MainTree = new System.Windows.Forms.TreeView();
@@ -67,25 +68,35 @@
             this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.MainTblLayout.Size = new System.Drawing.Size(399, 284);
+            this.MainTblLayout.Size = new System.Drawing.Size(434, 430);
             this.MainTblLayout.TabIndex = 1;
             // 
             // ButtonsPnl
             // 
+            this.ButtonsPnl.Controls.Add(this.InfoLbl);
             this.ButtonsPnl.Controls.Add(this.AddBtn);
             this.ButtonsPnl.Controls.Add(this.CancelBtn);
             this.ButtonsPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsPnl.Location = new System.Drawing.Point(3, 252);
+            this.ButtonsPnl.Location = new System.Drawing.Point(3, 398);
             this.ButtonsPnl.Name = "ButtonsPnl";
-            this.ButtonsPnl.Size = new System.Drawing.Size(393, 29);
+            this.ButtonsPnl.Size = new System.Drawing.Size(428, 29);
             this.ButtonsPnl.TabIndex = 1;
+            // 
+            // InfoLbl
+            // 
+            this.InfoLbl.AutoSize = true;
+            this.InfoLbl.Location = new System.Drawing.Point(3, 8);
+            this.InfoLbl.Name = "InfoLbl";
+            this.InfoLbl.Size = new System.Drawing.Size(182, 13);
+            this.InfoLbl.TabIndex = 2;
+            this.InfoLbl.Text = "This tissue type is too general to add.";
             // 
             // AddBtn
             // 
             this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.AddBtn.AutoSize = true;
             this.AddBtn.Enabled = false;
-            this.AddBtn.Location = new System.Drawing.Point(234, 3);
+            this.AddBtn.Location = new System.Drawing.Point(269, 3);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(75, 23);
             this.AddBtn.TabIndex = 0;
@@ -98,7 +109,7 @@
             this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.CancelBtn.AutoSize = true;
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(315, 3);
+            this.CancelBtn.Location = new System.Drawing.Point(350, 3);
             this.CancelBtn.Name = "CancelBtn";
             this.CancelBtn.Size = new System.Drawing.Size(75, 23);
             this.CancelBtn.TabIndex = 1;
@@ -114,7 +125,7 @@
             this.MainTree.HideSelection = false;
             this.MainTree.Location = new System.Drawing.Point(3, 27);
             this.MainTree.Name = "MainTree";
-            this.MainTree.Size = new System.Drawing.Size(393, 219);
+            this.MainTree.Size = new System.Drawing.Size(428, 365);
             this.MainTree.TabIndex = 0;
             this.MainTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterSelect);
             this.MainTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTree_NodeMouseClick);
@@ -183,7 +194,7 @@
             this.SearchTxt.Location = new System.Drawing.Point(3, 3);
             this.SearchTxt.MaxLength = 45;
             this.SearchTxt.Name = "SearchTxt";
-            this.SearchTxt.Size = new System.Drawing.Size(393, 20);
+            this.SearchTxt.Size = new System.Drawing.Size(428, 20);
             this.SearchTxt.TabIndex = 1;
             this.SearchTxt.Leave += new System.EventHandler(this.SearchTxt_Leave);
             this.SearchTxt.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SearchTxt_MouseUp);
@@ -194,11 +205,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(399, 284);
+            this.ClientSize = new System.Drawing.Size(434, 430);
             this.Controls.Add(this.MainTblLayout);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(180, 130);
+            this.MinimumSize = new System.Drawing.Size(365, 130);
             this.Name = "AddTissueTypeForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -229,5 +240,6 @@
         private System.Windows.Forms.ToolStripMenuItem CollapseChildrenMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ExpandChildrenMenuItem;
         private System.Windows.Forms.ToolStripSeparator ExpandCollapseMenuSeparator;
+        private System.Windows.Forms.Label InfoLbl;
     }
 }
