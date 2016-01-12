@@ -23,16 +23,7 @@ namespace MeaDataTest {
         }
 
         // HELPER FUNCTIONS
-        protected void cloneAsserts(Entity original, Entity clone) {
-            // Persist both Entities and assert that they get different Guids
-            using (ITransaction trans = _sess.BeginTransaction()) {
-                _sess.Save(clone);
-                Assert.AreNotEqual(original.Guid, clone.Guid);
-                _sess.Delete(clone);
 
-                trans.Commit();
-            }
-        }
     }
 
 }

@@ -13,17 +13,13 @@ namespace MeaDataTest {
         [Test]
         public void CanCrudOnProjects() {
             using (ITransaction trans = _sess.BeginTransaction()) {
-                // Create an Entity
-                Project entity = new Project() {
-                    Name = "Test Project",
-                    DateStarted = System.DateTime.Today,
-                    Comments = "A test project for testing"
-                };
-                _sess.Save(entity);
+                int count1 = 0;
 
-                // Assert that it was stored in the database
-                int count = _sess.QueryOver<Project>().RowCount();
-                Assert.AreEqual(1, count);
+                // Create an Entity
+                Project entity = createTransient();
+                _sess.Save(entity);
+                int count2 = _sess.QueryOver<Project>().RowCount();
+                Assert.AreEqual(count1 + 1, count2);
 
                 // Update the Entity
                 entity.Comments = "An updated comment";
@@ -31,30 +27,41 @@ namespace MeaDataTest {
 
                 // Delete the Entity
                 _sess.Delete(entity);
-
-                // Assert that there are no more of this Entity in the database
-                count = _sess.QueryOver<Project>().RowCount();
-                Assert.AreEqual(0, count);
+                int count3 = _sess.QueryOver<Project>().RowCount();
+                Assert.AreEqual(count1, count3);
 
                 trans.Commit();
             }
         }
+        private Project createTransient() {
+            // Define the transient Entity instance
+            Project entity = new Project() {
+                Name = "Test Project",
+                DateStarted = System.DateTime.Today,
+                Comments = "A test project for testing"
+            };
+
+            return entity;
+        }
 
         [Test]
-        public void CanGetProjectPopulations() {
+        public void CanGetProjectCollections() {
             using (ITransaction trans = _sess.BeginTransaction()) {
-                // Create an Entity
-                Project entity = new Project() {
-                    Name = "Test Project",
-                    DateStarted = System.DateTime.Today,
-                    Comments = "A test project for testing"
-                };
-                entity.Populations.Add(new Population());
+                // Create the main Entity
+                Project entity = createTransient();
+                Population elem1 = new Population();
+                entity.Populations.Add(elem1);
                 _sess.Save(entity);
 
-                // Assert that it has no children (but property can still be fetched)
-                int count = _sess.Load<Project>(entity.Guid).Populations.Count;
-                Assert.AreEqual(1, count);
+                // Assert that associated Entities are added to db with the Entity (when mapped as such)
+                int insCount1 = _sess.QueryOver<Population>().RowCount();
+                Assert.AreEqual(1, insCount1);
+
+                // Assert that Entities are removed from db with the Entity (when mapped as such)
+                _sess.Delete(entity);
+                int delCount1 = _sess.QueryOver<Population>().RowCount();
+                Assert.AreEqual(1, delCount1);
+                _sess.Delete(elem1);
 
                 trans.Commit();
             }
@@ -62,22 +69,17 @@ namespace MeaDataTest {
 
         [Test]
         public void CanCloneProject() {
-            // Define the original Entity and its clone
-            Project orig = new Project() {
-                Name = "Derp Project",
-                DateStarted = System.DateTime.Today,
-                Comments = "This is a derp project for testing."
-            };
+            // Define the original Entity and its clone (both transient)
+            Project orig = createTransient();
             Project clone = orig.Clone() as Project;
             
             // Assert that the Entities have the same values but are different references
             Assert.AreEqual(orig.Name, clone.Name);
             Assert.AreEqual(orig.DateStarted, clone.DateStarted);
             Assert.AreEqual(orig.Comments, clone.Comments);
-            Assert.AreNotSame(orig, clone);
 
-            // Persist both Entities and assert that they get different Guids
-            cloneAsserts(orig, clone);
+            // ...but are not the same instance
+            Assert.AreNotSame(orig, clone);
         }
 
     }

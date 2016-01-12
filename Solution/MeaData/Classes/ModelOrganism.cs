@@ -6,6 +6,7 @@ namespace MeaData {
         // PROPERTIES
         public string ScientificName { get; set; }
         public string CommonName { get; set; }
+        public string Category { get; set; }
         public string Comments { get; set; }
         public ICollection<Strain> Strains { get; protected set; } = new HashSet<Strain>();
     }

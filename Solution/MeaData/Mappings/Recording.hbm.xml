@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="Recording" table="recordings" dynamic-update="true">
+  <class name="Recording" table="recordings" dynamic-update="true" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
@@ -11,11 +11,15 @@
     <property name="MeaRows" column="MeaRows"  />
     <property name="MeaColumns" column="MeaColumns" />
     <property name="Comments" column="Comments" />
+    <set name="Files" table="recording_files" lazy="extra" inverse="true" cascade="all">
+      <key unique="true" column="RecordingId" />
+      <one-to-many class="RecordingFile" />
+    </set>
     <set name="Channels" table="channels" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="RecordingId" />
       <one-to-many class="Channel"/>
     </set>
-    <set name="Conditions" table="recording_conditions" lazy="extra" inverse="true" cascade="all">
+    <set name="Conditions" table="recording_conditions" lazy="extra" inverse="true" cascade="save-update">
       <key unique="true" column="RecordingId" />
       <many-to-many class="Condition" column="ConditionId" />
     </set>

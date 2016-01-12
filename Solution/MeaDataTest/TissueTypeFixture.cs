@@ -1,6 +1,7 @@
 ﻿using NHibernate;
 using NUnit.Framework;
 
+using System.Linq;
 using System.Collections.Generic;
 
 using MeaData;
@@ -10,19 +11,100 @@ namespace MeaDataTest {
     [TestFixture]
     public class TissueTypeFixture : BaseTestFixture {
 
+        private const string TEMP_NAME = "Nucleus derpicans";
+
         [Test]
-        public void CanReadTissueTypes() {
-            // Assert that TissueTypes can be read from the database
-            int count = _sess.QueryOver<TissueType>().RowCount();
-            Assert.Greater(count, 1);
+        public void CanCrudOnTissueTypes() {
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                // Assert that there are already some Entities in the database
+                int count1 = _sess.QueryOver<TissueType>().RowCount();
+                Assert.Greater(count1, 1);
+
+                // Create an Entity
+                TissueType entity = createTransient();
+                _sess.Save(entity);
+                int count2 = _sess.QueryOver<TissueType>().RowCount();
+                Assert.AreEqual(count1 + 1, count2);
+
+                // Update the Entity
+                entity.Comments = "An updated comment";
+                _sess.Update(entity);
+
+                // Delete the Entity
+                entity.Parent.RemoveChildren(entity);
+                int count3 = _sess.QueryOver<TissueType>().RowCount();
+                Assert.AreEqual(count1, count3); 
+
+                trans.Commit();
+            }
+        }
+        private TissueType createTransient() {
+            // Define the transient Entity instance
+            TissueType entity = new TissueType() {
+                Name = TEMP_NAME,
+                IsSelectable = false,
+                Comments = "This tissue does not exist...yet.",
+            };
+
+            // Use the Brain as the parent for this transient TissueType
+            TissueType brain = null;
+            brain = _sess.QueryOver<TissueType>()
+                         .Where(tt => tt.Name == "Brain")
+                         .SingleOrDefault();
+            Assert.NotNull(brain);
+            brain.AddChildren(entity);
+
+            return entity;
+        }
+
+        [Test]
+        public void CanGetTissueTypeCollections() {
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                // Create the main Entity
+                TissueType entity = createTransient();
+                Tissue elem1 = new Tissue();
+                entity.Tissues.Add(elem1);
+                _sess.Save(entity);
+
+                // Assert that associated Entities are added to db with the Entity (when mapped as such)
+                int insCount1 = _sess.QueryOver<Tissue>().RowCount();
+                Assert.AreEqual(1, insCount1);
+
+                // Assert that Entities are removed from db with the Entity (when mapped as such)
+                entity.Parent.RemoveChildren(entity);
+                int delCount1 = _sess.QueryOver<Tissue>().RowCount();
+                Assert.AreEqual(0, delCount1);
+
+                trans.Commit();
+            }
+        }
+
+        [Test]
+        public void CanCloneTissueType() {
+            // Select an Entity and clone it
+            TissueType orig = createTransient();
+            TissueType clone = orig.Clone() as TissueType;
+
+            // Assert that the Entities have the same values...
+            Assert.AreEqual(orig.Name, clone.Name);
+            Assert.AreEqual(orig.IsSelectable, clone.IsSelectable);
+            Assert.AreEqual(orig.Comments, clone.Comments);
+            Assert.AreEqual(orig.Children.Count, clone.Children.Count);
+            Assert.NotNull(clone.Parent);
+            Assert.AreNotSame(orig.Parent, clone.Parent);
+
+            // ...but are not the same instance
+            Assert.AreNotSame(orig, clone);
+
+            orig.Parent.RemoveChildren(orig);
         }
 
         [Test]
         public void CanGetTissueTypeChildren() {
             // Select the Entity
             TissueType forebrain = _sess.QueryOver<TissueType>()
-                                      .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
-                                      .SingleOrDefault();
+                                        .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
+                                        .SingleOrDefault();
             Assert.NotNull(forebrain);
 
             // Select its children
@@ -33,8 +115,8 @@ namespace MeaDataTest {
         public void CanGetTissueTypeParent() {
             // Select the Entity
             TissueType forebrain = _sess.QueryOver<TissueType>()
-                                      .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
-                                      .SingleOrDefault();
+                                        .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
+                                        .SingleOrDefault();
             Assert.NotNull(forebrain);
 
             // Select its parent
@@ -45,9 +127,9 @@ namespace MeaDataTest {
         public void CanGetTopLevelTissueTypes() {
             // Select top-level Entities from the database (ones with no parent)
             IList<TissueType> entities = _sess.QueryOver<TissueType>()
-                                            .Where(tt => tt.Parent == null)
-                                            .OrderBy(tt => tt.Name).Asc
-                                            .List();
+                                              .Where(tt => tt.Parent == null)
+                                              .OrderBy(tt => tt.Name).Asc
+                                              .List();
             Assert.Greater(entities.Count, 0);
 
             // Assert that each one has children but no parents
@@ -58,29 +140,7 @@ namespace MeaDataTest {
         }
 
         [Test]
-        public void CanCloneTissueType() {
-            // Select an Entity and clone it
-            TissueType forebrain = _sess.QueryOver<TissueType>()
-                                      .WhereRestrictionOn(tt => tt.Name).IsLike("%Prosencephalon%")
-                                      .SingleOrDefault();
-            TissueType clone = forebrain.Clone() as TissueType;
-
-            // Assert that the Entities have the same values...
-            Assert.AreEqual(forebrain.Name, clone.Name);
-            Assert.AreEqual(forebrain.IsSelectable, clone.IsSelectable);
-            Assert.AreEqual(forebrain.Comments, clone.Comments);
-            Assert.AreEqual(forebrain.Children.Count, clone.Children.Count);
-            Assert.NotNull(clone.Parent);
-            Assert.AreNotSame(forebrain.Parent, clone.Parent);
-
-            // ...but are different references
-            Assert.AreNotSame(forebrain, clone);
-
-            // Assert that the clone gets a different Guid when persisted
-            cloneAsserts(forebrain, clone);
-        }
-
-        [Test]
+        [Ignore("This test should only be run if TissueTypes need to be recreated in the non-test database")]
         public void CanCreateAllTissueTypes() {
             // Create all transient TissueType objects
             IList<TissueType> tissueTypes = createTissueTypes();
@@ -371,90 +431,84 @@ namespace MeaDataTest {
             TissueType cn12 = new TissueType() { Name = "Hypoglossal (XII)", IsSelectable = true };
 
             // Create parent-child relationships
-            createParentChildAssoc(nervs, brainstem);
-            createParentChildAssoc(brainstem, cranialNervs);
-            createParentChildAssoc(cranialNervs, cn0, cn1, cn2, cn3, cn4, cn5, cn6, cn7, cn8, cn9, cn10, cn11, cn12);
+            nervs.AddChildren(brainstem);
+            brainstem.AddChildren(cranialNervs);
+            cranialNervs.AddChildren(cn0, cn1, cn2, cn3, cn4, cn5, cn6, cn7, cn8, cn9, cn10, cn11, cn12);
 
-            createParentChildAssoc(brain, forebrain, midbrain, hindbrain);
+            brain.AddChildren(forebrain, midbrain, hindbrain);
 
-            createParentChildAssoc(hindbrain, myelenceph, metenceph);
-            createParentChildAssoc(myelenceph, medulla);
-            createParentChildAssoc(medulla, medulPyrs, respirCenter, olivary, medulNucs);
-            createParentChildAssoc(olivary, infOlivNuc);
-            createParentChildAssoc(medulNucs, infSalivNuc, nucAmbig, dorsVagusNuc, hypoGlossNuc, solitaryNuc);
-            createParentChildAssoc(metenceph, pons, cerebellum);
-            createParentChildAssoc(pons, pontineNucs, ponTegmentum, supOlivComplex, ponsReticForm);
-            createParentChildAssoc(pontineNucs, trigeminalSensNuc, trigeminalMotorNuc, abducensNuc, facialNuc, vestibuloCochNuc, supSalivNuc);
-            createParentChildAssoc(ponTegmentum, respirCenters, locusCoeruleus, peduncPonNuc, ponLatTegmentNuc, ponReticTegmentNuc);
-            createParentChildAssoc(respirCenters, pneumoCenter, apneusticCenter);
-            createParentChildAssoc(cerebellum, cerebelPeduncs, cerebelVermis, cerebelHemis, cerebelNucs);
-            createParentChildAssoc(cerebelPeduncs, supCerebelPedunc, midCerebelPedunc, infCerebelPedunc);
-            createParentChildAssoc(cerebelHemis, cerebelAntLobe, cerebelPostLobe, cerebelFloccLobe);
-            createParentChildAssoc(cerebelNucs, fastigNuc, globNuc, embolNuc, dentNuc);
+            hindbrain.AddChildren(myelenceph, metenceph);
+            myelenceph.AddChildren(medulla);
+            medulla.AddChildren(medulPyrs, respirCenter, olivary, medulNucs);
+            olivary.AddChildren(infOlivNuc);
+            medulNucs.AddChildren(infSalivNuc, nucAmbig, dorsVagusNuc, hypoGlossNuc, solitaryNuc);
+            metenceph.AddChildren(pons, cerebellum);
+            pons.AddChildren(pontineNucs, ponTegmentum, supOlivComplex, ponsReticForm);
+            pontineNucs.AddChildren(trigeminalSensNuc, trigeminalMotorNuc, abducensNuc, facialNuc, vestibuloCochNuc, supSalivNuc);
+            ponTegmentum.AddChildren(respirCenters, locusCoeruleus, peduncPonNuc, ponLatTegmentNuc, ponReticTegmentNuc);
+            respirCenters.AddChildren(pneumoCenter, apneusticCenter);
+            cerebellum.AddChildren(cerebelPeduncs, cerebelVermis, cerebelHemis, cerebelNucs);
+            cerebelPeduncs.AddChildren(supCerebelPedunc, midCerebelPedunc, infCerebelPedunc);
+            cerebelHemis.AddChildren(cerebelAntLobe, cerebelPostLobe, cerebelFloccLobe);
+            cerebelNucs.AddChildren(fastigNuc, globNuc, embolNuc, dentNuc);
 
-            createParentChildAssoc(midbrain, tectum, pretectum, cerebPedunc, mesCranialNucs);
-            createParentChildAssoc(tectum, corpQuad);
-            createParentChildAssoc(corpQuad, supCollic, infCollic);
-            createParentChildAssoc(cerebPedunc, tegmentum, subNigra, crusCereb, interPeduncNuc);
-            createParentChildAssoc(tegmentum, ventTegmentArea, redNuc, midReticForm, periAqueGray);
-            createParentChildAssoc(subNigra, parsCompact, parsRetic);
-            createParentChildAssoc(mesCranialNucs, oculomotorNuc, trochNuc);
+            midbrain.AddChildren(tectum, pretectum, cerebPedunc, mesCranialNucs);
+            tectum.AddChildren(corpQuad);
+            corpQuad.AddChildren(supCollic, infCollic);
+            cerebPedunc.AddChildren(tegmentum, subNigra, crusCereb, interPeduncNuc);
+            tegmentum.AddChildren(ventTegmentArea, redNuc, midReticForm, periAqueGray);
+            subNigra.AddChildren(parsCompact, parsRetic);
+            mesCranialNucs.AddChildren(oculomotorNuc, trochNuc);
 
-            createParentChildAssoc(forebrain, dienceph, telenceph);
-            createParentChildAssoc(dienceph, epithal, thalamus, hypothal, subthal, pituitary);
-            createParentChildAssoc(epithal, pineal, habenNuc, striaMedul, taenThal);
-            createParentChildAssoc(thalamus, thalAntNucs, thalMedNucs, thalLatNucs, thalVentNucs, metathal, thalReticNuc);
-            createParentChildAssoc(thalAntNucs, thalAntVentNuc, thalAntDorsNuc, thalAntMedNuc);
-            createParentChildAssoc(thalMedNucs, thalMedDorsNuc, thalMidNucs, intralamNucs);
-            createParentChildAssoc(thalMidNucs, paraVentricNuc, paratenNuc, reuniensNuc, rhomboNuc, subFascNuc);
-            createParentChildAssoc(intralamNucs, centMedNuc, paraCentNuc, centLatNuc, paraFascNuc, thalCentMedNuc);
-            createParentChildAssoc(thalLatNucs, thalLatDorsNuc, thalLatPostNuc, pulvinar);
-            createParentChildAssoc(thalVentNucs, thalVentAntNuc, thalVentLatNuc, thalVentPostLatNuc, thalVentPostMedNuc);
-            createParentChildAssoc(metathal, medGenic, latGenic);
-            createParentChildAssoc(hypothal, antHypothal, tubHypothal, postHypothal, opticChias, subFornOrgan, periVentricNuc, pituitaryStalk, tuberCiner, tuberRegion, mammBodies, mammNuc, hypothalLatNuc);
-            createParentChildAssoc(antHypothal, medPreOptNuc, supraChiasNuc, paraVentricNuc, supraOptNuc, antHypothalNuc, latPreOptNuc, midPreOptNuc, periVentPreOptNuc);
-            createParentChildAssoc(tubHypothal, hypothalDorsMedNuc, hypothalVentMedNuc, arcuateNuc, latTubNucs);
-            createParentChildAssoc(postHypothal, hypothalPostNuc);
-            createParentChildAssoc(tuberCiner, tuberNuc, tuberMammNuc);
-            createParentChildAssoc(subthal, thalNuc, zonaIncerta);
-            createParentChildAssoc(pituitary, neuroHypo, intermedPituit, adenoHypo);
-            createParentChildAssoc(telenceph, whiteMatter, subcortical, rhinenceph, cerebCort);
-            createParentChildAssoc(whiteMatter, coronaRadiata, internCaps, externCaps, extremeCaps, arcuateFasc, uncinateFasc);
-            createParentChildAssoc(subcortical, hippocamp, amygdala, claustrum, basalGanglia, basalForebrain);
-            createParentChildAssoc(hippocamp, dentGyr, cornuAmmon);
-            createParentChildAssoc(cornuAmmon, ca1, ca2, ca3, ca4);
-            createParentChildAssoc(amygdala, amygCentNuc, amygMedNuc, amygCortNucs, basoMedNucs, amygLatNucs, basoLatNucs);
-            createParentChildAssoc(basalGanglia, striatum, globusPallidus, subthalNuc, nucLenti);
-            createParentChildAssoc(striatum, dorsStriat, ventStriat);
-            createParentChildAssoc(dorsStriat, putamen, caudateNuc);
-            createParentChildAssoc(ventStriat, nucAccumbens, olfactTuber);
-            createParentChildAssoc(basalForebrain, antPerfSub, subInnom, nucBasalis, brocaBand, medSeptalNuc);
-            createParentChildAssoc(rhinenceph, olfactBulb, piriCortex, antOlfactNuc, antComm, uncus);
-            createParentChildAssoc(cerebCort, frontalLobe, parietLobe, occipLobe, tempLobe, insularCort, cingulateCort);
-            createParentChildAssoc(frontalLobe, frontCorts, frontGyri, frontBrodmann);
-            createParentChildAssoc(frontCorts, motorCort1, motorCort2, preMotorCort, preFrontCort);
-            createParentChildAssoc(frontGyri, supFrontGyr, midFrontGyr, infFrontGyr);
-            createParentChildAssoc(frontBrodmann, ba[4], ba[6], ba[8], ba[9], ba[10], ba[11], ba[12], ba[24], ba[25], ba[32], ba[33], ba[44], ba[45], ba[46], ba[47]);
-            createParentChildAssoc(parietLobe, parietCorts, parietBrodmann, precuneus);
-            createParentChildAssoc(parietCorts, sensCort1, sensCort2, postParietCort);
-            createParentChildAssoc(parietBrodmann, ba[1], ba[2], ba[3], ba[5], ba[7], ba[23], ba[26], ba[29], ba[31], ba[39], ba[40]);
-            createParentChildAssoc(occipLobe, occipCorts, latOccipGyr, cuneus, occipBrodmann);
-            createParentChildAssoc(occipCorts, visCort1, visCort2, visCort3, visCort4, visCort5);
-            createParentChildAssoc(occipBrodmann, ba[17], ba[18], ba[19]);
-            createParentChildAssoc(tempLobe, tempCorts, tempGyri, tempBrodmann, mst);
-            createParentChildAssoc(tempCorts, auditCort1, auditCort2, infTempCort, postInfTempCort);
-            createParentChildAssoc(tempGyri, supTempGyr, midTempGyr, infTempGyr, fusiGyr, paraHippoGyr);
-            createParentChildAssoc(tempBrodmann, ba[20], ba[21], ba[22], ba[27], ba[34], ba[35], ba[36], ba[37], ba[38], ba[41], ba[42]);
-            createParentChildAssoc(cingulateCort, antCingulate, postCingulate, retroSplenCort, indusGris, subgenArea, cingulateBrodmann);
+            forebrain.AddChildren(dienceph, telenceph);
+            dienceph.AddChildren(epithal, thalamus, hypothal, subthal, pituitary);
+            epithal.AddChildren(pineal, habenNuc, striaMedul, taenThal);
+            thalamus.AddChildren(thalAntNucs, thalMedNucs, thalLatNucs, thalVentNucs, metathal, thalReticNuc);
+            thalAntNucs.AddChildren(thalAntVentNuc, thalAntDorsNuc, thalAntMedNuc);
+            thalMedNucs.AddChildren(thalMedDorsNuc, thalMidNucs, intralamNucs);
+            thalMidNucs.AddChildren(paraVentricNuc, paratenNuc, reuniensNuc, rhomboNuc, subFascNuc);
+            intralamNucs.AddChildren(centMedNuc, paraCentNuc, centLatNuc, paraFascNuc, thalCentMedNuc);
+            thalLatNucs.AddChildren(thalLatDorsNuc, thalLatPostNuc, pulvinar);
+            thalVentNucs.AddChildren(thalVentAntNuc, thalVentLatNuc, thalVentPostLatNuc, thalVentPostMedNuc);
+            metathal.AddChildren(medGenic, latGenic);
+            hypothal.AddChildren(antHypothal, tubHypothal, postHypothal, opticChias, subFornOrgan, periVentricNuc, pituitaryStalk, tuberCiner, tuberRegion, mammBodies, mammNuc, hypothalLatNuc);
+            antHypothal.AddChildren(medPreOptNuc, supraChiasNuc, paraVentricNuc, supraOptNuc, antHypothalNuc, latPreOptNuc, midPreOptNuc, periVentPreOptNuc);
+            tubHypothal.AddChildren(hypothalDorsMedNuc, hypothalVentMedNuc, arcuateNuc, latTubNucs);
+            postHypothal.AddChildren(hypothalPostNuc);
+            tuberCiner.AddChildren(tuberNuc, tuberMammNuc);
+            subthal.AddChildren(thalNuc, zonaIncerta);
+            pituitary.AddChildren(neuroHypo, intermedPituit, adenoHypo);
+            telenceph.AddChildren(whiteMatter, subcortical, rhinenceph, cerebCort);
+            whiteMatter.AddChildren(coronaRadiata, internCaps, externCaps, extremeCaps, arcuateFasc, uncinateFasc);
+            subcortical.AddChildren(hippocamp, amygdala, claustrum, basalGanglia, basalForebrain);
+            hippocamp.AddChildren(dentGyr, cornuAmmon);
+            cornuAmmon.AddChildren(ca1, ca2, ca3, ca4);
+            amygdala.AddChildren(amygCentNuc, amygMedNuc, amygCortNucs, basoMedNucs, amygLatNucs, basoLatNucs);
+            basalGanglia.AddChildren(striatum, globusPallidus, subthalNuc, nucLenti);
+            striatum.AddChildren(dorsStriat, ventStriat);
+            dorsStriat.AddChildren(putamen, caudateNuc);
+            ventStriat.AddChildren(nucAccumbens, olfactTuber);
+            basalForebrain.AddChildren(antPerfSub, subInnom, nucBasalis, brocaBand, medSeptalNuc);
+            rhinenceph.AddChildren(olfactBulb, piriCortex, antOlfactNuc, antComm, uncus);
+            cerebCort.AddChildren(frontalLobe, parietLobe, occipLobe, tempLobe, insularCort, cingulateCort);
+            frontalLobe.AddChildren(frontCorts, frontGyri, frontBrodmann);
+            frontCorts.AddChildren(motorCort1, motorCort2, preMotorCort, preFrontCort);
+            frontGyri.AddChildren(supFrontGyr, midFrontGyr, infFrontGyr);
+            frontBrodmann.AddChildren(ba[4], ba[6], ba[8], ba[9], ba[10], ba[11], ba[12], ba[24], ba[25], ba[32], ba[33], ba[44], ba[45], ba[46], ba[47]);
+            parietLobe.AddChildren(parietCorts, parietBrodmann, precuneus);
+            parietCorts.AddChildren(sensCort1, sensCort2, postParietCort);
+            parietBrodmann.AddChildren(ba[1], ba[2], ba[3], ba[5], ba[7], ba[23], ba[26], ba[29], ba[31], ba[39], ba[40]);
+            occipLobe.AddChildren(occipCorts, latOccipGyr, cuneus, occipBrodmann);
+            occipCorts.AddChildren(visCort1, visCort2, visCort3, visCort4, visCort5);
+            occipBrodmann.AddChildren(ba[17], ba[18], ba[19]);
+            tempLobe.AddChildren(tempCorts, tempGyri, tempBrodmann, mst);
+            tempCorts.AddChildren(auditCort1, auditCort2, infTempCort, postInfTempCort);
+            tempGyri.AddChildren(supTempGyr, midTempGyr, infTempGyr, fusiGyr, paraHippoGyr);
+            tempBrodmann.AddChildren(ba[20], ba[21], ba[22], ba[27], ba[34], ba[35], ba[36], ba[37], ba[38], ba[41], ba[42]);
+            cingulateCort.AddChildren(antCingulate, postCingulate, retroSplenCort, indusGris, subgenArea, cingulateBrodmann);
 
             // Wrap these TissueTypes in a list and return it
             return new List<TissueType>() { brain, nervs };
-        }
-        private void createParentChildAssoc(TissueType parent, params TissueType[] children) {
-            foreach (TissueType child in children) {
-                child.Parent = parent;
-                parent.Children.Add(child);
-            }
         }
 
     }

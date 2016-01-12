@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="DbVersion" table="version" dynamic-update="true">
+  <class name="DbVersion" table="version" mutable="false" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>

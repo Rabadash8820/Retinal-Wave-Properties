@@ -1,12 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="ModelOrganism" table="model_organisms" dynamic-update="true">
+  <class name="ModelOrganism" table="model_organisms" mutable="false" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
       <property name="ScientificName" column="ScientificName" />
     </natural-id>
+    <property name="Category" column="Category" />
     <property name="CommonName" column="CommonName" />
     <property name="Comments" column="Comments" />
     <set name="Strains" table="Strains" lazy="extra" inverse="true" cascade="all">

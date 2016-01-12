@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="Tissue" table="tissues" dynamic-update="true">
+  <class name="Tissue" table="tissues" dynamic-update="true" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
       <many-to-one name="Age" column="AgeId" />
+      <many-to-one name="TissueType" column="TissueTypeId" />
       <property name="DatePrepared" column="DatePrepared" />
       <property name="Preparer" column="Preparer" />
     </natural-id>

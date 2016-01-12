@@ -10,6 +10,20 @@ namespace MeaData {
         public string Comments { get; set; }
         public ICollection<Tissue> Tissues { get; protected set; } = new HashSet<Tissue>();
         public ICollection<TissueType> Children { get; protected set; } = new HashSet<TissueType>();
+
+        // METHODS
+        public void AddChildren(params TissueType[] children) {
+            foreach (TissueType child in children) {
+                child.Parent = this;
+                this.Children.Add(child);
+            }
+        }
+        public void RemoveChildren(params TissueType[] children) {
+            foreach (TissueType child in children) {
+                child.Parent = null;
+                this.Children.Remove(child);
+            }
+        }
     }
 
 }
