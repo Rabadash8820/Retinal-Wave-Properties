@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
 --
 -- Host: localhost    Database: meadata
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.7.8-rc-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -42,8 +42,6 @@ CREATE TABLE `bursts` (
   `Id` char(36) NOT NULL,
   `CellId` char(36) DEFAULT NULL,
   `BurstNumber` smallint(6) DEFAULT '0' COMMENT 'Indicates the order of bursts on a single channel.  E.g., 2 for the second burst',
-  `StartTimestamp` float DEFAULT '0' COMMENT 'Timestamp of the first spike in the burst',
-  `EndTimestamp` float DEFAULT '0' COMMENT 'Timestamp of the last spike in the burst',
   `IsWaveAssociated` tinyint(4) DEFAULT '0' COMMENT 'Flag for whether this burst is wave-associated',
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Burst` (`CellId`,`BurstNumber`),
@@ -404,12 +402,12 @@ CREATE TABLE `tissues` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-12  0:25:31
--- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
+-- Dump completed on 2016-01-14 18:28:41
+-- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
 --
 -- Host: localhost    Database: meadata
 -- ------------------------------------------------------
--- Server version	5.7.10-log
+-- Server version	5.7.8-rc-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -547,7 +545,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.15');
+INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.16');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -560,4 +558,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-12  0:25:31
+-- Dump completed on 2016-01-14 18:28:41

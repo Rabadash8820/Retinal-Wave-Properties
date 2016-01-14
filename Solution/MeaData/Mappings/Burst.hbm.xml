@@ -8,8 +8,6 @@
       <many-to-one name="Cell" column="CellId" />
       <property name="Number" column="BurstNumber" />
     </natural-id>
-    <property name="StartTimestamp" column="StartTimestamp" />
-    <property name="EndTimestamp" column="EndTimestamp" />
     <property name="IsWaveAssociated" column="IsWaveAssociated" />
     <set name="Spikes" table="Spikes" lazy="extra" inverse="true" cascade="all">
       <key unique="true">
