@@ -40,14 +40,33 @@ DROP TABLE IF EXISTS `bursts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `bursts` (
   `Id` char(36) NOT NULL,
-  `CellId` char(36) DEFAULT NULL,
+  `CellChannelId` char(36) DEFAULT NULL,
   `BurstNumber` smallint(6) DEFAULT '0' COMMENT 'Indicates the order of bursts on a single channel.  E.g., 2 for the second burst',
   `IsWaveAssociated` tinyint(4) DEFAULT '0' COMMENT 'Flag for whether this burst is wave-associated',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `Burst` (`CellId`,`BurstNumber`),
+  UNIQUE KEY `Burst` (`CellChannelId`,`BurstNumber`),
   KEY `BurstNumber` (`BurstNumber`),
   KEY `WaveAssociated` (`IsWaveAssociated`),
-  KEY `CellId` (`CellId`)
+  KEY `CellChannelId` (`CellChannelId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `cell_channels`
+--
+
+DROP TABLE IF EXISTS `cell_channels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cell_channels` (
+  `Id` char(36) NOT NULL,
+  `CellId` char(36) DEFAULT NULL,
+  `ChannelId` char(36) DEFAULT NULL,
+  `Name` varchar(15) DEFAULT NULL COMMENT 'The identifier assigned to this cell (a.k.a., unit) by the sorting software.',
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `CellChannel` (`CellId`,`ChannelId`),
+  KEY `CellId` (`CellId`),
+  KEY `ChannelId` (`ChannelId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -78,10 +97,9 @@ DROP TABLE IF EXISTS `cells`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cells` (
   `Id` char(36) NOT NULL,
-  `Name` varchar(15) DEFAULT NULL,
-  `ChannelId` char(36) DEFAULT NULL,
+  `TissueId` char(36) DEFAULT NULL COMMENT 'The Tissue of which this Cell is a constituent.',
   PRIMARY KEY (`Id`),
-  KEY `ChannelId` (`ChannelId`)
+  KEY `Tissue` (`TissueId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,6 +115,7 @@ CREATE TABLE `channels` (
   `RecordingId` char(36) DEFAULT NULL,
   `MeaRow` smallint(6) DEFAULT '0' COMMENT 'Which row of the MEA this channel is in',
   `MeaColumn` smallint(6) DEFAULT '0' COMMENT 'Which column of the MEA this channel is in',
+  `Name` varchar(15) DEFAULT NULL COMMENT 'The identifier assigned to this channel by the recording software.',
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Channel` (`RecordingId`,`MeaRow`,`MeaColumn`),
   KEY `ChannelRecording` (`RecordingId`)
@@ -128,6 +147,23 @@ DROP TABLE IF EXISTS `flags`;
 CREATE TABLE `flags` (
   `Id` char(36) NOT NULL,
   `Description` varchar(25) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `meas`
+--
+
+DROP TABLE IF EXISTS `meas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meas` (
+  `Id` char(36) NOT NULL,
+  `Rows` int(11) DEFAULT NULL COMMENT 'Number of rows on this device''s MEA chips.',
+  `Columns` int(11) DEFAULT NULL COMMENT 'Number of columns on this device''s MEA chips.',
+  `Manufacturer` varchar(30) DEFAULT NULL COMMENT 'Name of the company that manufactured the MEA device.',
+  `Owner` varchar(30) DEFAULT NULL COMMENT 'Name of the institution/individual who owns this MEA device.',
   PRIMARY KEY (`Id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -299,16 +335,16 @@ DROP TABLE IF EXISTS `recordings`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `recordings` (
   `Id` char(36) NOT NULL,
-  `TissueId` char(36) DEFAULT NULL,
-  `RecordingNumber` tinyint(4) DEFAULT '0' COMMENT 'Indicates the order of recordings of a single tissue preparation.  E.g., 2 for the second recording',
+  `TissueId` char(36) DEFAULT NULL COMMENT 'The Tissue that was recorded.',
+  `MeaId` char(36) DEFAULT NULL COMMENT 'The MEA device on which this recording of the tissue was made.',
+  `RecordingNumber` tinyint(4) DEFAULT '0' COMMENT 'Indicates the order of recordings of a single tissue (e.g., 2 for the second recording).  This is across ALL recordings of ALL MEA devices for this Tissue (even though it is unlikely that a Tissue will be sequentially recorded on multiple devices).',
   `Duration` float DEFAULT '0' COMMENT 'The total duration of this recording, including all files.',
-  `MeaRows` int(11) DEFAULT '8' COMMENT 'Number of rows on the MEA used to make this recording',
-  `MeaColumns` int(11) DEFAULT '8' COMMENT 'Number of columns on the MEA used to make this recording',
   `Comments` text,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Recording` (`TissueId`,`RecordingNumber`),
   KEY `Duration` (`Duration`),
-  KEY `TissueId` (`TissueId`)
+  KEY `TissueId` (`TissueId`),
+  KEY `MeaId` (`MeaId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -339,15 +375,15 @@ DROP TABLE IF EXISTS `spikes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `spikes` (
   `Id` char(36) NOT NULL,
-  `CellId` char(36) DEFAULT NULL,
+  `CellChannelId` char(36) DEFAULT NULL,
   `SpikeNumber` int(11) DEFAULT '0' COMMENT 'Indicates the order of spikes on a single channel.  E.g., 2 for the second spike',
   `Timestamp` float DEFAULT '0' COMMENT 'Time during the recording when this spike occurred',
   `BurstId` char(36) DEFAULT NULL COMMENT 'Id of the burst during which this spike occurred, if any',
   PRIMARY KEY (`Id`),
-  UNIQUE KEY `Spike` (`CellId`,`SpikeNumber`),
+  UNIQUE KEY `Spike` (`CellChannelId`,`SpikeNumber`),
   KEY `BurstId` (`BurstId`),
   KEY `SpikeNumber` (`SpikeNumber`),
-  KEY `CellId` (`CellId`)
+  KEY `CellChannelId` (`CellChannelId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -402,7 +438,7 @@ CREATE TABLE `tissues` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-14 18:28:41
+-- Dump completed on 2016-01-14 19:42:33
 -- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
 --
 -- Host: localhost    Database: meadata
@@ -545,7 +581,7 @@ CREATE TABLE `version` (
 
 LOCK TABLES `version` WRITE;
 /*!40000 ALTER TABLE `version` DISABLE KEYS */;
-INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.16');
+INSERT INTO `version` VALUES ('04e629c4-1e8e-4d49-b2d4-7b996467afb8','3.17');
 /*!40000 ALTER TABLE `version` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -558,4 +594,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-14 18:28:41
+-- Dump completed on 2016-01-14 19:42:33

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
+  <class name="Mea" table="meas" dynamic-update="true" dynamic-insert="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <property name="Rows" column="Rows"/>
+    <property name="Columns" column="Columns"/>
+    <property name="Manufacturer" column="Manufacturer"/>
+    <property name="Owner" column="Owner"/>
+    <set name="Recordings" table="recordings" lazy="extra" inverse="true" cascade="all-delete-orphan">
+      <key unique="true" column="CellId" />
+      <one-to-many class="Recording"/>
+    </set>
+  </class>
+</hibernate-mapping>

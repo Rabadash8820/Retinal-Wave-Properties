@@ -8,8 +8,6 @@
       <many-to-one name="Tissue" column="TissueId" />
       <property name="Number" column="RecordingNumber" />
     </natural-id>
-    <property name="MeaRows" column="MeaRows"  />
-    <property name="MeaColumns" column="MeaColumns" />
     <property name="Comments" column="Comments" />
     <set name="Files" table="recording_files" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="RecordingId" />

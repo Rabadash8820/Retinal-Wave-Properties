@@ -6,12 +6,13 @@
     </id>
     <natural-id mutable="true">
       <many-to-one name="Recording" column="RecordingId" />
-      <property name="Row" column="MeaRow" />
-      <property name="Column" column="MeaColumn" />
+      <property name="MeaRow" column="MeaRow" />
+      <property name="MeaColumn" column="MeaColumn" />
     </natural-id>
-    <set name="Cells" table="cells" lazy="extra" inverse="true" cascade="all">
+    <property name="Name" column="Name"/>
+    <set name="CellChannels" table="cell_channels" lazy="extra" inverse="true" cascade="all-delete-orphan">
       <key unique="true" column="ChannelId" />
-      <one-to-many class="Cell"/>
+      <one-to-many class="CellChannel"/>
     </set>
   </class>
 </hibernate-mapping>

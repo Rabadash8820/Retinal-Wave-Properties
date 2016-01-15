@@ -5,9 +5,10 @@ namespace MeaData {
     public class Channel : Entity {
         // PROPERTIES
         public Recording Recording { get; set; }
-        public int Row { get; set; }
-        public int Column { get; set; }
-        public ICollection<Cell> Cells { get; protected set; } = new HashSet<Cell>();
+        public int MeaRow { get; set; }
+        public int MeaColumn { get; set; }
+        public string Name { get; set; }
+        public ICollection<CellChannel> CellChannels { get; protected set; } = new HashSet<CellChannel>();
     }
 
 }

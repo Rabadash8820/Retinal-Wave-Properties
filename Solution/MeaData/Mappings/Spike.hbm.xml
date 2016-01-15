@@ -5,7 +5,7 @@
       <generator class="guid"/>
     </id>
     <natural-id mutable="true">
-      <many-to-one name="Cell" column="CellId" />
+      <many-to-one name="CellChannel" column="CellChannelId" />
       <property name="Number" column="SpikeNumber" />
     </natural-id>
     <property name="Timestamp" column="Timestamp" />

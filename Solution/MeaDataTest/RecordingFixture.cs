@@ -35,8 +35,6 @@ namespace MeaDataTest {
             // Define the transient Entity instance
             Recording entity = new Recording() {
                 Number = 1,
-                MeaColumns = 8,
-                MeaRows = 8,
                 Comments = "A nonexistent test recording"
             };
 
@@ -85,8 +83,7 @@ namespace MeaDataTest {
             Recording clone = orig.Clone() as Recording;
 
             // Assert that the Entities have the same values but are different references
-            Assert.AreEqual(orig.MeaColumns, clone.MeaColumns);
-            Assert.AreEqual(orig.MeaRows, clone.MeaRows);
+            Assert.AreEqual(orig.Mea, clone.Mea);
             Assert.AreEqual(orig.Number, clone.Number);
             Assert.AreEqual(orig.Comments, clone.Comments);
 

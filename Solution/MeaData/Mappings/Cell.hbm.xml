@@ -4,21 +4,12 @@
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
-    <natural-id mutable="true">
-      <many-to-one name="Channel" column="ChannelId" />
-    </natural-id>
-    <property name="Identifier" column="Identifier" />
-    <set name="Spikes" table="spikes" lazy="extra" inverse="true" cascade="all">
-      <key unique="true">
-        <column name="CellId" />
-      </key>
-      <one-to-many class="Spike"/>
-    </set>
-    <set name="Bursts" table="bursts" lazy="extra" inverse="true" cascade="all">
+    <many-to-one name="Tissue" column="TissueId" />
+    <set name="CellChannels" table="cell_channels" lazy="extra" inverse="true" cascade="all-delete-orphan">
       <key unique="true" column="CellId" />
-      <one-to-many class="Burst"/>
+      <one-to-many class="CellChannel"/>
     </set>
-    <set name="Flags" table="cell_flags" lazy="extra" cascade="all">
+    <set name="Flags" table="cell_flags" lazy="extra" cascade="all-delete-orphan">
       <key unique="true" column="CellId" />
       <many-to-many class="Flag" column="FlagId" />
     </set>

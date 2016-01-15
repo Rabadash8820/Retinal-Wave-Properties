@@ -70,6 +70,7 @@
     <Compile Include="Classes\Burst.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Classes\CellChannel.cs" />
     <Compile Include="Classes\Cell.cs" />
     <Compile Include="Classes\Channel.cs">
       <SubType>Code</SubType>
@@ -77,6 +78,7 @@
     <Compile Include="Classes\AgeUnit.cs" />
     <Compile Include="Classes\DbVersion.cs" />
     <Compile Include="Classes\Condition.cs" />
+    <Compile Include="Classes\Mea.cs" />
     <Compile Include="DoNotVirtualizeAttribute.cs" />
     <Compile Include="Classes\Flag.cs" />
     <Compile Include="Classes\ResultType.cs" />
@@ -186,6 +188,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FodyWeavers.xml" />
+    <EmbeddedResource Include="Mappings\Mea.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mappings\CellChannel.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Mappings\Age.hbm.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>

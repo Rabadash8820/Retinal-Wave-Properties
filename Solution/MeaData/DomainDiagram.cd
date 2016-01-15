@@ -1,13 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="MeaData.Recording">
-    <Position X="11.75" Y="3" Width="1.5" />
+    <Position X="8.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAAAAAAAFAAAAACEAAAAAAAAAAAAAAAMIA=</HashCode>
+      <HashCode>AAAAAAIAAAAAAAABAFAAAAAAAAAAAAAAAAAAAAAAMIA=</HashCode>
       <FileName>Classes\Recording.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Tissue" />
+      <Property Name="Mea" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Files" />
@@ -16,7 +17,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.RecordingFile">
-    <Position X="11.75" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAEAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\RecordingFile.cs</FileName>
@@ -26,7 +27,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MeaData.Tissue">
-    <Position X="8.75" Y="3" Width="1.5" />
+    <Position X="8.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAEAAAAAgAAAAAAAAAIEQAAAAIAA=</HashCode>
       <FileName>Classes\Tissue.cs</FileName>
@@ -41,9 +42,12 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.TissueType">
-    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Position X="11.5" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAEQAQAAAAAAAQAAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAgAAAAAAAAAAAAEQAQABAAAAAQAAABAAAAAIAA=</HashCode>
       <FileName>Classes\TissueType.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -55,7 +59,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Strain">
-    <Position X="8.75" Y="5.25" Width="1.5" />
+    <Position X="8.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAQAEIAAAAAAIAA=</HashCode>
       <FileName>Classes\Strain.cs</FileName>
@@ -68,68 +72,64 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Population">
-    <Position X="3.25" Y="4.25" Width="1.5" />
+    <Position X="3.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAFAAAAQAAAACAAAQAAAAAAAAIAA=</HashCode>
       <FileName>Classes\Population.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Property Name="Ages" />
-      <Property Name="Conditions" />
       <Property Name="Strains" />
+      <Property Name="Conditions" />
       <Property Name="TissueTypes" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.AgeUnit">
-    <Position X="6.25" Y="4.75" Width="1.5" />
+    <Position X="6.25" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\AgeUnit.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="MeaData.Burst">
-    <Position X="20" Y="3" Width="1.5" />
+    <Position X="17" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAgAAAAAAAAAEBAAACAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <HashCode>AAAABAAgAAAAAAgAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Burst.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Cell" />
+      <Property Name="CellChannel" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Spikes" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Cell">
-    <Position X="17.25" Y="3" Width="1.5" />
+    <Position X="8.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAABAAgAAAAAAAAAAAAAAAAAAEAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAABAIAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Cell.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Channel" />
+      <Property Name="Tissue" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
-      <Property Name="Spikes" />
-      <Property Name="Bursts" />
       <Property Name="Flags" />
+      <Property Name="CellChannels" />
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Channel">
-    <Position X="14.5" Y="3" Width="1.5" />
+    <Position X="11.5" Y="5.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAJAAAAAAAAIAgAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAgAAAgAAAAAAAQAAAAIAQAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Channel.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Recording" />
     </ShowAsAssociation>
-    <ShowAsCollectionAssociation>
-      <Property Name="Cells" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Flag">
-    <Position X="17.25" Y="5.25" Width="1.5" />
+    <Position X="6.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Flag.cs</FileName>
@@ -139,9 +139,9 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.ModelOrganism">
-    <Position X="11.75" Y="5.25" Width="1.5" />
+    <Position X="8.75" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAIAA=</HashCode>
+      <HashCode>AAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAKAA=</HashCode>
       <FileName>Classes\ModelOrganism.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
@@ -149,7 +149,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Project">
-    <Position X="0.5" Y="4.25" Width="1.5" />
+    <Position X="0.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAACAAAAAQAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\Project.cs</FileName>
@@ -159,7 +159,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Result">
-    <Position X="3.25" Y="8.5" Width="1.5" />
+    <Position X="3.25" Y="10.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAABAAAAAAAAAgAAAAAAA=</HashCode>
       <FileName>Classes\Result.cs</FileName>
@@ -170,7 +170,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MeaData.ResultType">
-    <Position X="6.25" Y="8.5" Width="1.5" />
+    <Position X="3.25" Y="12.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\ResultType.cs</FileName>
@@ -180,20 +180,20 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="MeaData.Spike">
-    <Position X="20" Y="0.5" Width="1.5" />
+    <Position X="17" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEBCAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAgAAEACAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Classes\Spike.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Cell" />
       <Property Name="Burst" />
+      <Property Name="CellChannel" />
     </ShowAsAssociation>
   </Class>
   <Class Name="MeaData.Age">
-    <Position X="6.25" Y="3" Width="1.5" />
+    <Position X="6.25" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQAAAAgAAAAAAA=</HashCode>
       <FileName>Classes\Age.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -201,11 +201,39 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="MeaData.Condition">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="6.25" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAIAA=</HashCode>
       <FileName>Classes\Condition.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Recordings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MeaData.Mea">
+    <Position X="8.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEgAAACAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Classes\Mea.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Recordings" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="MeaData.CellChannel">
+    <Position X="14.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAABAAAQAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Classes\CellChannel.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Cell" />
+      <Property Name="Channel" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Bursts" />
+      <Property Name="Spikes" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
