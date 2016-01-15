@@ -6,8 +6,9 @@
     </id>
     <natural-id mutable="true">
       <property name="Description" column="Description" />
-      <property name="Comments" column="Description" />
+      <property name="Category" column="Category" />
     </natural-id>
+    <property name="Comments" column="Description" />
     <set name="Results" table="results" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="ResultTypeId" />
       <one-to-many class="Result"/>

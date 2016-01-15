@@ -79,11 +79,11 @@ namespace Util.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
+        ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.7.10, for Win64 (x86_64)
         ///--
         ///-- Host: localhost    Database: meadata
         ///-- ------------------------------------------------------
-        ///-- Server version	5.7.8-rc-log
+        ///-- Server version	5.7.10-log
         ///
         ////*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
         ////*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -91,7 +91,7 @@ namespace Util.Properties {
         ////*!40101 SET NAMES utf8 */;
         ////*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
         ////*!40103 SET TIME_ZONE=&apos;+00:00&apos; */;
-        //// [rest of string was truncated]&quot;;.
+        ////*!40 [rest of string was truncated]&quot;;.
         /// </summary>
         public static string MeaData {
             get {
@@ -100,7 +100,7 @@ namespace Util.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.17.
+        ///   Looks up a localized string similar to 3.18.
         /// </summary>
         public static string MeaDataDbVersion {
             get {
