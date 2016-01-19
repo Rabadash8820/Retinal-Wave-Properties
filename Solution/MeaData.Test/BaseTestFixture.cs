@@ -1,10 +1,9 @@
-﻿using NUnit.Framework;
-using NHibernate;
+﻿using NHibernate;
 
-using Util;
-using U = Util.Properties;
 using MeaData;
-using MeaDataTest.Properties;
+using MeaData.Util;
+using U = MeaData.Util.Properties;
+using T = MeaData.Test.Properties;
 
 namespace MeaDataTest {
 
@@ -16,7 +15,7 @@ namespace MeaDataTest {
         public BaseTestFixture() {
             DbWrapper dbw = new DbWrapper(
                 typeof(Entity).Assembly,
-                Resources.TestDbName,
+                T.Resources.TestDbName,
                 U.Resources.MeaDataDbVersion,
                 U.Resources.MeaData);
             _sess = dbw.OpenSession();

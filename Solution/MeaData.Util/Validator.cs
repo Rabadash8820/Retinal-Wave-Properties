@@ -3,9 +3,9 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 
-using Util.Properties;
+using MeaData.Util.Properties;
 
-namespace Util {
+namespace MeaData.Util {
 
     public static class Validator {
         /// <summary>

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.ComponentModel;
 
-namespace Danware.Controls {
+namespace MeaData.Util.Controls {
     
     public class CalendarEditingControl : DateTimePicker, IDataGridViewEditingControl {
         DataGridView dataGridView;

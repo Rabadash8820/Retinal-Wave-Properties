@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using MySql.Data.MySqlClient;
 
-using MeaDataTest.Properties;
+using MeaData.Test.Properties;
 
 namespace MeaDataTest {
 

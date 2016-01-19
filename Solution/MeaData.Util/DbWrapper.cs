@@ -3,8 +3,8 @@ using NHibernate.Exceptions;
 using NC = NHibernate.Cfg;
 
 using MeaData;
-using Util.Exceptions;
-using Util.Properties;
+using MeaData.Util;
+using MeaData.Util.Properties;
 
 using System;
 using System.Reflection;
@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 using MySql.Data.MySqlClient;
 
-namespace Util {
+namespace MeaData.Util {
 
     public class DbWrapper {
         // HIDDEN FIELDS

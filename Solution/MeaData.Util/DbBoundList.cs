@@ -5,7 +5,7 @@ using NHibernate;
 
 using MeaData;
 
-namespace Util {
+namespace MeaData.Util {
 
     public class DbBoundList<E> : SortableBindingList<E> where E : Entity {
         // ENCAPSULATE FIELDS

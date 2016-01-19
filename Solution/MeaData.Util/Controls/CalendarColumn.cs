@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Danware.Controls {
+namespace MeaData.Util.Controls {
 
     public class CalendarColumn : DataGridViewColumn {
         // CONSTRUCTORS

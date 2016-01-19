@@ -6,7 +6,7 @@ using MEACruncher.Events;
 using MEACruncher.Resources;
 
 using NHibernate;
-using static Util.Util;
+using static MeaData.Util.Util;
 
 namespace MEACruncher.Forms {
 

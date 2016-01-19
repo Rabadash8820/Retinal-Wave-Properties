@@ -2,7 +2,7 @@
 using System.Reflection;
 using System.Collections.Generic;
 
-namespace Util {
+namespace MeaData.Util {
 
     public class Memento {
         // VARIABLES

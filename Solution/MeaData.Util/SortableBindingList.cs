@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace Util {
+namespace MeaData.Util {
 
     public interface IRemovable : IBindingList {
         event EventHandler<ListChangedEventArgs> BeforeRemove;

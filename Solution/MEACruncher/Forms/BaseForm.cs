@@ -2,7 +2,7 @@
 
 using NHibernate;
 
-using Util;
+using MeaData.Util;
 
 namespace MEACruncher.Forms {
 
@@ -13,6 +13,7 @@ namespace MEACruncher.Forms {
         protected EntityManager _entityMgr;
         protected MementoManager _mementoMgr;
 
+        // CONSTRUCTORS
         public BaseForm() {
             InitializeComponent();
 

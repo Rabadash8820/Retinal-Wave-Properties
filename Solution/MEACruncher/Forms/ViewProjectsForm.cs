@@ -1,5 +1,5 @@
-﻿using Util;
-using static Util.Util;
+﻿using MeaData.Util;
+using static MeaData.Util.Util;
 using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;

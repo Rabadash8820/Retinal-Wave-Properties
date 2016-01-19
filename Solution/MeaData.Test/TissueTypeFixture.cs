@@ -1,10 +1,11 @@
 ﻿using NHibernate;
 using NUnit.Framework;
 
-using System.Linq;
 using System.Collections.Generic;
 
 using MeaData;
+using MeaData.Util;
+using U = MeaData.Util.Properties;
 
 namespace MeaDataTest {
 
@@ -146,11 +147,11 @@ namespace MeaDataTest {
             IList<TissueType> tissueTypes = createTissueTypes();
             
             // Connect to the meadata database
-            Util.DbWrapper dbw = new Util.DbWrapper(
+            DbWrapper dbw = new DbWrapper(
                 typeof(Entity).Assembly,
                 "meadata",
-                Util.Properties.Resources.MeaDataDbVersion,
-                Util.Properties.Resources.MeaData);
+                U.Resources.MeaDataDbVersion,
+                U.Resources.MeaData);
 
             // Replace all TissueTypes records in this database with the transient objects just created
             using (ISession tempSess = dbw.OpenSession()) {

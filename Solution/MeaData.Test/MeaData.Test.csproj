@@ -7,8 +7,8 @@
     <ProjectGuid>{DAA49B8A-04A9-4E49-BA9E-199967994A36}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MeaDataTest</RootNamespace>
-    <AssemblyName>MeaDataTest</AssemblyName>
+    <RootNamespace>MeaData.Test</RootNamespace>
+    <AssemblyName>MeaData.Test</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -132,9 +132,9 @@
       <Project>{b6af7cec-f339-4e94-9260-b764dd5d6fa8}</Project>
       <Name>MeaData</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Util\Util.csproj">
+    <ProjectReference Include="..\MeaData.Util\MeaData.Util.csproj">
       <Project>{63dcaa52-1bcf-4036-9c93-71cee4b2d234}</Project>
-      <Name>Util</Name>
+      <Name>MeaData.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
