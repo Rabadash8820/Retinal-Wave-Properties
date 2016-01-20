@@ -128,10 +128,10 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MeaData" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MeaData.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
-    <comment>Version 3.18</comment>
+    <comment>Version 4.0</comment>
   </data>
   <data name="MeaDataDbVersion" xml:space="preserve">
-    <value>3.18</value>
+    <value>4.0</value>
   </data>
   <data name="MySqlConnectionString" xml:space="preserve">
     <value>Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;</value>

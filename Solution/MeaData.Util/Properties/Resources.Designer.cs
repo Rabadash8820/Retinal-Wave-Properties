@@ -100,7 +100,7 @@ namespace MeaData.Util.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 3.18.
+        ///   Looks up a localized string similar to 4.0.
         /// </summary>
         public static string MeaDataDbVersion {
             get {
