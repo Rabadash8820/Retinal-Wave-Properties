@@ -31,7 +31,7 @@ namespace MEACruncher.Forms {
             toggleSelectionCtrls(false);
 
             // Asynchronously add TissueTypes data to the TreeView
-            LoadEntityWorker.RunWorkerAsync();
+            MainWorker.RunWorkerAsync();
 
             SearchTxt.GotFocus    += SearchTxt_GotFocus;        // Don't know why this event isn't available in the Designer...
             SearchTxt.TextChanged += SearchTxt_TextChanged;     // This will need to be dynamically registered/unregistered
@@ -135,7 +135,7 @@ namespace MEACruncher.Forms {
             Close();
         }
         private void CancelBtn_Click(object sender, EventArgs e) {
-            LoadEntityWorker.CancelAsync();
+            MainWorker.CancelAsync();
             Close();
         }
         private void AddTissueTypeForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -150,13 +150,13 @@ namespace MEACruncher.Forms {
 
             // Cache the names of the TissueTypes as autocomplete suggestions for the search box
             IList<TissueType> tissueTypes = Program.TissueTypes;
-            if (!LoadEntityWorker.CancellationPending) {
+            if (!MainWorker.CancellationPending) {
                 _autoStrings = new AutoCompleteStringCollection();
                 _autoStrings.AddRange(tissueTypes.Select(tt => tt.Name).ToArray());
             }
 
             // Wrap these TissueTypes in TreeNodes and add them to the TreeView
-            if (!LoadEntityWorker.CancellationPending) {
+            if (!MainWorker.CancellationPending) {
                 _nodes = tissueTypes.Where(tt => tt.Parent == null)
                                     .OrderBy(tt => tt.Name)
                                     .Select(tt => createNode(tt))
@@ -164,7 +164,7 @@ namespace MEACruncher.Forms {
             }
 
             // Determine whether loading was cancelled or successfully completed
-            if (LoadEntityWorker.CancellationPending)
+            if (MainWorker.CancellationPending)
                 args.Cancel = true;
             else
                 _loaded = true;

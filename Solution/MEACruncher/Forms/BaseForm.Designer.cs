@@ -24,15 +24,15 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            this.LoadEntityWorker = new System.ComponentModel.BackgroundWorker();
+            this.MainWorker = new System.ComponentModel.BackgroundWorker();
             this.EntityBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
             this.SuspendLayout();
             // 
-            // LoadEntityWorker
+            // MainWorker
             // 
-            this.LoadEntityWorker.WorkerReportsProgress = true;
-            this.LoadEntityWorker.WorkerSupportsCancellation = true;
+            this.MainWorker.WorkerReportsProgress = true;
+            this.MainWorker.WorkerSupportsCancellation = true;
             // 
             // BaseForm
             // 
@@ -48,7 +48,7 @@
 
         #endregion
 
-        protected System.ComponentModel.BackgroundWorker LoadEntityWorker;
+        protected System.ComponentModel.BackgroundWorker MainWorker;
         protected System.Windows.Forms.BindingSource EntityBS;
     }
 }

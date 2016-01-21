@@ -7,63 +7,66 @@ using MeaData;
 
 namespace MeaData.Util {
 
-    public class DbBoundList<E> : SortableBindingList<E> where E : Entity {
-        // ENCAPSULATE FIELDS
-        private ISession _db;
+    public class DbBoundList<T> : SortableBindingList<T> where T : class {
+        // HIDDEN FIELDS
+        private ISession _sess;
 
         // CONSTRUCTORS
-        public DbBoundList(ISession session, IList<E> list) : base(list) {
-            _db = session;
-
-            // Handle all CRUD changes by default
-            HandleCreates = true;
-            HandleUpdates = true;
-            HandleDeletes = true;
+        public DbBoundList(ISession session, IList<T> list) : base(list) {
+            _sess = session;
 
             // Subscribe to the necessary change events
             this.ListChanged += SortableBindingList_ListChanged;
             this.BeforeRemove += SortableBindingList_BeforeRemove;
         }
 
-        // INTERFACE
-        public bool HandleCreates { get; set; }
-        public bool HandleUpdates { get; set; }
-        public bool HandleDeletes { get; set; }
+        // PROPERTIES
+        public bool DbCreates { get; set; } = true;
+        public bool DbUpdates { get; set; } = true;
+        public bool DbDeletes { get; set; } = true;
 
         // EVENT HANDLERS
         private void SortableBindingList_ListChanged(object sender, ListChangedEventArgs e) {
-            // Interact with the database depending on how the bound list was changed
-            using (ITransaction trans = _db.BeginTransaction()) {
-                switch (e.ListChangedType) {
+            T item = (e.ListChangedType == ListChangedType.ItemDeleted) ? default(T) : this.Items[e.NewIndex];
 
-                    // Add newly created Entity to the database
-                    case ListChangedType.ItemAdded:
-                        if (HandleCreates) {
-                            E created = this.Items[e.NewIndex];
-                            _db.Save(created);
-                        }
-                        break;
+            switch (e.ListChangedType) {
 
-                    // Update changed Entity in the database
-                    case ListChangedType.ItemChanged:
-                        if (HandleUpdates) {
-                            E updated = this.Items[e.NewIndex];
-                            _db.Update(updated);
-                        }
-                        break;
-                }
+                // Add a newly created item to the database
+                case ListChangedType.ItemAdded:
+                    if (DbCreates)
+                        create(item);
+                    break;
 
-                trans.Commit();
+                // Update a changed item in the database
+                case ListChangedType.ItemChanged:
+                    if (DbUpdates)
+                        update(item);
+                    break;
             }
         }
         private void SortableBindingList_BeforeRemove(object sender, ListChangedEventArgs e) {
-            if (!HandleDeletes)
-                return;
-
             // Delete the removed Entity from the database
-            E deleted = this.Items[e.NewIndex];
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Delete(deleted);
+            T item = this.Items[e.NewIndex];
+            if (DbDeletes)
+                delete(item);
+        }
+
+        // HELPER FUNCTIONS
+        private void create(T item) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                _sess.Save(item);
+                trans.Commit();
+            }
+        }
+        private void update(T item) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                _sess.Update(item);
+                trans.Commit();
+            }
+        }
+        private void delete(T item) {
+            using (ITransaction trans = _sess.BeginTransaction()) {
+                _sess.Delete(item);
                 trans.Commit();
             }
         }

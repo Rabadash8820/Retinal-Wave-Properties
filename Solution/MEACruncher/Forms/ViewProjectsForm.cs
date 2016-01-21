@@ -1,6 +1,6 @@
-﻿using MeaData.Util;
+﻿using MeaData;
+using MeaData.Util;
 using static MeaData.Util.Util;
-using MeaData;
 using MEACruncher.Events;
 using MEACruncher.Resources;
 
@@ -94,18 +94,17 @@ namespace MEACruncher.Forms {
                 }
             }
 
-            // Clear cell error texts
-            foreach (DataGridViewCell cell in row.Cells)
-                cell.ErrorText = "";
-
             // If the databound Entity would create a duplicate in the database,
             // then set the row's error text and cancel
-            Project entity = row.DataBoundItem as Project;
-            bool unique = _entityMgr.IsUnique(entity);
-            if (!unique) {
-                row.ErrorText = _entityMgr.DuplicateErrorMsg(entity);
-                e.Cancel = true;
+            try {
+                Project entity = row.DataBoundItem as Project;
+                bool unique = _entityMgr.IsUnique(entity);
+                if (!unique) {
+                    row.ErrorText = _entityMgr.DuplicateErrorMsg(entity);
+                    e.Cancel = true;
+                }
             }
+            catch (IndexOutOfRangeException) { }
         }
         private void EntitiesDGV_RowValidated(object sender, DataGridViewCellEventArgs e) {
             // Clear error texts
@@ -115,21 +114,25 @@ namespace MEACruncher.Forms {
             row.ErrorText = "";
 
             // Update this row's bound Entity in the database
-            Project entity = row.DataBoundItem as Project;
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Update(entity);
-                trans.Commit();
+            Project entity = default(Project);
+            try {
+                entity = row.DataBoundItem as Project;
+                using (ITransaction trans = _db.BeginTransaction()) {
+                    _db.Update(entity);
+                    trans.Commit();
+                }
             }
+            catch (IndexOutOfRangeException) { }
 
             // Fire the EntityUpdated event
-            this.OnEntityUpdated(entity);
+            EntityUpdatedEventArgs args = new EntityUpdatedEventArgs(entity);
+            this.OnEntityUpdated(args);
         }
         private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
             // Deleting rows fires this event with a Display Context for some reason...
             if (e.Context != DataGridViewDataErrorContexts.Display)
                 e.ThrowException = true;
         }
-
         private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
             DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
             list.Add(e.Entity as Project);
@@ -151,26 +154,15 @@ namespace MEACruncher.Forms {
                 AllowEdit     = true,
                 AllowNew      = true,
                 AllowRemove   = true,
-                HandleCreates = true,
-                HandleUpdates = false,
-                HandleDeletes = true
+                DbCreates = true,
+                DbUpdates = false,  // We don't wanna update the database everytime user types a character!
+                DbDeletes = true
             };
             BindingSource bs = new BindingSource(list, null) { AllowNew = true };
             EntitiesDGV.DataSource = bs;
         }
-        private void OnEntityUpdated(Project entity) {
-            if (this.EntityUpdated == null)
-                return;
-
-            Delegate[] subscribers = this.EntityUpdated.GetInvocationList();
-            foreach (Delegate subscriber in subscribers) {
-                Control c = subscriber.Target as Control;
-                EntityUpdatedEventArgs args = new EntityUpdatedEventArgs(entity);
-                if (c != null && c.InvokeRequired)
-                    c.BeginInvoke(subscriber, this, args);
-                else
-                    subscriber.DynamicInvoke(this, args);
-            }
+        private void OnEntityUpdated(EntityUpdatedEventArgs args) {
+            this.EntityUpdated?.Invoke(this, args);
         }
 
     }

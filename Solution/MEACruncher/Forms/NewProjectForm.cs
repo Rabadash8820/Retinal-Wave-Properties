@@ -73,7 +73,8 @@ namespace MEACruncher.Forms {
             //}
 
             // Fire the EntityCreated event and close
-            this.OnEntityCreated(entity);
+            EntityCreatedEventArgs args = new EntityCreatedEventArgs(entity);
+            OnEntityCreated(args);
             this.Close();
         }
         private void CancelBtn_Click(object sender, EventArgs e) {
@@ -95,19 +96,8 @@ namespace MEACruncher.Forms {
                 _boundEntity,
                 GetPropertyName((Project e) => e.Comments));
         }
-        private void OnEntityCreated(Project entity) {
-            if (this.EntityCreated == null)
-                return;
-
-            Delegate[] subscribers = this.EntityCreated.GetInvocationList();
-            foreach (Delegate subscriber in subscribers) {
-                Control c = subscriber.Target as Control;
-                EntityCreatedEventArgs args = new EntityCreatedEventArgs(entity);
-                if (c != null && c.InvokeRequired)
-                    c.BeginInvoke(subscriber, this, args);
-                else
-                    subscriber.DynamicInvoke(this, args);
-            }
+        private void OnEntityCreated(EntityCreatedEventArgs args) {
+            this.EntityCreated?.Invoke(this, args);
         }
 
     }

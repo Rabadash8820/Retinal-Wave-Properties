@@ -45,12 +45,13 @@ namespace MeaDataTest {
         }
 
         [Test]
+        [Ignore("This test only succeeds if Projects have a child collection of Populations")]
         public void CanGetProjectCollections() {
             using (ITransaction trans = _sess.BeginTransaction()) {
                 // Create the main Entity
                 Project entity = createTransient();
                 Population elem1 = new Population();
-                entity.Populations.Add(elem1);
+                //entity.Populations.Add(elem1);
                 _sess.Save(entity);
 
                 // Assert that associated Entities are added to db with the Entity (when mapped as such)

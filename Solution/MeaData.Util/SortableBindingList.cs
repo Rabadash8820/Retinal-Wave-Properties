@@ -103,8 +103,8 @@ namespace MeaData.Util {
         /// </summary>
         /// <param name="index"></param>
         protected override void RemoveItem(int index) {
-            if (this.BeforeRemove != null)
-                BeforeRemove(this, new ListChangedEventArgs(ListChangedType.ItemDeleted, index));
+            ListChangedEventArgs args = new ListChangedEventArgs(ListChangedType.ItemDeleted, index);
+            OnBeforeRemove(args);
 
             base.RemoveItem(index);
         }
@@ -158,6 +158,9 @@ namespace MeaData.Util {
             }
             //not comparable, compare ToString
             return lhsValue.ToString().CompareTo(rhsValue.ToString());
+        }
+        private void OnBeforeRemove(ListChangedEventArgs args) {
+            this.BeforeRemove?.Invoke(this, args);
         }
     }
 }

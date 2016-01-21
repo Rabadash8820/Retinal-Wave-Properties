@@ -47,8 +47,8 @@
             // 
             // LoadEntityWorker
             // 
-            this.LoadEntityWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
-            this.LoadEntityWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
+            this.MainWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
+            this.MainWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
             // 
             // EntityBS
             // 
