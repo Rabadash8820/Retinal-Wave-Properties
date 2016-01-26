@@ -85,6 +85,18 @@ namespace MEACruncher.Forms {
             if (e.Button == MouseButtons.Right)
                 MainTree.SelectedNode = e.Node;
         }
+        private void MainTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            if (e.Clicks != 2)
+                return;
+
+            // If this TissueType is selectable, raise the TissueTypeSelected event and close the form
+            TissueType tt = e.Node.Tag as TissueType;
+            if (tt.IsSelectable) {
+                EntitySelectedEventArgs args = new EntitySelectedEventArgs(tt);
+                OnTissueTypeSelected(args);
+                Close();
+            }
+        }
         private void SearchTxt_Leave(object sender, EventArgs e) {
             _searchFocused = false;
 
@@ -126,7 +138,7 @@ namespace MEACruncher.Forms {
             toggleSelectionCtrls(false);
         }
         private void AddBtn_Click(object sender, EventArgs e) {
-            // Fire the TissueTypeSelected
+            // Raise the TissueTypeSelected event
             TissueType tt = MainTree.SelectedNode.Tag as TissueType;
             EntitySelectedEventArgs args = new EntitySelectedEventArgs(tt);
             OnTissueTypeSelected(args);

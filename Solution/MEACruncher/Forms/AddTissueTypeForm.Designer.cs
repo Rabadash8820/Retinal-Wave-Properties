@@ -129,6 +129,7 @@
             this.MainTree.TabIndex = 0;
             this.MainTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterSelect);
             this.MainTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTree_NodeMouseClick);
+            this.MainTree.NodeMouseDoubleClick += MainTree_NodeMouseDoubleClick;
             // 
             // TreeContextMenu
             // 
