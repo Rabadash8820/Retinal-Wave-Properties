@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using NHibernate;
 
@@ -7,6 +6,7 @@ using MeaData;
 using MEACruncher.Resources;
 
 namespace MEACruncher {
+
     internal class EntityManager {
         // ENCAPSULATED FIELDS
         private ISession _db;

@@ -70,7 +70,7 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start date must be in a valid DateTime format..
+        ///   Looks up a localized string similar to Provided start date was not in a valid DateTime format..
         /// </summary>
         internal static string ProjectStartDateFormat {
             get {

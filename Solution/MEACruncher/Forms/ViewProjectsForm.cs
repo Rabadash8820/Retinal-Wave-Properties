@@ -17,9 +17,7 @@ namespace MEACruncher.Forms {
         // INTERFACE
         public ViewProjectsForm() : base() {
             InitializeComponent();
-
-            EntitiesDGV.AutoGenerateColumns = false;
-
+            
             setDataBindings();
             loadEntities();
         }
@@ -53,7 +51,14 @@ namespace MEACruncher.Forms {
         private void RedoBtn_Click(object sender, EventArgs e) {
 
         }
+        private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
+            DbBoundList<Project> entities = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
+            entities.Add(e.Entity as Project);
+        }
 
+        private void EntitiesDGV_CellDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e) {
+            EntitiesDGV.BeginEdit(true);
+        }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
             if (e.ColumnIndex == DateStartedCol.Index) {
                 Project entity = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
@@ -64,6 +69,12 @@ namespace MEACruncher.Forms {
             int col = e.ColumnIndex;
             DataGridViewCell cell = EntitiesDGV.Rows[e.RowIndex].Cells[col];
 
+            // Don't bother validating if the cell being left never got input focus
+            Control editCtrl = EntitiesDGV.EditingControl;
+            if (editCtrl == null)
+                return;
+            TextBox textCell = editCtrl as TextBox;
+
             // Check that a title was entered
             if (col == TitleCol.Index) {
                 bool valid = Validator.NonEmpty(e.FormattedValue as string);
@@ -73,21 +84,24 @@ namespace MEACruncher.Forms {
             // Check that a valid start date was provided
             else if (col == DateStartedCol.Index) {
                 string errText = "";
+                DateTime latest = DateTime.Today;
+                DateTime earliest = new DateTime(1900, 1, 1);
                 string dateStr = e.FormattedValue as string;
                 bool validDateFormat = Validator.Date(dateStr);
                 if (!validDateFormat) {
                     errText = ValidateRes.ProjectStartDateFormat;
-                    cell.Value = default(DateTime);
+                    textCell.Text = earliest.ToShortDateString();
                 }
                 else {
-                    DateTime latest = DateTime.Today;
-                    DateTime earliest = new DateTime(1900, 1, 1);
-                    bool dateBtwn = Validator.DateBetween(dateStr, new DateTime(1900, 1, 1), DateTime.Today);
+                    DateTime date = DateTime.Parse(dateStr);
+                    bool dateBtwn = (earliest <= date && date <= latest);
                     if (!dateBtwn) {
                         errText = String.Format(ValidateRes.ProjectStartDate,
                             earliest.ToShortDateString(),
                             latest.ToShortDateString());
                     }
+                    else
+                        textCell.Text = date.ToShortDateString();
                 }
                 cell.ErrorText = errText;
             }
@@ -122,23 +136,12 @@ namespace MEACruncher.Forms {
             row.ErrorText = "";
 
             // Update this row's bound Entity in the database
-            Project entity = default(Project);
-            try {
-                entity = row.DataBoundItem as Project;
-                using (ITransaction trans = _db.BeginTransaction()) {
-                    _db.Update(entity);
-                    trans.Commit();
-                }
-            }
-            catch (IndexOutOfRangeException) { }
+            Project entity = row.DataBoundItem as Project;
+            update(entity);
 
             // Fire the EntityUpdated event
             EntityUpdatedEventArgs args = new EntityUpdatedEventArgs(entity);
             this.OnEntityUpdated(args);
-        }
-        private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
-            DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
-            list.Add(e.Entity as Project);
         }
         private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
             int col = e.ColumnIndex;
@@ -154,6 +157,8 @@ namespace MEACruncher.Forms {
 
         // HELPER FUNCTIONS
         private void setDataBindings() {
+            EntitiesDGV.AutoGenerateColumns = false;
+
             TitleCol.DataPropertyName       = GetPropertyName((Project e) => e.Name);
             DateStartedCol.DataPropertyName = GetPropertyName((Project e) => e.DateStarted);
             CommentsCol.DataPropertyName    = GetPropertyName((Project e) => e.Comments);
@@ -168,12 +173,23 @@ namespace MEACruncher.Forms {
                 AllowEdit     = true,
                 AllowNew      = true,
                 AllowRemove   = true,
-                DbCreates = true,
-                DbUpdates = false,  // We don't wanna update the database everytime user types a character!
-                DbDeletes = true
+                DbCreates     = true,
+                DbUpdates     = false,  // We don't wanna update the database everytime user types a character!
+                DbDeletes     = true
             };
             BindingSource bs = new BindingSource(list, null) { AllowNew = true };
             EntitiesDGV.DataSource = bs;
+        }
+        private void update(Project entity) {
+            // Update the database
+            // The try/catch block is need during row deletions for some reason
+            try {
+                using (ITransaction trans = _db.BeginTransaction()) {
+                    _db.Update(entity);
+                    trans.Commit();
+                }
+            }
+            catch (IndexOutOfRangeException) { }
         }
         private void OnEntityUpdated(EntityUpdatedEventArgs args) {
             this.EntityUpdated?.Invoke(this, args);

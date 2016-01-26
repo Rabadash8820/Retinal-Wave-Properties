@@ -81,19 +81,12 @@ namespace MeaData.Util {
         }
 
         /// <summary>
-        /// Checks whether a date string is between two given DateTimes.
+        /// Checks whether a date is between two given DateTimes.
         /// </summary>
         /// <param name="dateStr">The text to be interpreted as a DateTime</param>
-        /// <exception cref="FormatException">Thrown when the provided string is not in a valid DateTime format.</exception>
         /// <returns>True or false, depending on whether the given date is between the two DateTime expressions.</returns>
-        public static bool DateBetween(string dateStr, DateTime earliest, DateTime latest) {
-            // Return false if the string isn't in the right format
-            bool validStr = Validator.Date(dateStr);
-            if (!validStr)
-                throw new FormatException($"{nameof(dateStr)} was not in a valid DateTime format");
-
+        public static bool DateBetween(DateTime date, DateTime earliest, DateTime latest) {
             // Return whether the provided date falls within the provided timespan
-            DateTime date = DateTime.Parse(dateStr);
             bool dateBtwn = (earliest <= date && date <= latest);
             return dateBtwn;
         }

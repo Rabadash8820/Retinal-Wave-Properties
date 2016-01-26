@@ -73,6 +73,7 @@
             this.EntitiesDGV.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_RowValidated);
             this.EntitiesDGV.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EntitiesDGV_RowValidating);
             this.EntitiesDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.EntitiesDGV_DataError);
+            this.EntitiesDGV.CellDoubleClick += EntitiesDGV_CellDoubleClick;
             // 
             // TitleCol
             // 
@@ -164,7 +165,7 @@
             this.ResumeLayout(false);
 
         }
-        
+
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel MainTblLayout;
