@@ -18,16 +18,16 @@ namespace MEACruncher {
 
         // DELETE ENTITY WARNINGS
         public string DeleteWarningMsg(Project entity) {
-            return String.Format(DeleteRes.ProjectWarning, entity.Name);
+            return String.Format(DeleteRes.Project, entity.Name);
         }
 
         // DUPLICATE ENTITY ERROR MESSAGES
         public string DuplicateErrorMsg(Project entity) {
             string msg = String.Format(
-                            DuplicateRes.ProjectError,
+                            DuplicateRes.Project,
                             entity.Name,
                             entity.DateStarted.ToShortDateString());
-            msg += ("\n\n" + DuplicateRes.Message);
+            msg += ("\n" + DuplicateRes.Message);
             return msg;
         }
 

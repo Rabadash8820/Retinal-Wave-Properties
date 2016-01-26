@@ -61,20 +61,11 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0}?.
+        ///   Looks up a localized string similar to Are you sure you want to delete project &quot;{0}&quot; and all of its results?.
         /// </summary>
-        internal static string ExperimenterWarning {
+        internal static string Project {
             get {
-                return ResourceManager.GetString("ExperimenterWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to delete {0} and all of its results?.
-        /// </summary>
-        internal static string ProjectWarning {
-            get {
-                return ResourceManager.GetString("ProjectWarning", resourceCulture);
+                return ResourceManager.GetString("Project", resourceCulture);
             }
         }
     }

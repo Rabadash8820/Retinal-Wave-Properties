@@ -117,18 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ExperimenterComments" xml:space="preserve">
-    <value>That guy from that one place.</value>
-  </data>
-  <data name="ExperimenterEmail" xml:space="preserve">
-    <value>frodo@shire.com</value>
-  </data>
-  <data name="ExperimenterName" xml:space="preserve">
-    <value>Frodo Baggins</value>
-  </data>
-  <data name="ExperimenterPhone" xml:space="preserve">
-    <value>(111) 222-3333</value>
-  </data>
   <data name="ProjectComments" xml:space="preserve">
     <value>A new project for crunching some MEA data.</value>
   </data>

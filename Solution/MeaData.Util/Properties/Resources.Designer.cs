@@ -61,24 +61,6 @@ namespace MeaData.Util.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ^\d{1,2}([\/\\-])\d{1,2}\1\d{4}$.
-        /// </summary>
-        public static string DateRegex {
-            get {
-                return ResourceManager.GetString("DateRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^\w+@[a-z]+\.[a-z]{3}$.
-        /// </summary>
-        public static string EmailRegex {
-            get {
-                return ResourceManager.GetString("EmailRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to -- MySQL dump 10.13  Distrib 5.7.8-rc, for Win64 (x86_64)
         ///--
         ///-- Host: localhost    Database: meadata
@@ -114,33 +96,6 @@ namespace MeaData.Util.Properties {
         public static string MySqlConnectionString {
             get {
                 return ResourceManager.GetString("MySqlConnectionString", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^[A-Z][a-z]+( [A-Z][a-z]+){0,2}$.
-        /// </summary>
-        public static string NameRegex {
-            get {
-                return ResourceManager.GetString("NameRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^\S+$.
-        /// </summary>
-        public static string NonEmptyRegex {
-            get {
-                return ResourceManager.GetString("NonEmptyRegex", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to ^\(\d{3}\) \d{3}-\d{4}$.
-        /// </summary>
-        public static string PhoneRegex {
-            get {
-                return ResourceManager.GetString("PhoneRegex", resourceCulture);
             }
         }
     }

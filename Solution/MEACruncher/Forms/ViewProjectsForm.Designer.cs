@@ -34,6 +34,7 @@
             this.CloseBtn = new System.Windows.Forms.Button();
             this.EditBtn = new System.Windows.Forms.Button();
             this.NewBtn = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
             this.MainTblLayout.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).BeginInit();
             this.BottomPanel.SuspendLayout();
@@ -69,9 +70,9 @@
             this.EntitiesDGV.TabIndex = 0;
             this.EntitiesDGV.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.EntitiesDGV_CellFormatting);
             this.EntitiesDGV.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.EntitiesDGV_CellValidating);
-            this.EntitiesDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.EntitiesDGV_DataError);
             this.EntitiesDGV.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.EntitiesDGV_RowValidated);
             this.EntitiesDGV.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.EntitiesDGV_RowValidating);
+            this.EntitiesDGV.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.EntitiesDGV_DataError);
             // 
             // TitleCol
             // 
@@ -156,13 +157,14 @@
             this.Name = "ViewProjectsForm";
             this.ShowInTaskbar = false;
             this.Text = "Projects";
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
             this.MainTblLayout.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.EntitiesDGV)).EndInit();
             this.BottomPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
-
+        
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel MainTblLayout;

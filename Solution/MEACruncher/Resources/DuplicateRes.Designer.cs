@@ -61,15 +61,6 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to An experimenter named {0} has already been created with this Email and phone number..
-        /// </summary>
-        internal static string ExperimenterError {
-            get {
-                return ResourceManager.GetString("ExperimenterError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Please enter different values..
         /// </summary>
         internal static string Message {
@@ -81,9 +72,9 @@ namespace MEACruncher.Resources {
         /// <summary>
         ///   Looks up a localized string similar to A project with the title {0} was already started on {1}..
         /// </summary>
-        internal static string ProjectError {
+        internal static string Project {
             get {
-                return ResourceManager.GetString("ProjectError", resourceCulture);
+                return ResourceManager.GetString("Project", resourceCulture);
             }
         }
     }

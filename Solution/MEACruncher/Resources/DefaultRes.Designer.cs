@@ -61,42 +61,6 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to That guy from that one place..
-        /// </summary>
-        internal static string ExperimenterComments {
-            get {
-                return ResourceManager.GetString("ExperimenterComments", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to frodo@shire.com.
-        /// </summary>
-        internal static string ExperimenterEmail {
-            get {
-                return ResourceManager.GetString("ExperimenterEmail", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Frodo Baggins.
-        /// </summary>
-        internal static string ExperimenterName {
-            get {
-                return ResourceManager.GetString("ExperimenterName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (111) 222-3333.
-        /// </summary>
-        internal static string ExperimenterPhone {
-            get {
-                return ResourceManager.GetString("ExperimenterPhone", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to A new project for crunching some MEA data..
         /// </summary>
         internal static string ProjectComments {

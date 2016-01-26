@@ -97,6 +97,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbBoundList.cs" />
+    <Compile Include="RegexRes.Designer.cs">
+      <DependentUpon>RegexRes.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="SortableBindingList.cs" />
     <Compile Include="Controls\CalendarColumn.cs" />
     <Compile Include="Controls\CalendarEditingControl.cs">
@@ -129,6 +134,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegexRes.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>RegexRes.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

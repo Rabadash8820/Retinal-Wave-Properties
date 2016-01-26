@@ -61,11 +61,12 @@ namespace MEACruncher.Forms {
             }
         }
         private void EntitiesDGV_CellValidating(object sender, DataGridViewCellValidatingEventArgs e) {
-            // Check that a title was entered
             int col = e.ColumnIndex;
             DataGridViewCell cell = EntitiesDGV.Rows[e.RowIndex].Cells[col];
+
+            // Check that a title was entered
             if (col == TitleCol.Index) {
-                bool valid = Validator.Text(RegexRes.NonEmpty, e.FormattedValue as string);
+                bool valid = Validator.NonEmpty(e.FormattedValue as string);
                 cell.ErrorText = (valid ? "" : ValidateRes.ProjectTitle);
             }
 
@@ -73,13 +74,20 @@ namespace MEACruncher.Forms {
             else if (col == DateStartedCol.Index) {
                 string errText = "";
                 string dateStr = e.FormattedValue as string;
-                DateTime latest = DateTime.Today;
-                DateTime earliest = new DateTime(1970, 1, 1);
-                bool validDate = Validator.Date(dateStr, earliest, latest);
-                if (!validDate) {
-                    errText = String.Format(ValidateRes.InvalidDateError,
-                        earliest.ToShortDateString(),
-                        latest.ToShortDateString());
+                bool validDateFormat = Validator.Date(dateStr);
+                if (!validDateFormat) {
+                    errText = ValidateRes.ProjectStartDateFormat;
+                    cell.Value = default(DateTime);
+                }
+                else {
+                    DateTime latest = DateTime.Today;
+                    DateTime earliest = new DateTime(1900, 1, 1);
+                    bool dateBtwn = Validator.DateBetween(dateStr, new DateTime(1900, 1, 1), DateTime.Today);
+                    if (!dateBtwn) {
+                        errText = String.Format(ValidateRes.ProjectStartDate,
+                            earliest.ToShortDateString(),
+                            latest.ToShortDateString());
+                    }
                 }
                 cell.ErrorText = errText;
             }
@@ -128,14 +136,20 @@ namespace MEACruncher.Forms {
             EntityUpdatedEventArgs args = new EntityUpdatedEventArgs(entity);
             this.OnEntityUpdated(args);
         }
-        private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
-            // Deleting rows fires this event with a Display Context for some reason...
-            if (e.Context != DataGridViewDataErrorContexts.Display)
-                e.ThrowException = true;
-        }
         private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
             DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
             list.Add(e.Entity as Project);
+        }
+        private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            int col = e.ColumnIndex;
+            DataGridViewCell cell = EntitiesDGV.Rows[e.RowIndex].Cells[col];
+
+            // Squash format errors in the DateStarted column
+            if (col == DateStartedCol.Index) {
+                e.ThrowException = false;
+                cell.ErrorText = ValidateRes.ProjectStartDateFormat;
+                cell.Value = default(DateTime);
+            }
         }
 
         // HELPER FUNCTIONS

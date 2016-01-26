@@ -117,14 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="DateRegex" xml:space="preserve">
-    <value>^\d{1,2}([\/\\-])\d{1,2}\1\d{4}$</value>
-    <comment>mm/dd/yyyy  (or forward slash or hyphen)</comment>
-  </data>
-  <data name="EmailRegex" xml:space="preserve">
-    <value>^\w+@[a-z]+\.[a-z]{3}$</value>
-    <comment>(1 or more word chars) @ (1 or more letters) . (3 letters)</comment>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="MeaData" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MeaData.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
@@ -135,17 +127,5 @@
   </data>
   <data name="MySqlConnectionString" xml:space="preserve">
     <value>Server=localhost;Port=3306;CharSet=utf8;User id=root;Pwd=mysqlShundra8820;</value>
-  </data>
-  <data name="NameRegex" xml:space="preserve">
-    <value>^[A-Z][a-z]+( [A-Z][a-z]+){0,2}$</value>
-    <comment>One to three space-delimited "words" (e.g., Daniel Cameron Vicarel)</comment>
-  </data>
-  <data name="NonEmptyRegex" xml:space="preserve">
-    <value>^\S+$</value>
-    <comment>At least one non-whitespace character</comment>
-  </data>
-  <data name="PhoneRegex" xml:space="preserve">
-    <value>^\(\d{3}\) \d{3}-\d{4}$</value>
-    <comment>(111) 222-3333</comment>
   </data>
 </root>
