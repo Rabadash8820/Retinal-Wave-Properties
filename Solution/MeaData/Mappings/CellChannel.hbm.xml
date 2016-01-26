@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
+  <class name="CellChannel" table="cell_channels" dynamic-update="true" dynamic-insert="true">
+    <id name="Guid" column="Id">
+      <generator class="guid"/>
+    </id>
+    <natural-id mutable="true">
+      <many-to-one name="Cell" column="CellId" />
+      <many-to-one name="Channel" column="ChannelId" />
+    </natural-id>
+    <property name="Name" column="Name" />
+    <set name="Spikes" table="spikes" lazy="extra" inverse="true" cascade="all">
+      <key unique="true" column="CellChannelId" />
+      <one-to-many class="Spike"/>
+    </set>
+    <set name="Bursts" table="bursts" lazy="extra" inverse="true" cascade="all">
+      <key unique="true" column="CellChannelId" />
+      <one-to-many class="Burst"/>
+    </set>
+  </class>
+</hibernate-mapping>

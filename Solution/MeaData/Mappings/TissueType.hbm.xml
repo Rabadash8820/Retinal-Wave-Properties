@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="TissueType" table="tissue_types" dynamic-update="true">
+  <class name="TissueType" table="tissue_types" mutable="false" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
@@ -8,12 +8,13 @@
       <property name="Name" column="Name" />
       <many-to-one name="Parent" column="ParentId" />
     </natural-id>
+    <property name="IsSelectable" column="IsSelectable" />
     <property name="Comments" column="Comments" />
-    <set name="Tissues" table="tissues" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Tissues" table="tissues" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="TissueTypeId" />
       <one-to-many class="Tissue"/>
     </set>
-    <set name="Children" table="tissues" lazy="true" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Children" table="tissues" lazy="true" inverse="true" cascade="all-delete-orphan">
       <key unique="true" column="ParentId" />
       <one-to-many class="TissueType"/>
     </set>

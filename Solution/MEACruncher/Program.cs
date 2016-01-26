@@ -1,15 +1,22 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
+using NHibernate;
+using NHibernate.Transform;
 
 using MeaData;
+using M = MEACruncher.Properties;
 using MEACruncher.Forms;
-using P = MEACruncher.Properties;
-using Util;
+using MeaData.Util;
+using U = MeaData.Util.Properties;
 
 namespace MEACruncher {
 
     static class Program {
         public static DbWrapper MeaDataDb;
+        public static IList<TissueType> TissueTypes;
 
         /// <summary>
         /// The main entry point for the application.
@@ -19,14 +26,18 @@ namespace MEACruncher {
             // Establish connections with MySQL databases
             MeaDataDb = new DbWrapper(
                 typeof(Entity).Assembly,
-                P.Resources.MeaDataDbName,
-                P.Resources.MeaDataDbVersion,
-                P.Resources.MeaDataSql);
+                M.Resources.MeaDataDbName,
+                U.Resources.MeaDataDbVersion,
+                U.Resources.MeaData);
 
-            System.Collections.Generic.List<int> intList = new System.Collections.Generic.List<int>();
-            System.ComponentModel.BindingList<int> intBindList = new System.ComponentModel.BindingList<int>(intList);
-            BindingSource bs = new BindingSource(intList, null);
-            bool canSort = bs.SupportsSorting;
+            // Cache some data
+            using (ISession sess = MeaDataDb.OpenSession()) {
+                TissueTypes = sess.QueryOver<TissueType>()
+                                  .OrderBy(tt => tt.Name).Asc
+                                  .Fetch(tt => tt.Children).Eager
+                                  .TransformUsing(Transformers.DistinctRootEntity)
+                                  .List();
+            }
 
             // Open the main form
             Application.EnableVisualStyles();

@@ -114,6 +114,7 @@
             this.OtherDataButton.TabIndex = 8;
             this.OtherDataButton.Text = "View Other Data";
             this.OtherDataButton.UseVisualStyleBackColor = false;
+            this.OtherDataButton.Click += new System.EventHandler(this.OtherDataButton_Click);
             // 
             // PopulationsBtn
             // 
@@ -140,8 +141,9 @@
             this.FilesBtn.Name = "FilesBtn";
             this.FilesBtn.Size = new System.Drawing.Size(200, 40);
             this.FilesBtn.TabIndex = 5;
-            this.FilesBtn.Text = "View Files";
+            this.FilesBtn.Text = "View Tissue Types";
             this.FilesBtn.UseVisualStyleBackColor = false;
+            this.FilesBtn.Click += new System.EventHandler(this.FilesBtn_Click);
             // 
             // TitleLbl
             // 

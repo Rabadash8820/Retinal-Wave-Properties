@@ -117,26 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Date" xml:space="preserve">
-    <value>Enter a date in the format "mm/dd/yyyy".</value>
+  <data name="ProjectStartDate" xml:space="preserve">
+    <value>Start date must be between {0} and {1}.</value>
   </data>
-  <data name="EmailAddress" xml:space="preserve">
-    <value>Enter an Email like "frodo@shire.com".</value>
-  </data>
-  <data name="EnterDateMsg" xml:space="preserve">
-    <value>Enter a date in the format "mm/dd/yyyy".</value>
-  </data>
-  <data name="ExperimenterFullName" xml:space="preserve">
-    <value>Enter a name like "Frodo Baggins".</value>
-  </data>
-  <data name="InvalidDateError" xml:space="preserve">
-    <value>Enter a valid date between {0} and {1}.</value>
-  </data>
-  <data name="Message" xml:space="preserve">
-    <value>{0} is not in the correct format.</value>
-  </data>
-  <data name="PhoneNumber" xml:space="preserve">
-    <value>Enter a phone number in the format "(111) 222-3333".</value>
+  <data name="ProjectStartDateFormat" xml:space="preserve">
+    <value>Provided start date was not in a valid DateTime format.</value>
   </data>
   <data name="ProjectTitle" xml:space="preserve">
     <value>You must provide a title for this Project.</value>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="MeaData" namespace="MeaData" auto-import="false">
-  <class name="Condition" table="conditions" dynamic-update="true">
+  <class name="Condition" table="conditions" dynamic-update="true" dynamic-insert="true">
     <id name="Guid" column="Id">
       <generator class="guid"/>
     </id>
@@ -8,13 +8,9 @@
       <property name="Name" column="Name" />
     </natural-id>
     <property name="Comments" column="Comments" />
-    <set name="Recordings" table="recording_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
+    <set name="Recordings" table="recording_conditions" lazy="extra" inverse="true" cascade="all">
       <key unique="true" column="ConditionId" />
       <many-to-many class="Recording" column="RecordingId" />
-    </set>
-    <set name="Populations" table="population_conditions" lazy="extra" access="nosetter.camelcase-underscore" inverse="true" cascade="all">
-      <key unique="true" column="ConditionId" />
-      <many-to-many class="Population" column="PopulationId" />
     </set>
   </class>
 </hibernate-mapping>

@@ -24,10 +24,31 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            this.MainWorker = new System.ComponentModel.BackgroundWorker();
+            this.EntityBS = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // MainWorker
+            // 
+            this.MainWorker.WorkerReportsProgress = true;
+            this.MainWorker.WorkerSupportsCancellation = true;
+            // 
+            // BaseForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "BaseForm";
             this.Text = "BaseForm";
+            ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        protected System.ComponentModel.BackgroundWorker MainWorker;
+        protected System.Windows.Forms.BindingSource EntityBS;
     }
 }

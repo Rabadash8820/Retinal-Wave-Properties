@@ -3,16 +3,12 @@ using System.Collections.Generic;
 
 namespace MeaData {
 
+    [DoNotVirtualize]
     public class EntityMap {
         // VARIABLES
-        private Dictionary<Entity, Entity> _map;
+        private Dictionary<Entity, Entity> _map = new Dictionary<Entity, Entity>();
 
-        // CONSTRUCTORS
-        public EntityMap() {
-            _map = new Dictionary<Entity, Entity>();
-        }
-
-        // FUNCTIONS
+        // INTERFACE FUNCTIONS
         public T GetEntity<T>(T inEntity) where T : Entity {
             if (inEntity != null) {
                 Entity outEntity = null;
@@ -26,7 +22,7 @@ namespace MeaData {
             if (oldEntity != null && newEntity != null)
                 _map.Add(oldEntity, newEntity);
         }
-        public bool Contains(Entity entity) {
+        public bool ContainsKey(Entity entity) {
             if (entity == null)
                 return false;
             return _map.ContainsKey(entity);
