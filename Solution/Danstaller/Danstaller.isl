@@ -1160,21 +1160,21 @@
 		<row><td>CommonAppDataFolder</td><td>TARGETDIR</td><td>.:Common~1|CommonAppData</td><td/><td>0</td><td/></row>
 		<row><td>CommonFiles64Folder</td><td>TARGETDIR</td><td>.:Common64</td><td/><td>0</td><td/></row>
 		<row><td>CommonFilesFolder</td><td>TARGETDIR</td><td>.:Common</td><td/><td>0</td><td/></row>
-		<row><td>DANWARE</td><td>ProgramFiles64Folder</td><td>Danware</td><td/><td>0</td><td/></row>
+		<row><td>DANWARE</td><td>ProgramFilesFolder</td><td>Danware</td><td/><td>0</td><td/></row>
 		<row><td>DANWARE1</td><td>AppDataFolder</td><td>Danware</td><td/><td>0</td><td/></row>
+		<row><td>DANWARE64</td><td>ProgramFiles64Folder</td><td>Danware</td><td/><td>0</td><td/></row>
 		<row><td>DATABASEDIR</td><td>ISYourDataBaseDir</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>DesktopFolder</td><td>TARGETDIR</td><td>.:Desktop</td><td/><td>3</td><td/></row>
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>MEACRUNCHER</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>MEACRUNCHER64</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MEACRUNCHER</td><td>DANWARE</td><td>MEACRU~1|MEA Cruncher</td><td/><td>0</td><td/></row>
+		<row><td>MEACRUNCHER64</td><td>DANWARE64</td><td>MEACRU~1|MEA Cruncher</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
-		<row><td>NEW_DIRECTORY1</td><td>ProgramFilesFolder</td><td>Danware</td><td/><td>0</td><td/></row>
-		<row><td>NEW_DIRECTORY2</td><td>NEW_DIRECTORY1</td><td>MEACRU~1|MEA Cruncher</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
 		<row><td>PersonalFolder</td><td>TARGETDIR</td><td>.:Personal</td><td/><td>0</td><td/></row>
 		<row><td>PrimaryVolumePath</td><td>TARGETDIR</td><td>.:Primar~1|PrimaryVolumePath</td><td/><td>0</td><td/></row>
@@ -4413,7 +4413,7 @@ QwBEAF8AUgBPAE0AAQBFAHgAcAByAGUAcwBzAA==
 		<row><td>PROGMSG_IIS_ROLLBACKVROOTS</td><td>##IDS_PROGMSG_IIS_ROLLBACKVROOTS##</td><td/></row>
 		<row><td>PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS</td><td>##IDS_PROGMSG_IIS_ROLLBACKWEBSERVICEEXTENSIONS##</td><td/></row>
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]MEACruncher.Primary output</td><td/></row>
-		<row><td>ProductCode</td><td>{8DBDA9D5-C359-41CF-9C50-4EEB9C31CEF3}</td><td/></row>
+		<row><td>ProductCode</td><td>{1B054C33-07EA-4062-9754-DFB37F9805E3}</td><td/></row>
 		<row><td>ProductName</td><td>MEA Cruncher</td><td/></row>
 		<row><td>ProductVersion</td><td>0.02.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
