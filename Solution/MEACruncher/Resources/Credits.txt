@@ -9,3 +9,5 @@ NHibernate
 NUnit
 
 Fody
+
+MSDN
