@@ -60,7 +60,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Argument.cs" />
-    <Compile Include="CommandLineItemCollection.cs" />
     <Compile Include="IArgument.cs" />
     <Compile Include="ICommandLineItem.cs" />
     <Compile Include="ListFlag.cs" />

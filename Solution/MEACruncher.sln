@@ -22,7 +22,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaData.Util", "MeaData.Uti
 		{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8} = {B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommParser", "CommProcessor\CommParser.csproj", "{CE21EA22-5143-4582-8136-07F6977F1F4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommParser", "CommParser\CommParser.csproj", "{CE21EA22-5143-4582-8136-07F6977F1F4A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
