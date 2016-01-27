@@ -31,7 +31,7 @@ namespace MEACruncher.Forms {
             toggleSelectionCtrls(false);
 
             // Asynchronously add TissueTypes data to the TreeView
-            LoadEntityWorker.RunWorkerAsync();
+            MainWorker.RunWorkerAsync();
 
             SearchTxt.GotFocus    += SearchTxt_GotFocus;        // Don't know why this event isn't available in the Designer...
             SearchTxt.TextChanged += SearchTxt_TextChanged;     // This will need to be dynamically registered/unregistered
@@ -85,6 +85,18 @@ namespace MEACruncher.Forms {
             if (e.Button == MouseButtons.Right)
                 MainTree.SelectedNode = e.Node;
         }
+        private void MainTree_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
+            if (e.Clicks != 2)
+                return;
+
+            // If this TissueType is selectable, raise the TissueTypeSelected event and close the form
+            TissueType tt = e.Node.Tag as TissueType;
+            if (tt.IsSelectable) {
+                EntitySelectedEventArgs args = new EntitySelectedEventArgs(tt);
+                OnTissueTypeSelected(args);
+                Close();
+            }
+        }
         private void SearchTxt_Leave(object sender, EventArgs e) {
             _searchFocused = false;
 
@@ -126,7 +138,7 @@ namespace MEACruncher.Forms {
             toggleSelectionCtrls(false);
         }
         private void AddBtn_Click(object sender, EventArgs e) {
-            // Fire the TissueTypeSelected
+            // Raise the TissueTypeSelected event
             TissueType tt = MainTree.SelectedNode.Tag as TissueType;
             EntitySelectedEventArgs args = new EntitySelectedEventArgs(tt);
             OnTissueTypeSelected(args);
@@ -135,7 +147,7 @@ namespace MEACruncher.Forms {
             Close();
         }
         private void CancelBtn_Click(object sender, EventArgs e) {
-            LoadEntityWorker.CancelAsync();
+            MainWorker.CancelAsync();
             Close();
         }
         private void AddTissueTypeForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -150,13 +162,13 @@ namespace MEACruncher.Forms {
 
             // Cache the names of the TissueTypes as autocomplete suggestions for the search box
             IList<TissueType> tissueTypes = Program.TissueTypes;
-            if (!LoadEntityWorker.CancellationPending) {
+            if (!MainWorker.CancellationPending) {
                 _autoStrings = new AutoCompleteStringCollection();
                 _autoStrings.AddRange(tissueTypes.Select(tt => tt.Name).ToArray());
             }
 
             // Wrap these TissueTypes in TreeNodes and add them to the TreeView
-            if (!LoadEntityWorker.CancellationPending) {
+            if (!MainWorker.CancellationPending) {
                 _nodes = tissueTypes.Where(tt => tt.Parent == null)
                                     .OrderBy(tt => tt.Name)
                                     .Select(tt => createNode(tt))
@@ -164,7 +176,7 @@ namespace MEACruncher.Forms {
             }
 
             // Determine whether loading was cancelled or successfully completed
-            if (LoadEntityWorker.CancellationPending)
+            if (MainWorker.CancellationPending)
                 args.Cancel = true;
             else
                 _loaded = true;

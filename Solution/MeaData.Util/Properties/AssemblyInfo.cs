@@ -1,5 +1,5 @@
-﻿using System;
-using System.Resources;
+﻿using System.Resources;
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("MeaData")]
-[assembly: AssemblyDescription("This assembly generates a library of POCO classes and NHibernite mapping files to map them to the MeaData database schema.")]
+[assembly: AssemblyTitle("Util")]
+[assembly: AssemblyDescription("Adds some supporting types, controls, static functions, etc. for a solution relying on the MeaData domain.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Danware")]
-[assembly: AssemblyProduct("MeaData Domain")]
+[assembly: AssemblyProduct("MeaData Utilities")]
 [assembly: AssemblyCopyright("Copyright ©  2015 Danware.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("725e89b4-ac63-4700-b984-e7a33687d585")]
+[assembly: Guid("dcfdcc8e-ac48-4f52-9eaf-9f9987333f07")]
 
 // Version information for an assembly consists of the following four values:
 //
@@ -35,8 +35,9 @@ using System.Runtime.InteropServices;
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.0.0.0")]
-[assembly: AssemblyFileVersion("4.0.0.0")]
-[assembly: NeutralResourcesLanguage("en-US")]
+[assembly: AssemblyFileVersion("2.0.0.0")]
 
 // Added by Dan Vicarel
 [assembly: CLSCompliant(true)]
+[assembly: NeutralResourcesLanguage("en-US")]
+

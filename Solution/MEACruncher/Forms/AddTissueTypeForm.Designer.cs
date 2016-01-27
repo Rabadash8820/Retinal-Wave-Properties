@@ -47,8 +47,8 @@
             // 
             // LoadEntityWorker
             // 
-            this.LoadEntityWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
-            this.LoadEntityWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
+            this.MainWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
+            this.MainWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
             // 
             // EntityBS
             // 
@@ -129,6 +129,7 @@
             this.MainTree.TabIndex = 0;
             this.MainTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterSelect);
             this.MainTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTree_NodeMouseClick);
+            this.MainTree.NodeMouseDoubleClick += MainTree_NodeMouseDoubleClick;
             // 
             // TreeContextMenu
             // 

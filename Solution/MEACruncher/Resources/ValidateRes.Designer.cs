@@ -61,65 +61,20 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter a date in the format &quot;mm/dd/yyyy&quot;..
+        ///   Looks up a localized string similar to Start date must be between {0} and {1}..
         /// </summary>
-        internal static string Date {
+        internal static string ProjectStartDate {
             get {
-                return ResourceManager.GetString("Date", resourceCulture);
+                return ResourceManager.GetString("ProjectStartDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enter an Email like &quot;frodo@shire.com&quot;..
+        ///   Looks up a localized string similar to Provided start date was not in a valid DateTime format..
         /// </summary>
-        internal static string EmailAddress {
+        internal static string ProjectStartDateFormat {
             get {
-                return ResourceManager.GetString("EmailAddress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a date in the format &quot;mm/dd/yyyy&quot;..
-        /// </summary>
-        internal static string EnterDateMsg {
-            get {
-                return ResourceManager.GetString("EnterDateMsg", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a name like &quot;Frodo Baggins&quot;..
-        /// </summary>
-        internal static string ExperimenterFullName {
-            get {
-                return ResourceManager.GetString("ExperimenterFullName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a valid date between {0} and {1}..
-        /// </summary>
-        internal static string InvalidDateError {
-            get {
-                return ResourceManager.GetString("InvalidDateError", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is not in the correct format..
-        /// </summary>
-        internal static string Message {
-            get {
-                return ResourceManager.GetString("Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Enter a phone number in the format &quot;(111) 222-3333&quot;..
-        /// </summary>
-        internal static string PhoneNumber {
-            get {
-                return ResourceManager.GetString("PhoneNumber", resourceCulture);
+                return ResourceManager.GetString("ProjectStartDateFormat", resourceCulture);
             }
         }
         

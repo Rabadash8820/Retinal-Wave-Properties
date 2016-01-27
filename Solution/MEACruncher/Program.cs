@@ -7,9 +7,10 @@ using NHibernate;
 using NHibernate.Transform;
 
 using MeaData;
+using M = MEACruncher.Properties;
 using MEACruncher.Forms;
-using Util;
-using U = Util.Properties;
+using MeaData.Util;
+using U = MeaData.Util.Properties;
 
 namespace MEACruncher {
 
@@ -25,7 +26,7 @@ namespace MEACruncher {
             // Establish connections with MySQL databases
             MeaDataDb = new DbWrapper(
                 typeof(Entity).Assembly,
-                Properties.Resources.MeaDataDbName,
+                M.Resources.MeaDataDbName,
                 U.Resources.MeaDataDbVersion,
                 U.Resources.MeaData);
 

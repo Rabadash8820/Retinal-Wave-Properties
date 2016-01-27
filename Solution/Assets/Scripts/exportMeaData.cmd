@@ -1,6 +1,6 @@
 :: Name:     exportMeaData.cmd
-:: Purpose:  Exports the meadata database schema to a SQL file, along with data from "important" tables
-::            Optionally allows the user to update the schema's version string
+:: Purpose:  Exports the meadata database schema to a SQL file, along with data from "important" tables.
+::           Optionally allows the user to update the schema's version string
 :: Author:   Dan Vicarel (shundra8820@gmail.com)
 :: Revision: May 2015 - initial version
 ::           June 2015 - revised log messages and added support for the meadata.cnf file
@@ -29,8 +29,8 @@ SET pauseRequired=%ERRORLEVEL%
 
 :: Set parameters/flags based on the provided arguments
 SET index=0
-SET sqlFileName=
-SET newVersionStr=
+SET sqlFileName=""
+SET newVersionStr=""
 SET help=0
 SET forceUpdate=0
 :Loop
@@ -43,7 +43,7 @@ GOTO Loop
 :Continue
 
 :: If any part of the input was invalid (and help was not requrested), then
-:: show prop syntax and exit
+:: show proper syntax and exit
 IF "%sqlFileName%"=="" (
     IF %help%==0 CALL :log "No dump file name was provided."
     CALL :showSyntax
@@ -249,8 +249,10 @@ EXIT /B EXIT_SUCCESS
     CALL :log "                     current version matches the provided version."
     CALL :log "                     Has no effect if a version string was not provided."
     ECHO.
-    CALL :log "Data will only be exported from non-user-specific tables.  All other"
-    CALL :log "tables will export just their schema."
+    CALL :log "  /H, --help, /?		Display this help information."
+    ECHO.
+    CALL :log "Data will only be exported from non-user-specific tables."
+    CALL :log "All other tables will export just their schema."
     
     IF %pauseRequired%==1 ECHO. && PAUSE
     EXIT /B %EXIT_SUCCESS%
