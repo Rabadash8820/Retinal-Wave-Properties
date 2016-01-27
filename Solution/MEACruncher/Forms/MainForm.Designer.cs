@@ -43,7 +43,6 @@
             this.MainPicturebox.Location = new System.Drawing.Point(0, 0);
             this.MainPicturebox.Name = "MainPicturebox";
             this.MainPicturebox.Size = new System.Drawing.Size(957, 536);
-            this.MainPicturebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.MainPicturebox.TabIndex = 1;
             this.MainPicturebox.TabStop = false;
             // 

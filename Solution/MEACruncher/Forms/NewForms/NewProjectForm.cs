@@ -6,6 +6,7 @@ using MEACruncher.Events;
 using MEACruncher.Resources;
 
 using NHibernate;
+using Util;
 
 namespace MEACruncher.Forms {
 
@@ -40,8 +41,20 @@ namespace MEACruncher.Forms {
 
         }
         private void CreateBtn_Click(object sender, EventArgs e) {
-            // If the Entity would create a duplicate in the database, show an error pop-up and return
+            // Validate Entity data provided by the user
             Project entity = _boundEntity.DataSource as Project;
+            if (entity.Name == "") {
+                MessageBox.Show(
+                    ValidateRes.ProjectTitle,
+                    Application.ProductName,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error,
+                    MessageBoxDefaultButton.Button1);
+                TitleTxt.Focus();
+                return;
+            }
+
+            // If the Entity would create a duplicate in the database, show an error pop-up and return
             bool unique = _entityMgr.IsUnique(entity);
             if (!unique) {
                 MessageBox.Show(
@@ -54,10 +67,10 @@ namespace MEACruncher.Forms {
             }
 
             // Otherwise, add this new Entity to the database
-            using (ITransaction trans = _db.BeginTransaction()) {
-                _db.Save(entity);
-                trans.Commit();
-            }
+            //using (ITransaction trans = _db.BeginTransaction()) {
+            //    _db.Save(entity);
+            //    trans.Commit();
+            //}
 
             // Fire the EntityCreated event and close
             this.OnEntityCreated(entity);

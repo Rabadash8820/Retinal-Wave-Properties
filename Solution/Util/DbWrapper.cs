@@ -26,7 +26,6 @@ namespace Util {
         // VARIABLES
         private Assembly _assembly;
         private ISessionFactory _sf;
-        private ISession _sess;
 
         // CONSTRUCTORS
         public DbWrapper() { }

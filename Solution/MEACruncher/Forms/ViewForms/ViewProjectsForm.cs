@@ -14,13 +14,11 @@ using System.Collections.Generic;
 namespace MEACruncher.Forms {
 
     internal partial class ViewProjectsForm : BaseForm {
-        // ENCAPSULATED FIELDS
-        DataGridViewColumn _sortColumn;
-        string _sortDirection;
-        
         // INTERFACE
         public ViewProjectsForm() {
             InitializeComponent();
+
+            EntitiesDGV.AutoGenerateColumns = false;
 
             setDataBindings();
             loadEntities();
@@ -28,16 +26,26 @@ namespace MEACruncher.Forms {
         public event EntityUpdatedEventHandler EntityUpdated;
 
         // EVENT HANDLERS
-        private void CloseBtn_Click(object sender, System.EventArgs e) {
-            this.Close();
-        }
-        private void EditBtn_Click(object sender, System.EventArgs e) {
-
-        }
         private void NewBtn_Click(object sender, System.EventArgs e) {
             NewProjectForm form = new NewProjectForm();
             form.EntityCreated += NewForm_EntityCreated;
             form.ShowDialog();
+        }
+        private void EditBtn_Click(object sender, System.EventArgs e) {
+
+        }
+        private void DeleteBtn_Click(object sender, EventArgs e) {
+            if (EntitiesDGV.SelectedRows.Count == 0)
+                return;
+
+            // If some DataGridViewRows are selected, then remove them and delete their data
+            IEnumerable<Project> entities = EntitiesDGV.SelectedRows.Cast<DataGridViewRow>().Select(r => r.DataBoundItem as Project);
+            DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
+            foreach (Project p in entities)
+                list.Remove(p);
+        }
+        private void CloseBtn_Click(object sender, System.EventArgs e) {
+            this.Close();
         }
         private void UndoBtn_Click(object sender, System.EventArgs e) {
 
@@ -63,11 +71,17 @@ namespace MEACruncher.Forms {
 
             // Check that a valid start date was provided
             else if (col == DateStartedCol.Index) {
-                string validStr = Validator.Date(
-                    e.FormattedValue as string,
-                    new DateTime(1970, 1, 1),
-                    DateTime.Today);
-                cell.ErrorText = validStr;
+                string errText = "";
+                string dateStr = e.FormattedValue as string;
+                DateTime latest = DateTime.Today;
+                DateTime earliest = new DateTime(1970, 1, 1);
+                bool validDate = Validator.Date(dateStr, earliest, latest);
+                if (!validDate) {
+                    errText = String.Format(ValidateRes.InvalidDateError,
+                        earliest.ToShortDateString(),
+                        latest.ToShortDateString());
+                }
+                cell.ErrorText = errText;
             }
         }
         private void EntitiesDGV_RowValidating(object sender, DataGridViewCellCancelEventArgs e) {
@@ -110,23 +124,15 @@ namespace MEACruncher.Forms {
             // Fire the EntityUpdated event
             this.OnEntityUpdated(entity);
         }
-        private void EntitiesDGV_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
-            DataGridViewColumn column = EntitiesDGV.Columns[e.ColumnIndex];
-
-            _sortDirection = (_sortColumn == null) ? "ASC" : "DESC";
-
-            BindingSource bs = EntitiesDGV.DataSource as BindingSource;
-            IList<Project> entities = bs.DataSource as IList<Project>;
-            //bs.DataSource = entities.OrderBy(p => p.GetType().GetProperty(column.DataPropertyName), new Comparer());
-            //   string.Format("it.{0} {1}", column.DataPropertyName, _sortDirection)).ToList();
-
-            if (_sortColumn != null) _sortColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
-            column.HeaderCell.SortGlyphDirection = (_sortDirection == "ASC") ? SortOrder.Ascending : SortOrder.Descending;
-            _sortColumn = column;
+        private void EntitiesDGV_DataError(object sender, DataGridViewDataErrorEventArgs e) {
+            // Deleting rows fires this event with a Display Context for some reason...
+            if (e.Context != DataGridViewDataErrorContexts.Display)
+                e.ThrowException = true;
         }
 
         void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
-            loadEntities();
+            DbBoundList<Project> list = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
+            list.Add(e.Entity as Project);
         }
 
         // HELPER FUNCTIONS
@@ -137,13 +143,19 @@ namespace MEACruncher.Forms {
         }
         private void loadEntities() {
             // Select Entities from the database
-            IList<Project> entities;
-            entities = _db.QueryOver<Project>().List();
+            IList<Project> entities = _db.QueryOver<Project>().List();
 
             // Bind the result set to the DataGridView
-            BindingSource bs = new BindingSource();
-            bs.DataSource = entities;
-            EntitiesDGV.AutoGenerateColumns = false;
+            DbBoundList<Project> list = new DbBoundList<Project>(_db, entities) {
+                Sortable      = true,
+                AllowEdit     = true,
+                AllowNew      = true,
+                AllowRemove   = true,
+                HandleCreates = true,
+                HandleUpdates = false,
+                HandleDeletes = true
+            };
+            BindingSource bs = new BindingSource(list, null) { AllowNew = true };
             EntitiesDGV.DataSource = bs;
         }
         private void OnEntityUpdated(Project entity) {
@@ -160,7 +172,6 @@ namespace MEACruncher.Forms {
                     subscriber.DynamicInvoke(this, args);
             }
         }
-
 
     }
 

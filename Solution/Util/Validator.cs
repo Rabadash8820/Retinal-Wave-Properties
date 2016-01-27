@@ -26,33 +26,29 @@ namespace Util {
         /// </summary>
         /// <param name="dateStr">The text to be interpreted as a DateTime</param>
         /// <returns>True or false, depending on whether the text is a valid DateTime expression</returns>
-        public static string Date(string dateStr, DateTime earliest, DateTime latest) {
+        public static bool Date(string dateStr, DateTime earliest, DateTime latest) {
             // Return false if the string isn't in the right format
-            bool isValidStr = Text(
-                Resources.DateRegex,
-                dateStr);
-            if (!isValidStr) return Resources.EnterDateMsg;
+            bool validStr = Validator.Text(Resources.DateRegex, dateStr);
+            if (!validStr)
+                return false;
 
-            // Check that the numbers for month, day, and year are valid and are not after the current date
-            bool isValidDate = false;
+            // Return whether the provided date falls within the provided timespan
             try {
-                int[] parts = dateStr.Split('/')
+                int[] parts = dateStr.Split('/', '\\', '-')
                                      .Select(p => Convert.ToInt32(p))
                                      .ToArray();
-                DateTime dt = new DateTime(parts[2], parts[0], parts[1]);
-                if (earliest <= dt && dt <= latest)
-                    isValidDate = true;
+                int month = parts[0];
+                int day   = parts[1];
+                int year  = parts[2];
+                DateTime date = new DateTime(year, month, day);
+                bool validDate = (earliest <= date && date <= latest);
+                return validDate;
             }
-            catch (ArgumentOutOfRangeException) { }
 
-            // If all above conditions pass then return true, otherwise show an error dialog and return false
-            if (isValidDate)
-                return "";
-            string message = String.Format(
-                Resources.InvalidDateError,
-                earliest.ToShortDateString(),
-                latest.ToShortDateString());
-            return message;
+            // If the provided date has invalid numbers for month, day, or year then return false
+            catch (ArgumentOutOfRangeException) {
+                return false;
+            }
         }
     }
 

@@ -23,6 +23,11 @@ namespace MEACruncher {
                 P.Resources.MeaDataDbVersion,
                 P.Resources.MeaDataSql);
 
+            System.Collections.Generic.List<int> intList = new System.Collections.Generic.List<int>();
+            System.ComponentModel.BindingList<int> intBindList = new System.ComponentModel.BindingList<int>(intList);
+            BindingSource bs = new BindingSource(intList, null);
+            bool canSort = bs.SupportsSorting;
+
             // Open the main form
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

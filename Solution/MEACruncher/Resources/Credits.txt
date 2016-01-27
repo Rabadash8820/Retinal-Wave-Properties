@@ -1,0 +1,11 @@
+We would like to acknowledge the following resources:
+
+SortableBindingList class, developed by David Ellingsworth at the Davey Tree Expert Company
+
+MySQL
+
+NHibernate
+
+NUnit
+
+Fody
