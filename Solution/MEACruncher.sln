@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeaData.Util", "MeaData.Uti
 		{B6AF7CEC-F339-4E94-9260-B764DD5D6FA8} = {B6AF7CEC-F339-4E94-9260-B764DD5D6FA8}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommParser", "CommProcessor\CommParser.csproj", "{CE21EA22-5143-4582-8136-07F6977F1F4A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|x64 = CD_ROM|x64
@@ -123,6 +125,22 @@ Global
 		{63DCAA52-1BCF-4036-9C93-71CEE4B2D234}.Release|x86.Build.0 = Release|x86
 		{63DCAA52-1BCF-4036-9C93-71CEE4B2D234}.SingleImage|x64.ActiveCfg = Release|x64
 		{63DCAA52-1BCF-4036-9C93-71CEE4B2D234}.SingleImage|x86.ActiveCfg = Release|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.CD_ROM|x64.ActiveCfg = Release|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.CD_ROM|x86.ActiveCfg = Release|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugNoTest|x64.ActiveCfg = Debug|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugNoTest|x64.Build.0 = Debug|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugNoTest|x86.ActiveCfg = Debug|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugNoTest|x86.Build.0 = Debug|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugTest|x64.ActiveCfg = Debug|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DebugTest|x86.ActiveCfg = Debug|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DVD-5|x64.ActiveCfg = Release|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.DVD-5|x86.ActiveCfg = Release|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.Release|x64.ActiveCfg = Release|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.Release|x64.Build.0 = Release|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.Release|x86.ActiveCfg = Release|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.Release|x86.Build.0 = Release|x86
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.SingleImage|x64.ActiveCfg = Release|x64
+		{CE21EA22-5143-4582-8136-07F6977F1F4A}.SingleImage|x86.ActiveCfg = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
