@@ -22,7 +22,7 @@ namespace MEACruncher {
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main() {
+        static void Main(string[] args) {
             // Establish connections with MySQL databases
             MeaDataDb = new DbWrapper(
                 typeof(Entity).Assembly,

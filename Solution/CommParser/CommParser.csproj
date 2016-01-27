@@ -60,10 +60,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Argument.cs" />
+    <Compile Include="CommLineItemCollection.cs" />
+    <Compile Include="CommLineParser.cs" />
     <Compile Include="IArgument.cs" />
-    <Compile Include="ICommandLineItem.cs" />
-    <Compile Include="ListFlag.cs" />
-    <Compile Include="ParamFlag.cs" />
+    <Compile Include="ICommLineItem.cs" />
     <Compile Include="Flag.cs" />
     <Compile Include="IFlag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
