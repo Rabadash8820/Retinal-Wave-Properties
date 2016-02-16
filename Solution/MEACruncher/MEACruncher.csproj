@@ -96,7 +96,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="MySqlBackup, Version=2.0.9.2, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySqlBackup.NET.2.0.9.2\lib\net45\MySqlBackup.dll</HintPath>
+      <HintPath>..\packages\MySqlBackup.NET.2.0.9.3\lib\net45\MySqlBackup.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">

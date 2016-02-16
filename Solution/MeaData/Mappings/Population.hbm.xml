@@ -9,20 +9,24 @@
     </natural-id>
     <property name="Comments" column="Comments" />
     <set name="Ages" table="population_ages" lazy="extra" inverse="false" cascade="save-update">
-      <key unique="true" column="AgeId" />
-      <many-to-many class="Age" column="ConditionId" />
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Age" column="AgeId" />
     </set>
     <set name="Strains" table="population_strains" lazy="extra" inverse="false" cascade="save-update">
-      <key unique="true" column="StrainId" />
-      <many-to-many class="Strain" column="ConditionId" />
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Strain" column="StrainId" />
     </set>
     <set name="Conditions" table="population_conditions" lazy="extra" inverse="false" cascade="save-update">
-      <key unique="true" column="RecordingId" />
+      <key unique="true" column="PopulationId" />
       <many-to-many class="Condition" column="ConditionId" />
     </set>
     <set name="TissueTypes" table="population_tissue_types" lazy="extra" inverse="false" cascade="save-update">
-      <key unique="true" column="RecordingId" />
+      <key unique="true" column="PopulationId" />
       <many-to-many class="TissueType" column="TissueTypeId" />
+    </set>
+    <set name="Projects" table="project_populations" lazy="extra" inverse="false" cascade="save-update">
+      <key unique="true" column="PopulationId" />
+      <many-to-many class="Project" column="ProjectId" />
     </set>
   </class>
 </hibernate-mapping>

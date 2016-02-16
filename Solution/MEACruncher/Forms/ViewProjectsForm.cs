@@ -8,12 +8,16 @@ using NHibernate;
 
 using System;
 using System.Linq;
+using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.Generic;
 
 namespace MEACruncher.Forms {
 
     internal partial class ViewProjectsForm : BaseForm {
+        // HIDDEN FIELDS
+        private int _oldPanelHeight;
+
         // INTERFACE
         public ViewProjectsForm() : base() {
             InitializeComponent();
@@ -51,12 +55,17 @@ namespace MEACruncher.Forms {
         private void RedoBtn_Click(object sender, EventArgs e) {
 
         }
-        private void NewForm_EntityCreated(object sender, Events.EntityCreatedEventArgs e) {
+        private void NewForm_EntityCreated(object sender, EntityCreatedEventArgs e) {
             DbBoundList<Project> entities = (EntitiesDGV.DataSource as BindingSource).DataSource as DbBoundList<Project>;
             entities.Add(e.Entity as Project);
         }
-
-        private void EntitiesDGV_CellDoubleClick(object sender, System.Windows.Forms.DataGridViewCellEventArgs e) {
+        
+        private void EntitiesDGV_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            Project root = EntitiesDGV.Rows[e.RowIndex].DataBoundItem as Project;
+            loadAssocPopulations(root);
+            PopulationsDGV.Refresh();
+        }
+        private void EntitiesDGV_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             EntitiesDGV.BeginEdit(true);
         }
         private void EntitiesDGV_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
@@ -157,11 +166,22 @@ namespace MEACruncher.Forms {
 
         // HELPER FUNCTIONS
         private void setDataBindings() {
+            // Don't auto generate columns
             EntitiesDGV.AutoGenerateColumns = false;
+            PopulationsDGV.AutoGenerateColumns = false;
 
+            // Set DataBindings for the main DataGridView
             TitleCol.DataPropertyName       = GetPropertyName((Project e) => e.Name);
             DateStartedCol.DataPropertyName = GetPropertyName((Project e) => e.DateStarted);
             CommentsCol.DataPropertyName    = GetPropertyName((Project e) => e.Comments);
+
+            // Set DataBindings for the Populations DataGridView
+            PopNameCol.DataPropertyName = GetPropertyName((Population p) => p.Name);
+            PopAgesCol.DataPropertyName = $"{GetPropertyName((Population p) => p.Ages)}.Count";
+            PopConditionsCol.DataPropertyName = $"{GetPropertyName((Population p) => p.Conditions)}.Count";
+            PopStrainsCol.DataPropertyName = $"{GetPropertyName((Population p) => p.Strains)}.Count";
+            PopTissueTypesCol.DataPropertyName = $"{GetPropertyName((Population p) => p.TissueTypes)}.Count";
+            PopCommentsCol.DataPropertyName = GetPropertyName((Population p) => p.Comments);
         }
         private void loadEntities() {
             // Select Entities from the database
@@ -180,6 +200,26 @@ namespace MEACruncher.Forms {
             BindingSource bs = new BindingSource(list, null) { AllowNew = true };
             EntitiesDGV.DataSource = bs;
         }
+        private void loadAssocPopulations(Project project) {
+            // Select Entities from the database
+            IList<Population> entities = _db.QueryOver<Population>()
+                                            .JoinQueryOver<Project>(pop => pop.Projects)
+                                            .Where(proj => proj.Guid == project.Guid)
+                                            .List();
+
+            // Bind the result set to the DataGridView
+            DbBoundList<Population> list = new DbBoundList<Population>(_db, entities) {
+                Sortable = true,
+                AllowEdit = true,
+                AllowNew = true,
+                AllowRemove = true,
+                DbCreates = true,
+                DbUpdates = false,  // We don't wanna update the database everytime user types a character!
+                DbDeletes = true
+            };
+            BindingSource bs = new BindingSource(list, null) { AllowNew = true };
+            PopulationsDGV.DataSource = bs;
+        }
         private void update(Project entity) {
             // Update the database
             // The try/catch block is need during row deletions for some reason
@@ -195,6 +235,24 @@ namespace MEACruncher.Forms {
             this.EntityUpdated?.Invoke(this, args);
         }
 
+        private void AssocBtn_Click(object sender, EventArgs e) {
+            int oldW = this.Size.Width;
+            int oldH = this.Size.Height;
+
+            bool collapsed = MainSplit.Panel2Collapsed;
+            if (collapsed) {
+                Size newSize = new Size(oldW, oldH + _oldPanelHeight + MainSplit.SplitterWidth + 3);    // +3 is a temporary fix, not sure what this number should really be
+                this.Size = newSize;
+                MainSplit.Panel2Collapsed = !collapsed;
+            }
+            else {
+                _oldPanelHeight = MainSplit.Panel2.Height;
+                Size newSize = new Size(oldW, oldH - _oldPanelHeight - MainSplit.SplitterWidth);
+                this.Size = newSize;
+                MainSplit.Panel2Collapsed = !collapsed;
+            }
+
+        }
     }
 
 }
