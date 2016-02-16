@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddTissueTypeForm));
             this.MainTblLayout = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonsPnl = new System.Windows.Forms.Panel();
             this.InfoLbl = new System.Windows.Forms.Label();
@@ -45,7 +46,7 @@
             this.TreeContextMenu.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LoadEntityWorker
+            // MainWorker
             // 
             this.MainWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.LoadEntityWorker_DoWork);
             this.MainWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.LoadEntityWorker_RunWorkerCompleted);
@@ -56,80 +57,48 @@
             // 
             // MainTblLayout
             // 
-            this.MainTblLayout.ColumnCount = 1;
-            this.MainTblLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            resources.ApplyResources(this.MainTblLayout, "MainTblLayout");
             this.MainTblLayout.Controls.Add(this.ButtonsPnl, 0, 2);
             this.MainTblLayout.Controls.Add(this.MainTree, 0, 1);
             this.MainTblLayout.Controls.Add(this.SearchTxt, 0, 0);
-            this.MainTblLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTblLayout.Location = new System.Drawing.Point(0, 0);
             this.MainTblLayout.Name = "MainTblLayout";
-            this.MainTblLayout.RowCount = 3;
-            this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.MainTblLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 35F));
-            this.MainTblLayout.Size = new System.Drawing.Size(434, 430);
-            this.MainTblLayout.TabIndex = 1;
             // 
             // ButtonsPnl
             // 
             this.ButtonsPnl.Controls.Add(this.InfoLbl);
             this.ButtonsPnl.Controls.Add(this.AddBtn);
             this.ButtonsPnl.Controls.Add(this.CancelBtn);
-            this.ButtonsPnl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ButtonsPnl.Location = new System.Drawing.Point(3, 398);
+            resources.ApplyResources(this.ButtonsPnl, "ButtonsPnl");
             this.ButtonsPnl.Name = "ButtonsPnl";
-            this.ButtonsPnl.Size = new System.Drawing.Size(428, 29);
-            this.ButtonsPnl.TabIndex = 1;
             // 
             // InfoLbl
             // 
-            this.InfoLbl.AutoSize = true;
-            this.InfoLbl.Location = new System.Drawing.Point(3, 8);
+            resources.ApplyResources(this.InfoLbl, "InfoLbl");
             this.InfoLbl.Name = "InfoLbl";
-            this.InfoLbl.Size = new System.Drawing.Size(182, 13);
-            this.InfoLbl.TabIndex = 2;
-            this.InfoLbl.Text = "This tissue type is too general to add.";
             // 
             // AddBtn
             // 
-            this.AddBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddBtn.AutoSize = true;
-            this.AddBtn.Enabled = false;
-            this.AddBtn.Location = new System.Drawing.Point(269, 3);
+            resources.ApplyResources(this.AddBtn, "AddBtn");
             this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(75, 23);
-            this.AddBtn.TabIndex = 0;
-            this.AddBtn.Text = "Add";
             this.AddBtn.UseVisualStyleBackColor = true;
             this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // CancelBtn
             // 
-            this.CancelBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CancelBtn.AutoSize = true;
+            resources.ApplyResources(this.CancelBtn, "CancelBtn");
             this.CancelBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelBtn.Location = new System.Drawing.Point(350, 3);
             this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(75, 23);
-            this.CancelBtn.TabIndex = 1;
-            this.CancelBtn.Text = "Cancel";
             this.CancelBtn.UseVisualStyleBackColor = true;
             this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
             // 
             // MainTree
             // 
             this.MainTree.ContextMenuStrip = this.TreeContextMenu;
-            this.MainTree.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MainTree.Enabled = false;
+            resources.ApplyResources(this.MainTree, "MainTree");
             this.MainTree.HideSelection = false;
-            this.MainTree.Location = new System.Drawing.Point(3, 27);
             this.MainTree.Name = "MainTree";
-            this.MainTree.Size = new System.Drawing.Size(428, 365);
-            this.MainTree.TabIndex = 0;
             this.MainTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MainTree_AfterSelect);
             this.MainTree.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.MainTree_NodeMouseClick);
-            this.MainTree.NodeMouseDoubleClick += MainTree_NodeMouseDoubleClick;
             // 
             // TreeContextMenu
             // 
@@ -142,79 +111,65 @@
             this.ExpandCurrentMenuItem,
             this.ExpandChildrenMenuItem});
             this.TreeContextMenu.Name = "TreeContextMenu";
-            this.TreeContextMenu.Size = new System.Drawing.Size(179, 142);
+            resources.ApplyResources(this.TreeContextMenu, "TreeContextMenu");
             this.TreeContextMenu.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.TreeContextMenu_ItemClicked);
             // 
             // CollapseAllMenuItem
             // 
             this.CollapseAllMenuItem.Name = "CollapseAllMenuItem";
-            this.CollapseAllMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.CollapseAllMenuItem.Text = "Collapse All";
+            resources.ApplyResources(this.CollapseAllMenuItem, "CollapseAllMenuItem");
             // 
             // CollapseCurrentMenuItem
             // 
             this.CollapseCurrentMenuItem.Name = "CollapseCurrentMenuItem";
-            this.CollapseCurrentMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.CollapseCurrentMenuItem.Text = "Collapse Current (-)";
+            resources.ApplyResources(this.CollapseCurrentMenuItem, "CollapseCurrentMenuItem");
             // 
             // CollapseChildrenMenuItem
             // 
             this.CollapseChildrenMenuItem.Name = "CollapseChildrenMenuItem";
-            this.CollapseChildrenMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.CollapseChildrenMenuItem.Text = "Collapse Children";
+            resources.ApplyResources(this.CollapseChildrenMenuItem, "CollapseChildrenMenuItem");
             // 
             // ExpandCollapseMenuSeparator
             // 
             this.ExpandCollapseMenuSeparator.Name = "ExpandCollapseMenuSeparator";
-            this.ExpandCollapseMenuSeparator.Size = new System.Drawing.Size(175, 6);
+            resources.ApplyResources(this.ExpandCollapseMenuSeparator, "ExpandCollapseMenuSeparator");
             // 
             // ExpandAllMenuItem
             // 
             this.ExpandAllMenuItem.Name = "ExpandAllMenuItem";
-            this.ExpandAllMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.ExpandAllMenuItem.Text = "Expand All";
+            resources.ApplyResources(this.ExpandAllMenuItem, "ExpandAllMenuItem");
             // 
             // ExpandCurrentMenuItem
             // 
             this.ExpandCurrentMenuItem.Name = "ExpandCurrentMenuItem";
-            this.ExpandCurrentMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.ExpandCurrentMenuItem.Text = "Expand Current (+)";
+            resources.ApplyResources(this.ExpandCurrentMenuItem, "ExpandCurrentMenuItem");
             // 
             // ExpandChildrenMenuItem
             // 
             this.ExpandChildrenMenuItem.Name = "ExpandChildrenMenuItem";
-            this.ExpandChildrenMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.ExpandChildrenMenuItem.Text = "Expand Children (*)";
+            resources.ApplyResources(this.ExpandChildrenMenuItem, "ExpandChildrenMenuItem");
             // 
             // SearchTxt
             // 
             this.SearchTxt.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.SearchTxt.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.SearchTxt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SearchTxt.Enabled = false;
-            this.SearchTxt.Location = new System.Drawing.Point(3, 3);
-            this.SearchTxt.MaxLength = 45;
+            resources.ApplyResources(this.SearchTxt, "SearchTxt");
             this.SearchTxt.Name = "SearchTxt";
-            this.SearchTxt.Size = new System.Drawing.Size(428, 20);
-            this.SearchTxt.TabIndex = 1;
             this.SearchTxt.Leave += new System.EventHandler(this.SearchTxt_Leave);
             this.SearchTxt.MouseUp += new System.Windows.Forms.MouseEventHandler(this.SearchTxt_MouseUp);
             // 
             // AddTissueTypeForm
             // 
             this.AcceptButton = this.AddBtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.CancelBtn;
-            this.ClientSize = new System.Drawing.Size(434, 430);
             this.Controls.Add(this.MainTblLayout);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(365, 130);
             this.Name = "AddTissueTypeForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Add Tissue Type";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddTissueTypeForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
             this.MainTblLayout.ResumeLayout(false);

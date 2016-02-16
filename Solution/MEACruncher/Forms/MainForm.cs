@@ -41,7 +41,12 @@ namespace MEACruncher.Forms {
         }
 
         private void OtherDataButton_Click(object sender, EventArgs e) {
-
+            Console.WriteLine(System.Globalization.CultureInfo.CurrentCulture);
+            Console.WriteLine(System.Globalization.CultureInfo.CurrentUICulture);
+            AboutForm form = new AboutForm();
+            form.ShowDialog();
+            Console.WriteLine(System.Globalization.CultureInfo.CurrentCulture);
+            Console.WriteLine(System.Globalization.CultureInfo.CurrentUICulture);
         }
     }
 
