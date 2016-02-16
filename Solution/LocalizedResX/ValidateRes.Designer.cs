@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MEACruncher.Resources {
+namespace LocalizedResX {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace MEACruncher.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DefaultRes {
+    public class ValidateRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DefaultRes() {
+        internal ValidateRes() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.DefaultRes", typeof(DefaultRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LocalizedResX.ValidateRes", typeof(ValidateRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace MEACruncher.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,18 +61,27 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to A new project for crunching some MEA data..
+        ///   Looks up a localized string similar to Start date must be between {0} and {1}..
         /// </summary>
-        internal static string ProjectComments {
+        public static string ProjectStartDate {
             get {
-                return ResourceManager.GetString("ProjectComments", resourceCulture);
+                return ResourceManager.GetString("ProjectStartDate", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Awesome Project.
+        ///   Looks up a localized string similar to Provided start date was not in a valid DateTime format..
         /// </summary>
-        internal static string ProjectTitle {
+        public static string ProjectStartDateFormat {
+            get {
+                return ResourceManager.GetString("ProjectStartDateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You must provide a title for this Project..
+        /// </summary>
+        public static string ProjectTitle {
             get {
                 return ResourceManager.GetString("ProjectTitle", resourceCulture);
             }

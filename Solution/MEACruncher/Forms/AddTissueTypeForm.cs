@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 using MeaData;
 using MEACruncher.Events;
-using Mea = MEACruncher.Properties;
+using LocalizedResX;
 
 namespace MEACruncher.Forms {
 
@@ -78,7 +78,7 @@ namespace MEACruncher.Forms {
             TissueType tt = e.Node.Tag as TissueType;
             toggleSelectionCtrls(tt.IsSelectable);
             if (!tt.IsSelectable)
-                InfoLbl.Text = Mea.Resources.GeneralTissueTypeWarning;
+                InfoLbl.Text = OtherRes.GeneralTissueTypeWarning;
         }
         private void MainTree_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e) {
             // Allow the user to change selected node by clicking either mouse button
@@ -103,7 +103,7 @@ namespace MEACruncher.Forms {
             // If the Textbox is now empty, reset it with a prompt string
             if (SearchTxt.Text == "") {
                 SearchTxt.TextChanged -= SearchTxt_TextChanged;
-                SearchTxt.Text = $"{Mea.Resources.SearchStr}...";
+                SearchTxt.Text = $"{OtherRes.SearchStr}...";
                 SearchTxt.TextChanged += SearchTxt_TextChanged;
             }
         }
@@ -196,11 +196,11 @@ namespace MEACruncher.Forms {
                 MainTree.SelectedNode = null;
             }
             else
-                MainTree.Nodes.Add($"{Mea.Resources.LoadingStr}...");
+                MainTree.Nodes.Add($"{OtherRes.LoadingStr}...");
             MainTree.EndUpdate();
 
             // Adjust the search box text
-            SearchTxt.Text = $"{Mea.Resources.SearchStr}...";
+            SearchTxt.Text = $"{OtherRes.SearchStr}...";
 
             // Set the focused control
             if (loaded)
@@ -210,7 +210,7 @@ namespace MEACruncher.Forms {
         }
         private void toggleSelectionCtrls(bool nodeSelected) {
             AddBtn.Enabled = nodeSelected;
-            InfoLbl.Text = (nodeSelected ? "" : Mea.Resources.NoTissueTypeWarning);
+            InfoLbl.Text = (nodeSelected ? "" : OtherRes.NoTissueTypeWarning);
         }
         private TreeNode createNode(TissueType tissueType) {
             // Define the node for this TissueType

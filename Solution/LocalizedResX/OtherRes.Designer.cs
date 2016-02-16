@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MEACruncher.Resources {
+namespace LocalizedResX {
     using System;
     
     
@@ -22,24 +22,24 @@ namespace MEACruncher.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class ValidateRes {
+    public class OtherRes {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal ValidateRes() {
+        internal OtherRes() {
         }
         
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MEACruncher.Resources.ValidateRes", typeof(ValidateRes).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("LocalizedResX.OtherRes", typeof(OtherRes).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace MEACruncher.Resources {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,29 +61,47 @@ namespace MEACruncher.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Start date must be between {0} and {1}..
+        ///   Looks up a localized string similar to This tissue type is too general to add..
         /// </summary>
-        internal static string ProjectStartDate {
+        public static string GeneralTissueTypeWarning {
             get {
-                return ResourceManager.GetString("ProjectStartDate", resourceCulture);
+                return ResourceManager.GetString("GeneralTissueTypeWarning", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provided start date was not in a valid DateTime format..
+        ///   Looks up a localized string similar to Loading.
         /// </summary>
-        internal static string ProjectStartDateFormat {
+        public static string LoadingStr {
             get {
-                return ResourceManager.GetString("ProjectStartDateFormat", resourceCulture);
+                return ResourceManager.GetString("LoadingStr", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to You must provide a title for this Project..
+        ///   Looks up a localized string similar to meadata.
         /// </summary>
-        internal static string ProjectTitle {
+        public static string MeaDataDbName {
             get {
-                return ResourceManager.GetString("ProjectTitle", resourceCulture);
+                return ResourceManager.GetString("MeaDataDbName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a tissue type to add..
+        /// </summary>
+        public static string NoTissueTypeWarning {
+            get {
+                return ResourceManager.GetString("NoTissueTypeWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search.
+        /// </summary>
+        public static string SearchStr {
+            get {
+                return ResourceManager.GetString("SearchStr", resourceCulture);
             }
         }
     }
