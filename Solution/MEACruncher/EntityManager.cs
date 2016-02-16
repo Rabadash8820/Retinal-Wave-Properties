@@ -3,7 +3,7 @@
 using NHibernate;
 
 using MeaData;
-using MEACruncher.Resources;
+using LocalizedResX;
 
 namespace MEACruncher {
 

@@ -2,7 +2,7 @@
 using MeaData.Util;
 using static MeaData.Util.Util;
 using MEACruncher.Events;
-using MEACruncher.Resources;
+using LocalizedResX;
 
 using NHibernate;
 

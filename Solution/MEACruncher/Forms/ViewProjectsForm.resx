@@ -123,16 +123,216 @@
   <metadata name="EntityBS.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>136, 17</value>
   </metadata>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="MainTblLayout.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <metadata name="TitleCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="TitleCol.HeaderText" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <metadata name="DateStartedCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="DateStartedCol.HeaderText" xml:space="preserve">
+    <value>Date Started</value>
+  </data>
   <metadata name="CommentsCol.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <data name="CommentsCol.HeaderText" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="EntitiesDGV.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="EntitiesDGV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="EntitiesDGV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 223</value>
+  </data>
+  <data name="EntitiesDGV.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;EntitiesDGV.Name" xml:space="preserve">
+    <value>EntitiesDGV</value>
+  </data>
+  <data name="&gt;&gt;EntitiesDGV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EntitiesDGV.Parent" xml:space="preserve">
+    <value>MainTblLayout</value>
+  </data>
+  <data name="&gt;&gt;EntitiesDGV.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="DeleteBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>165, 3</value>
+  </data>
+  <data name="DeleteBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="DeleteBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="DeleteBtn.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;DeleteBtn.Name" xml:space="preserve">
+    <value>DeleteBtn</value>
+  </data>
+  <data name="&gt;&gt;DeleteBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DeleteBtn.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="&gt;&gt;DeleteBtn.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="CloseBtn.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="CloseBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>415, 3</value>
+  </data>
+  <data name="CloseBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="CloseBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="CloseBtn.Text" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="&gt;&gt;CloseBtn.Name" xml:space="preserve">
+    <value>CloseBtn</value>
+  </data>
+  <data name="&gt;&gt;CloseBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CloseBtn.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="&gt;&gt;CloseBtn.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="EditBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 3</value>
+  </data>
+  <data name="EditBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="EditBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="EditBtn.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="&gt;&gt;EditBtn.Name" xml:space="preserve">
+    <value>EditBtn</value>
+  </data>
+  <data name="&gt;&gt;EditBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EditBtn.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="&gt;&gt;EditBtn.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="NewBtn.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="NewBtn.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="NewBtn.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="NewBtn.Text" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="&gt;&gt;NewBtn.Name" xml:space="preserve">
+    <value>NewBtn</value>
+  </data>
+  <data name="&gt;&gt;NewBtn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NewBtn.Parent" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="&gt;&gt;NewBtn.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="BottomPanel.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="BottomPanel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 232</value>
+  </data>
+  <data name="BottomPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>493, 29</value>
+  </data>
+  <data name="BottomPanel.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.Name" xml:space="preserve">
+    <value>BottomPanel</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.Parent" xml:space="preserve">
+    <value>MainTblLayout</value>
+  </data>
+  <data name="&gt;&gt;BottomPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="MainTblLayout.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="MainTblLayout.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="MainTblLayout.RowCount" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="MainTblLayout.Size" type="System.Drawing.Size, System.Drawing">
+    <value>499, 264</value>
+  </data>
+  <data name="MainTblLayout.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;MainTblLayout.Name" xml:space="preserve">
+    <value>MainTblLayout</value>
+  </data>
+  <data name="&gt;&gt;MainTblLayout.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MainTblLayout.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;MainTblLayout.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="MainTblLayout.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="EntitiesDGV" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="BottomPanel" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Percent,100,Absolute,35" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>499, 264</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIABnAwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAEDAAAAZrw6JQAAAAZQ
@@ -151,5 +351,47 @@
         OkTD0iy1NUyFexH+sDTrfIhwRNj5QYiw84MQYecH0e38AFl+gCw/QJYfIMsPkOUHyPIDZPnB/EbUXy7C
         yA+qW/lBdSs/iG4vd9E/AAQfRPlBdSs/qH7UUUd9vn4Ac1iGZ8NEc6IAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>450, 150</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Projects</value>
+  </data>
+  <data name="&gt;&gt;MainWorker.Name" xml:space="preserve">
+    <value>MainWorker</value>
+  </data>
+  <data name="&gt;&gt;MainWorker.Type" xml:space="preserve">
+    <value>System.ComponentModel.BackgroundWorker, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;EntityBS.Name" xml:space="preserve">
+    <value>EntityBS</value>
+  </data>
+  <data name="&gt;&gt;EntityBS.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;TitleCol.Name" xml:space="preserve">
+    <value>TitleCol</value>
+  </data>
+  <data name="&gt;&gt;TitleCol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DateStartedCol.Name" xml:space="preserve">
+    <value>DateStartedCol</value>
+  </data>
+  <data name="&gt;&gt;DateStartedCol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CommentsCol.Name" xml:space="preserve">
+    <value>CommentsCol</value>
+  </data>
+  <data name="&gt;&gt;CommentsCol.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>ViewProjectsForm</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>MEACruncher.Forms.BaseForm, MEACruncher, Version=0.2.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
 </root>

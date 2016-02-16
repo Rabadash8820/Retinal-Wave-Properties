@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 using MeaData;
 using MEACruncher.Events;
-using MEACruncher.Resources;
+using LocalizedResX;
 
 using NHibernate;
 using static MeaData.Util.Util;
@@ -65,12 +65,6 @@ namespace MEACruncher.Forms {
                     MessageBoxDefaultButton.Button1);
                 return;
             }
-
-            // Otherwise, add this new Entity to the database
-            //using (ITransaction trans = _db.BeginTransaction()) {
-            //    _db.Save(entity);
-            //    trans.Commit();
-            //}
 
             // Fire the EntityCreated event and close
             EntityCreatedEventArgs args = new EntityCreatedEventArgs(entity);

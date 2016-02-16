@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BaseForm));
             this.MainWorker = new System.ComponentModel.BackgroundWorker();
             this.EntityBS = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).BeginInit();
@@ -36,11 +37,9 @@
             // 
             // BaseForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
             this.Name = "BaseForm";
-            this.Text = "BaseForm";
             ((System.ComponentModel.ISupportInitialize)(this.EntityBS)).EndInit();
             this.ResumeLayout(false);
 
