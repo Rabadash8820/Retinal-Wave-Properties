@@ -5,22 +5,26 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:MEACruncher"
     mc:Ignorable="d"
-    Title="MEA Cruncher" Height="393" Width="659" Margin="0" WindowState="Maximized">
+    Title="MEA Cruncher" Height="393" Width="659" WindowState="Maximized">
     <Window.Background>
         <ImageBrush ImageSource="Resources/NeuronBackground.jpg" Stretch="UniformToFill"/>
     </Window.Background>
     <Window.Resources>
-        <SolidColorBrush x:Key="BabyBlue">#FF4D7EB8</SolidColorBrush>
-        <SolidColorBrush x:Key="BlackBkgrd">#B2000000</SolidColorBrush>
         <Style x:Key="SLbl" TargetType="Label">
             <Setter Property="Margin" Value="0,0,0,0"/>
-            <Setter Property="Foreground" Value="{StaticResource BabyBlue}"/>
+            <Setter Property="Foreground" Value="{StaticResource AccentColor}"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="FontSize" Value="30"/>
         </Style>
+        <Style x:Key="STopLbl" BasedOn="{StaticResource SLbl}" TargetType="Label">
+            <Setter Property="Padding" Value="5,0,5,5"/>
+        </Style>
+        <Style x:Key="SBottomLbl" BasedOn="{StaticResource SLbl}" TargetType="Label">
+            <Setter Property="Padding" Value="5,5,5,0"/>
+        </Style>
         <Style x:Key="SBtn" TargetType="Button">
             <Setter Property="Margin" Value="0,5"/>
-            <Setter Property="Background" Value="{StaticResource BabyBlue}"/>
+            <Setter Property="Background" Value="{StaticResource AccentColor}"/>
             <Setter Property="BorderBrush" Value="{x:Null}"/>
             <Setter Property="Padding" Value="10,3"/>
             <Setter Property="FontSize" Value="24"/>
@@ -31,33 +35,10 @@
         <Style x:Key="SBottomBtn" BasedOn="{StaticResource SBtn}" TargetType="Button">
             <Setter Property="Margin" Value="0,5,0,0"/>
         </Style>
-        <Style x:Key="SZoomIn" TargetType="FrameworkElement">
-            <Setter Property="RenderTransform">
-                <Setter.Value>
-                    <ScaleTransform/>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="Loaded">
-                    <BeginStoryboard>
-                        <Storyboard>
-                            <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)">
-                                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
-                                <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                            <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)">
-                                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
-                                <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
-                            </DoubleAnimationUsingKeyFrames>
-                        </Storyboard>
-                    </BeginStoryboard>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="SBorder" TargetType="Border">
-            <Setter Property="BorderBrush" Value="{StaticResource BabyBlue}"/>
+        <Style x:Key="SBorder" BasedOn="{StaticResource SZoomIn}" TargetType="Border">
+            <Setter Property="BorderBrush" Value="{StaticResource AccentColor}"/>
             <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Background" Value="{StaticResource BlackBkgrd}"/>
+            <Setter Property="Background" Value="{StaticResource BkgrdColor}"/>
             <Setter Property="CornerRadius" Value="5"/>
             <Setter Property="Padding" Value="10"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -70,16 +51,21 @@
         </Style>
     </Window.Resources>
 
-    <local:DraggableArea Style="{StaticResource SZoomIn}" RenderTransformOrigin="0.5,0.5">
-        <Border x:Name="MainBorder" Style="{StaticResource SBorder}">
-            <StackPanel x:Name="MainStackPnl" Style="{StaticResource SStackPnl}">
-                <Label x:Name="TitleLbl" Style="{StaticResource SLbl}" Padding="5,0,5,5">MEA Cruncher</Label>
-                <Button x:Name="ViewProjectsBtn" Content="View Projects" Style="{StaticResource SBtn}" Click="ViewProjectsBtn_Click"/>
-                <Button x:Name="AboutBtn" Content="About" Style="{StaticResource SBtn}" Click="AboutBtn_Click"/>
-                <Button x:Name="ExitBtn" Content="Exit" Style="{StaticResource SBottomBtn}" Click="ExitBtn_Click"/>
-            </StackPanel>
-        </Border>
-    </local:DraggableArea>
+    <!-- Necessary to keep the DraggableArea inside the Window -->
+    <Grid>
+
+        <local:DraggableArea VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Border x:Name="MainBorder" Style="{StaticResource SBorder}">
+                <StackPanel x:Name="MainStackPnl" Style="{StaticResource SStackPnl}">
+                    <Label x:Name="TitleLbl" Style="{StaticResource STopLbl}">MEA Cruncher</Label>
+                    <Button x:Name="ViewProjectsBtn" Content="View Projects" Style="{StaticResource SBtn}" Click="ViewProjectsBtn_Click"/>
+                    <Button x:Name="AboutBtn" Content="About" Style="{StaticResource SBtn}" Click="AboutBtn_Click"/>
+                    <Button x:Name="ExitBtn" Content="Exit" Style="{StaticResource SBottomBtn}" Click="ExitBtn_Click"/>
+                </StackPanel>
+            </Border>
+        </local:DraggableArea>
+
+    </Grid>
 
 </Window>
     

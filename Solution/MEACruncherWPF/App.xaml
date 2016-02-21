@@ -4,6 +4,30 @@
              xmlns:local="clr-namespace:MEACruncher"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        
+        <SolidColorBrush x:Key="AccentColor">#FF4D7EB8</SolidColorBrush>
+        <SolidColorBrush x:Key="BkgrdColor">#B2000000</SolidColorBrush>
+        <Style x:Key="SZoomIn" TargetType="FrameworkElement">
+            <Setter Property="RenderTransform">
+                <Setter.Value>
+                    <ScaleTransform/>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <EventTrigger RoutedEvent="Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)">
+                                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                            <DoubleAnimationUsingKeyFrames BeginTime="0:0:0" Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)">
+                                <LinearDoubleKeyFrame KeyTime="0:0:0" Value="0"/>
+                                <LinearDoubleKeyFrame KeyTime="0:0:0.5" Value="1"/>
+                            </DoubleAnimationUsingKeyFrames>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Style.Triggers>
+        </Style>        
     </Application.Resources>
 </Application>

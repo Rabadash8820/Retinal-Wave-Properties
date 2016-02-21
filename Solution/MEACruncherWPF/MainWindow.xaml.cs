@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows;
 using System.Reflection;
-using System.Windows.Media;
-using System.Windows.Input;
 using System.Windows.Media.Animation;
 
 using Gat.Controls;
@@ -19,7 +17,8 @@ namespace MEACruncher {
 
         // EVENT HANDLERS
         private void ViewProjectsBtn_Click(object sender, RoutedEventArgs e) {
-
+            ViewProjectsWindow win = new ViewProjectsWindow();
+            win.Show();
         }
         private void AboutBtn_Click(object sender, RoutedEventArgs e) {
             Assembly a = Assembly.GetExecutingAssembly();
